@@ -1,0 +1,60 @@
+/*.overlay {
+    position: absolute;
+    bottom: 0;
+    background: #000;
+    background: #000; /* Black see-through 
+    color: #fff;
+    width: 100%;
+    transition: .5s ease;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    opacity: 0;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover .overlay{
+    background: #000;
+    opacity: 1;
+    transform: scale(1.1);
+    
+    margin-bottom:-10px;
+}*/
+.overlay2 {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5); 
+    color: #fff;
+    width: 90%;
+    height:;
+    bottom: 23px;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+    right: 5px;
+    left: 17px;
+    justify-items: center;
+}
+
+.col-md-4:hover .overlay2 {
+    background: #000;
+    opacity: 1;
+    transform: scale(1.1);
+    margin-bottom: -20px;
+    padding:10px;
+}
+
+.row .card img:hover {
+}
+
+.zoom {
+    transition: transform .2s;
+}
+
+    .zoom:hover {
+        -ms-transform: scale(1.1); 
+        -webkit-transform: scale(1.1); 
+        transform: scale(1.1);
+        opacity: 1;
+    }
