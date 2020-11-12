@@ -27,7 +27,16 @@ namespace GuardaCapitaldaCultura2027.Controllers
         {
             return View();
         }
+
+        public IActionResult Covilha()
+        {
+            return View();
+        }
         public IActionResult Guarda()
+        {
+            return View();
+        }
+        public IActionResult Seia()
         {
             return View();
         }
