@@ -46,6 +46,12 @@ namespace GuardaCapitaldaCultura2027.Controllers
             return View();
         }
 
+        public IActionResult Covid()
+
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
