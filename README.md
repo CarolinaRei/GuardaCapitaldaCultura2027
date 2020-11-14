@@ -2,9 +2,9 @@
 
 ### Introdução 
 
-Este projeto  desenvolvido pelo <a href="https://github.com/AfonsoAntunes">Afonso Antunes</a>, <a href="https://github.com/CarolinaRei">Carolina Rei</a> e o <a href="https://github.com/VagnerBomJesus">Vagner Bom Jesus</a> como o trabalho das disciplinas de Engenharia de Software II e de Programação para a Internet do curso de Engenharia Informática na <a href="http://www.estg.ipg.pt/">ESTG - Escola Superior de Tecnologia e Gestão</a> do <a href="http://www.ipg.pt/">IPG - Instituto Politécnico da Guarda</a> durnate o ano lectivo 2020/2021.
+Este projeto  desenvolvido pelo [Afonso Antunes](https://github.com/AfonsoAntunes), [Carolina Rei](https://github.com/CarolinaRei) e o [Vagner Bom Jesus](https://github.com/VagnerBomJesus) como o trabalho das disciplinas de Engenharia de Software II e de Programação para a Internet do curso de Engenharia Informática na [ESTG - Escola Superior de Tecnologia e Gestão](http://www.estg.ipg.pt/) do [IPG - Instituto Politécnico da Guarda](http://www.ipg.pt/) durnate o ano lectivo 2020/2021.
 
-Sendo a tema fornecido pela Professora de Engenharia de Software, que é <a href="https://www.guarda2027.pt/"> A Candidatura da Guarda a Capital Europeia da Cultura 2027 </a> é mais do que uma aposta num título ou a preparação de um ano de eventos. É um projeto regional, participado por 17 Municípios, que pretende desenvolver a Beira Interior a partir da sua dimensão cultural, tendo em conta o estado crítico que o mundo está a enfrentar devido o Coronavirus (COVID-19).
+Sendo a tema fornecido pela Professora de Engenharia de Software, que é [A Candidatura da Guarda a Capital Europeia da Cultura 2027](https://www.guarda2027.pt/) é mais do que uma aposta num título ou a preparação de um ano de eventos. É um projeto regional, participado por 17 Municípios, que pretende desenvolver a Beira Interior a partir da sua dimensão cultural, tendo em conta o estado crítico que o mundo está a enfrentar devido o Coronavirus (COVID-19).
 
 
 ### Descrição 
