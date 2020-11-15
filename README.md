@@ -16,6 +16,11 @@ Após algumas reuniões (Brainstorming) entre a equipa, ficou definido para cria
 
 ![Logo](https://user-images.githubusercontent.com/48354097/99158054-8dd72780-26c6-11eb-8f59-cb9565f7210f.png)
 
+### Autores
+Afonso Antunes https://github.com/AfonsoAntunes
+Carolina Rei https://github.com/CarolinaRei
+Vagner Bom Jesus https://github.com/VagnerBomJesus
+
 
 ### Ferramentas Usadas 
 
@@ -23,7 +28,7 @@ Após algumas reuniões (Brainstorming) entre a equipa, ficou definido para cria
      C#, à framework .NET, programação Web com ASP.NET Core MVC.
       
 - `Software | Plataforma ` 
-    - Microsoft Visual Studio 
+    - Visual Studio 2019
     - Trello
     - Draw.io
     
