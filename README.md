@@ -11,15 +11,20 @@ Sendo a tema fornecido pela Professora de Engenharia de Software, que é [A Cand
 
 Após algumas reuniões (Brainstorming) entre a equipa, ficou definido para criar um aplicação Web com o tema **"Guarda Eventos"**, que vai ser desenvolvida de maneira fornecer boa experiência ao utilizador a facilitando a reserva, consulta, pesquisa de eventos de forma privada e anónima de cada município.
 
+## Idiomas
+-Português
+-Inglês
+-Mandarim
+
 
 ### Logo
 
 ![Logo](https://user-images.githubusercontent.com/48354097/99158054-8dd72780-26c6-11eb-8f59-cb9565f7210f.png)
 
 ### Autores
-Afonso Antunes https://github.com/AfonsoAntunes
-Carolina Rei https://github.com/CarolinaRei
-Vagner Bom Jesus https://github.com/VagnerBomJesus
+- Afonso Antunes https://github.com/AfonsoAntunes
+- Carolina Rei https://github.com/CarolinaRei
+- Vagner Bom Jesus https://github.com/VagnerBomJesus
 
 
 ### Ferramentas Usadas 
