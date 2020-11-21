@@ -27,6 +27,12 @@ namespace GuardaCapitaldaCultura2027.Controllers
         {
             return View();
         }
+
+        public IActionResult Contactos()
+        {
+            return View();
+        }
+
        public IActionResult Aguiar()
         {
             return View();
