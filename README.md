@@ -39,3 +39,8 @@ Após algumas reuniões (Brainstorming) entre a equipa, ficou definido para cria
     
 - `Template`  
      [**Freelancer**](https://startbootstrap.com/theme/freelancer)  que é um design plano, tema de portfólio Bootstrap de uma página perfeito para portfólios de freelancer ou qualquer outro site de uma página, com a [Licença MIT](https://github.com/startbootstrap/startbootstrap-freelancer/blob/master/LICENSE)
+     
+     
+### Instalação no Package Manager Console:
+- `PM>` Update-Database -Context ContactoDbContext 
+- `PM>` Update-Database -Context ApplicationDbContext
