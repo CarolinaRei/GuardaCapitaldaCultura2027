@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GuardaCapitaldaCultura2027.Models.Context
 {
-    public class ContactoDbContext : DbContext
+    public class GuardaEventosBdContext : DbContext
     {
-        public ContactoDbContext(DbContextOptions options) : base(options) { }
+        public GuardaEventosBdContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Contacto> Contactos { get; set; }
     }
