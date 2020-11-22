@@ -37,6 +37,14 @@
             </div>
         </div>
     </nav>
+    <div style="padding:5px">
+        @{
+            foreach (var i in MultiLanMVC.LanguageMang.AvailableLanguages)
+            {
+                @Html.ActionLink(i.LanguageFullName, "ChangeLanguage", "Home", new { lang = i.LanguageCultureName }, null) <text> </text>
+            }
+        }
+    </div>
     <!-- Masthead-->
     <header class="page-section text-center">
         <div class="m-5"></div>
