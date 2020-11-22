@@ -12,6 +12,7 @@ using GuardaCapitaldaCultura2027.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using GuardaCapitaldaCultura2027.Models.Context;
 
 namespace GuardaCapitaldaCultura2027
 {
@@ -34,6 +35,11 @@ namespace GuardaCapitaldaCultura2027
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            //DB Contacto
+            services.AddDbContext<GuardaEventosBdContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("GuardaEventosConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
