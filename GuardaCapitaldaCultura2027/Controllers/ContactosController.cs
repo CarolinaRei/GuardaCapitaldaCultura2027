@@ -60,7 +60,13 @@ namespace GuardaCapitaldaCultura2027.Controllers
             {
                 _context.Add(contacto);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+
+                ViewBag.title = "Contacto enviado Com Sucesso!";
+                ViewBag.type = "alert-success";
+                ViewBag.message = "Em breve entraremos em Contacto!";
+                ViewBag.redirect = "/Contactos/Create"; // Request.Path
+                return View("Mensagem");
             }
             return View(contacto);
         }
