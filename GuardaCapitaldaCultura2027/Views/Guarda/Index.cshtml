@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    //Layout = "~/Views/Home/Index.cshtml";
 }
 
 <h1>Index</h1>
@@ -36,13 +37,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Ano)
             </td>
-            <!--
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
-            -->
         </tr>
 }
     </tbody>
