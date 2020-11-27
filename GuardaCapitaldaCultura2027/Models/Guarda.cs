@@ -15,5 +15,6 @@ namespace GuardaCapitaldaCultura2027.Models
         public string Name { get; set; }
         
         public int Ano { get; set; }
+
     }
 }
