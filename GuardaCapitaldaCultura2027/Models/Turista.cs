@@ -20,21 +20,21 @@ namespace GuardaCapitaldaCultura2027.Models
         [Display(Name = "Sobrenome *", Prompt = "Sobrenome")]
         public String Sobrenome { get; set; }
 
-        [Required(ErrorMessage = "Por favor, insira o seu Contacto")]
+        [Phone(ErrorMessage = "Por favor, insira o seu Contacto")]
         [StringLength(9, MinimumLength = 9, ErrorMessage = "O seu contacto deve ter apenas 9 caracteres")]
         [Display(Name = "Contacto *", Prompt = "Contacto")]
         public int Contacto { get; set; }
 
         [Required(ErrorMessage = "Por favor, insira o seu Email")]
-        [StringLength(50, MinimumLength = 12, ErrorMessage = "O seu contacto deve ter entre 12 e 50 caracteres")]
+        [StringLength(50, MinimumLength = 12, ErrorMessage = "O seu Email deve ter entre 12 e 50 caracteres")]
+        [EmailAddress(ErrorMessage = "Por favor, introduza o seu Email correto")]
         [Display(Name = "Email *", Prompt = "Email")]
-        // if para caracteres obrigatório "@, ."
         public String Email { get; set; }
 
         [Required(ErrorMessage = "Por favor, defina a sua Password")]
-        [StringLength(20, MinimumLength = 8, ErrorMessage = "O seu contacto deve ter entre 8 e 20 caracteres")]
+        [StringLength(20, MinimumLength = 8, ErrorMessage = "A sua Password deve ter entre 8 e 20 caracteres")]
+        // Hide password
         [Display(Name = "Password *", Prompt = "Password")]
-        // Esconder password
         public String Password { get; set; }
     }
 }
