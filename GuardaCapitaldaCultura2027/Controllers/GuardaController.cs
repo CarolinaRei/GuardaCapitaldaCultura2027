@@ -15,7 +15,25 @@ namespace GuardaCapitaldaCultura2027.Controllers
             };
         public IActionResult Index()
         {
-            return View(GuardaList);
+            return View(GuardaList.OrderBy(s => s.GuardaId).ToList());
         }
+
+        public ActionResult Edit(int Id)
+        {
+            var std = GuardaList.Where(s => s.GuardaId == Id).FirstOrDefault();
+
+            return View(std);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Models.Guarda std)
+        {
+            var student = GuardaList.Where(s => s.GuardaId == std.GuardaId).FirstOrDefault();
+            GuardaList.Remove(student);
+            GuardaList.Add(std);
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

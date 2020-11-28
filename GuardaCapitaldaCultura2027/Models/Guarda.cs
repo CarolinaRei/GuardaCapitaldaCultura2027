@@ -12,6 +12,7 @@ namespace GuardaCapitaldaCultura2027.Models
 
         [Required]
         [StringLength(256)]
+        [Display (Name = "Nome")]
         public string Name { get; set; }
         
         public int Ano { get; set; }
