@@ -7,7 +7,7 @@ namespace GuardaCapitaldaCultura2027.Models
 {
     public class PagingInfo
     {
-        
+            /*
             public const int DEFAULT_PAGE_SIZE = 5;
             public const int NUMBER_PAGES_SHOW_BEFORE_AFTER = 5;
 
@@ -18,6 +18,10 @@ namespace GuardaCapitaldaCultura2027.Models
             public int CurrentPage { get; set; }
 
             public int TotalPages => (int)Math.Ceiling((double)TotalItems / PageSize);
-       
+              */
+            public int PaginaAtual { get; set; }
+            public int TotalDeRegistos { get; set; }
+
+            public int RegistroPorPagina { get; set; }
     }
 }
