@@ -52,7 +52,9 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     b.HasKey("ContactoId");
 
                     b.ToTable("Contactos");
-                });
+            });
+          
+
 #pragma warning restore 612, 618
         }
     }
