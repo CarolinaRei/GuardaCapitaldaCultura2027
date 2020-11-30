@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using GuardaCapitaldaCultura2027.Models;
 using GuardaCapitaldaCultura2027.Models.Context;
 
+using PagedList;
+
+
 namespace GuardaCapitaldaCultura2027.Controllers
 {
     public class ContactosController : Controller
@@ -20,10 +23,14 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Contactos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? pagina)
         {
-            return View(await _context.Contactos.ToListAsync());
+            int tramanhoPagina = 10;
+            int numeroPagina = pagina ?? 1;
+
+            return View(await _context.Contactos.ToPagedList(numeroPagina, tramanhoPagina));
         }
+
 
         // GET: Contactos/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -44,8 +51,14 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Contactos/Create
-        public IActionResult Create()
+        public IActionResult Create(int pagina = 1)
         {
+           /* var quantidadeRegistroPorPagina = 10;//quantidade registro por pagina
+            using (var db = new GuardaEventosBdContext())
+            {
+                var contacto = db.Contactos.OrderBy(x => x.Id)
+                    .
+            }*/
             return View();
         }
 
