@@ -68,7 +68,7 @@ namespace GuardaCapitaldaCultura2027
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Contactos}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
