@@ -20,8 +20,8 @@ namespace GuardaCapitaldaCultura2027.Models
         [Display(Name = "Sobrenome *", Prompt = "Sobrenome")]
         public String Sobrenome { get; set; }
 
-        [Phone(ErrorMessage = "Por favor, insira o seu Contacto")]
-        [StringLength(9, MinimumLength = 9, ErrorMessage = "O seu contacto deve ter apenas 9 caracteres")]
+        [Required(ErrorMessage = "Por favor, insira o seu Contacto")]
+        [Range(910000000, 969999999)]
         [Display(Name = "Contacto *", Prompt = "Contacto")]
         public int Contacto { get; set; }
 
@@ -33,7 +33,7 @@ namespace GuardaCapitaldaCultura2027.Models
 
         [Required(ErrorMessage = "Por favor, defina a sua Password")]
         [StringLength(20, MinimumLength = 8, ErrorMessage = "A sua Password deve ter entre 8 e 20 caracteres")]
-        // Hide password
+        // Missing password hide
         [Display(Name = "Password *", Prompt = "Password")]
         public String Password { get; set; }
     }
