@@ -13,7 +13,6 @@ namespace GuardaCapitaldaCultura2027.Migrations
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
-#pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
@@ -53,6 +52,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     b.HasKey("ContactoId");
 
                     b.ToTable("Contactos");
+
                 });
 
             modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Guarda", b =>
@@ -82,7 +82,8 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
 
 
-#pragma warning restore 612, 618
+            });
+          
         }
     }
 }
