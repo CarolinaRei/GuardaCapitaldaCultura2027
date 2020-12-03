@@ -22,7 +22,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // GET: Eventos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Eventos.ToListAsync());
+            return View(await _context.Evento.ToListAsync());
         }
 
         // GET: Eventos/Details/5
@@ -33,7 +33,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var evento = await _context.Eventos
+            var evento = await _context.Evento
                 .FirstOrDefaultAsync(m => m.EventosId == id);
             if (evento == null)
             {
@@ -73,7 +73,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var evento = await _context.Eventos.FindAsync(id);
+            var evento = await _context.Evento.FindAsync(id);
             if (evento == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var evento = await _context.Eventos
+            var evento = await _context.Evento
                 .FirstOrDefaultAsync(m => m.EventosId == id);
             if (evento == null)
             {
@@ -139,15 +139,15 @@ namespace GuardaCapitaldaCultura2027.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var evento = await _context.Eventos.FindAsync(id);
-            _context.Eventos.Remove(evento);
+            var evento = await _context.Evento.FindAsync(id);
+            _context.Evento.Remove(evento);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool EventoExists(int id)
         {
-            return _context.Eventos.Any(e => e.EventosId == id);
+            return _context.Evento.Any(e => e.EventosId == id);
         }
     }
 }
