@@ -17,7 +17,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-                
+
             modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Contacto", b =>
                 {
                     b.Property<int>("ContactoId")
@@ -57,70 +57,72 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
             modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Turista", b =>
                 {
-                    b.Property<int>("TuristaId")
+                    b.Property<int>("TuristaId");
 
-            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Evento", b =>
-                {
-                    b.Property<int>("EventosId")
+                    modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Evento", b =>
+                        {
+                            b.Property<int>("EventosId")
 
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-
-                    b.Property<int>("Contacto")
-                        .HasColumnType("int")
-                        .HasMaxLength(9);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.Property<string>("Sobrenome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.HasKey("TuristaId");
-
-                    b.ToTable("Turista");
-
-                    b.Property<int>("Data_realizacao")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Descricao")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Local_ocupacao")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Lotacao_max")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("EventosId");
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
 
-                    b.ToTable("Evento");
+                            b.Property<int>("Contacto")
+                                .HasColumnType("int")
+                                .HasMaxLength(9);
 
-                    b.ToTable("Eventos");
-                });
+                            b.Property<string>("Email")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(50)")
+                                .HasMaxLength(50);
 
-        }
+                            b.Property<string>("Nome")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(20)")
+                                .HasMaxLength(20);
+
+                            b.Property<string>("Password")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(20)")
+                                .HasMaxLength(20);
+
+                            b.Property<string>("Sobrenome")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(50)")
+                                .HasMaxLength(50);
+
+                            b.HasKey("TuristaId");
+
+                            b.ToTable("Turista");
+
+                            b.Property<int>("Data_realizacao")
+                                .HasColumnType("int");
+
+                            b.Property<int>("Descricao")
+                                .HasColumnType("int");
+
+                            b.Property<int>("Local_ocupacao")
+                                .HasColumnType("int");
+
+                            b.Property<int>("Lotacao_max")
+                                .HasColumnType("int");
+
+                            b.Property<string>("Name")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(256)")
+                                .HasMaxLength(256);
+
+                            b.HasKey("EventosId");
+
+
+                            b.ToTable("Evento");
+
+                            b.ToTable("Eventos");
+                        });
+
+                }
+                );
+    }
     }
 }
