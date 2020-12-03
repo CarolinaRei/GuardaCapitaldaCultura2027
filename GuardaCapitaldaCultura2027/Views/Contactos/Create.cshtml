@@ -4,75 +4,50 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Contactos</h1>
-<div class="alert alert-light text-lg-center" role="alert">
-    <p>Para questões relacionadas com “Guarda Eventos” contacte-nos pelo telefone e e-mail abaixo indicados. </p>
+<h1>Create</h1>
 
-    <p>Pode também deixar o seu contacto no formulário. Obrigado e até breve.</p>
-</div>
-    
+<h4>Contacto</h4>
+<hr />
 <div class="row">
-    <hr />
-    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d2668.85836326542!2d-7.278723488310168!3d40.53923044080054!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3ce53d27164935%3A0xd2d863d02b3303da!2sInstituto%20Polit%C3%A9cnico%20da%20Guarda!5e1!3m2!1spt-PT!2spt!4v1606072673519!5m2!1spt-PT!2spt" width="1200" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sobrenome" class="control-label"></label>
+                <input asp-for="Sobrenome" class="form-control" />
+                <span asp-validation-for="Sobrenome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assunto" class="control-label"></label>
+                <input asp-for="Assunto" class="form-control" />
+                <span asp-validation-for="Assunto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mensagem" class="control-label"></label>
+                <input asp-for="Mensagem" class="form-control" />
+                <span asp-validation-for="Mensagem" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
 </div>
 
-<div class="m-5"></div>
-    <div class="row">
-        <div class="col-md-6 align-items-xl-end text-justify">
-            <div class="m-5"></div>
-            <p>Deixe os seus contactos se pretender ser contactado no âmbito de “Guarda Eventos”. Obrigado. </p>
-            <p>Email: guardaeventos@eventos.pt</p>
-            <p>Telefone:  +351271220100</p>
-            <p>Av. Dr. Francisco Sá Carneiro 50</p>
-            <p> 6300-559 Guarda</p>
-        </div>
-            <hr />
-            <hr />
-            <div class="col-md-6 text-left">
-                <fieldset class="border p-4">
-                    <legend class="w-auto">Formulário de contacto</legend>
-                    <form asp-action="Create">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-row">
-                            <div class="col">
-                                <label asp-for="Name" class="control-label"></label>
-                                <input asp-for="Name" class="form-control" />
-                                <span asp-validation-for="Name" class="text-danger"></span>
-                            </div>
-                            <div class="col">
-                                <label asp-for="Sobrenome" class="control-label"></label>
-                                <input asp-for="Sobrenome" class="form-control" />
-                                <span asp-validation-for="Sobrenome" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Email" class="control-label"></label>
-                            <input asp-for="Email" class="form-control" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Assunto" class="control-label"></label>
-                            <input asp-for="Assunto" class="form-control" />
-                            <span asp-validation-for="Assunto" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Mensagem" class="control-label"></label>
-                            <textarea asp-for="Mensagem" class="form-control"></textarea>
-                            <span asp-validation-for="Mensagem" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Enviar" class="btn btn-primary" />
-                        </div>
-                    </form>
-                </fieldset>
-            </div>
-        </div>
-    <!--
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>-->
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
