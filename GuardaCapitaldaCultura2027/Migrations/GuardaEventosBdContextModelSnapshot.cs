@@ -82,8 +82,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
 
 
-            });
+            }
           
         }
     }
-}
