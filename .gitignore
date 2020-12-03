@@ -338,3 +338,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/GuardaCapitaldaCultura2027/Models/ContactoModels/CotactosListViewModel.cs

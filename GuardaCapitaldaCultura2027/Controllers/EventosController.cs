@@ -8,27 +8,24 @@ using Microsoft.EntityFrameworkCore;
 using GuardaCapitaldaCultura2027.Models;
 using GuardaCapitaldaCultura2027.Models.Context;
 
-
-
-
 namespace GuardaCapitaldaCultura2027.Controllers
 {
-    public class ContactosController : Controller
+    public class EventosController : Controller
     {
         private readonly GuardaEventosBdContext _context;
 
-        public ContactosController(GuardaEventosBdContext context)
+        public EventosController(GuardaEventosBdContext context)
         {
             _context = context;
         }
 
-        // GET: Contactos
+        // GET: Eventos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Contactos.ToListAsync());
+            return View(await _context.Eventos.ToListAsync());
         }
 
-        // GET: Contactos/Details/5
+        // GET: Eventos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -36,45 +33,39 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var contacto = await _context.Contactos
-                .FirstOrDefaultAsync(m => m.ContactoId == id);
-            if (contacto == null)
+            var evento = await _context.Eventos
+                .FirstOrDefaultAsync(m => m.EventosId == id);
+            if (evento == null)
             {
                 return NotFound();
             }
 
-            return View(contacto);
+            return View(evento);
         }
 
-        // GET: Contactos/Create
+        // GET: Eventos/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Contactos/Create
+        // POST: Eventos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ContactoId,Name,Sobrenome,Email,Assunto,Mensagem")] Contacto contacto)
+        public async Task<IActionResult> Create([Bind("EventosId,Name,Descricao,Data_realizacao,Lotacao_max,Local_ocupacao")] Evento evento)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(contacto);
+                _context.Add(evento);
                 await _context.SaveChangesAsync();
-
-
-                ViewBag.title = "Contacto enviado Com Sucesso!";
-                ViewBag.type = "alert-success";
-                ViewBag.message = "Em breve entraremos em Contacto!";
-                ViewBag.redirect = "/Contactos/Create"; // Request.Path
-                return View("Mensagem");
+                return RedirectToAction(nameof(Index));
             }
-            return View(contacto);
+            return View(evento);
         }
 
-        // GET: Contactos/Edit/5
+        // GET: Eventos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,22 +73,22 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var contacto = await _context.Contactos.FindAsync(id);
-            if (contacto == null)
+            var evento = await _context.Eventos.FindAsync(id);
+            if (evento == null)
             {
                 return NotFound();
             }
-            return View(contacto);
+            return View(evento);
         }
 
-        // POST: Contactos/Edit/5
+        // POST: Eventos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ContactoId,Name,Sobrenome,Email,Assunto,Mensagem")] Contacto contacto)
+        public async Task<IActionResult> Edit(int id, [Bind("EventosId,Name,Descricao,Data_realizacao,Lotacao_max,Local_ocupacao")] Evento evento)
         {
-            if (id != contacto.ContactoId)
+            if (id != evento.EventosId)
             {
                 return NotFound();
             }
@@ -106,12 +97,12 @@ namespace GuardaCapitaldaCultura2027.Controllers
             {
                 try
                 {
-                    _context.Update(contacto);
+                    _context.Update(evento);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ContactoExists(contacto.ContactoId))
+                    if (!EventoExists(evento.EventosId))
                     {
                         return NotFound();
                     }
@@ -122,10 +113,10 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(contacto);
+            return View(evento);
         }
 
-        // GET: Contactos/Delete/5
+        // GET: Eventos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,30 +124,30 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var contacto = await _context.Contactos
-                .FirstOrDefaultAsync(m => m.ContactoId == id);
-            if (contacto == null)
+            var evento = await _context.Eventos
+                .FirstOrDefaultAsync(m => m.EventosId == id);
+            if (evento == null)
             {
                 return NotFound();
             }
 
-            return View(contacto);
+            return View(evento);
         }
 
-        // POST: Contactos/Delete/5
+        // POST: Eventos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var contacto = await _context.Contactos.FindAsync(id);
-            _context.Contactos.Remove(contacto);
+            var evento = await _context.Eventos.FindAsync(id);
+            _context.Eventos.Remove(evento);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ContactoExists(int id)
+        private bool EventoExists(int id)
         {
-            return _context.Contactos.Any(e => e.ContactoId == id);
+            return _context.Eventos.Any(e => e.EventosId == id);
         }
     }
 }
