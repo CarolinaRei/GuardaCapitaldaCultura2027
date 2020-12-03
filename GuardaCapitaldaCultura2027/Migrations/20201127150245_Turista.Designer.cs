@@ -3,21 +3,23 @@ using GuardaCapitaldaCultura2027.Models.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GuardaCapitaldaCultura2027.Migrations
 {
     [DbContext(typeof(GuardaEventosBdContext))]
-    partial class GuardaEventosBdContextModelSnapshot : ModelSnapshot
+    [Migration("20201127150245_Turista")]
+    partial class Turista
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-                
+
             modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Contacto", b =>
                 {
                     b.Property<int>("ContactoId")
@@ -54,19 +56,12 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     b.ToTable("Contactos");
                 });
 
-
             modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Turista", b =>
                 {
                     b.Property<int>("TuristaId")
-
-            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Evento", b =>
-                {
-                    b.Property<int>("EventosId")
-
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
 
                     b.Property<int>("Contacto")
                         .HasColumnType("int")
@@ -95,32 +90,8 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     b.HasKey("TuristaId");
 
                     b.ToTable("Turista");
-
-                    b.Property<int>("Data_realizacao")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Descricao")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Local_ocupacao")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Lotacao_max")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.HasKey("EventosId");
-
-
-                    b.ToTable("Evento");
-
-                    b.ToTable("Eventos");
                 });
-
+#pragma warning restore 612, 618
         }
     }
 }
