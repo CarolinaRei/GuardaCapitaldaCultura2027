@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuardaCapitaldaCultura2027.Migrations
 {
     [DbContext(typeof(GuardaEventosBdContext))]
-    [Migration("20201203103838_GuardaEventosBdContext")]
-    partial class GuardaEventosBdContext
+    [Migration("20201203110516_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,42 +19,6 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Contacto", b =>
-                {
-                    b.Property<int>("ContactoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Assunto")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Mensagem")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1000)")
-                        .HasMaxLength(1000);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.Property<string>("Sobrenome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.HasKey("ContactoId");
-
-                    b.ToTable("Contactos");
-                });
 
             modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Evento", b =>
                 {
@@ -82,7 +46,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
                     b.HasKey("EventosId");
 
-                    b.ToTable("Eventos");
+                    b.ToTable("Evento");
                 });
 #pragma warning restore 612, 618
         }

@@ -17,7 +17,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
+                
             modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Contacto", b =>
                 {
                     b.Property<int>("ContactoId")
@@ -115,8 +115,10 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
                     b.HasKey("EventosId");
 
-                    b.ToTable("Eventos");
 
+                    b.ToTable("Evento");
+
+                    b.ToTable("Eventos");
                 });
 
         }
