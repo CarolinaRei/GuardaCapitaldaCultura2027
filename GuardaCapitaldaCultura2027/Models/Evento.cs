@@ -16,12 +16,15 @@ namespace GuardaCapitaldaCultura2027.Models
         [Display(Name = "Nome")]
         public string Name { get; set; }
 
-        public int Descricao { get; set; }
+        public string Descricao { get; set; }
 
-        public int Data_realizacao { get; set; }
+        [Display(Name = "Data de Realização")]
+        public DateTime Data_realizacao { get; set; }
 
+        [Display(Name = "Lotação Maxima")]
         public int Lotacao_max { get; set; }
 
-        public int Local_ocupacao { get; set; }
+        [Display(Name = "Reservado")]
+        public bool Local_ocupacao { get; set; }
     }
 }
