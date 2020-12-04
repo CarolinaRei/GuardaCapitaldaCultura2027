@@ -23,7 +23,6 @@ namespace GuardaCapitaldaCultura2027.Models
         [Display(Name = "Descrição *", Prompt = "Descrição do Municipio")]
         public string Descricao { get; set; }
 
-
         public byte[] Imagem { get; set; }
 
     }
