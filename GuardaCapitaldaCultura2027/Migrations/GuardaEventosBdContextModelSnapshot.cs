@@ -139,8 +139,8 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
             b.ToTable("Turista");
                 });
-#pragma warning restore 612, 618
-        }
+
+        
 
                             b.ToTable("Turista");
 
