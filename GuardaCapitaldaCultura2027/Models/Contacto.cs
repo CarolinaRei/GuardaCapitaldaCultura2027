@@ -34,12 +34,12 @@ namespace GuardaCapitaldaCultura2027.Models
 
 
         [Required(ErrorMessage = "Por favor, insira o seu Assunto")]
-        [StringLength(20, MinimumLength = 4, ErrorMessage = "Assunto deve ter pelo menos 4 caracteres e um máximo de 20")]//aceita maximo 20 carateries e no minimo 2 carater
+        [StringLength(100, MinimumLength = 4, ErrorMessage = "Assunto deve ter pelo menos 4 caracteres e um máximo de 100")]
         [Display(Name = "Assunto *", Prompt = "Inserir um Assunto")]
         public string Assunto { get; set; }
 
         [Required(ErrorMessage = "Por favor, insira a sua Mensagem")]
-        [StringLength(1000, MinimumLength = 2, ErrorMessage = "Mensagem deve ter pelo menos 2 caracteres e um máximo de 1000")]//aceita maximo 1000 carateries e no minimo 2 carater
+        [StringLength(1000, MinimumLength = 2, ErrorMessage = "Mensagem deve ter pelo menos 2 caracteres e um máximo de 1000")]
         [Display(Name = "Mensagem *", Prompt = "Inserir um Mensagem")]
         public string Mensagem { get; set; }
     }
