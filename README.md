@@ -22,10 +22,37 @@ Após algumas reuniões (Brainstorming) entre a equipa, ficou definido para cria
 ![Logo](https://user-images.githubusercontent.com/48354097/99158054-8dd72780-26c6-11eb-8f59-cb9565f7210f.png)
 
 ### Autores
-- Afonso Antunes https://github.com/AfonsoAntunes
-- Carolina Rei https://github.com/CarolinaRei
-- Vagner Bom Jesus https://github.com/VagnerBomJesus
 
+<table>
+  <tr>
+    <td align="left" >
+      <a href="https://github.com/AfonsoAntunes">
+        <img src="https://avatars3.githubusercontent.com/u/36044209?s=460&u=436665a9f6d85a7047c8e6c7b28201a9ebef61f9&v=4" width="100px;" alt="Foto do Afonso Antunes no GitHub"/><br>
+        <sub>
+          <b>Afonso Antunes</b>
+        </sub>
+      </a>
+    </td>
+       <pre> 
+    <td align="center" style="margin:100px">
+      <a href="https://github.com/CarolinaRei">
+        <img src="https://avatars3.githubusercontent.com/u/61904160?s=460&u=5217cb7f3355a0958c72db7d12808fd5c2c952fc&v=4" width="100px;" alt="Foto da Carolina Rei no GitHub"/>            <br>
+        <sub>
+          <b>Carolina Rei</b>
+        </sub>
+      </a>
+    </td>   
+    <pre> 
+       <td align="right">
+      <a href="https://github.com/VagnerBomJesus">
+        <img src="https://avatars3.githubusercontent.com/u/48354097?s=460&u=be6243a42abb62bc432ab7de6a5e0673c1dcb740&v=4" width="100px;" alt="Foto do Vagner Bom Jesus no GitHub"/><br>
+        <sub>
+          <b>Vagner Bom Jesus</b>
+        </sub>
+      </a>
+    </td> 
+ </tr>
+</table>
 
 ### Ferramentas Usadas 
 
@@ -42,5 +69,5 @@ Após algumas reuniões (Brainstorming) entre a equipa, ficou definido para cria
      
      
 ### Instalação no Package Manager Console:
-- `PM>` Update-Database -Context ContactoDbContext 
+- `PM>` Update-Database -Context GuardaEventoDbContext 
 - `PM>` Update-Database -Context ApplicationDbContext
