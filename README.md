@@ -32,8 +32,7 @@ Após algumas reuniões (Brainstorming) entre a equipa, ficou definido para cria
           <b>Afonso Antunes</b>
         </sub>
       </a>
-    </td>
-       <pre> 
+    </td> 
     <td align="center" style="margin:100px">
       <a href="https://github.com/CarolinaRei">
         <img src="https://avatars3.githubusercontent.com/u/61904160?s=460&u=5217cb7f3355a0958c72db7d12808fd5c2c952fc&v=4" width="100px;" alt="Foto da Carolina Rei no GitHub"/>            <br>
@@ -42,7 +41,6 @@ Após algumas reuniões (Brainstorming) entre a equipa, ficou definido para cria
         </sub>
       </a>
     </td>   
-    <pre> 
        <td align="right">
       <a href="https://github.com/VagnerBomJesus">
         <img src="https://avatars3.githubusercontent.com/u/48354097?s=460&u=be6243a42abb62bc432ab7de6a5e0673c1dcb740&v=4" width="100px;" alt="Foto do Vagner Bom Jesus no GitHub"/><br>
