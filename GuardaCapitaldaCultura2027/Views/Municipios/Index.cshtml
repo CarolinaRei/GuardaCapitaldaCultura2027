@@ -34,7 +34,17 @@
                 @Html.DisplayFor(modelItem => item.Descricao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Imagem)
+                <!--@Html.DisplayFor(modelItem => item.Imagem)-->
+                @if(item.Imagem != null)
+                {
+                    <td>
+                        @{ 
+                            var base64 = Convert.ToBase64String(item.Imagem);
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        }
+                        <img src="@imgSrc" style="max-width:100px; max-height:100px;"/>
+                    </td>
+                }
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.MunicipioId">Edit</a> |
