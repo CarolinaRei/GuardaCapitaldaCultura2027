@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GuardaCapitaldaCultura2027.Migrations
 {
-    public partial class Event : Migration
+    public partial class Municipioss : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
