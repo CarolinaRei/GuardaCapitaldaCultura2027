@@ -6,54 +6,79 @@
 
 <h1>Index</h1>
 
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data_realizacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Lotacao_max)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Local_ocupacao)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data_realizacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lotacao_max)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Local_ocupacao)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.EventosId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.EventosId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.EventosId">Delete</a>
-            </td>
-        </tr>
+@foreach (var item in Model)
+{
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+    <div class="col mb-4">
+
+        <div class="card h-100" style="width: 18rem;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Descricao)</p>
+                <p class="card-text">@Html.DisplayNameFor(model => model.Data_realizacao)</p>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Lotacao_max)</p>
+                <div class="form-group">
+                    <input type="submit" value="Reservar" class="btn btn-primary" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 }
-    </tbody>
-</table>
+<!--
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data_realizacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lotacao_max)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Local_ocupacao)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data_realizacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lotacao_max)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Local_ocupacao)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.EventosId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.EventosId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.EventosId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    -->
