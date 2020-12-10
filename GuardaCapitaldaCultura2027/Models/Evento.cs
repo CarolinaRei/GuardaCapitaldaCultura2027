@@ -11,16 +11,21 @@ namespace GuardaCapitaldaCultura2027.Models
         [Key]
         public int EventosId { get; set; }
 
-        [Required]
-        [StringLength(256)]
+       
         [Display(Name = "Nome")]
+        [Required(ErrorMessage = "Por favor, insira o seu Nome")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "O nome deve ter entre 3 e 20 caracteres")]
+
         public string Name { get; set; }
 
         public string Descricao { get; set; }
+        [Required(ErrorMessage = "Por favor, insira a Descrição")]
+        [StringLength(500, MinimumLength = 10, ErrorMessage = "A descrição deve ter entre 10 e 500 caracteres")]
 
         [Display(Name = "Data de Realização")]
         //[DataType(DataType.Date)]
         public DateTime Data_realizacao { get; set; }
+
         
 
         [Display(Name = "Lotação Maxima")]
