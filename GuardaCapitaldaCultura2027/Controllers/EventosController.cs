@@ -60,7 +60,11 @@ namespace GuardaCapitaldaCultura2027.Controllers
             {
                 _context.Add(evento);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewBag.title = "A sua reserva foi Confirmada!";
+                ViewBag.type = "alert-success";
+                ViewBag.redirect = "/"; // Página Inicial
+                return View("Confirmacao");
+           
             }
             return View(evento);
         }

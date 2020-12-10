@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = ViewBag.title;
+}
+
+<div class="main-panel view-html" style="width:100%;">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col">
+                <div class="alert @ViewBag.type" role="alert">
+
+                    <h3 class="alert-heading">@ViewBag.title</h3>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    setTimeout(function () {
+        location.href = '@ViewBag.redirect';
+    }, 2000);
+</script>

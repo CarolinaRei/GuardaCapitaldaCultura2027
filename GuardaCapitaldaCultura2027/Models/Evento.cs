@@ -30,11 +30,13 @@ namespace GuardaCapitaldaCultura2027.Models
 
 
         
+
         [Display(Name = "Lotação Maxima")]
         public int Lotacao_max { get; set; }
 
 
         [Display(Name = "Reservado")]
         public bool Local_ocupacao { get; set; }
+
     }
 }
