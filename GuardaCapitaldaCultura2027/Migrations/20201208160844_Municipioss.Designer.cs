@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuardaCapitaldaCultura2027.Migrations
 {
     [DbContext(typeof(GuardaEventosBdContext))]
-    [Migration("20201206201141_Event")]
-    partial class Event
+    [Migration("20201208160844_Municipioss")]
+    partial class Municipioss
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
