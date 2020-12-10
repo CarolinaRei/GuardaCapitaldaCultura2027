@@ -18,9 +18,9 @@
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImagemNome" class="control-label"></label>
-                <input asp-for="ImagemNome" class="form-control" />
-                <span asp-validation-for="ImagemNome" class="text-danger"></span>
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" accept="image/png, image/jpeg, image/jpg" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
