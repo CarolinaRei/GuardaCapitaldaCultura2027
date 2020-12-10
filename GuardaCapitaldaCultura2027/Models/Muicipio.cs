@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -15,6 +17,12 @@ namespace GuardaCapitaldaCultura2027.Models
         public string Nome { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string ImagemNome { get; set; } 
+        [DisplayName("Imagem Nome")]
+        public string ImagemNome { get; set; }
+
+
+        [NotMapped]
+        [DisplayName("Update File")]
+        public IFormFile ImageFile { get; set; }
     }
 }
