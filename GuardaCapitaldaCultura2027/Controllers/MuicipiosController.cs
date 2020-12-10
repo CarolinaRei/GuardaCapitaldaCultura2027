@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GuardaCapitaldaCultura2027.Models;
 using GuardaCapitaldaCultura2027.Models.Context;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
     public class MuicipiosController : Controller
     {
         private readonly GuardaEventosBdContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public MuicipiosController(GuardaEventosBdContext context)
+        public MuicipiosController(GuardaEventosBdContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: Muicipios
@@ -54,10 +58,24 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MuicipioId,Nome,ImagemNome")] Muicipio muicipio)
+        public async Task<IActionResult> Create([Bind("MuicipioId,Nome,ImageFile")] Muicipio muicipio)
         {
             if (ModelState.IsValid)
             {
+                //Salvar Imagem em wwroot/image
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileNome = Path.GetFileNameWithoutExtension(muicipio.ImageFile.FileName);
+                string extencion = Path.GetExtension(muicipio.ImageFile.FileName);
+                muicipio.ImagemNome = fileNome = fileNome + DateTime.Now.ToString("yymmssfff") + extencion;
+                string path = Path.Combine(wwwRootPath + "/Image/", fileNome);
+
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await muicipio.ImageFile.CopyToAsync(fileStream);
+                }
+
+
+                //incerir 
                 _context.Add(muicipio);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -139,7 +157,17 @@ namespace GuardaCapitaldaCultura2027.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+
+
             var muicipio = await _context.Muicipios.FindAsync(id);
+            //delete image from wwwroot/image
+            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image", muicipio.ImagemNome);
+            if (System.IO.File.Exists(imagePath)) 
+            {
+                System.IO.File.Delete(imagePath);
+            }
+
+            //delect the record
             _context.Muicipios.Remove(muicipio);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

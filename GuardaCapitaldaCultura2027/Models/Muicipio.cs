@@ -17,6 +17,7 @@ namespace GuardaCapitaldaCultura2027.Models
         public string Nome { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
+        [DisplayName("Imagem Nome")]
         public string ImagemNome { get; set; }
 
 
