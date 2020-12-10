@@ -15,6 +15,11 @@
   <ItemGroup>
     <Compile Remove="Controllers\GuardaController.cs" />
     <Compile Remove="Models\Guarda.cs" />
+    <Compile Remove="Views\Eventos\Class.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Eventos\Confirmacao.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
