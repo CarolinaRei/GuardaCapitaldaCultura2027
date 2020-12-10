@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace GuardaCapitaldaCultura2027.Models
 {
-    public class IContactoRepository
+    public class IEventosRepository
     {
-        public IEnumerable<Contacto> Contactos { get; }
+        public IEnumerable<Evento> Evento { get; }
     }
 }
