@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuardaCapitaldaCultura2027.Migrations
 {
     [DbContext(typeof(GuardaEventosBdContext))]
-    [Migration("20201208160844_Municipioss")]
-    partial class Municipioss
+    [Migration("20201210103308_Muis")]
+    partial class Muis
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -68,7 +68,9 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Descricao")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
 
                     b.Property<bool>("Local_ocupacao")
                         .HasColumnType("bit");
@@ -78,37 +80,30 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.HasKey("EventosId");
 
                     b.ToTable("Evento");
                 });
 
-            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Municipio", b =>
+            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Muicipio", b =>
                 {
-                    b.Property<int>("MunicipioId")
+                    b.Property<int>("MuicipioId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1000)")
-                        .HasMaxLength(1000);
-
-                    b.Property<byte[]>("Imagem")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("ImagemNome")
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("MunicipioId");
+                    b.HasKey("MuicipioId");
 
-                    b.ToTable("Municipios");
+                    b.ToTable("Muicipios");
                 });
 
             modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Turista", b =>

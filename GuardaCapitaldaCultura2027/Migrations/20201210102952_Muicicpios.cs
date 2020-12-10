@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GuardaCapitaldaCultura2027.Migrations
 {
-    public partial class Municipioss : Migration
+    public partial class Muicicpios : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,8 +30,8 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 {
                     EventosId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 256, nullable: false),
-                    Descricao = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 20, nullable: false),
+                    Descricao = table.Column<string>(maxLength: 500, nullable: false),
                     Data_realizacao = table.Column<DateTime>(nullable: false),
                     Lotacao_max = table.Column<int>(nullable: false),
                     Local_ocupacao = table.Column<bool>(nullable: false)
@@ -45,15 +45,14 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 name: "Municipios",
                 columns: table => new
                 {
-                    MunicipioId = table.Column<int>(nullable: false)
+                    MuicipioId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(maxLength: 20, nullable: false),
-                    Descricao = table.Column<string>(maxLength: 1000, nullable: false),
-                    Imagem = table.Column<byte[]>(nullable: true)
+                    Nome = table.Column<string>(nullable: true),
+                    ImagemNome = table.Column<string>(type: "nvarchar(100)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Municipios", x => x.MunicipioId);
+                    table.PrimaryKey("PK_Municipios", x => x.MuicipioId);
                 });
 
             migrationBuilder.CreateTable(

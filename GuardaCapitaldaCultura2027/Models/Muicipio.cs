@@ -10,7 +10,7 @@ namespace GuardaCapitaldaCultura2027.Models
     public class Muicipio
     {
         [Key]
-        public int MunicipioId { get; set; }
+        public int MuicipioId { get; set; }
 
         public string Nome { get; set; }
 
