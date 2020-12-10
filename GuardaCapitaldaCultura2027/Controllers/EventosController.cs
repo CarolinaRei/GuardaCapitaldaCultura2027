@@ -63,8 +63,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 ViewBag.title = "A sua reserva foi Confirmada!";
                 ViewBag.type = "alert-success";
                 ViewBag.redirect = "/"; // Página Inicial
-                return View("Confirmacao");
-           
+                return View("Confirmacaoreserva");
             }
             return View(evento);
         }
