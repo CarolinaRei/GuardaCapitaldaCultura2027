@@ -4,38 +4,76 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagemNome)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImagemNome)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MuicipioId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MuicipioId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MuicipioId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <a asp-controller="Home" asp-action="Covid">
+        <strong>COVID-19!</strong> O QUE PRECISA SABER
+        CONTEM CONNOSCO. NÓS, CONTAMOS COM TODOS!
+    </a>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="m-5"></div>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-4 mb-5 ">
+            <div class="zoom card h-100">
+                <a asp-controller="Eventos" asp-action="Index">
+                    <img class="card-img-top" src="~/img/Aguiar-da-Beira-Largo-Monumentos.jpg" alt="Município de Aguiar da Beira" height="200">
+                    <div class="overlay2">@Html.DisplayFor(modelItem => item.Nome)</div>
+                </a>
+
+            </div>
+        </div>
+
+
+    }
+
+</div>
+
+
+    @*
+        <table class="table">
+             <thead>
+                 <tr>
+                     <th>
+                         @Html.DisplayNameFor(model => model.Nome)
+                     </th>
+                     <th>
+                         @Html.DisplayNameFor(model => model.ImagemNome)
+                     </th>
+                     <th></th>
+                 </tr>
+             </thead>
+             <tbody>
+                 @foreach (var item in Model)
+                 {
+                     <tr>
+                         <td>
+                             @Html.DisplayFor(modelItem => item.Nome)
+                         </td>
+                         <td>
+                             @Html.DisplayFor(modelItem => item.ImagemNome)
+                         </td>
+                         <td>
+                             <a asp-action="Edit" asp-route-id="@item.MuicipioId">Edit</a> |
+                             <a asp-action="Details" asp-route-id="@item.MuicipioId">Details</a> |
+                             <a asp-action="Delete" asp-route-id="@item.MuicipioId">Delete</a>
+                         </td>
+                     </tr>
+                 }
+             </tbody>
+         </table>
+
+    *@
