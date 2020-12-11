@@ -24,5 +24,8 @@ namespace GuardaCapitaldaCultura2027.Models.Context
         public DbSet<Muicipio> Muicipios { get; set; }
 
 
+        public DbSet<GuardaCapitaldaCultura2027.Models.Reserva> Reserva { get; set; }
+
+
     }
 }

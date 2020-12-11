@@ -4,14 +4,16 @@ using GuardaCapitaldaCultura2027.Models.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GuardaCapitaldaCultura2027.Migrations
 {
     [DbContext(typeof(GuardaEventosBdContext))]
-    partial class GuardaEventosBdContextModelSnapshot : ModelSnapshot
+    [Migration("20201211102520_View")]
+    partial class View
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,12 +83,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
-                    b.Property<int?>("ReservaId")
-                        .HasColumnType("int");
-
                     b.HasKey("EventosId");
-
-                    b.HasIndex("ReservaId");
 
                     b.ToTable("Evento");
                 });
@@ -108,24 +105,6 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     b.HasKey("MuicipioId");
 
                     b.ToTable("Muicipios");
-                });
-
-            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Reserva", b =>
-                {
-                    b.Property<int>("ReservaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("FeedBack")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Numero_Reserva")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ReservaId");
-
-                    b.ToTable("Reserva");
                 });
 
             modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Turista", b =>
@@ -153,9 +132,6 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
-                    b.Property<int?>("ReservaId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Sobrenome")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
@@ -163,23 +139,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
                     b.HasKey("TuristaId");
 
-                    b.HasIndex("ReservaId");
-
                     b.ToTable("Turista");
-                });
-
-            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Evento", b =>
-                {
-                    b.HasOne("GuardaCapitaldaCultura2027.Models.Reserva", null)
-                        .WithMany("Eventos")
-                        .HasForeignKey("ReservaId");
-                });
-
-            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Turista", b =>
-                {
-                    b.HasOne("GuardaCapitaldaCultura2027.Models.Reserva", null)
-                        .WithMany("Turistas")
-                        .HasForeignKey("ReservaId");
                 });
 #pragma warning restore 612, 618
         }
