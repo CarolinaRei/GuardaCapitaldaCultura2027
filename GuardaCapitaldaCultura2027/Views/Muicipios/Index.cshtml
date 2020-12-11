@@ -1,4 +1,5 @@
-﻿@model IEnumerable<GuardaCapitaldaCultura2027.Models.Muicipio>
+﻿@*@model MunicipioListViewModel*@
+@model IEnumerable<GuardaCapitaldaCultura2027.Models.Muicipio>
 
 @{
     ViewData["Title"] = "Index";
@@ -43,7 +44,37 @@
 </div>
 
 
-    @*
+@*
+    <nav class="mt-3">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1">First</a></li>
+
+            @{
+
+                int initalPage = Model.Pagination.CurrentPage - PagingInfo.NUMBER_PAGES_SHOW_BEFORE_AFTER;
+                if (initalPage < 1) initalPage = 1;
+
+                int finalPage = Model.Pagination.CurrentPage + PagingInfo.NUMBER_PAGES_SHOW_BEFORE_AFTER;
+                if (finalPage > Model.Pagination.TotalPages) finalPage = Model.Pagination.TotalPages;
+            }
+
+            @for (int p = initalPage; p <= finalPage; p++)
+            {
+                if (p == Model.Pagination.CurrentPage)
+                {
+                    <li class="page-item active"><a class="page-link" href="#">@p</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@p">@p</a></li>
+                }
+            }
+
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.Pagination.TotalPages">Last</a></li>
+        </ul>
+    </nav>
+*@
+@*
         <table class="table">
              <thead>
                  <tr>
@@ -74,6 +105,15 @@
                      </tr>
                  }
              </tbody>
-         </table>
+         </table>*@
 
-    *@
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
