@@ -15,6 +15,10 @@ namespace GuardaCapitaldaCultura2027.Models
 
         public string FeedBack { get; set; }
 
+        [Display(Name = "FeedBack")]
+        [Required(ErrorMessage = "Por favor, insira o seu FeedBack")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "O FeedBack deve ter entre 3 e 20 caracteres")]
+
         public ICollection<Evento> Eventos { get; set; }
         public ICollection<Turista> Turistas { get; set; }
 
