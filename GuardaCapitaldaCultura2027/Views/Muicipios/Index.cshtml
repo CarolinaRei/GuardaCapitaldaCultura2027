@@ -5,11 +5,11 @@
     ViewData["Title"] = "Index";
 }
 
-
+<!--
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-
+-->
 
 
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -37,7 +37,12 @@
 
             </div>
         </div>
-
+        @**@
+        <td>
+            <a height="50" class="btn btn-light" asp-action="Edit " asp-route-id="@item.MuicipioId">Edit</a> 
+            <a height="50" class="btn btn-light" asp-action="Details" asp-route-id="@item.MuicipioId">Details</a> 
+            <a height="50" class="btn btn-light" asp-action="Delete" asp-route-id="@item.MuicipioId">Delete</a>
+        </td>
 
     }
 
