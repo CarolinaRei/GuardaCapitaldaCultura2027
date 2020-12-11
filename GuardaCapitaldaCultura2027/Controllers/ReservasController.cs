@@ -10,22 +10,22 @@ using GuardaCapitaldaCultura2027.Models.Context;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
-    public class MunicipiosController : Controller
+    public class ReservasController : Controller
     {
         private readonly GuardaEventosBdContext _context;
 
-        public MunicipiosController(GuardaEventosBdContext context)
+        public ReservasController(GuardaEventosBdContext context)
         {
             _context = context;
         }
 
-        // GET: Municipios
+        // GET: Reservas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Municipios.ToListAsync());
+            return View(await _context.Reserva.ToListAsync());
         }
 
-        // GET: Municipios/Details/5
+        // GET: Reservas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var municipio = await _context.Municipios
-                .FirstOrDefaultAsync(m => m.MunicipioId == id);
-            if (municipio == null)
+            var reserva = await _context.Reserva
+                .FirstOrDefaultAsync(m => m.ReservaId == id);
+            if (reserva == null)
             {
                 return NotFound();
             }
 
-            return View(municipio);
+            return View(reserva);
         }
 
-        // GET: Municipios/Create
+        // GET: Reservas/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Municipios/Create
+        // POST: Reservas/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MunicipioId,Nome,Descricao,Imagem")] Municipio municipio)
+        public async Task<IActionResult> Create([Bind("ReservaId,Numero_Reserva,FeedBack")] Reserva reserva)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(municipio);
+                _context.Add(reserva);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(municipio);
+            return View(reserva);
         }
 
-        // GET: Municipios/Edit/5
+        // GET: Reservas/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var municipio = await _context.Municipios.FindAsync(id);
-            if (municipio == null)
+            var reserva = await _context.Reserva.FindAsync(id);
+            if (reserva == null)
             {
                 return NotFound();
             }
-            return View(municipio);
+            return View(reserva);
         }
 
-        // POST: Municipios/Edit/5
+        // POST: Reservas/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MunicipioId,Nome,Descricao,Imagem")] Municipio municipio)
+        public async Task<IActionResult> Edit(int id, [Bind("ReservaId,Numero_Reserva,FeedBack")] Reserva reserva)
         {
-            if (id != municipio.MunicipioId)
+            if (id != reserva.ReservaId)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace GuardaCapitaldaCultura2027.Controllers
             {
                 try
                 {
-                    _context.Update(municipio);
+                    _context.Update(reserva);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MunicipioExists(municipio.MunicipioId))
+                    if (!ReservaExists(reserva.ReservaId))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(municipio);
+            return View(reserva);
         }
 
-        // GET: Municipios/Delete/5
+        // GET: Reservas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var municipio = await _context.Municipios
-                .FirstOrDefaultAsync(m => m.MunicipioId == id);
-            if (municipio == null)
+            var reserva = await _context.Reserva
+                .FirstOrDefaultAsync(m => m.ReservaId == id);
+            if (reserva == null)
             {
                 return NotFound();
             }
 
-            return View(municipio);
+            return View(reserva);
         }
 
-        // POST: Municipios/Delete/5
+        // POST: Reservas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var municipio = await _context.Municipios.FindAsync(id);
-            _context.Municipios.Remove(municipio);
+            var reserva = await _context.Reserva.FindAsync(id);
+            _context.Reserva.Remove(reserva);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MunicipioExists(int id)
+        private bool ReservaExists(int id)
         {
-            return _context.Municipios.Any(e => e.MunicipioId == id);
+            return _context.Reserva.Any(e => e.ReservaId == id);
         }
     }
 }

@@ -1,0 +1,46 @@
+﻿@model GuardaCapitaldaCultura2027.Models.Muicipio
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Muicipio</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MuicipioId" />
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <!--<div class="form-group">
+        <label asp-for="ImagemNome" class="control-label"></label>
+        <input asp-for="ImagemNome" class="form-control" />
+        <span asp-validation-for="ImagemNome" class="text-danger"></span>
+    </div>-->
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <img src="@("~/image/" + Model.ImagemNome)" asp-append-version="true" width="250" height="250" />
+                <input asp-for="ImageFile" accept="image/*" />
+                <!--<input asp-for="ImageFile" accept="image/png, image/jpeg, image/jpg" />-->
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-light" asp-action="Index">Retornar a Lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -31,7 +31,7 @@ namespace GuardaCapitaldaCultura2027.Models
         [Display(Name = "Email *", Prompt = "Email")]
         public String Email { get; set; }
 
-        [Required(ErrorMessage = "Por favor, defina a sua Password")]
+        [Required(ErrorMessage = "A sua Password deve ter entre 8 e 20 caracteres")]
         [StringLength(20, MinimumLength = 8, ErrorMessage = "A sua Password deve ter entre 8 e 20 caracteres")]
         [Display(Name = "Password *", Prompt = "Password")]
         public String Password { get; set; }
