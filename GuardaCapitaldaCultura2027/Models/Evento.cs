@@ -29,8 +29,6 @@ namespace GuardaCapitaldaCultura2027.Models
         public DateTime Data_realizacao { get; set; }
 
 
-        
-
         [Display(Name = "Lotação Maxima")]
         public int Lotacao_max { get; set; }
 
