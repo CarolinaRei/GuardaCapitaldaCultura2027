@@ -38,5 +38,9 @@ namespace GuardaCapitaldaCultura2027.Models
         [Display(Name = "Reservado")]
         public bool Local_ocupacao { get; set; }
 
+
+
+        public ICollection<Muicipio> Muicipios { get; set; }
+
     }
 }
