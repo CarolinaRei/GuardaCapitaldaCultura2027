@@ -172,28 +172,6 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
                     b.ToTable("Turista");
                 });
-
-<<<<<<< HEAD
-            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Evento", b =>
-                {
-                    b.HasOne("GuardaCapitaldaCultura2027.Models.Reserva", null)
-                        .WithMany("Eventos")
-                        .HasForeignKey("ReservaId");
-                });
-
-            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Turista", b =>
-                {
-                    b.HasOne("GuardaCapitaldaCultura2027.Models.Reserva", null)
-                        .WithMany("Turistas")
-                        .HasForeignKey("ReservaId");
-=======
-            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Muicipio", b =>
-                {
-                    b.HasOne("GuardaCapitaldaCultura2027.Models.Evento", null)
-                        .WithMany("Muicipios")
-                        .HasForeignKey("EventosId");
->>>>>>> a2f738f7382bd21feaa7d30c8af4403c98261818
-                });
 #pragma warning restore 612, 618
         }
     }
