@@ -14,15 +14,19 @@ namespace GuardaCapitaldaCultura2027.Models
         [Key]
         public int MuicipioId { get; set; }
 
+        [Required(ErrorMessage = "Por favor, insira seu Nome")]
+        [Display(Name = "Nome do Municipio *", Prompt = "Nome Municipio Enter")]
         public string Nome { get; set; }
 
+       
         [Column(TypeName = "nvarchar(100)")]
         [DisplayName("Imagem Nome")]
         public string ImagemNome { get; set; }
 
-
+       
         [NotMapped]
-        [DisplayName("Update File")]
+        [DisplayName("Enviar Ficheiro")]
+        [Required(ErrorMessage = "Por favor, Selecine o Ficheiro")]
         public IFormFile ImageFile { get; set; }
     }
 }
