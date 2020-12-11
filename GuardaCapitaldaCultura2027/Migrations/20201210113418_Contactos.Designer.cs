@@ -4,14 +4,16 @@ using GuardaCapitaldaCultura2027.Models.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GuardaCapitaldaCultura2027.Migrations
 {
     [DbContext(typeof(GuardaEventosBdContext))]
-    partial class GuardaEventosBdContextModelSnapshot : ModelSnapshot
+    [Migration("20201210113418_Contactos")]
+    partial class Contactos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,7 +99,6 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MuicipioId");
@@ -112,9 +113,8 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Contacto")
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
+                    b.Property<int>("Contacto")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
