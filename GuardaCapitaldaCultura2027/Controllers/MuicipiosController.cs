@@ -78,7 +78,15 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 //incerir 
                 _context.Add(muicipio);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                /*****Mensagem de sucesso ******/
+                ViewBag.title = "Municipio criado Com Sucesso!";
+                ViewBag.type = "alert-success";
+                ViewBag.message = "Municipio criado!";
+                ViewBag.redirect = "/Muicipios/Create"; // Request.Path
+                return View("Mensagem");
+
+                
+               // return RedirectToAction(nameof(Index));
             }
             return View(muicipio);
         }
@@ -170,7 +178,16 @@ namespace GuardaCapitaldaCultura2027.Controllers
             //delect the record
             _context.Muicipios.Remove(muicipio);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            /*****Mensagem de sucesso ******/
+            ViewBag.title = "Municipio Deletado Sucesso!";
+            ViewBag.type = "alert-warning";
+            ViewBag.message = "Infelismente Foi deletado!";
+            ViewBag.redirect = "/Muicipios/Index"; // Request.Path
+            return View("Mensagem");
+
+
+            //return RedirectToAction(nameof(Index));
         }
 
         private bool MuicipioExists(int id)

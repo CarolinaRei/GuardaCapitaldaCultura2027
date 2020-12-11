@@ -25,6 +25,7 @@
     </div>-->
             <div class="form-group">
                 <label asp-for="ImageFile" class="control-label"></label>
+                <img src="@("~/image/" + Model.ImagemNome)" asp-append-version="true" width="250" height="250" />
                 <input asp-for="ImageFile" accept="image/*" />
                 <!--<input asp-for="ImageFile" accept="image/png, image/jpeg, image/jpg" />-->
                 <span asp-validation-for="ImageFile" class="text-danger"></span>
@@ -37,7 +38,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-light" asp-action="Index">Retornar a Lista</a>
 </div>
 
 @section Scripts {
