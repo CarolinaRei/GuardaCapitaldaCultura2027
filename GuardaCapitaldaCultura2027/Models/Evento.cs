@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -33,10 +34,9 @@ namespace GuardaCapitaldaCultura2027.Models
         public int Lotacao_max { get; set; }
 
 
-        [Display(Name = "Reservado")]
-        public bool Local_ocupacao { get; set; }
-
-
+        [ForeignKey("FK_MuicipioId")]
+        [Display(Name = "Municipio")]
+        public int MuicipioId { get; set; }
 
         public ICollection<Muicipio> Muicipios { get; set; }
 
