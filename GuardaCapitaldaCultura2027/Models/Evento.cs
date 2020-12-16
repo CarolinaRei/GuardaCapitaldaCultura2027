@@ -38,6 +38,8 @@ namespace GuardaCapitaldaCultura2027.Models
         [Display(Name = "Municipio")]
         public int MuicipioId { get; set; }
 
+        public Muicipio Muicipio { get; set; }
+
         public ICollection<Muicipio> Muicipios { get; set; }
 
     }
