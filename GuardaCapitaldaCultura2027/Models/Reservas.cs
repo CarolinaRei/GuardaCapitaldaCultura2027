@@ -17,11 +17,18 @@ namespace GuardaCapitaldaCultura2027.Models
         [Display(Name = "Turista")]
         public int TuristaId { get; set; }
 
-       // public Turista Turista { get; set; }
+        // public Turista Turista { get; set; }
 
-       // public ICollection<Turista> Turistas { get; set; }
+        // public ICollection<Turista> Turistas { get; set; }
 
         //EventoID
+        [ForeignKey("FK_EventosId")]
+        public int EventosId { get; set; }
+
+        public Evento Evento { get; set; }
+
+        public ICollection<Evento> Eventos { get; set; }
+
 
         //Feedback
 
