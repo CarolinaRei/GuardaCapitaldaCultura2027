@@ -9,28 +9,21 @@ namespace GuardaCapitaldaCultura2027.Models
 {
     public class Reservas
     {
-        [Key]
-        public int ReservarId { get; set; }
+        public class Reserva
+        { 	   
+            [Key]
+         
+            public int ReservaId { get; set; }
+           
+            public string Numero_Reserva { get; set; }
 
-        //TuristaID
-        [ForeignKey("FK_TuristaId")]
-        [Display(Name = "Turista")]
-        public int TuristaId { get; set; }
+            [Display(Name = "FeedBack")]
+            [Required(ErrorMessage = "Por favor, insira o seu FeedBack")]
+            [StringLength(20, MinimumLength = 3, ErrorMessage = "O FeedBack deve ter entre 3 e 20 caracteres")]
+            public string FeedBack { get; set; }
 
-        // public Turista Turista { get; set; }
+            public ICollection<Evento> Eventos { get; set; }
+            //public ICollection<Turista> Turistas { get; set; }
 
-        // public ICollection<Turista> Turistas { get; set; }
-
-        //EventoID
-        [ForeignKey("FK_EventosId")]
-        public int EventosId { get; set; }
-
-        public Evento Evento { get; set; }
-
-        public ICollection<Evento> Eventos { get; set; }
-
-
-        //Feedback
-
-    }
+        }
 }
