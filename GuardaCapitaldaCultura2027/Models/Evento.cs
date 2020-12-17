@@ -9,10 +9,11 @@ namespace GuardaCapitaldaCultura2027.Models
 {
     public class Evento
     {
+
         [Key]
         public int EventosId { get; set; }
 
-       
+
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "Por favor, insira o seu Nome")]
         [StringLength(20, MinimumLength = 3, ErrorMessage = "O nome deve ter entre 3 e 20 caracteres")]
@@ -33,7 +34,9 @@ namespace GuardaCapitaldaCultura2027.Models
         [Display(Name = "Lotação Maxima")]
         public int Lotacao_max { get; set; }
 
-
+        [Display(Name = "Lotação Ocupada")]
+        public int Lotacao_Ocupada { get; set; }
+        /*
         [ForeignKey("FK_MuicipioId")]
         [Display(Name = "Municipio")]
         public int MuicipioId { get; set; }
@@ -41,6 +44,6 @@ namespace GuardaCapitaldaCultura2027.Models
         public Muicipio Muicipio { get; set; }
 
         public ICollection<Muicipio> Muicipios { get; set; }
-
+        */
     }
 }

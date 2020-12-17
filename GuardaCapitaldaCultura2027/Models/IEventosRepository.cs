@@ -7,6 +7,6 @@ namespace GuardaCapitaldaCultura2027.Models
 {
     public class IEventosRepository
     {
-        public IEnumerable<Evento> Evento { get; }
+        //public IEnumerable<Evento> Evento { get; }
     }
 }

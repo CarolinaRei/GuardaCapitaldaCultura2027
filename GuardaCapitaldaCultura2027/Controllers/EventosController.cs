@@ -22,7 +22,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // GET: Eventos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Evento.ToListAsync());
+            return View(await _context.Eventos.ToListAsync());
         }
 
         // GET: Eventos/Details/5
@@ -33,7 +33,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var evento = await _context.Evento
+            var evento = await _context.Eventos
                 .FirstOrDefaultAsync(m => m.EventosId == id);
             if (evento == null)
             {
@@ -54,16 +54,13 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventosId,Name,Descricao,Data_realizacao,Lotacao_max,Local_ocupacao")] Evento evento)
+        public async Task<IActionResult> Create([Bind("EventosId,Name,Descricao,Data_realizacao,Lotacao_max,Lotacao_Ocupada")] Evento evento)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(evento);
                 await _context.SaveChangesAsync();
-                ViewBag.title = "A sua reserva foi Confirmada!";
-                ViewBag.type = "alert-success";
-                ViewBag.redirect = "/"; // Página Inicial
-                return View("Confirmacaoreserva");
+                return RedirectToAction(nameof(Index));
             }
             return View(evento);
         }
@@ -76,7 +73,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var evento = await _context.Evento.FindAsync(id);
+            var evento = await _context.Eventos.FindAsync(id);
             if (evento == null)
             {
                 return NotFound();
@@ -89,7 +86,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventosId,Name,Descricao,Data_realizacao,Lotacao_max,Local_ocupacao")] Evento evento)
+        public async Task<IActionResult> Edit(int id, [Bind("EventosId,Name,Descricao,Data_realizacao,Lotacao_max,Lotacao_Ocupada")] Evento evento)
         {
             if (id != evento.EventosId)
             {
@@ -127,7 +124,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var evento = await _context.Evento
+            var evento = await _context.Eventos
                 .FirstOrDefaultAsync(m => m.EventosId == id);
             if (evento == null)
             {
@@ -142,15 +139,15 @@ namespace GuardaCapitaldaCultura2027.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var evento = await _context.Evento.FindAsync(id);
-            _context.Evento.Remove(evento);
+            var evento = await _context.Eventos.FindAsync(id);
+            _context.Eventos.Remove(evento);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool EventoExists(int id)
         {
-            return _context.Evento.Any(e => e.EventosId == id);
+            return _context.Eventos.Any(e => e.EventosId == id);
         }
     }
 }
