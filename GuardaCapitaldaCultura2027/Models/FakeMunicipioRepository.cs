@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace GuardaCapitaldaCultura2027.Models
 {
     public class FakeMunicipioRepository : IMunicipioRepository
-    {
+    {/*
         public IEnumerable<Muicipio> Muicipios =>
             new List<Muicipio>
             {
@@ -46,6 +46,6 @@ namespace GuardaCapitaldaCultura2027.Models
                     Nome = "Trancoso",
                     ImagemNome = "trancoso202743150.jpg"
                 }
-            };
+            };*/
     }
 }
