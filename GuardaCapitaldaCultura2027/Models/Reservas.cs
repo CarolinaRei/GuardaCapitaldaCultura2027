@@ -9,8 +9,7 @@ namespace GuardaCapitaldaCultura2027.Models
 {
     public class Reservas
     {
-        public class Reserva
-        { 	   
+           
             [Key]
          
             public int ReservaId { get; set; }
