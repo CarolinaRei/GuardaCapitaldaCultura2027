@@ -67,5 +67,6 @@ Após algumas reuniões (Brainstorming) entre a equipa, ficou definido para cria
      
      
 ### Instalação no Package Manager Console:
-- `PM>` Update-Database -Context GuardaEventoDbContext 
+- `PM>` Add-Migration "Nome da Migração" -Contex GuardaEventosBdContext
+- `PM>` Update-Database -Context GuardaEventosBdContext 
 - `PM>` Update-Database -Context ApplicationDbContext
