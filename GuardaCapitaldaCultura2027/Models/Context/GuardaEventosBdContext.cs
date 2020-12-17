@@ -14,13 +14,12 @@ namespace GuardaCapitaldaCultura2027.Models.Context
 
         public DbSet<Contacto> Contactos { get; set; }
 
-        public DbSet<Evento> Evento { get; set; }
+        //public DbSet<Evento> Evento { get; set; }
 
 
         public DbSet<Muicipio> Muicipios { get; set; }
 
 
-        public DbSet<GuardaCapitaldaCultura2027.Models.Reserva> Reserva { get; set; }
 
 
     }

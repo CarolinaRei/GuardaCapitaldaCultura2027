@@ -188,14 +188,15 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .WithMany("Turistas")
                         .HasForeignKey("ReservaId");
 
-            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Muicipio", b =>
-                {
-                    b.HasOne("GuardaCapitaldaCultura2027.Models.Evento", null)
-                        .WithMany("Muicipios")
-                        .HasForeignKey("EventosId");
+                    modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Muicipio", b =>
+                        {
+                            b.HasOne("GuardaCapitaldaCultura2027.Models.Evento", null)
+                                .WithMany("Muicipios")
+                                .HasForeignKey("EventosId");
+
+                        });
 
                 });
-#pragma warning restore 612, 618
         }
     }
 }

@@ -18,12 +18,6 @@
     <Compile Remove="Controllers\Reserva.cs" />
     <Compile Remove="Models\Guarda.cs" />
     <Compile Remove="Models\Reserva.cs" />
-    <Compile Remove="Views\Eventos\Class.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="Views\Eventos\Confirmacao.cshtml" />
-    <Content Remove="Views\Eventos\Mensagem.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
