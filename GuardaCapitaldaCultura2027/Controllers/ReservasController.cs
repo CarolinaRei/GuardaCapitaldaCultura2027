@@ -54,7 +54,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ReservaId,Numero_Reserva,FeedBack")] Reserva reserva)
+        public async Task<IActionResult> Create([Bind("ReservaId,Numero_Reserva,FeedBack")] Reservas reserva)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ReservaId,Numero_Reserva,FeedBack")] Reserva reserva)
+        public async Task<IActionResult> Edit(int id, [Bind("ReservaId,Numero_Reserva,FeedBack")] Reservas reserva)
         {
             if (id != reserva.ReservaId)
             {
