@@ -37,13 +37,13 @@ namespace GuardaCapitaldaCultura2027.Models
         [Display(Name = "Lotação Ocupada")]
         public int Lotacao_Ocupada { get; set; }
         /*
-        [ForeignKey("FK_MuicipioId")]
+        [ForeignKey("FK_MunicipioId")]
         [Display(Name = "Municipio")]
-        public int MuicipioId { get; set; }
+        public int MunicipioId { get; set; }
 
-        public Muicipio Muicipio { get; set; }
+        public Municipio Municipio { get; set; }
 
-        public ICollection<Muicipio> Muicipios { get; set; }
+        public ICollection<Municipio> Municipios { get; set; }
         */
     }
 }

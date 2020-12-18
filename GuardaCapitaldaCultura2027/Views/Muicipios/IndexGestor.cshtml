@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<GuardaCapitaldaCultura2027.Models.Muicipio>
+@model IEnumerable<GuardaCapitaldaCultura2027.Models.Municipio>
 
 @{
     ViewData["Title"] = "Index";
@@ -38,9 +38,9 @@
                             <img src="@("~/image/" + item.ImagemNome)" asp-append-version="true" height="200" />
                         </td>
                         <td>
-                            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.MuicipioId">Editar</a>
-                            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.MuicipioId">Detales</a>
-                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.MuicipioId">Eliminar</a>
+                            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.MunicipioId">Editar</a>
+                            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.MunicipioId">Detales</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.MunicipioId">Eliminar</a>
                         </td>
                     </tr>
                 }

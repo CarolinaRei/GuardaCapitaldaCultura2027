@@ -7,7 +7,7 @@ namespace GuardaCapitaldaCultura2027.Models
 {
     public class MunicipioListViewModel
     {
-        public IEnumerable<Muicipio> Muicipios { get; set; }
+        public IEnumerable<Municipio> Municipios { get; set; }
         public PagingInfo Pagination { get; set; }
     }
 }
