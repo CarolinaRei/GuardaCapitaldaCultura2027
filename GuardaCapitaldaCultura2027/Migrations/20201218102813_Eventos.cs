@@ -2,13 +2,13 @@
 
 namespace GuardaCapitaldaCultura2027.Migrations
 {
-    public partial class View : Migration
+    public partial class Eventos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Nome",
-                table: "Muicipios",
+                name: "NumeroCadeira",
+                table: "LugarEvetos",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)",
@@ -18,8 +18,8 @@ namespace GuardaCapitaldaCultura2027.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Nome",
-                table: "Muicipios",
+                name: "NumeroCadeira",
+                table: "LugarEvetos",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string));

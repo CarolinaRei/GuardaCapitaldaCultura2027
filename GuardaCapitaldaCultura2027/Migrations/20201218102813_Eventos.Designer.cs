@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuardaCapitaldaCultura2027.Migrations
 {
     [DbContext(typeof(GuardaEventosBdContext))]
-    [Migration("20201210103308_Muis")]
-    partial class Muis
+    [Migration("20201218102813_Eventos")]
+    partial class Eventos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -72,8 +72,8 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("nvarchar(500)")
                         .HasMaxLength(500);
 
-                    b.Property<bool>("Local_ocupacao")
-                        .HasColumnType("bit");
+                    b.Property<int>("Lotacao_Ocupada")
+                        .HasColumnType("int");
 
                     b.Property<int>("Lotacao_max")
                         .HasColumnType("int");
@@ -85,7 +85,26 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
                     b.HasKey("EventosId");
 
-                    b.ToTable("Evento");
+                    b.ToTable("Eventos");
+                });
+
+            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.LugarEveto", b =>
+                {
+                    b.Property<int>("LugarEvetoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("NumeroCadeira")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Oucupado")
+                        .HasColumnType("bit");
+
+                    b.HasKey("LugarEvetoId");
+
+                    b.ToTable("LugarEvetos");
                 });
 
             modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Muicipio", b =>
@@ -99,6 +118,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MuicipioId");
@@ -113,13 +133,18 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Contacto")
-                        .HasColumnType("int");
+                    b.Property<string>("Contacto")
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
+
+                    b.Property<string>("NIF")
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -138,7 +163,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
                     b.HasKey("TuristaId");
 
-                    b.ToTable("Turista");
+                    b.ToTable("Turistas");
                 });
 #pragma warning restore 612, 618
         }
