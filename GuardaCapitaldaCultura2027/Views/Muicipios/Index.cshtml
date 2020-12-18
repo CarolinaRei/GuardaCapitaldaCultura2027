@@ -31,7 +31,8 @@
         <div class="col-md-4 mb-5 ">
             <div class="zoom card h-100">
                 <a asp-controller="Eventos" asp-action="Index">
-                    <img class="card-img-top" src="~/img/Aguiar-da-Beira-Largo-Monumentos.jpg" alt="Município de Aguiar da Beira" height="200">
+                    <img src="@("~/image/" + item.ImagemNome)" asp-append-version="true" height="200" />
+
                     <div class="overlay2">@Html.DisplayFor(modelItem => item.Nome)</div>
                 </a>
 
