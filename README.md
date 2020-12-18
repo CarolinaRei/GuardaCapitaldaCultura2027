@@ -70,3 +70,4 @@ Após algumas reuniões (Brainstorming) entre a equipa, ficou definido para cria
 - `PM>` Add-Migration "Nome da Migração" -Contex GuardaEventosBdContext
 - `PM>` Update-Database -Context GuardaEventosBdContext 
 - `PM>` Update-Database -Context ApplicationDbContext
+- `PM>` Remove-Migration -Context GuardaEventosBdContext 
