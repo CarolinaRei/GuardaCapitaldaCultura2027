@@ -7,7 +7,7 @@ namespace GuardaCapitaldaCultura2027.Models
 {
     public class LugarEveto
     {
-        public int LugarEveto_id { get; set; }
+        public int LugarEvetoId { get; set; }
 
         public bool Oucupado { get; set; }
 

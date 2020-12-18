@@ -18,7 +18,7 @@ namespace GuardaCapitaldaCultura2027.Models.Context
 
         public DbSet<Muicipio> Muicipios { get; set; }
 
-
+        public DbSet<LugarEveto> LugarEvetos { get; set; }
 
 
     }
