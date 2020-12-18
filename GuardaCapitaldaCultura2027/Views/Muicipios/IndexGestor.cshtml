@@ -35,7 +35,7 @@
                             @Html.DisplayFor(modelItem => item.Nome)
                         </td>
                         <td>
-                            <img src="~/img/Aguiar-da-Beira-Largo-Monumentos.jpg" asp-append-version="true" width="250" height="250" />
+                            <img src="@("~/image/" + item.ImagemNome)" asp-append-version="true" height="200" />
                         </td>
                         <td>
                             <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.MuicipioId">Editar</a>
