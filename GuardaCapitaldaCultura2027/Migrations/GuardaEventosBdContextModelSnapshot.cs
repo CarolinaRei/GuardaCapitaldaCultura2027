@@ -76,12 +76,17 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     b.Property<int>("Lotacao_max")
                         .HasColumnType("int");
 
+                    b.Property<int>("MunicipioId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
                     b.HasKey("EventosId");
+
+                    b.HasIndex("MunicipioId");
 
                     b.ToTable("Eventos");
                 });
@@ -112,6 +117,9 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("EventosId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ImagemNome")
                         .HasColumnType("nvarchar(100)");
 
@@ -120,6 +128,8 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MunicipioId");
+
+                    b.HasIndex("EventosId");
 
                     b.ToTable("Municipios");
                 });
@@ -162,6 +172,22 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     b.HasKey("TuristaId");
 
                     b.ToTable("Turistas");
+                });
+
+            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Evento", b =>
+                {
+                    b.HasOne("GuardaCapitaldaCultura2027.Models.Municipio", "Municipio")
+                        .WithMany()
+                        .HasForeignKey("MunicipioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Municipio", b =>
+                {
+                    b.HasOne("GuardaCapitaldaCultura2027.Models.Evento", null)
+                        .WithMany("Municipios")
+                        .HasForeignKey("EventosId");
                 });
 #pragma warning restore 612, 618
         }

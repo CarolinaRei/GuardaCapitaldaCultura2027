@@ -46,6 +46,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // GET: Eventos/Create
         public IActionResult Create()
         {
+            ViewData["municipios"] = new SelectList(_context.Municipios, "MunicipioId", "Nome");
             return View();
         }
 
@@ -54,7 +55,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventosId,Name,Descricao,Data_realizacao,Lotacao_max,Lotacao_Ocupada")] Evento evento)
+        public async Task<IActionResult> Create([Bind("EventosId,MunicipioId,Name,Descricao,Data_realizacao,Lotacao_max,Lotacao_Ocupada")] Evento evento)
         {
             if (ModelState.IsValid)
             {
