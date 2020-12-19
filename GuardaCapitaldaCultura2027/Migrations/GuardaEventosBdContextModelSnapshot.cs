@@ -57,7 +57,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
             modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Evento", b =>
                 {
-                    b.Property<int>("EventosId")
+                    b.Property<int>("EventoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -84,7 +84,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
-                    b.HasKey("EventosId");
+                    b.HasKey("EventoId");
 
                     b.HasIndex("MunicipioId");
 
@@ -117,7 +117,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("EventosId")
+                    b.Property<int?>("EventoId")
                         .HasColumnType("int");
 
                     b.Property<string>("ImagemNome")
@@ -129,7 +129,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
                     b.HasKey("MunicipioId");
 
-                    b.HasIndex("EventosId");
+                    b.HasIndex("EventoId");
 
                     b.ToTable("Municipios");
                 });
@@ -187,7 +187,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 {
                     b.HasOne("GuardaCapitaldaCultura2027.Models.Evento", null)
                         .WithMany("Municipios")
-                        .HasForeignKey("EventosId");
+                        .HasForeignKey("EventoId");
                 });
 #pragma warning restore 612, 618
         }

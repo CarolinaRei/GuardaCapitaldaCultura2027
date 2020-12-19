@@ -11,7 +11,7 @@ namespace GuardaCapitaldaCultura2027.Models
     {
 
         [Key]
-        public int EventosId { get; set; }
+        public int EventoId { get; set; }
 
 
         [Display(Name = "Nome")]

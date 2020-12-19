@@ -64,7 +64,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(nullable: false),
                     ImagemNome = table.Column<string>(type: "nvarchar(100)", nullable: true),
-                    EventosId = table.Column<int>(nullable: true)
+                    EventoId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -75,7 +75,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 name: "Eventos",
                 columns: table => new
                 {
-                    EventosId = table.Column<int>(nullable: false)
+                    EventoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 20, nullable: false),
                     Descricao = table.Column<string>(maxLength: 500, nullable: false),
@@ -86,7 +86,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Eventos", x => x.EventosId);
+                    table.PrimaryKey("PK_Eventos", x => x.EventoId);
                     table.ForeignKey(
                         name: "FK_Eventos_Municipios_MunicipioId",
                         column: x => x.MunicipioId,
@@ -101,16 +101,16 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 column: "MunicipioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Municipios_EventosId",
+                name: "IX_Municipios_EventoId",
                 table: "Municipios",
-                column: "EventosId");
+                column: "EventoId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Municipios_Eventos_EventosId",
+                name: "FK_Municipios_Eventos_EventoId",
                 table: "Municipios",
-                column: "EventosId",
+                column: "EventoId",
                 principalTable: "Eventos",
-                principalColumn: "EventosId",
+                principalColumn: "EventoId",
                 onDelete: ReferentialAction.Restrict);
         }
 

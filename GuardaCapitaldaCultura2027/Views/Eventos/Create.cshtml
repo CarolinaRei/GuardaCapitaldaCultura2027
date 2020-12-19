@@ -19,6 +19,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Municipio" class="control-label"></label>
+                <br/>
                 @(Html.DropDownList("MunicipioId",new List<SelectListItem>(ViewBag.municipios)))
                 <span asp-validation-for="MunicipioId" class="text-danger"></span>
             </div>
