@@ -11,7 +11,7 @@ namespace GuardaCapitaldaCultura2027.Models
     {
 
         [Key]
-        public int EventosId { get; set; }
+        public int EventoId { get; set; }
 
 
         [Display(Name = "Nome")]
@@ -36,7 +36,7 @@ namespace GuardaCapitaldaCultura2027.Models
 
         [Display(Name = "Lotação Ocupada")]
         public int Lotacao_Ocupada { get; set; }
-        /*
+        
         [ForeignKey("FK_MunicipioId")]
         [Display(Name = "Municipio")]
         public int MunicipioId { get; set; }
@@ -44,6 +44,5 @@ namespace GuardaCapitaldaCultura2027.Models
         public Municipio Municipio { get; set; }
 
         public ICollection<Municipio> Municipios { get; set; }
-        */
     }
 }

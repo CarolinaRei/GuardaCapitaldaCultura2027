@@ -18,6 +18,13 @@ namespace GuardaCapitaldaCultura2027.Controllers
             _logger = logger;
         }
 
+        [HttpGet("{controller=Home}/{Municipio:alpha}")]
+        public IActionResult Municipios(string Municipio)
+        {
+            ViewData["NomeMunicipio"]=Municipio;
+            return View();
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -38,7 +45,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
             return View();
         }
 
-        public IActionResult Aguiar()
+        /*public IActionResult Aguiar()
         {
             return View();
         }   
@@ -110,7 +117,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         public IActionResult VNFC()
         {
             return View();
-        }
+        }*/
         public IActionResult Erro()
         {
             return View();

@@ -34,7 +34,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
             }
 
             var evento = await _context.Eventos
-                .FirstOrDefaultAsync(m => m.EventosId == id);
+                .FirstOrDefaultAsync(m => m.EventoId == id);
             if (evento == null)
             {
                 return NotFound();
@@ -46,6 +46,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // GET: Eventos/Create
         public IActionResult Create()
         {
+            ViewData["municipios"] = new SelectList(_context.Municipios, "MunicipioId", "Nome");
             return View();
         }
 
@@ -54,7 +55,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventosId,Name,Descricao,Data_realizacao,Lotacao_max,Lotacao_Ocupada")] Evento evento)
+        public async Task<IActionResult> Create([Bind("EventoId,MunicipioId,Name,Descricao,Data_realizacao,Lotacao_max,Lotacao_Ocupada")] Evento evento)
         {
             if (ModelState.IsValid)
             {
@@ -86,9 +87,9 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventosId,Name,Descricao,Data_realizacao,Lotacao_max,Lotacao_Ocupada")] Evento evento)
+        public async Task<IActionResult> Edit(int id, [Bind("EventoId,Name,Descricao,Data_realizacao,Lotacao_max,Lotacao_Ocupada")] Evento evento)
         {
-            if (id != evento.EventosId)
+            if (id != evento.EventoId)
             {
                 return NotFound();
             }
@@ -102,7 +103,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EventoExists(evento.EventosId))
+                    if (!EventoExists(evento.EventoId))
                     {
                         return NotFound();
                     }
@@ -125,7 +126,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
             }
 
             var evento = await _context.Eventos
-                .FirstOrDefaultAsync(m => m.EventosId == id);
+                .FirstOrDefaultAsync(m => m.EventoId == id);
             if (evento == null)
             {
                 return NotFound();
@@ -147,7 +148,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
 
         private bool EventoExists(int id)
         {
-            return _context.Eventos.Any(e => e.EventosId == id);
+            return _context.Eventos.Any(e => e.EventoId == id);
         }
     }
 }
