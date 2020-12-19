@@ -15,6 +15,6 @@ namespace GuardaCapitaldaCultura2027.Models
             this.dbContext = dbContext;
         }
 
-        public new IEnumerable<Muicipio> Muicipios => dbContext.Muicipios;
+        public new IEnumerable<Municipio> Municipios => dbContext.Municipios;
     }*/
 }

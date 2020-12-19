@@ -10,22 +10,22 @@ using GuardaCapitaldaCultura2027.Models.Context;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
-    public class LugarEvetosController : Controller
+    public class LugarEventosController : Controller
     {
         private readonly GuardaEventosBdContext _context;
 
-        public LugarEvetosController(GuardaEventosBdContext context)
+        public LugarEventosController(GuardaEventosBdContext context)
         {
             _context = context;
         }
 
-        // GET: LugarEvetos
+        // GET: LugarEventos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.LugarEvetos.ToListAsync());
+            return View(await _context.LugarEventos.ToListAsync());
         }
 
-        // GET: LugarEvetos/Details/5
+        // GET: LugarEventos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var lugarEveto = await _context.LugarEvetos
-                .FirstOrDefaultAsync(m => m.LugarEvetoId == id);
-            if (lugarEveto == null)
+            var lugarEvento = await _context.LugarEventos
+                .FirstOrDefaultAsync(m => m.LugarEventoId == id);
+            if (lugarEvento == null)
             {
                 return NotFound();
             }
 
-            return View(lugarEveto);
+            return View(lugarEvento);
         }
 
-        // GET: LugarEvetos/Create
+        // GET: LugarEventos/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: LugarEvetos/Create
+        // POST: LugarEventos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LugarEvetoId,Oucupado,NumeroCadeira")] LugarEveto lugarEveto)
+        public async Task<IActionResult> Create([Bind("LugarEventoId,Ocupado,NumeroCadeira")] LugarEvento lugarEvento)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(lugarEveto);
+                _context.Add(lugarEvento);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(lugarEveto);
+            return View(lugarEvento);
         }
 
-        // GET: LugarEvetos/Edit/5
+        // GET: LugarEventos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var lugarEveto = await _context.LugarEvetos.FindAsync(id);
-            if (lugarEveto == null)
+            var lugarEvento = await _context.LugarEventos.FindAsync(id);
+            if (lugarEvento == null)
             {
                 return NotFound();
             }
-            return View(lugarEveto);
+            return View(lugarEvento);
         }
 
-        // POST: LugarEvetos/Edit/5
+        // POST: LugarEventos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LugarEvetoId,Oucupado,NumeroCadeira")] LugarEveto lugarEveto)
+        public async Task<IActionResult> Edit(int id, [Bind("LugarEventoId,Ocupado,NumeroCadeira")] LugarEvento lugarEvento)
         {
-            if (id != lugarEveto.LugarEvetoId)
+            if (id != lugarEvento.LugarEventoId)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace GuardaCapitaldaCultura2027.Controllers
             {
                 try
                 {
-                    _context.Update(lugarEveto);
+                    _context.Update(lugarEvento);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LugarEvetoExists(lugarEveto.LugarEvetoId))
+                    if (!LugarEventoExists(lugarEvento.LugarEventoId))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(lugarEveto);
+            return View(lugarEvento);
         }
 
-        // GET: LugarEvetos/Delete/5
+        // GET: LugarEventos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var lugarEveto = await _context.LugarEvetos
-                .FirstOrDefaultAsync(m => m.LugarEvetoId == id);
-            if (lugarEveto == null)
+            var lugarEvento = await _context.LugarEventos
+                .FirstOrDefaultAsync(m => m.LugarEventoId == id);
+            if (lugarEvento == null)
             {
                 return NotFound();
             }
 
-            return View(lugarEveto);
+            return View(lugarEvento);
         }
 
-        // POST: LugarEvetos/Delete/5
+        // POST: LugarEventos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var lugarEveto = await _context.LugarEvetos.FindAsync(id);
-            _context.LugarEvetos.Remove(lugarEveto);
+            var lugarEvento = await _context.LugarEventos.FindAsync(id);
+            _context.LugarEventos.Remove(lugarEvento);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool LugarEvetoExists(int id)
+        private bool LugarEventoExists(int id)
         {
-            return _context.LugarEvetos.Any(e => e.LugarEvetoId == id);
+            return _context.LugarEventos.Any(e => e.LugarEventoId == id);
         }
     }
 }

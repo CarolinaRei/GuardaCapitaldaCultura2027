@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace GuardaCapitaldaCultura2027.Models
 {
-    public class LugarEveto
+    public class LugarEvento
     {
-        public int LugarEvetoId { get; set; }
+        public int LugarEventoId { get; set; }
 
-        public bool Oucupado { get; set; }
+        public bool Ocupado { get; set; }
 
 
         [Required(ErrorMessage = "Insira o Numero de cadeira")]

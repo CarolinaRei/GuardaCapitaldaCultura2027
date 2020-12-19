@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace GuardaCapitaldaCultura2027.Models
 {
-    public class Muicipio
+    public class Municipio
     {
         [Key]
-        public int MuicipioId { get; set; }
+        public int MunicipioId { get; set; }
 
         [Required(ErrorMessage = "Por favor, insira seu Nome")]
         [Display(Name = "Nome do Municipio *", Prompt = "Nome Municipio Enter")]
