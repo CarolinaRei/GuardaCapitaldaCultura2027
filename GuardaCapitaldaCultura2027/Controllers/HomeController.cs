@@ -4,25 +4,29 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using GuardaCapitaldaCultura2027.Models;
+using GuardaCapitaldaCultura2027.Models.Context;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly GuardaEventosBdContext _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, GuardaEventosBdContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         [HttpGet("{controller=Home}/{Municipio:alpha}")]
         public IActionResult Municipios(string Municipio)
         {
             ViewData["NomeMunicipio"]=Municipio;
-            return View();
+            return View(((List<Evento>)_context.Eventos.Include(e=>e.Municipio).ToList().Where(e=> e.Municipio.Nome.ToLower().Trim().Equals(Municipio.ToLower().Trim())).ToList()));
         }
 
         public IActionResult Index()
