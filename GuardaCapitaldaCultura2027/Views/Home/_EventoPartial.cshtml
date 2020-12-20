@@ -1,0 +1,18 @@
+﻿@model Evento
+
+<div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+        <div class="mainflip">
+            <div class="frontside">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">@Model.Name</h4>
+                        <p class="card-text">@Model.Descricao</p>
+                        <p class="card-text">@Model.Data_realizacao</p>
+                        <button class="btn-primary">Reservar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
