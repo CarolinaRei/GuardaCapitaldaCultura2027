@@ -24,9 +24,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Lotacao_max)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Lotacao_Ocupada)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -44,9 +41,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Lotacao_max)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lotacao_Ocupada)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.EventoId">Edit</a> |
