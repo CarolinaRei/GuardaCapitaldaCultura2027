@@ -7,22 +7,27 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GuardaCapitaldaCultura2027.Models;
 using GuardaCapitaldaCultura2027.Models.Context;
+using GuardaCapitaldaCultura2027.Models.ViewModels;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
     public class EventosController : Controller
     {
         private readonly GuardaEventosBdContext _context;
+        private readonly Eventos Eventos;
 
         public EventosController(GuardaEventosBdContext context)
         {
             _context = context;
+            Eventos = new Eventos(context);
         }
 
         // GET: Eventos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pagina = 1)
         {
-            return View(await _context.Eventos.ToListAsync());
+            Eventos.Paginacao.PaginaAtual = pagina;
+            Eventos.ListaEventos = await _context.Eventos.Skip((Eventos.Paginacao.PaginaAtual - 1) * Eventos.Paginacao.ElementosPorPagina).Take(5).ToListAsync();
+            return View(Eventos);
         }
 
         // GET: Eventos/Details/5
