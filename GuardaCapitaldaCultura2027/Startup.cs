@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using GuardaCapitaldaCultura2027.Models.Context;
+using GuardaCapitaldaCultura2027.Models;
 
 namespace GuardaCapitaldaCultura2027
 {
@@ -71,6 +72,47 @@ namespace GuardaCapitaldaCultura2027
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            PopularBaseDadosAsync(app.ApplicationServices);
+        }
+
+        /// <summary>
+        /// Recria os dados da base de dados que foram apagados se esta estiver vazia.
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        private async Task PopularBaseDadosAsync(IServiceProvider serviceProvider)
+        {
+            using (var serviceScope = serviceProvider.CreateScope())
+            {
+                var db = serviceScope.ServiceProvider.GetService<GuardaEventosBdContext>();
+
+                if (!db.Municipios.Any())
+                {
+                    db.Municipios.AddRange(new List<Municipio>() {
+                        new Municipio()
+                        {
+                            Nome = "Meda",
+                            ImagemNome = "meda.jpg"
+                        }
+                    });
+                    await db.SaveChangesAsync();
+                }
+
+                if (!db.Eventos.Any())
+                {
+                    db.Eventos.AddRange(new List<Evento>() {
+                        new Evento()
+                        {
+                            Name = "Meda+",
+                            MunicipioId = db.Municipios.Where(m=>m.Nome.Equals("Meda")).FirstOrDefault().MunicipioId,
+                            Data_realizacao = DateTime.Now,
+                            Descricao = "Festival Meda+",
+                            Lotacao_max = 100
+                        }
+                    });
+                    await db.SaveChangesAsync();
+                }
+            }
         }
     }
 }

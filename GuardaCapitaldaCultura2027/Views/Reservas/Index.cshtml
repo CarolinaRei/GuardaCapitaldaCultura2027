@@ -1,0 +1,92 @@
+﻿@model GuardaCapitaldaCultura2027.Models.ViewModels.Reservas
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaReservas.FirstOrDefault().Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaReservas.FirstOrDefault().Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaReservas.FirstOrDefault().Numero_Reserva)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ListaReservas) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero_Reserva)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ReservaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ReservaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ReservaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+@{
+    if (Model.Paginacao.PaginaAtual > 1 && Model.Paginacao.PaginaAtual != 2)
+    {
+        <a title="First Page" href="@Url.Action("Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual > 1) ? 1 : Model.Paginacao.PaginaAtual})"><span class="icon-prev"><i style="color:black" class="fas fa-angle-double-left"></i></span></a>
+        <span>&nbsp;</span>
+        <a title="Previous Page" href="@Url.Action("Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual > 1) ? Model.Paginacao.PaginaAtual-1 : Model.Paginacao.PaginaAtual })"><span class="icon-prev"><i style="color:black" class="fas fa-angle-left"></i></span></a>
+        <span>&nbsp;</span>
+    }
+    else if (Model.Paginacao.PaginaAtual > 1 && Model.Paginacao.PaginaAtual == 2)
+    {
+        <a title="Previous Page" href="@Url.Action("Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual > 1) ? Model.Paginacao.PaginaAtual-1 : Model.Paginacao.PaginaAtual })"><span class="icon-prev"><i style="color:black" class="fas fa-angle-left"></i></span></a>
+        <span>&nbsp;</span>
+    }
+
+    if (Model.Paginacao.PaginaAtual > 2)
+    {
+        @Html.ActionLink((Model.Paginacao.PaginaAtual - 1).ToString(), "Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual - 1) }, new { @style = "font-family: 'Varela Round';color:black;font-weight:bolder;" })
+        <span>&nbsp;</span>
+    }
+
+    <span style="font-family: 'Varela Round';color:#167ce9;font-weight:bolder;">@Model.Paginacao.PaginaAtual.ToString()</span>
+    <span>&nbsp;</span>
+
+
+    if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas - 1)
+    {
+        @Html.ActionLink((Model.Paginacao.PaginaAtual + 1).ToString(), "Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual + 1) }, new { @style = "font-family: 'Varela Round';color:black;font-weight:bolder;" })
+        <span>&nbsp;</span>
+    }
+
+    if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas && Model.Paginacao.PaginaAtual + 1 < Model.Paginacao.TotalPaginas)
+    {
+        <a title="Next Page" href="@Url.Action("Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) ? Model.Paginacao.PaginaAtual + 1 : Model.Paginacao.PaginaAtual })"><span class="icon-next"><i style="color:black" class="fas fa-angle-right"></i></span></a>
+        <span>&nbsp;&nbsp;</span>
+        <a title="Last Page" href="@Url.Action("Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) ? Model.Paginacao.TotalPaginas : Model.Paginacao.PaginaAtual })"><span class="icon-next"><i style="color:black" class="fas fa-angle-double-right"></i></span></a>
+        <span>&nbsp;&nbsp;</span>
+    }
+    else if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas && Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas)
+    {
+        <a title="Next Page" href="@Url.Action("Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) ? Model.Paginacao.PaginaAtual + 1 : Model.Paginacao.PaginaAtual })"><span class="icon-next"><i style="color:black" class="fas fa-angle-right"></i></span></a>
+        <span>&nbsp;&nbsp;</span>
+    }
+}
+</div>

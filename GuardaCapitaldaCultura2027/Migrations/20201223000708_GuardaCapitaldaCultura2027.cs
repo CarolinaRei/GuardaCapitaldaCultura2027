@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GuardaCapitaldaCultura2027.Migrations
 {
-    public partial class GuardaEventosBd : Migration
+    public partial class GuardaCapitaldaCultura2027 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,6 +39,23 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Reservas",
+                columns: table => new
+                {
+                    ReservaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EventoId = table.Column<int>(nullable: false),
+                    TuristaId = table.Column<int>(nullable: false),
+                    Nome = table.Column<string>(maxLength: 20, nullable: true),
+                    Descricao = table.Column<string>(maxLength: 500, nullable: false),
+                    Numero_Reserva = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reservas", x => x.ReservaId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Turistas",
                 columns: table => new
                 {
@@ -49,11 +66,18 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     Contacto = table.Column<string>(maxLength: 15, nullable: true),
                     NIF = table.Column<string>(maxLength: 15, nullable: true),
                     Email = table.Column<string>(maxLength: 50, nullable: false),
-                    Password = table.Column<string>(maxLength: 20, nullable: false)
+                    Password = table.Column<string>(maxLength: 20, nullable: false),
+                    ReservaId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Turistas", x => x.TuristaId);
+                    table.ForeignKey(
+                        name: "FK_Turistas_Reservas_ReservaId",
+                        column: x => x.ReservaId,
+                        principalTable: "Reservas",
+                        principalColumn: "ReservaId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -82,7 +106,8 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     Data_realizacao = table.Column<DateTime>(nullable: false),
                     Lotacao_max = table.Column<int>(nullable: false),
                     Lotacao_Ocupada = table.Column<int>(nullable: false),
-                    MunicipioId = table.Column<int>(nullable: false)
+                    MunicipioId = table.Column<int>(nullable: false),
+                    ReservaId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -93,6 +118,12 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         principalTable: "Municipios",
                         principalColumn: "MunicipioId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Eventos_Reservas_ReservaId",
+                        column: x => x.ReservaId,
+                        principalTable: "Reservas",
+                        principalColumn: "ReservaId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -101,9 +132,19 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 column: "MunicipioId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Eventos_ReservaId",
+                table: "Eventos",
+                column: "ReservaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Municipios_EventoId",
                 table: "Municipios",
                 column: "EventoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Turistas_ReservaId",
+                table: "Turistas",
+                column: "ReservaId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Municipios_Eventos_EventoId",
@@ -134,6 +175,9 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
             migrationBuilder.DropTable(
                 name: "Eventos");
+
+            migrationBuilder.DropTable(
+                name: "Reservas");
         }
     }
 }
