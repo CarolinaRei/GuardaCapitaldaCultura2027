@@ -2,17 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GuardaCapitaldaCultura2027.Models;
+using GuardaCapitaldaCultura2027.Models.Context;
+using GuardaCapitaldaCultura2027.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
-    public class Reserva : Controller
+    public class ReservasController : Controller
     {
+        private readonly Reservas Reservas;
+        private readonly GuardaEventosBdContext _context;
+
+        public ReservasController(GuardaEventosBdContext context)
+        {
+            _context = context;
+            Reservas = new Reservas(context);
+        }
+
         // GET: Reserva
         public ActionResult Index()
         {
-            return View();
+            Reservas.ListaReservas = _context.Reservas.ToList();
+            return View(Reservas);
         }
 
         // GET: Reserva/Details/5
@@ -22,24 +35,23 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Reserva/Create
-        public ActionResult Create()
+        public ActionResult Create(int EventoId)
         {
-            return View();
+            return View(new Reserva() { EventoId = EventoId});
         }
 
         // POST: Reserva/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> CreateAsync([Bind("ReservaId, EventoId, TuristaId, Nome, Descricao, Numero_Reserva")] Reserva reserva)
         {
-            try
+            if (ModelState.IsValid)
             {
+                _context.Add(reserva);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(reserva);
         }
 
         // GET: Reserva/Edit/5

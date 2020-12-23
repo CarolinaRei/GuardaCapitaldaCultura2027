@@ -6,21 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\Guarda\**" />
-    <Content Remove="Views\Guarda\**" />
-    <EmbeddedResource Remove="Views\Guarda\**" />
-    <None Remove="Views\Guarda\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Controllers\GuardaController.cs" />
-    <Compile Remove="Controllers\HomeController1.cs" />
-    <Compile Remove="Controllers\Reserva.cs" />
-    <Compile Remove="Models\Guarda.cs" />
-    <Compile Remove="Models\Reserva.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.9" />
