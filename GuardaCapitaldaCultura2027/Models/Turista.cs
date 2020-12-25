@@ -12,20 +12,20 @@ namespace GuardaCapitaldaCultura2027.Models
         public int TuristaId { get; set; }
 
         [Required(ErrorMessage = "Por favor, insira o seu Nome")]
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "O nome deve ter entre 3 e 20 caracteres")]
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "O nome deve ter entre 2 e 20 caracteres")]
         [Display(Name = "Nome *", Prompt = "Nome")]
         public String Nome { get; set; }
 
         [Required(ErrorMessage = "Por favor, insira o seu Sobrenome")]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "O sobrenome deve ter entre 2 e 50 caracteres")]
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "O sobrenome deve ter entre 2 e 20 caracteres")]
         [Display(Name = "Sobrenome *", Prompt = "Sobrenome")]
         public String Sobrenome { get; set; }
 
-        [StringLength(15)]
+        [StringLength(20)]
         [Display(Name = "Contacto", Prompt = "Contacto")]
         public String Contacto { get; set; }
 
-        [StringLength(15)]
+        [StringLength(10)]
         [Display(Name = "NIF", Prompt = "NIF")]
         public String NIF { get; set; }
 

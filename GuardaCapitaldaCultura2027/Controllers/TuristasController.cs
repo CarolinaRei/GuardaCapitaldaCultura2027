@@ -60,7 +60,8 @@ namespace GuardaCapitaldaCultura2027.Controllers
             {
                 _context.Add(turista);
                 await _context.SaveChangesAsync();
-
+                return RedirectToAction(nameof(Index));
+                // Mensagem de sucesso
                 ViewBag.title = "Turista foi criado com sucesso";
                 ViewBag.type = "alert-sucess";
                 ViewBag.redirect = "/"; // Página Inicial
@@ -144,14 +145,9 @@ namespace GuardaCapitaldaCultura2027.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var turista = await _context.Turistas.FindAsync(id);
-
             _context.Turistas.Remove(turista);
             await _context.SaveChangesAsync();
-
-            ViewBag.title = "A sua conta foi apagado com sucesso!";
-            ViewBag.type = "alert-warning";
-            ViewBag.redirect = "/"; // Página Inicial
-            return View("Confirmacao");
+            return RedirectToAction(nameof(Index));
         }
 
         private bool TuristaExists(int id)

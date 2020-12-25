@@ -62,9 +62,9 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     TuristaId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(maxLength: 20, nullable: false),
-                    Sobrenome = table.Column<string>(maxLength: 50, nullable: false),
-                    Contacto = table.Column<string>(maxLength: 15, nullable: true),
-                    NIF = table.Column<string>(maxLength: 15, nullable: true),
+                    Sobrenome = table.Column<string>(maxLength: 20, nullable: false),
+                    Contacto = table.Column<string>(maxLength: 20, nullable: true),
+                    NIF = table.Column<string>(maxLength: 10, nullable: true),
                     Email = table.Column<string>(maxLength: 50, nullable: false),
                     Password = table.Column<string>(maxLength: 20, nullable: false),
                     ReservaId = table.Column<int>(nullable: true)
