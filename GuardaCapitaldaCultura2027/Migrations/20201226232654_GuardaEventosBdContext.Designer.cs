@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuardaCapitaldaCultura2027.Migrations
 {
     [DbContext(typeof(GuardaEventosBdContext))]
-    [Migration("20201223000708_GuardaCapitaldaCultura2027")]
-    partial class GuardaCapitaldaCultura2027
+    [Migration("20201226232654_GuardaEventosBdContext")]
+    partial class GuardaEventosBdContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -86,14 +86,9 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
-                    b.Property<int?>("ReservaId")
-                        .HasColumnType("int");
-
                     b.HasKey("EventoId");
 
                     b.HasIndex("MunicipioId");
-
-                    b.HasIndex("ReservaId");
 
                     b.ToTable("Eventos");
                 });
@@ -124,9 +119,6 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("EventoId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ImagemNome")
                         .HasColumnType("nvarchar(100)");
 
@@ -135,8 +127,6 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MunicipioId");
-
-                    b.HasIndex("EventoId");
 
                     b.ToTable("Municipios");
                 });
@@ -201,17 +191,12 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
-                    b.Property<int?>("ReservaId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Sobrenome")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.HasKey("TuristaId");
-
-                    b.HasIndex("ReservaId");
 
                     b.ToTable("Turistas");
                 });
@@ -223,24 +208,6 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasForeignKey("MunicipioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("GuardaCapitaldaCultura2027.Models.Reserva", null)
-                        .WithMany("Eventos")
-                        .HasForeignKey("ReservaId");
-                });
-
-            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Municipio", b =>
-                {
-                    b.HasOne("GuardaCapitaldaCultura2027.Models.Evento", null)
-                        .WithMany("Municipios")
-                        .HasForeignKey("EventoId");
-                });
-
-            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Turista", b =>
-                {
-                    b.HasOne("GuardaCapitaldaCultura2027.Models.Reserva", null)
-                        .WithMany("Turistas")
-                        .HasForeignKey("ReservaId");
                 });
 #pragma warning restore 612, 618
         }

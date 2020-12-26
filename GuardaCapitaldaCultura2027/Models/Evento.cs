@@ -42,7 +42,5 @@ namespace GuardaCapitaldaCultura2027.Models
         public int MunicipioId { get; set; }
 
         public Municipio Municipio { get; set; }
-
-        public ICollection<Municipio> Municipios { get; set; }
     }
 }

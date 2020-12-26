@@ -23,7 +23,6 @@ namespace GuardaCapitaldaCultura2027.Models
         [DisplayName("Imagem Nome")]
         public string ImagemNome { get; set; }
 
-       
         [NotMapped]
         [DisplayName("Enviar Ficheiro")]
         [Required(ErrorMessage = "Por favor, Selecine o Ficheiro")]

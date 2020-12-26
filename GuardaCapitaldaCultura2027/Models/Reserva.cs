@@ -24,14 +24,11 @@ namespace GuardaCapitaldaCultura2027.Models
         [StringLength(20, MinimumLength = 3, ErrorMessage = "O nome deve ter entre 3 e 20 caracteres")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "Por favor, insira a Descrição")]
+        [Required(ErrorMessage = "Por favor, insira uma Descrição")]
         [StringLength(500, MinimumLength = 10, ErrorMessage = "A descrição deve ter entre 10 e 500 caracteres")]
         public string Descricao { get; set; }
 
-        [Display(Name = "Numero de Pessoas para a Reserva")]
+        [Display(Name = "Numero de pessoas para a Reserva")]
         public int Numero_Reserva { get; set; }
-
-        public ICollection<Evento> Eventos { get; set; }
-        public ICollection<Turista> Turistas { get; set; }
     }
 }
