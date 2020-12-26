@@ -1,0 +1,98 @@
+﻿@model GuardaCapitaldaCultura2027.Models.ViewModels.Eventos
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaEventos.FirstOrDefault().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaEventos.FirstOrDefault().Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaEventos.FirstOrDefault().Data_realizacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListaEventos.FirstOrDefault().Lotacao_max)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ListaEventos) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_realizacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lotacao_max)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EventoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EventoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EventoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+@{
+    if (Model.Paginacao.PaginaAtual > 1 && Model.Paginacao.PaginaAtual != 2)
+    {
+        <a title="First Page" href="@Url.Action("Index", "Eventos", new { @pagina = (Model.Paginacao.PaginaAtual > 1) ? 1 : Model.Paginacao.PaginaAtual})"><span class="icon-prev"><i style="color:black" class="fas fa-angle-double-left"></i></span></a>
+        <span>&nbsp;</span>
+        <a title="Previous Page" href="@Url.Action("Index", "Eventos", new { @pagina = (Model.Paginacao.PaginaAtual > 1) ? Model.Paginacao.PaginaAtual-1 : Model.Paginacao.PaginaAtual })"><span class="icon-prev"><i style="color:black" class="fas fa-angle-left"></i></span></a>
+        <span>&nbsp;</span>
+    }
+    else if (Model.Paginacao.PaginaAtual > 1 && Model.Paginacao.PaginaAtual == 2)
+    {
+        <a title="Previous Page" href="@Url.Action("Index", "Eventos", new { @pagina = (Model.Paginacao.PaginaAtual > 1) ? Model.Paginacao.PaginaAtual-1 : Model.Paginacao.PaginaAtual })"><span class="icon-prev"><i style="color:black" class="fas fa-angle-left"></i></span></a>
+        <span>&nbsp;</span>
+    }
+
+    if (Model.Paginacao.PaginaAtual > 2)
+    {
+        @Html.ActionLink((Model.Paginacao.PaginaAtual - 1).ToString(), "Index", "Eventos", new { @pagina = (Model.Paginacao.PaginaAtual - 1) }, new { @style = "font-family: 'Varela Round';color:black;font-weight:bolder;" })
+        <span>&nbsp;</span>
+    }
+
+    <span style="font-family: 'Varela Round';color:#167ce9;font-weight:bolder;">@Model.Paginacao.PaginaAtual.ToString()</span>
+    <span>&nbsp;</span>
+
+
+    if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas - 1)
+    {
+        @Html.ActionLink((Model.Paginacao.PaginaAtual + 1).ToString(), "Index", "Eventos", new { @pagina = (Model.Paginacao.PaginaAtual + 1) }, new { @style = "font-family: 'Varela Round';color:black;font-weight:bolder;" })
+        <span>&nbsp;</span>
+    }
+
+    if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas && Model.Paginacao.PaginaAtual + 1 < Model.Paginacao.TotalPaginas)
+    {
+        <a title="Next Page" href="@Url.Action("Index", "Eventos", new { @pagina = (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) ? Model.Paginacao.PaginaAtual + 1 : Model.Paginacao.PaginaAtual })"><span class="icon-next"><i style="color:black" class="fas fa-angle-right"></i></span></a>
+        <span>&nbsp;&nbsp;</span>
+        <a title="Last Page" href="@Url.Action("Index", "Eventos", new { @pagina = (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) ? Model.Paginacao.TotalPaginas : Model.Paginacao.PaginaAtual })"><span class="icon-next"><i style="color:black" class="fas fa-angle-double-right"></i></span></a>
+        <span>&nbsp;&nbsp;</span>
+    }
+    else if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas && Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas)
+    {
+        <a title="Next Page" href="@Url.Action("Index", "Eventos", new { @pagina = (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) ? Model.Paginacao.PaginaAtual + 1 : Model.Paginacao.PaginaAtual })"><span class="icon-next"><i style="color:black" class="fas fa-angle-right"></i></span></a>
+        <span>&nbsp;&nbsp;</span>
+    }
+}
+</div>

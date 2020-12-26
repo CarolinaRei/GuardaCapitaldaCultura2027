@@ -1,0 +1,42 @@
+﻿@model GuardaCapitaldaCultura2027.Models.Contacto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detales do Contacto</h1>
+<br />
+<br />
+<table class="table table-bordered text-left">
+   
+    <tbody>
+        <tr>
+            <th scope="row"><h6>Nome</h6></th>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <th scope="row"><h6>Sobrenome</h6></th>
+            <td> @Html.DisplayFor(model => model.Sobrenome)</td>
+        </tr>
+
+      
+        <tr>
+            <th scope="row"><h6>E-mail</h6></th>
+            <td> @Html.DisplayFor(model => model.Email)</td>
+        </tr>
+        <tr>
+            <th scope="row"><h6>Assunto</h6></th>
+            <td>@Html.DisplayFor(model => model.Assunto)</td>
+        </tr>
+        
+        <tr>
+            <th scope="row"><h6>Mensagem</h6></th>
+            <td> @Html.DisplayFor(model => model.Mensagem)</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="float-left">
+    <a class="btn btn-warning" asp-page="" asp-route-id="@Model.ContactoId">Responder</a>
+    <a class="btn btn-light" asp-action="Index" href="#">Retornar a Lista</a>
+</div>

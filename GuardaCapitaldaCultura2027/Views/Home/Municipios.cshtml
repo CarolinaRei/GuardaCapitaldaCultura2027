@@ -1,0 +1,13 @@
+﻿@model List<Evento>
+
+@{
+    ViewData["Title"] = ViewBag.NomeMunicipio;
+}
+<h1>@ViewData["Title"]</h1>
+
+@{ 
+    foreach(var evento in Model)
+    {
+        @await Html.PartialAsync("_EventoPartial", evento);
+    }
+}

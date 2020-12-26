@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>@ViewData["Title"] - Guarda Eventos </title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="~/img/logo.png" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <link href="~/css/galery.css" rel="stylesheet" />
+
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+    <style>
+
+        .mynav_navbar {
+            overflow: hidden;
+            background-color: #333;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+
+            .mynav_navbar a {
+                float: left;
+                font-size: 16px;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+
+        .mynav_dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+
+
+            .mynav_dropdown .mynav_dropbtn {
+                font-size: 16px;
+                border: none;
+                outline: none;
+                color: white;
+                padding: 14px 16px;
+                background-color: inherit;
+                font-family: inherit;
+                margin: 0;
+            }
+
+
+
+            .mynav_navbar a:hover, .mynav_dropdown:hover .mynav_dropbtn {
+                background-color: red;
+            }
+
+
+
+        .mynav_dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+
+
+            .mynav_dropdown-content a {
+                float: none;
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+
+
+
+                .mynav_dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+
+
+        .mynav_dropdown:hover .mynav_dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" asp-controller="Home" asp-action="Index">Guarda Eventos</a>
+            <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Home" asp-action="Sobre">Sobre Nós</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Contactos" asp-action="Create">Contactos</a></li>
+                </ul>
+
+                <div class="mynav_dropdown">
+                    <button class="mynav_dropbtn">
+                        <a asp-controller="Home" asp-action="Erro">Login</a>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="mynav_dropdown-content">
+                        <a asp-controller="Home" asp-action="Erro">Registar</a>
+                    </div>
+                </div>
+                <div class="mynav_dropdown">
+                    <button class="mynav_dropbtn">
+                        <a>PT</a>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="mynav_dropdown-content">
+                        <a asp-area="">EN</a>
+                        <a asp-area="">汉语</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!---<div style="padding:5px">
+         /*@{
+            //foreach (var i in MultiLanMVC.LanguageMang.AvailableLanguages)
+            //{
+              //  @Html.ActionLink(i.LanguageFullName, "ChangeLanguage", "Home", new { lang = i.LanguageCultureName }, null) <text> </text>
+            //}
+        }*/
+    </div>-->
+    <!-- Masthead-->
+    <header class="page-section text-center">
+        <div class="m-5"></div>
+        <div class="container ">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </header>
+
+    <!-- Footer-->
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <!-- Footer Location-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+
+                    <h4 class="text-uppercase mb-4">Guarda Eventos</h4>
+                    <img src="~/img/logo.png" class="mb-2" />
+                </div>
+                <!-- Footer Social Icons-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Redes Sociais</h4>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                </div>
+                <!-- Footer About Text-->
+                <div class="col-lg-4">
+                    <h4 class="text-uppercase mb-4">Descrição</h4>
+                    <p class="lead mb-0">
+                        A nossa proposta para o trabalho consiste em criar um aplicação Web com o respetivo tema “Guarda – Candidata a Capital Europeia da Cultura 2027”, cujo nome do WebSite irá ser “Guarda Eventos”.
+                        <!--<a href="http://startbootstrap.com">Start Bootstrap</a>-->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Copyright Section-->
+    <div class="copyright py-4 text-center text-white">
+        <div class="container">
+            2020 &copy; Guarda Eventos <!--- <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>-->
+        </div>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+    <!-- Core theme JS-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+    <script src="~/js/scripts.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
