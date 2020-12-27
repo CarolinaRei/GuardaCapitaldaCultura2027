@@ -27,5 +27,7 @@ namespace GuardaCapitaldaCultura2027.Models
         [DisplayName("Enviar Ficheiro")]
         [Required(ErrorMessage = "Por favor, Selecine o Ficheiro")]
         public IFormFile ImageFile { get; set; }
+
+        List<Evento> Eventos;
     }
 }
