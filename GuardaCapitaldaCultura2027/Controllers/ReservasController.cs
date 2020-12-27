@@ -7,6 +7,7 @@ using GuardaCapitaldaCultura2027.Models.Context;
 using GuardaCapitaldaCultura2027.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
