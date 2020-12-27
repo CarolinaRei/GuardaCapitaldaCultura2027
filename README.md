@@ -55,7 +55,7 @@ Após algumas reuniões (Brainstorming) entre a equipa, ficou definido para cria
 ### Ferramentas Usadas 
 
 - `Linguagem`  
-     C#, à framework .NET, programação Web com ASP.NET Core MVC.
+     C#, a framework .NET, programação Web com ASP.NET Core MVC.
       
 - `Software | Plataforma ` 
     - Visual Studio 2019
