@@ -23,7 +23,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 {
                     table.PrimaryKey("PK_Contactos", x => x.ContactoId);
                 });
-            
+
             migrationBuilder.CreateTable(
                 name: "LugarEventos",
                 columns: table => new
@@ -53,6 +53,31 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reservas", x => x.ReservaId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Turistas",
+                columns: table => new
+                {
+                    TuristaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(maxLength: 20, nullable: false),
+                    Sobrenome = table.Column<string>(maxLength: 20, nullable: false),
+                    Contacto = table.Column<string>(maxLength: 20, nullable: true),
+                    NIF = table.Column<string>(maxLength: 10, nullable: true),
+                    Email = table.Column<string>(maxLength: 50, nullable: false),
+                    Password = table.Column<string>(maxLength: 20, nullable: false),
+                    ReservaId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Turistas", x => x.TuristaId);
+                    table.ForeignKey(
+                        name: "FK_Turistas_Reservas_ReservaId",
+                        column: x => x.ReservaId,
+                        principalTable: "Reservas",
+                        principalColumn: "ReservaId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -95,30 +120,6 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Eventos_Reservas_ReservaId",
-                        column: x => x.ReservaId,
-                        principalTable: "Reservas",
-                        principalColumn: "ReservaId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-            migrationBuilder.CreateTable(
-                name: "Turistas",
-                columns: table => new
-                {
-                    TuristaId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(maxLength: 20, nullable: false),
-                    Sobrenome = table.Column<string>(maxLength: 20, nullable: false),
-                    Contacto = table.Column<string>(maxLength: 20, nullable: true),
-                    NIF = table.Column<string>(maxLength: 10, nullable: true),
-                    Email = table.Column<string>(maxLength: 50, nullable: false),
-                    Password = table.Column<string>(maxLength: 20, nullable: false),
-                    ReservaId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Turistas", x => x.TuristaId);
-                    table.ForeignKey(
-                        name: "FK_Turistas_Reservas_ReservaId",
                         column: x => x.ReservaId,
                         principalTable: "Reservas",
                         principalColumn: "ReservaId",
@@ -167,6 +168,9 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 name: "LugarEventos");
 
             migrationBuilder.DropTable(
+                name: "Turistas");
+
+            migrationBuilder.DropTable(
                 name: "Municipios");
 
             migrationBuilder.DropTable(
@@ -174,9 +178,6 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
             migrationBuilder.DropTable(
                 name: "Reservas");
-
-            migrationBuilder.DropTable(
-                 name: "Turistas");
         }
     }
 }
