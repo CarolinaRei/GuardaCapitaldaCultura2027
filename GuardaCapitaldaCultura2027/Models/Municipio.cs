@@ -22,6 +22,7 @@ namespace GuardaCapitaldaCultura2027.Models
         public bool Desativar { get; set; }
 
         [Required(ErrorMessage = "Por favor, insira sua Descrição")]
+        [StringLength(1000, MinimumLength = 2, ErrorMessage = "Assunto deve ter pelo menos 2 caracteres e um máximo de 1000")]
         [Display(Name = "Descrição do Municipio *", Prompt = "Descrição do Municipio Enter")]
         public string Descricao { get; set; }
 
