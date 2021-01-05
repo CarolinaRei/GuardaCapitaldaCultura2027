@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GuardaCapitaldaCultura2027.Models;
 using GuardaCapitaldaCultura2027.Models.Context;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
     public class MunicipiosController : Controller
     {
         private readonly GuardaEventosBdContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public MunicipiosController(GuardaEventosBdContext context)
+        public MunicipiosController(GuardaEventosBdContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: Municipios
@@ -62,13 +66,35 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MunicipioId,Nome,Desativar,Descricao,ImagemNome")] Municipio municipio)
+        public async Task<IActionResult> Create([Bind("MunicipioId,Nome,Desativar,Descricao,ImageFile")] Municipio municipio)
         {
             if (ModelState.IsValid)
             {
+                //Salvar Imagem em wwroot/image
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileNome = Path.GetFileNameWithoutExtension(municipio.ImageFile.FileName);
+                string extencion = Path.GetExtension(municipio.ImageFile.FileName);
+                municipio.ImagemNome = fileNome = fileNome + DateTime.Now.ToString("yymmssfff") + extencion;
+                string path = Path.Combine(wwwRootPath + "/Image/", fileNome);
+                //Colocar o Desativar a True;
+                municipio.Desativar = true;
+
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await municipio.ImageFile.CopyToAsync(fileStream);
+                }
+
+
+                //incerir 
                 _context.Add(municipio);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                /*****Mensagem de sucesso ******/
+                ViewBag.title = "Municipio criado Com Sucesso!";
+                ViewBag.type = "alert-success";
+                ViewBag.message = "Municipio criado!";
+                ViewBag.redirect = "/Municipios/Create"; // Request.Path
+                return View("Mensagem");
+
             }
             return View(municipio);
         }
