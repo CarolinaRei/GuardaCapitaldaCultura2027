@@ -1,42 +1,45 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Municipio
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detales";
 }
 
-<h1>Details</h1>
+
 
 <div>
-    <h4>Municipio</h4>
+    <h4 class="alert-light">Detalhes do Municipio</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
+        <dt class="col-sm-4">
+            Nome do Municipio
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-12">
             @Html.DisplayFor(model => model.Nome)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Desativar)
+        <dt class="col-sm-4">
+            Imagem
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Desativar)
+        <dd class="col-sm-12">
+            <img src="@("~/image/" + Model.ImagemNome)" asp-append-version="true" width="250" height="250" />
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descricao)
+        <dt class="col-sm-4">
+            Descrição
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-12">
             @Html.DisplayFor(model => model.Descricao)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImagemNome)
+        <dt class="col-sm-4">
+            Desativar
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImagemNome)
+        <dd class="col-sm-12">
+            @Html.DisplayFor(model => model.Desativar)
         </dd>
+
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.MunicipioId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<div class="float-left">
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.MunicipioId">Editar</a>
+    <a class="btn btn-light" asp-action="Index">Retornar a Lista</a>
+    <a height="50" class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.MunicipioId">Delete</a>
 </div>
