@@ -22,38 +22,38 @@ namespace GuardaCapitaldaCultura2027.Models
                 new Municipio
                 {
                     Nome ="Guarda",
-                    ImagemNome= "guarda202028813.jpg"
-                    
+                    ImagemNome= "~/img/guarda.jpg"
+
                 },
                 new Municipio
                 {
                     Nome = "Aguiar da Beira",
-                    ImagemNome = "Aguiar-da-Beira-Largo-Monumentos203011164.jpg"
+                    ImagemNome = "~/img/Aguiar-da-Beira-Largo-Monumentos.jpg"
                 },
                 new Municipio
                 {
                     Nome = "Celorico da Beira",
-                    ImagemNome = "celorico203044890.jpg"
+                    ImagemNome = "~/img/celorico.jpg"
                 },
                   new Municipio
                   {
                       Nome = "Covilhã",
-                      ImagemNome = "covilha202901619.jpg"
+                      ImagemNome = "~/img/covilha.jpg"
                   },
                 new Municipio
                 {
                     Nome = "Fundão",
-                    ImagemNome = "fundao203213648.jpg"
+                    ImagemNome = "~/img/fundao.jpg"
                 },
                 new Municipio
                 {
                     Nome = "Sabugal",
-                    ImagemNome = "Sabugal202838363.jpg"
+                    ImagemNome = "~/img/Sabugal.jpg"
                 },
                 new Municipio
                 {
                     Nome = "Trancoso",
-                    ImagemNome = "trancoso202743150.jpg"
+                    ImagemNome = "~/img/trancoso.jpg"
                 }
             );
             dbContext.SaveChanges();
