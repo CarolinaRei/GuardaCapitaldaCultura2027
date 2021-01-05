@@ -17,6 +17,7 @@ namespace GuardaCapitaldaCultura2027.Models
         public string Nome { get; set; }
 
 
+        [Required]
         public bool Desativar { get; set; }
 
         [Required(ErrorMessage = "Por favor, insira sua Descrição")]
