@@ -25,6 +25,14 @@ namespace GuardaCapitaldaCultura2027.Controllers
             return View(await _context.Municipios.ToListAsync());
         }
 
+        // GET: Municipios
+        public async Task<IActionResult> Page()
+        {
+            return View(await _context.Municipios.ToListAsync());
+        }
+
+
+
         // GET: Municipios/Details/5
         public async Task<IActionResult> Details(int? id)
         {
