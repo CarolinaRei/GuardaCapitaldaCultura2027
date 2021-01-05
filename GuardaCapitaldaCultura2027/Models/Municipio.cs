@@ -33,7 +33,7 @@ namespace GuardaCapitaldaCultura2027.Models
 
 
         [NotMapped]
-        [Display(Name="Enviar Ficheiro")]
+        [Display(Name="Enviar Ficheiro *")]
         [Required(ErrorMessage = "Por favor, Selecine o Ficheiro")]
         public IFormFile ImageFile { get; set; }
     }
