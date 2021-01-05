@@ -46,7 +46,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(nullable: false),
                     Desativar = table.Column<bool>(nullable: false),
-                    Descricao = table.Column<string>(nullable: false),
+                    Descricao = table.Column<string>(maxLength: 1000, nullable: false),
                     ImagemNome = table.Column<string>(type: "nvarchar(100)", nullable: true)
                 },
                 constraints: table =>

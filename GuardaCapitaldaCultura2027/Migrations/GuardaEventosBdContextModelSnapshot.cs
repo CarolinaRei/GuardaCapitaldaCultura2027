@@ -122,7 +122,8 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(1000)")
+                        .HasMaxLength(1000);
 
                     b.Property<string>("ImagemNome")
                         .HasColumnType("nvarchar(100)");

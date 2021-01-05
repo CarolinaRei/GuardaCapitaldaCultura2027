@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuardaCapitaldaCultura2027.Migrations
 {
     [DbContext(typeof(GuardaEventosBdContext))]
-    [Migration("20210105202545_Municipiov")]
+    [Migration("20210105220429_Municipiov")]
     partial class Municipiov
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -124,7 +124,8 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(1000)")
+                        .HasMaxLength(1000);
 
                     b.Property<string>("ImagemNome")
                         .HasColumnType("nvarchar(100)");
