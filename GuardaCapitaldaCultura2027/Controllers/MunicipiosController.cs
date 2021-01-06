@@ -28,13 +28,14 @@ namespace GuardaCapitaldaCultura2027.Controllers
         {
             return View(await _context.Municipios.ToListAsync());
         }
-        // GET: Municipios/IndexGestor
-        public async Task<IActionResult> IndexGestor(int? id)
+
+        // GET: Municipios
+        public async Task<IActionResult> Page()
         {
-            var municipio = await _context.Municipios
-                .FirstOrDefaultAsync(m => m.MunicipioId == id);
             return View(await _context.Municipios.ToListAsync());
         }
+
+
 
         // GET: Municipios/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -65,7 +66,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("municipioId,Nome,ImageFile")] Municipio municipio)
+        public async Task<IActionResult> Create([Bind("MunicipioId,Nome,Desativar,Descricao,ImageFile")] Municipio municipio)
         {
             if (ModelState.IsValid)
             {
@@ -75,6 +76,8 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 string extencion = Path.GetExtension(municipio.ImageFile.FileName);
                 municipio.ImagemNome = fileNome = fileNome + DateTime.Now.ToString("yymmssfff") + extencion;
                 string path = Path.Combine(wwwRootPath + "/Image/", fileNome);
+                //Colocar o Desativar a True;
+                municipio.Desativar = true;
 
                 using (var fileStream = new FileStream(path, FileMode.Create))
                 {
@@ -92,8 +95,6 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 ViewBag.redirect = "/Municipios/Create"; // Request.Path
                 return View("Mensagem");
 
-                
-               // return RedirectToAction(nameof(Index));
             }
             return View(municipio);
         }
@@ -119,7 +120,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("municipioId,Nome,ImagemNome")] Municipio municipio)
+        public async Task<IActionResult> Edit(int id, [Bind("MunicipioId,Nome,Desativar,Descricao,ImagemNome")] Municipio municipio)
         {
             if (id != municipio.MunicipioId)
             {
@@ -172,29 +173,10 @@ namespace GuardaCapitaldaCultura2027.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-
-
             var municipio = await _context.Municipios.FindAsync(id);
-            //delete image from wwwroot/image
-            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image", municipio.ImagemNome);
-            if (System.IO.File.Exists(imagePath)) 
-            {
-                System.IO.File.Delete(imagePath);
-            }
-
-            //delect the record
             _context.Municipios.Remove(municipio);
             await _context.SaveChangesAsync();
-
-            /*****Mensagem de sucesso ******/
-            ViewBag.title = "Municipio Deletado Sucesso!";
-            ViewBag.type = "alert-warning";
-            ViewBag.message = "Infelismente Foi deletado!";
-            ViewBag.redirect = "/Municipios/Index"; // Request.Path
-            return View("Mensagem");
-
-
-            //return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index));
         }
 
         private bool MunicipioExists(int id)

@@ -8,31 +8,51 @@
 <h4 class="alert-light">Inserir Municipio</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageFile" class="control-label"></label>
-                <input asp-for="ImageFile" accept="image/*" />
-                <!--<input asp-for="ImageFile" accept="image/png, image/jpeg, image/jpg" />-->
-                <span asp-validation-for="ImageFile" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="col-md-6 align-items-xl-end text-justify">
+        <div class="m-5"></div>
+        <p><span class="font-weight-bold">Nota: </span>Os dados dos Municipios devem ser coerentes claros e verídicos, de modo que não haja inconsistência. </p>
+        <p>Obrigado.</p>
+        
+    </div>
+
+
+    <div class="col-md-6 text-left">
+        <fieldset class="border p-4 list-inline-item">
+            <legend class="w-auto text-center font-weight-bold">Formulário de Municipio</legend>
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Nome" class="control-label font-weight-bold"></label>
+                    <input asp-for="Nome" class="form-control" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageFile" class="control-label font-weight-bold"></label>
+                    <br />
+                    <input asp-for="ImageFile" accept="image/*" />
+                    <!--<input asp-for="ImageFile" accept="image/png, image/jpeg, image/jpg" />-->
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Descricao" class="control-label font-weight-bold"></label>
+                    <textarea asp-for="Descricao" class="form-control"></textarea>
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
+                    <input type="submit" value="Criar" class="btn btn-primary float-right" >
+
+                </div>
+
+            </form>
+            <br/>
+            <br/>
+            <hr/>
+            <p>Todos os campos são obrigatórios</p>
+        </fieldset>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

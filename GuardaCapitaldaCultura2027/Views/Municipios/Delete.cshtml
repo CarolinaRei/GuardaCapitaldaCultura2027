@@ -4,29 +4,42 @@
     ViewData["Title"] = "Delete";
 }
 
+<h1>Delete</h1>
 
-<h3 class="alert-light">Tem certeza de que deseja excluir Municipio?</h3>
+<h3>Are you sure you want to delete this?</h3>
 <div>
+    <h4>Municipio</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Nome)
         </dd>
-
-        <dt class="col-sm-2">
-            Imagem
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Desativar)
         </dt>
-        <dd class="col-sm-10">
-            <img src="@("~/image/" + Model.ImagemNome)" asp-append-version="true" width="250" height="250"/>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Desativar)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ImagemNome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ImagemNome)
         </dd>
     </dl>
     
-    <form asp-action="Delete" class="float-left">
+    <form asp-action="Delete">
         <input type="hidden" asp-for="MunicipioId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> 
-        <a class="btn btn-light" asp-action="Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
     </form>
 </div>
