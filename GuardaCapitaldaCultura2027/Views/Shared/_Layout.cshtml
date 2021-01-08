@@ -112,16 +112,7 @@
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Home" asp-action="Sobre">Sobre Nós</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Contactos" asp-action="Create">Contactos</a></li>
                 </ul>
-
-                <div class="mynav_dropdown">
-                    <button class="mynav_dropbtn">
-                        <a asp-controller="Home" asp-action="Erro">Login</a>
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="mynav_dropdown-content">
-                        <a asp-controller="Turistas" asp-action="Create">Registar</a>
-                    </div>
-                </div>
+                <partial name="_LoginPartial.cshtml"/>
                 <div class="mynav_dropdown">
                     <button class="mynav_dropbtn">
                         <a>PT</a>
