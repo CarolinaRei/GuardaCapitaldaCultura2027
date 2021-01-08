@@ -73,6 +73,7 @@ namespace GuardaCapitaldaCultura2027
                 endpoints.MapRazorPages();
             });
 
+            // Recria dados necessarios para inicializar a base de dados
             PopularBaseDadosAsync(app.ApplicationServices);
         }
 
