@@ -36,14 +36,14 @@ namespace GuardaCapitaldaCultura2027.Controllers
             {
                 CurrentPage = page,
                 PageSize = PagingInfoMunicipio.DEFAULT_PAGE_SIZE,
-                TotalItems = _context.Municipios.Where(p => nome == null || p.Nome.Contains(nome)).Count()
+                TotalItems = _context.Municipio.Where(p => nome == null || p.Nome.Contains(nome)).Count()
             };
 
             return View(
                 //await _context.Municipios.ToListAsync()
                     new ListaMunicipio
                     {
-                        Municipios = _context.Municipios.Where(p => nome == null || p.Nome.Contains(nome))
+                        Municipios = _context.Municipio.Where(p => nome == null || p.Nome.Contains(nome))
                             .OrderBy(p => p.Nome)
                             .Skip((page - 1) * pagination.PageSize)
                             .Take(pagination.PageSize),
@@ -56,7 +56,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // GET: Municipios
         public async Task<IActionResult> Page()
         {
-            return View(await _context.Municipios.ToListAsync());
+            return View(await _context.Municipio.ToListAsync());
         }
 
 
@@ -69,7 +69,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var municipio = await _context.Municipios
+            var municipio = await _context.Municipio
                 .FirstOrDefaultAsync(m => m.MunicipioId == id);
             if (municipio == null)
             {
@@ -130,7 +130,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var municipio = await _context.Municipios.FindAsync(id);
+            var municipio = await _context.Municipio.FindAsync(id);
             if (municipio == null)
             {
                 return NotFound();
@@ -143,7 +143,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MunicipioId,Nome,Desativar,Descricao,ImagemNome")] Municipio municipio)
+        public async Task<IActionResult> Edit(int id, [Bind("MunicipioId,Nome,Data_imagem,Desativar,Descricao")] Municipio municipio, List<IFormFile> Imagem)
         {
             if (id != municipio.MunicipioId)
             {
@@ -154,6 +154,24 @@ namespace GuardaCapitaldaCultura2027.Controllers
             {
                 try
                 {
+                    foreach (var item in Imagem)
+                    {
+                        if (item.Length > 0)
+                        {
+                            using (var stream = new MemoryStream())
+                            {
+                                await item.CopyToAsync(stream);
+                                municipio.Imagem = stream.ToArray();
+                            }
+                        }
+                    }
+
+                    Municipio VerificarDados = await _context.Municipio.FindAsync(id);
+                    VerificarDados.Nome = municipio.Nome;
+                    VerificarDados.Data_imagem = municipio.Data_imagem;
+
+                    municipio = VerificarDados;
+
                     _context.Update(municipio);
                     await _context.SaveChangesAsync();
                 }
@@ -181,7 +199,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var municipio = await _context.Municipios
+            var municipio = await _context.Municipio
                 .FirstOrDefaultAsync(m => m.MunicipioId == id);
             if (municipio == null)
             {
@@ -196,15 +214,15 @@ namespace GuardaCapitaldaCultura2027.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var municipio = await _context.Municipios.FindAsync(id);
-            _context.Municipios.Remove(municipio);
+            var municipio = await _context.Municipio.FindAsync(id);
+            _context.Municipio.Remove(municipio);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool MunicipioExists(int id)
         {
-            return _context.Municipios.Any(e => e.MunicipioId == id);
+            return _context.Municipio.Any(e => e.MunicipioId == id);
         }
     }
 }

@@ -87,13 +87,13 @@ namespace GuardaCapitaldaCultura2027
             {
                 var db = serviceScope.ServiceProvider.GetService<GuardaEventosBdContext>();
 
-                if (!db.Municipios.Any())
+                if (!db.Municipio.Any())
                 {
                     Random rnd = new Random();
                     int foto_nome = rnd.Next(1, 20);
                     byte[] fotogafia = File.ReadAllBytes("./Image/" + foto_nome + ".jpg");
 
-                    db.Municipios.AddRange(new List<Municipio>() {
+                    db.Municipio.AddRange(new List<Municipio>() {
                         new Municipio()
                         {
                             Nome ="Guarda",
@@ -218,7 +218,7 @@ namespace GuardaCapitaldaCultura2027
                         new Evento()
                         {
                             Name = "Meda+",
-                            MunicipioId = db.Municipios.Where(m=>m.Nome.Equals("Meda")).FirstOrDefault().MunicipioId,
+                            MunicipioId = db.Municipio.Where(m=>m.Nome.Equals("Meda")).FirstOrDefault().MunicipioId,
                             Data_realizacao = DateTime.Now,
                             Descricao = "Festival Meda+",
                             Lotacao_max = 100

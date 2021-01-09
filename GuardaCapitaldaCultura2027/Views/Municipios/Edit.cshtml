@@ -9,9 +9,9 @@
 
 <div class="row">
 
-    <div class="col-md-6 text-left">
+    <!--<div class="col-md-6 text-left">
         <fieldset class="border p-4 list-inline-item">
-            <legend class="w-auto">Formulário de contacto</legend>
+            <legend class="w-auto">Formulário de Munic</legend>
             <div class="col-md-4">
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -37,6 +37,59 @@
                 <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
 
             </div>
+        </fieldset>
+    </div>-->
+
+    <div class="col-md-6 text-left">
+        <fieldset class="border p-4 list-inline-item">
+            <legend class="w-auto text-center font-weight-bold">Formulário de Municipio</legend>
+            <form method="post" enctype="multipart/form-data" asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="MunicipioId" />
+                <div class="form-group">
+                    <label asp-for="Nome" class="control-label font-weight-bold"></label>
+                    <input asp-for="Nome" class="form-control" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+                <div class="form-group field half">
+                    <label asp-for="Data_imagem" class="control-label"></label>
+                    <input type="date" asp-for="Data_imagem" class="form-control" />
+                    <span asp-validation-for="Data_imagem" class="textoErro"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Descricao" class="control-label font-weight-bold"></label>
+                    <textarea asp-for="Descricao" class="form-control"></textarea>
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+                @*<div class="form-group field half">
+            <div class="custom-file">
+                <label class="custom-file-label">Imagem</label>
+                <input asp-for="Imagem" type="file" required accept="image/*" class="form-control custom-file-input" title="Insira uma imagem " />
+                <br />
+                <span asp-validation-for="Imagem" class="textoErro"></span>
+            </div>
+        </div>*@
+            <div class="custom-file">
+                <label asp-for="Imagem" class="control-label font-weight-bold"></label>
+
+                @{
+                    var base64 = Convert.ToBase64String(Model.Imagem);
+                    var imgsrc = string.Format("data:image/gif; base64,{0}", base64);
+                }
+                <img src='@imgsrc' width="80%" />
+            </div>
+
+                <div class="form-group m-3">
+                    <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
+                    <input type="submit" value="Criar" class="btn btn-primary float-right">
+
+                </div>
+
+            </form>
+            <br />
+            <br />
+            <hr />
+            <p>Todos os campos são obrigatórios</p>
         </fieldset>
     </div>
 </div>

@@ -15,7 +15,7 @@ namespace GuardaCapitaldaCultura2027.Models
         }
         private static void PopulateMunicipio(GuardaEventosBdContext dbContext)
         {
-            if (dbContext.Municipios.Any())
+            if (dbContext.Municipio.Any())
             {
                 return;
             }
@@ -23,7 +23,7 @@ namespace GuardaCapitaldaCultura2027.Models
             int foto_nome = rnd.Next(1, 5);
             byte[] fotogafia = File.ReadAllBytes("./Image/" + foto_nome + ".jpg");
             
-            dbContext.Municipios.AddRange(
+            dbContext.Municipio.AddRange(
                 new Municipio
                 {
                     Nome ="Guarda",
