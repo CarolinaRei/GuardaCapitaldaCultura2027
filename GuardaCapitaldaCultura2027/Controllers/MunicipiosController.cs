@@ -18,6 +18,11 @@ namespace GuardaCapitaldaCultura2027.Controllers
         private readonly GuardaEventosBdContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
 
+        private static string auxordenar = "";
+        private static int auxdirecaoordena = 0;
+        private static int auxaprovacao = 0;
+        private static int auxpage = 0;
+
         public MunicipiosController(GuardaEventosBdContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
@@ -25,9 +30,27 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Municipios
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string nome = null, int page = 1)
         {
-            return View(await _context.Municipios.ToListAsync());
+            var pagination = new PagingInfoMunicipio
+            {
+                CurrentPage = page,
+                PageSize = PagingInfoMunicipio.DEFAULT_PAGE_SIZE,
+                TotalItems = _context.Municipios.Where(p => nome == null || p.Nome.Contains(nome)).Count()
+            };
+
+            return View(
+                //await _context.Municipios.ToListAsync()
+                    new ListaMunicipio
+                    {
+                        Municipios = _context.Municipios.Where(p => nome == null || p.Nome.Contains(nome))
+                            .OrderBy(p => p.Nome)
+                            .Skip((page - 1) * pagination.PageSize)
+                            .Take(pagination.PageSize),
+                        pagination = pagination,
+                        SearchNome = nome
+                    }
+                );
         }
 
         // GET: Municipios

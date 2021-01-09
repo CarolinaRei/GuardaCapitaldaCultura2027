@@ -7,8 +7,8 @@ namespace GuardaCapitaldaCultura2027.Models
 {
     public class PagingInfoMunicipio
     {
-        public const int TAM_PAGINA = 10;
-        public const int NUMERO_ANTES = 3;
+        public const int DEFAULT_PAGE_SIZE = 10;
+        public const int NUMERO_ANTES_DEPOIS = 3;
 
         public int TotalItems { get; set; }
 

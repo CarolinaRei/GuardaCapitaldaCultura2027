@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 
 namespace GuardaCapitaldaCultura2027.Models
 {
-    public class MunicipioListViewModel
+    public class ListaMunicipio
     {
         public IEnumerable<Municipio> Municipios { get; set; }
-        public InfoPaginacao Pagination { get; set; }
+
+        public PagingInfoMunicipio pagination { get; set; }
+
+        public string SearchNome { get; set; }
     }
 }
