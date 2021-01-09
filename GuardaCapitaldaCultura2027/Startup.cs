@@ -87,32 +87,7 @@ namespace GuardaCapitaldaCultura2027
             {
                 var db = serviceScope.ServiceProvider.GetService<GuardaEventosBdContext>();
 
-                if (!db.Municipios.Any())
-                {
-                    db.Municipios.AddRange(new List<Municipio>() {
-                        new Municipio()
-                        {
-                            Nome = "Meda",
-                            ImagemNome = "meda.jpg"
-                        }
-                    });
-                    await db.SaveChangesAsync();
-                }
-
-                if (!db.Eventos.Any())
-                {
-                    db.Eventos.AddRange(new List<Evento>() {
-                        new Evento()
-                        {
-                            Name = "Meda+",
-                            MunicipioId = db.Municipios.Where(m=>m.Nome.Equals("Meda")).FirstOrDefault().MunicipioId,
-                            Data_realizacao = DateTime.Now,
-                            Descricao = "Festival Meda+",
-                            Lotacao_max = 100
-                        }
-                    });
-                    await db.SaveChangesAsync();
-                }
+                SeedDataMunicipio.Populate(db);
             }
         }
     }
