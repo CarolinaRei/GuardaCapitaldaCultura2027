@@ -60,7 +60,6 @@ namespace GuardaCapitaldaCultura2027.Controllers
             {
                 _context.Add(turista);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
                 // Mensagem de sucesso
                 ViewBag.title = "Turista foi criado com sucesso";
                 ViewBag.type = "alert-sucess";

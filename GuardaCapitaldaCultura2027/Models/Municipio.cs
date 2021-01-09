@@ -12,22 +12,29 @@ namespace GuardaCapitaldaCultura2027.Models
     {
         public int MunicipioId { get; set; }
 
-        [Required(ErrorMessage = "Por favor, insira seu Nome")]
+        //[Required(ErrorMessage = "Por favor, insira seu Nome")]
         [Display(Name = "Nome do Municipio *", Prompt = "Nome Municipio Enter")]
 
         public string Nome { get; set; }
+
+        public DateTime Data_imagem { get; set; }
 
 
         [Required]
         public bool Desativar { get; set; }
 
-        [Required(ErrorMessage = "Por favor, insira sua Descrição")]
+        /*[Required(ErrorMessage = "Por favor, insira sua Descrição")]
         [StringLength(1000, MinimumLength = 2, ErrorMessage = "Assunto deve ter pelo menos 2 caracteres e um máximo de 1000")]
+        */
         [Display(Name = "Descrição do Municipio *", Prompt = "Descrição do Municipio Enter")]
         public string Descricao { get; set; }
 
 
-        [Column(TypeName = "nvarchar(100)")]
+
+        public byte[] Imagem { get; set; }
+
+
+        /*[Column(TypeName = "nvarchar(100)")]
         [Display(Name ="Imagem Nome")]
         public string ImagemNome { get; set; }
 
@@ -36,5 +43,6 @@ namespace GuardaCapitaldaCultura2027.Models
         [Display(Name="Enviar Ficheiro *")]
         [Required(ErrorMessage = "Por favor, Selecine o Ficheiro")]
         public IFormFile ImageFile { get; set; }
+        */
     }
 }

@@ -9,6 +9,7 @@ using GuardaCapitaldaCultura2027.Models;
 using GuardaCapitaldaCultura2027.Models.Context;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
@@ -66,22 +67,21 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MunicipioId,Nome,Desativar,Descricao,ImageFile")] Municipio municipio)
+        public async Task<IActionResult> Create([Bind("MuicipioId,Nome,Data_imagem,Descricao,Desativar")] Municipio municipio, List<IFormFile> Imagem)
         {
             if (ModelState.IsValid)
             {
-                //Salvar Imagem em wwroot/image
-                string wwwRootPath = _hostEnvironment.WebRootPath;
-                string fileNome = Path.GetFileNameWithoutExtension(municipio.ImageFile.FileName);
-                string extencion = Path.GetExtension(municipio.ImageFile.FileName);
-                municipio.ImagemNome = fileNome = fileNome + DateTime.Now.ToString("yymmssfff") + extencion;
-                string path = Path.Combine(wwwRootPath + "/Image/", fileNome);
-                //Colocar o Desativar a True;
-                municipio.Desativar = true;
-
-                using (var fileStream = new FileStream(path, FileMode.Create))
+                //conversao da imagem para binario
+                foreach (var item in Imagem)
                 {
-                    await municipio.ImageFile.CopyToAsync(fileStream);
+                    if (item.Length > 0)
+                    {
+                        using (var stream = new MemoryStream())
+                        {
+                            await item.CopyToAsync(stream);
+                            municipio.Imagem = stream.ToArray();
+                        }
+                    }
                 }
 
 

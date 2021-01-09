@@ -13,16 +13,20 @@
     </p>
 </div>
 <div class="row">
-    
+
     <fieldset class="border p-4">
         <legend class="w-auto text-left">Formulário de contacto</legend>
-        
+
 
         <table class="table">
             <thead>
                 <tr>
                     <th>
                         Nome
+                    </th>
+
+                    <th>
+                        Data
                     </th>
                     <th>
                         Desativar
@@ -39,6 +43,10 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Nome)
                         </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Data_imagem)
+                        </td>
+
                         <td>
                             @Html.DisplayFor(modelItem => item.Desativar)
                         </td>
