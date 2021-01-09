@@ -72,23 +72,6 @@ namespace GuardaCapitaldaCultura2027
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-
-            // Recria dados necessarios para inicializar a base de dados
-            PopularBaseDadosAsync(app.ApplicationServices);
-        }
-
-        /// <summary>
-        /// Recria os dados da base de dados que foram apagados se esta estiver vazia.
-        /// </summary>
-        /// <param name="serviceProvider"></param>
-        private async Task PopularBaseDadosAsync(IServiceProvider serviceProvider)
-        {
-            using (var serviceScope = serviceProvider.CreateScope())
-            {
-                var db = serviceScope.ServiceProvider.GetService<GuardaEventosBdContext>();
-
-                SeedDataMunicipio.Populate(db);
-            }
         }
     }
 }

@@ -1,7 +1,14 @@
 ﻿@page
 @model LogoutModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
 @{
     ViewData["Title"] = "Log out";
+}
+
+@{
+    await SignInManager.SignOutAsync();
 }
 
 <header>
