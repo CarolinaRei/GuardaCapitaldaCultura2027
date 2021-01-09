@@ -13,7 +13,7 @@
     </p>
 
 </div>
-<div class="card mt-3 bg-info">
+<!--<div class="card mt-3 bg-info">
     <div class="card-header">
         <div class="card-title font-weight-bold">Search</div>
     </div>
@@ -28,14 +28,33 @@
             </div>
         </form>
     </div>
-</div>
+</div>-->
+<!-- Barra de Búsqueda -->
+
 <div class="row">
 
-    <fieldset class="border p-4">
-        <legend class="w-auto text-left">Formulário de contacto</legend>
+  
+</div>
+<div class="row mt-2">
 
+    <fieldset class="border p-4 ">
+        <legend class="w-auto text-center"></legend>
+        <form class="input-group md-form form-sm form-1 pl-0 mb-4" asp-action="Index" method="get">
+            <div class="input-group-prepend">
+                <span class="input-group-text purple lighten-3" id="basic-text1">
+                    <i class="fas fa-search text-white"
+                       aria-hidden="true"></i>
+                </span>
+            </div>
+            <input name="name" type="search" placeholder="Pesquise" class="form-control" value="@Model.SearchNome" />
+            <input name="page" type="hidden" value="1" />
+            <div class="ml-3">
+                <input type="submit" value="Pesquisar" class="btn btn-primary mr-4" />
+                <a asp-action="Index" class="btn btn-secondary ml-1">Limpar Pesquisa</a>
+            </div>
+        </form>
 
-        <table class="table">
+        <table class="table text-lg-center">
             <thead>
                 <tr>
                     <th>
@@ -43,32 +62,26 @@
                     </th>
 
                     <th>
-                        Data
-                    </th>
-                    <th>
                         Desativar
                     </th>
                     <th>
-                        Ações
+                        Opções
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="text-justify">
                 @foreach (var item in Model.Municipios)
                 {
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.Nome)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Data_imagem)
-                        </td>
 
                         <td>
                             @Html.DisplayFor(modelItem => item.Desativar)
                         </td>
                         <td class="m-5">
-                            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.MunicipioId">Editar</a>
+                            <a class="btn btn-warning mr-4" asp-action="Edit" asp-route-id="@item.MunicipioId">Editar</a>
                             <a class="btn btn-info" asp-action="Details" asp-route-id="@item.MunicipioId">Detales</a>
                         </td>
                     </tr>
@@ -78,30 +91,32 @@
 
     </fieldset>
 </div>
-<nav class="mt-3">
-    <ul class="pagination">
-        <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1" asp-route-name="@Model.SearchNome">First</a></li>
+<div class="row">
+    <nav class="mt-3">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1" asp-route-name="@Model.SearchNome">First</a></li>
 
-        @{
-            int initalPage = Model.pagination.CurrentPage - PagingInfoMunicipio.NUMERO_ANTES_DEPOIS;
-            if (initalPage < 1) initalPage = 1;
+            @{
+                int initalPage = Model.pagination.CurrentPage - PagingInfoMunicipio.NUMERO_ANTES_DEPOIS;
+                if (initalPage < 1) initalPage = 1;
 
-            int finalPage = Model.pagination.CurrentPage + PagingInfoMunicipio.NUMERO_ANTES_DEPOIS;
-            if (finalPage > Model.pagination.TotalPages) finalPage = Model.pagination.TotalPages;
-        }
-
-        @for (int p = initalPage; p <= finalPage; p++)
-        {
-            if (p == Model.pagination.CurrentPage)
-            {
-                <li class="page-item active"><a class="page-link" href="#">@p</a></li>
+                int finalPage = Model.pagination.CurrentPage + PagingInfoMunicipio.NUMERO_ANTES_DEPOIS;
+                if (finalPage > Model.pagination.TotalPages) finalPage = Model.pagination.TotalPages;
             }
-            else
-            {
-                <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@p" asp-route-name="@Model.SearchNome">@p</a></li>
-            }
-        }
 
-        <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.pagination.TotalPages" asp-route-name="@Model.SearchNome">Last</a></li>
-    </ul>
-</nav>
+            @for (int p = initalPage; p <= finalPage; p++)
+            {
+                if (p == Model.pagination.CurrentPage)
+                {
+                    <li class="page-item active"><a class="page-link" href="#">@p</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@p" asp-route-name="@Model.SearchNome">@p</a></li>
+                }
+            }
+
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.pagination.TotalPages" asp-route-name="@Model.SearchNome">Last</a></li>
+        </ul>
+    </nav>
+</div>
