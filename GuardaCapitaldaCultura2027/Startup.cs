@@ -237,21 +237,6 @@ namespace GuardaCapitaldaCultura2027
                     });
                     await db.SaveChangesAsync();
                 }
-
-                if (!db.Eventos.Any())
-                {
-                    db.Eventos.AddRange(new List<Evento>() {
-                        new Evento()
-                        {
-                            Name = "Meda+",
-                            MunicipioId = db.Municipio.Where(m=>m.Nome.Equals("Meda")).FirstOrDefault().MunicipioId,
-                            Data_realizacao = DateTime.Now,
-                            Descricao = "Festival Meda+",
-                            Lotacao_max = 100
-                        }
-                    });
-                    await db.SaveChangesAsync();
-                }
             }
         }
     }
