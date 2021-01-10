@@ -169,6 +169,9 @@ namespace GuardaCapitaldaCultura2027.Controllers
                     Municipio VerificarDados = await _context.Municipio.FindAsync(id);
                     VerificarDados.Nome = municipio.Nome;
                     VerificarDados.Data_imagem = municipio.Data_imagem;
+                    VerificarDados.Descricao = municipio.Descricao;
+                    VerificarDados.Desativar = municipio.Desativar;
+
 
                     municipio = VerificarDados;
 
