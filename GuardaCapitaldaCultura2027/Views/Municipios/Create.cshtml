@@ -8,12 +8,12 @@
 <h4 class="alert-light">Inserir Municipio</h4>
 <hr />
 <div class="row">
-    <div class="col-md-6 align-items-xl-end text-justify">
+   <!-- <div class="col-md-6 align-items-xl-end text-justify">
         <div class="m-5"></div>
         <p><span class="font-weight-bold">Nota: </span>Os dados dos Municipios devem ser coerentes claros e verídicos, de modo que não haja inconsistência. </p>
         <p>Obrigado.</p>
 
-    </div>
+    </div>-->
 
 
     <div class="col-md-6 text-left">
@@ -27,7 +27,7 @@
                     <span asp-validation-for="Nome" class="text-danger"></span>
                 </div>
                 <div class="form-group field half">
-                    <label asp-for="Data_imagem" class="control-label"></label>
+                    <label asp-for="Data_imagem" class="control-label font-weight-bold"></label>
                     <input type="date" asp-for="Data_imagem" class="form-control" />
                     <span asp-validation-for="Data_imagem" class="textoErro"></span>
                 </div>
