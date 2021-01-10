@@ -17,8 +17,8 @@ namespace GuardaCapitaldaCultura2027.Models
         [ForeignKey("FK_EventoId")]
         public int EventoId { get; set; }
 
-        [ForeignKey("FK_TuristaId")]
-        public int TuristaId { get; set; }
+        // [ForeignKey("FK_TuristaId")]
+        // public int TuristaId { get; set; }
 
         [Display(Name = "Nome")]
         [StringLength(20, MinimumLength = 3, ErrorMessage = "O nome deve ter entre 3 e 20 caracteres")]
@@ -33,6 +33,6 @@ namespace GuardaCapitaldaCultura2027.Models
 
         public Evento Evento;
 
-        public Turista Turista;
+        // public Turista Turista;
     }
 }
