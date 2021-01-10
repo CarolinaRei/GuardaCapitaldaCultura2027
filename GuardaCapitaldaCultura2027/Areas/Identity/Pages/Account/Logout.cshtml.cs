@@ -36,7 +36,7 @@ namespace GuardaCapitaldaCultura2027.Areas.Identity.Pages.Account
             }
             else
             {
-                return Page();
+                return RedirectToPage();
             }
         }
     }
