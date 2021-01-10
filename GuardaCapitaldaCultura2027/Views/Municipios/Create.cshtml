@@ -44,9 +44,13 @@
                             <span asp-validation-for="Imagem" class="textoErro"></span>
                         </div>
                     </div>*@
-                <div class="custom-file">
-                    <label class="custom-file-label">Escolher Imagem</label>
-                    <input asp-for="Imagem" type="file" accept="image/*" class="form-control custom-file-input" />
+                <div class="form-group">
+                    <label asp-for="Imagem" class="control-label font-weight-bold"></label>
+                    <div class="custom-file">
+                        <label class="custom-file-label">Escolher Imagem</label>
+                        <input asp-for="Imagem" type="file" accept="image/*" class="form-control custom-file-input" />
+                    </div>
+                    <span asp-validation-for="Imagem" class="text-danger"></span>
                 </div>
                 <div class="form-group m-3">
                     <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
