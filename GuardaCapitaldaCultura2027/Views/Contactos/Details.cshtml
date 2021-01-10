@@ -8,7 +8,7 @@
 <br />
 <br />
 <table class="table table-bordered text-left">
-   
+
     <tbody>
         <tr>
             <th scope="row"><h6>Nome</h6></th>
@@ -19,7 +19,7 @@
             <td> @Html.DisplayFor(model => model.Sobrenome)</td>
         </tr>
 
-      
+
         <tr>
             <th scope="row"><h6>E-mail</h6></th>
             <td> @Html.DisplayFor(model => model.Email)</td>
@@ -28,15 +28,15 @@
             <th scope="row"><h6>Assunto</h6></th>
             <td>@Html.DisplayFor(model => model.Assunto)</td>
         </tr>
-        
+
         <tr>
             <th scope="row"><h6>Mensagem</h6></th>
             <td> @Html.DisplayFor(model => model.Mensagem)</td>
         </tr>
     </tbody>
 </table>
+    <div class="card-body">
+        <a class="btn btn-secondary mr-4 float-right" >Responder</a>
+        <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
+    </div>
 
-<div class="float-left">
-    <a class="btn btn-warning" asp-page="" asp-route-id="@Model.ContactoId">Responder</a>
-    <a class="btn btn-light" asp-action="Index" href="#">Retornar a Lista</a>
-</div>
