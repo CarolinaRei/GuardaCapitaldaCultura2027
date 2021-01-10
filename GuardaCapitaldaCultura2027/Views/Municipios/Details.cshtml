@@ -5,52 +5,43 @@
 }
 
 
+<h4 class="alert-light">Detalhes Municipio</h4>
+<hr />
 
-<h1>Details</h1>
 
-<div>
-    <h4>Municipio</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data_imagem)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data_imagem)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Descricao)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Descricao)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Desativar)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Desativar)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Imagem)
-        </dt>
-        <dd class="col-sm-10">
-            @* @Html.DisplayFor(model => model.Imagem)*@
+<div class="row text-justify justify-content-md-center">
+    <div class="card" style="width: 80%;">
+        @{
+            var base64 = Convert.ToBase64String(Model.Imagem);
+            var imgsrc = string.Format("data:image/gif; base64,{0}", base64);
+        }
+        <img src='@imgsrc' class="img-fluid" alt="Imagem responsiva">
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayFor(model => model.Nome)</h5>
+            <p class="card-text"> @Html.DisplayFor(model => model.Descricao)</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
 
-            @{
-                var base64 = Convert.ToBase64String(Model.Imagem);
-                var imgsrc = string.Format("data:image/gif; base64,{0}", base64);
-            }
-            <img src='@imgsrc' width="20%" />
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.MunicipioId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+                <spam class="font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Desativar)
+                </spam>
+                <spam class="ml-3">
+                    @Html.DisplayFor(model => model.Desativar)
+                </spam>
+            </li>
+            <li class="list-group-item">
+                <span class="font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Data_imagem)
+                </span>
+                <span class="ml-3">
+                    @Html.DisplayFor(model => model.Data_imagem)
+                </span>
+            </li>
+        </ul>
+        <div class="card-body">
+            <a class="btn btn-warning mr-4 float-right" asp-action="Edit" asp-route-id="@Model.MunicipioId">Editar</a>
+            <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
+        </div>
+    </div>
 </div>

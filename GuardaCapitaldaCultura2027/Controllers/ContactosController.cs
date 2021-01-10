@@ -20,9 +20,28 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Contactos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string nome = null, int page = 1)
         {
-            return View(await _context.Contactos.ToListAsync());
+            var pagination = new PagingInfoMunicipio
+            {
+                CurrentPage = page,
+                PageSize = PagingInfoMunicipio.DEFAULT_PAGE_SIZE,
+                TotalItems = _context.Contactos.Where(p => nome == null || p.Assunto.Contains(nome)).Count()
+            };
+
+            return View(
+               new ListaContacto 
+               
+               { 
+                   //await _context.Contactos.ToListAsync()
+                   Contactos = _context.Contactos.Where(p => nome == null || p.Assunto.Contains(nome))
+                                .OrderBy(p => p.Assunto)
+                                .Skip((page - 1) * pagination.PageSize)
+                                .Take(pagination.PageSize),
+                            pagination = pagination,
+                            SearchNome = nome
+                   }
+                );
         }
 
         // GET: Contactos/Details/5

@@ -115,7 +115,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 ViewBag.title = "Municipio criado Com Sucesso!";
                 ViewBag.type = "alert-success";
                 ViewBag.message = "Municipio criado!";
-                ViewBag.redirect = "/Municipios/Create"; // Request.Path
+                ViewBag.redirect = "/Municipios/Index"; // Request.Path
                 return View("Mensagem");
 
             }
@@ -177,6 +177,11 @@ namespace GuardaCapitaldaCultura2027.Controllers
 
                     _context.Update(municipio);
                     await _context.SaveChangesAsync();
+                    ViewBag.title = "Municipio Atualizado Com Sucesso!";
+                    ViewBag.type = "alert-success";
+                    ViewBag.message = "Municipio Atualizado!";
+                    ViewBag.redirect = "/Municipios/Index"; // Request.Path
+                    return View("Mensagem");
                 }
                 catch (DbUpdateConcurrencyException)
                 {
