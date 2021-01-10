@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Municipio" class="control-label"></label>
-                <br/>
+                <br />
                 @(Html.DropDownList("MunicipioId",new List<SelectListItem>(ViewBag.municipios)))
                 <span asp-validation-for="MunicipioId" class="text-danger"></span>
             </div>
@@ -37,6 +37,11 @@
                 <label asp-for="Lotacao_max" class="control-label"></label>
                 <input asp-for="Lotacao_max" class="form-control" />
                 <span asp-validation-for="Lotacao_max" class="text-danger"></span>
+            </div>v
+            <div class="form-group">
+                <label asp-for="Imagem" class="control-label"></label>
+                <input asp-for="Imagem" class="form-control" />
+                <span asp-validation-for="Imagem" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
