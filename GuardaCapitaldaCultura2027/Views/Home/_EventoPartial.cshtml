@@ -6,6 +6,11 @@
             <div class="frontside">
                 <div class="card">
                     <div class="card-body text-center">
+                        
+                        <img width="64" 
+                             height="64" 
+                             src="base64:@(Convert.ToBase64String(Model.Imagem))"/>
+                        
                         <h4 class="card-title">@Model.Name</h4>
                         <p class="card-text">@Model.Descricao</p>
                         <p class="card-text">@Model.Data_realizacao</p>
