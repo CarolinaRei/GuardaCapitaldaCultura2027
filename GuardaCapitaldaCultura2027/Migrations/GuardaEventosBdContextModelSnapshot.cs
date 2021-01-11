@@ -70,6 +70,10 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("nvarchar(500)")
                         .HasMaxLength(500);
 
+                    b.Property<byte[]>("Imagem")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<int>("Lotacao_Ocupada")
                         .HasColumnType("int");
 

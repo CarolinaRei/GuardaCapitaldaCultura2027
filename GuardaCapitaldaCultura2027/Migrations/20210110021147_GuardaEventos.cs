@@ -98,6 +98,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     Name = table.Column<string>(maxLength: 20, nullable: false),
                     Descricao = table.Column<string>(maxLength: 500, nullable: false),
                     Data_realizacao = table.Column<DateTime>(nullable: false),
+                    Imagem = table.Column<byte[]>(nullable: false),
                     Lotacao_max = table.Column<int>(nullable: false),
                     Lotacao_Ocupada = table.Column<int>(nullable: false),
                     MunicipioId = table.Column<int>(nullable: false)

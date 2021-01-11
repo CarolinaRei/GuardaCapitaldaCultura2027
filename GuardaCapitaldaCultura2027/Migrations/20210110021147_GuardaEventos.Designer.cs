@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuardaCapitaldaCultura2027.Migrations
 {
     [DbContext(typeof(GuardaEventosBdContext))]
-    [Migration("20210108011219_GuardaEventos")]
+    [Migration("20210110021147_GuardaEventos")]
     partial class GuardaEventos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,6 +71,10 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(500)")
                         .HasMaxLength(500);
+
+                    b.Property<byte[]>("Imagem")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<int>("Lotacao_Ocupada")
                         .HasColumnType("int");

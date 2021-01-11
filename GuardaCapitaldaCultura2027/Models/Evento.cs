@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GuardaCapitaldaCultura2027.Models
 {
@@ -17,7 +14,6 @@ namespace GuardaCapitaldaCultura2027.Models
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "Por favor, insira o seu Nome")]
         [StringLength(20, MinimumLength = 3, ErrorMessage = "O nome deve ter entre 3 e 20 caracteres")]
-
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Por favor, insira a Descrição")]
@@ -30,6 +26,10 @@ namespace GuardaCapitaldaCultura2027.Models
         //[DataType(DataType.Date)]
         public DateTime Data_realizacao { get; set; }
 
+        [Display(Name = "Imagem do Evento")]
+        [Required(ErrorMessage = "Por favor, insira uma imagem")]
+        [DataType(DataType.Upload)]
+        public byte[] Imagem { get; set; }
 
         [Display(Name = "Lotação Maxima")]
         public int Lotacao_max { get; set; }
