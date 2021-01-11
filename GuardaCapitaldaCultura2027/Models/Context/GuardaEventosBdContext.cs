@@ -15,11 +15,11 @@ namespace GuardaCapitaldaCultura2027.Models.Context
 
         public DbSet<Evento> Eventos { get; set; }
 
-        public DbSet<Municipio> Municipios { get; set; }
+        public DbSet<Municipio> Municipio { get; set; }
         
         public DbSet<LugarEvento> LugarEventos { get; set; }
 
-        public DbSet<Turista> Turistas { get; set; }
+        //public DbSet<Turista> Turistas { get; set; }
 
         public DbSet<Reserva> Reservas { get; set; }
     }

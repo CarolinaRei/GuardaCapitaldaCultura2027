@@ -4,14 +4,16 @@ using GuardaCapitaldaCultura2027.Models.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GuardaCapitaldaCultura2027.Migrations
 {
     [DbContext(typeof(GuardaEventosBdContext))]
-    partial class GuardaEventosBdContextModelSnapshot : ModelSnapshot
+    [Migration("20210109170258_Municipio1")]
+    partial class Municipio1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,10 +71,6 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(500)")
                         .HasMaxLength(500);
-
-                    b.Property<byte[]>("Imagem")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<int>("Lotacao_Ocupada")
                         .HasColumnType("int");
@@ -138,7 +136,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
                     b.HasKey("MunicipioId");
 
-                    b.ToTable("Municipio");
+                    b.ToTable("Municipios");
                 });
 
             modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Reserva", b =>

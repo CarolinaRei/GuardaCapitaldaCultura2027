@@ -4,14 +4,228 @@
     ViewData["Title"] = "Edit";
 }
 
+<style>
+
+    /*
+=====
+CORE STYLES
+=====
+*/
+
+    .toggle {
+        --uiToggleSize: var(--toggleSize, 1.25rem);
+        --uiToggleBorderWidth: var(--toggleBorderWidth, 2px);
+        --uiToggleColor: var(--toggleColor, #222);
+        display: var(--toggleDisplay, inline-flex);
+        position: relative;
+    }
+
+    .toggle__input {
+        /*
+  The pattern by Sara Soueidan https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/
+  */
+        width: var(--uiToggleSize);
+        height: var(--uiToggleSize);
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 0;
+    }
+
+    /*
+1. Calculation of the gap for the custom checkbox
+*/
+
+    .toggle__label {
+        display: inline-flex;
+        min-height: var(--uiToggleSize);
+        padding-left: calc(var(--uiToggleSize) + var(--toggleIndent, .4em));
+    }
+
+    .toggle__input:not(:disabled) ~ .toggle__label {
+        cursor: pointer;
+    }
+
+    /*
+1. Ems helps to calculate size of the checkbox
+*/
+
+    .toggle__label::after {
+        content: "";
+        box-sizing: border-box;
+        width: 1em;
+        height: 1em;
+        font-size: var(--uiToggleSize); /* 1 */
+        background-color: transparent;
+        border: var(--uiToggleBorderWidth) solid var(--uiToggleColor);
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 2;
+    }
+
+    .toggle__input:checked ~ .toggle__label::after {
+        background-color: var(--uiToggleColor);
+    }
+
+    .toggle__text {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    /*
+The arrow size and position depends from sizes of square because I needed an arrow correct positioning from the top left corner of the element toggle
+
+1. Ems helps to calculate size and position of the arrow
+*/
+
+    .toggle__label::before {
+        content: "";
+        width: 0;
+        height: 0;
+        font-size: var(--uiToggleSize); /* 1 */
+        border-left-width: 0;
+        border-bottom-width: 0;
+        border-left-style: solid;
+        border-bottom-style: solid;
+        border-color: var(--toggleArrowColor, #fff);
+        position: absolute;
+        top: .5428em;
+        left: .25em;
+        z-index: 3;
+        transform-origin: left top;
+        transform: rotate(-40deg) skew(10deg);
+    }
+
+    .toggle__input:checked ~ .toggle__label::before {
+        --uiToggleArrowWidth: var(--toggleArrowWidth, 2px);
+        width: .4em;
+        height: .2em;
+        border-left-width: var(--uiToggleArrowWidth);
+        border-bottom-width: var(--uiToggleArrowWidth);
+    }
+
+    /*
+States
+*/
+
+    /* focus state */
+
+    .toggle:focus-within {
+        outline: var(--toggleOutlineWidthFocus, 3px) solid var(--toggleOutlineColorFocus, currentColor);
+        outline-offset: var(--toggleOutlineOffsetFocus, 5px);
+    }
+
+    /* disabled state */
+
+    .toggle__input:disabled ~ .toggle__label {
+        opacity: var(--toggleOpacityDisabled, .24);
+        cursor: var(--toggleCursorDisabled, not-allowed);
+        user-select: none;
+    }
+
+    /*
+=====
+PRESENTATION STYLES
+=====
+*/
+
+    /* 
+The demo skin
+*/
+
+    .toggle__label::after {
+        border-radius: var(--toggleBorderRadius, 2px);
+    }
+
+    /* 
+The animation of switching states
+*/
+
+    .toggle__input:not(:disabled) ~ .toggle__label::before {
+        will-change: width, height;
+        opacity: 0;
+    }
+
+    .toggle__input:not(:disabled):checked ~ .toggle__label::before {
+        opacity: 1;
+        transition: opacity .1s ease-out .25s, width .1s ease-out .5s, height .2s ease-out .3s;
+    }
+
+    .toggle__input:not(:disabled) ~ .toggle__label::after {
+        will-change: background-color;
+        transition: background-color .2s ease-out;
+    }
+
+    /*
+=====
+SETTINGS
+=====
+*/
+
+    .page__custom-settings {
+        --toggleColor: #690e90;
+        --toggleOutlineColorFocus: #690e90;
+        --toggleSize: 2rem;
+    }
+
+
+    /*
+=====
+DEMO
+=====
+*/
+
+  
+
+    .page {
+        box-sizing: border-box;
+        max-width: 45rem;
+        padding: 2.75rem 2rem 2.5rem;
+        margin: auto;
+        background-color: #fff;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2);
+        border-radius: 2px;
+    }
+
+    .page__section {
+        display: flex;
+        flex-wrap: wrap;
+        font-weight: 700;
+    }
+
+        .page__section:nth-child(n+2) {
+            margin-top: 3rem;
+        }
+
+    .page__custom-settings {
+        --pageToggleTextFontSize: 1.25rem;
+    }
+
+    .page__name {
+        width: 100%;
+    }
+
+        .page__name::first-letter {
+            text-transform: uppercase;
+        }
+
+    .page__toggle {
+        margin-top: 1.25rem;
+        margin-right: 1.5rem;
+        font-size: var(--pageToggleTextFontSize);
+    }
+  
+</style>
 <h4 class="alert-light">Editar Municipio</h4>
 <hr />
 
 <div class="row">
 
-    <div class="col-md-6 text-left">
+    <!--<div class="col-md-6 text-left">
         <fieldset class="border p-4 list-inline-item">
-            <legend class="w-auto">Formulário de contacto</legend>
+            <legend class="w-auto">Formulário de Munic</legend>
             <div class="col-md-4">
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -37,6 +251,68 @@
                 <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
 
             </div>
+        </fieldset>
+    </div>-->
+
+    <div class="col-md-6 text-left">
+        <fieldset class="border p-4 list-inline-item">
+            <legend class="w-auto text-center font-weight-bold">Formulário de Municipio</legend>
+            <form method="post" enctype="multipart/form-data" asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="MunicipioId" />
+                <div class="form-group">
+                    <label asp-for="Nome" class="control-label font-weight-bold"></label>
+                    <input asp-for="Nome" class="form-control" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="page__toggle">
+                        <label class="toggle">
+                            <input class="toggle__input" type="checkbox" checked>
+                            <span class="toggle__label">
+                                <label asp-for="Desativar" class="control-label"></label>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group field half">
+                    <label asp-for="Data_imagem" class="control-label font-weight-bold"></label>
+                    <input type="date" asp-for="Data_imagem" class="form-control" />
+                    <span asp-validation-for="Data_imagem" class="textoErro"></span>
+                </div>
+
+                <!--<div class="form-group">
+                    <label asp-for="Descricao" class="control-label font-weight-bold"></label>
+                    <textarea asp-for="Descricao" class="form-control"></textarea>
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>-->
+                <div class="form-group">
+                    <label asp-for="Descricao" class="control-label font-weight-bold"></label>
+                    <textarea asp-for="Descricao" class="form-control"></textarea>
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Imagem" class="control-label font-weight-bold"></label>
+
+                    @{
+                        var base64 = Convert.ToBase64String(Model.Imagem);
+                        var imgsrc = string.Format("data:image/gif; base64,{0}", base64);
+                    }
+
+                    <img src='@imgsrc' class="img-fluid img-thumbnail" alt="@Model.Nome">
+                </div>
+                <div class="form-group m-3">
+                    <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
+                    <input type="submit" value="Criar" class="btn btn-primary float-right">
+
+                </div>
+
+            </form>
+            <br />
+            <br />
+            <hr />
+            <p>Todos os campos são obrigatórios</p>
         </fieldset>
     </div>
 </div>

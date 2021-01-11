@@ -1,6 +1,7 @@
 ﻿using GuardaCapitaldaCultura2027.Models.Context;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,46 +15,28 @@ namespace GuardaCapitaldaCultura2027.Models
         }
         private static void PopulateMunicipio(GuardaEventosBdContext dbContext)
         {
-            if (dbContext.Municipios.Any())
+            if (dbContext.Municipio.Any())
             {
                 return;
             }
-            dbContext.Municipios.AddRange(
+            Random rnd = new Random();
+            int foto_nome = rnd.Next(1, 5);
+            byte[] fotogafia = File.ReadAllBytes("./Image/" + foto_nome + ".jpg");
+            
+            dbContext.Municipio.AddRange(
                 new Municipio
                 {
                     Nome ="Guarda",
-                    ImagemNome= "~/img/guarda.jpg"
-
-                },
-                new Municipio
-                {
-                    Nome = "Aguiar da Beira",
-                    ImagemNome = "~/img/Aguiar-da-Beira-Largo-Monumentos.jpg"
-                },
-                new Municipio
-                {
-                    Nome = "Celorico da Beira",
-                    ImagemNome = "~/img/celorico.jpg"
-                },
-                  new Municipio
-                  {
-                      Nome = "Covilhã",
-                      ImagemNome = "~/img/covilha.jpg"
-                  },
-                new Municipio
-                {
-                    Nome = "Fundão",
-                    ImagemNome = "~/img/fundao.jpg"
-                },
-                new Municipio
-                {
-                    Nome = "Sabugal",
-                    ImagemNome = "~/img/Sabugal.jpg"
+                    Descricao = "Guarda Guarda Guarda Guarda Guarda Guarda",
+                    Desativar = true,
+                    Imagem = fotogafia
                 },
                 new Municipio
                 {
                     Nome = "Trancoso",
-                    ImagemNome = "~/img/trancoso.jpg"
+                    Descricao = "Trancoso Trancoso Trancoso Trancoso Trancoso",
+                    Desativar = true,
+                    Imagem = fotogafia
                 }
             );
             dbContext.SaveChanges();

@@ -9,6 +9,7 @@ using GuardaCapitaldaCultura2027.Models;
 using GuardaCapitaldaCultura2027.Models.Context;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
@@ -17,6 +18,11 @@ namespace GuardaCapitaldaCultura2027.Controllers
         private readonly GuardaEventosBdContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
 
+        private static string auxordenar = "";
+        private static int auxdirecaoordena = 0;
+        private static int auxaprovacao = 0;
+        private static int auxpage = 0;
+
         public MunicipiosController(GuardaEventosBdContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
@@ -24,15 +30,33 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Municipios
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string nome = null, int page = 1)
         {
-            return View(await _context.Municipios.ToListAsync());
+            var pagination = new PagingInfoMunicipio
+            {
+                CurrentPage = page,
+                PageSize = PagingInfoMunicipio.DEFAULT_PAGE_SIZE,
+                TotalItems = _context.Municipio.Where(p => nome == null || p.Nome.Contains(nome)).Count()
+            };
+
+            return View(
+                //await _context.Municipios.ToListAsync()
+                    new ListaMunicipio
+                    {
+                        Municipios = _context.Municipio.Where(p => nome == null || p.Nome.Contains(nome))
+                            .OrderBy(p => p.Nome)
+                            .Skip((page - 1) * pagination.PageSize)
+                            .Take(pagination.PageSize),
+                        pagination = pagination,
+                        SearchNome = nome
+                    }
+                );
         }
 
         // GET: Municipios
         public async Task<IActionResult> Page()
         {
-            return View(await _context.Municipios.ToListAsync());
+            return View(await _context.Municipio.ToListAsync());
         }
 
 
@@ -45,7 +69,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var municipio = await _context.Municipios
+            var municipio = await _context.Municipio
                 .FirstOrDefaultAsync(m => m.MunicipioId == id);
             if (municipio == null)
             {
@@ -66,22 +90,21 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MunicipioId,Nome,Desativar,Descricao,ImageFile")] Municipio municipio)
+        public async Task<IActionResult> Create([Bind("MuicipioId,Nome,Data_imagem,Descricao,Desativar")] Municipio municipio, List<IFormFile> Imagem)
         {
             if (ModelState.IsValid)
             {
-                //Salvar Imagem em wwroot/image
-                string wwwRootPath = _hostEnvironment.WebRootPath;
-                string fileNome = Path.GetFileNameWithoutExtension(municipio.ImageFile.FileName);
-                string extencion = Path.GetExtension(municipio.ImageFile.FileName);
-                municipio.ImagemNome = fileNome = fileNome + DateTime.Now.ToString("yymmssfff") + extencion;
-                string path = Path.Combine(wwwRootPath + "/Image/", fileNome);
-                //Colocar o Desativar a True;
-                municipio.Desativar = true;
-
-                using (var fileStream = new FileStream(path, FileMode.Create))
+                //conversao da imagem para binario
+                foreach (var item in Imagem)
                 {
-                    await municipio.ImageFile.CopyToAsync(fileStream);
+                    if (item.Length > 0)
+                    {
+                        using (var stream = new MemoryStream())
+                        {
+                            await item.CopyToAsync(stream);
+                            municipio.Imagem = stream.ToArray();
+                        }
+                    }
                 }
 
 
@@ -92,7 +115,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 ViewBag.title = "Municipio criado Com Sucesso!";
                 ViewBag.type = "alert-success";
                 ViewBag.message = "Municipio criado!";
-                ViewBag.redirect = "/Municipios/Create"; // Request.Path
+                ViewBag.redirect = "/Municipios/Index"; // Request.Path
                 return View("Mensagem");
 
             }
@@ -107,7 +130,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var municipio = await _context.Municipios.FindAsync(id);
+            var municipio = await _context.Municipio.FindAsync(id);
             if (municipio == null)
             {
                 return NotFound();
@@ -120,7 +143,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MunicipioId,Nome,Desativar,Descricao,ImagemNome")] Municipio municipio)
+        public async Task<IActionResult> Edit(int id, [Bind("MunicipioId,Nome,Data_imagem,Desativar,Descricao")] Municipio municipio, List<IFormFile> Imagem)
         {
             if (id != municipio.MunicipioId)
             {
@@ -131,8 +154,34 @@ namespace GuardaCapitaldaCultura2027.Controllers
             {
                 try
                 {
+                    foreach (var item in Imagem)
+                    {
+                        if (item.Length > 0)
+                        {
+                            using (var stream = new MemoryStream())
+                            {
+                                await item.CopyToAsync(stream);
+                                municipio.Imagem = stream.ToArray();
+                            }
+                        }
+                    }
+
+                    Municipio VerificarDados = await _context.Municipio.FindAsync(id);
+                    VerificarDados.Nome = municipio.Nome;
+                    VerificarDados.Data_imagem = municipio.Data_imagem;
+                    VerificarDados.Descricao = municipio.Descricao;
+                    VerificarDados.Desativar = municipio.Desativar;
+
+
+                    municipio = VerificarDados;
+
                     _context.Update(municipio);
                     await _context.SaveChangesAsync();
+                    ViewBag.title = "Municipio Atualizado Com Sucesso!";
+                    ViewBag.type = "alert-success";
+                    ViewBag.message = "Municipio Atualizado!";
+                    ViewBag.redirect = "/Municipios/Index"; // Request.Path
+                    return View("Mensagem");
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -158,7 +207,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var municipio = await _context.Municipios
+            var municipio = await _context.Municipio
                 .FirstOrDefaultAsync(m => m.MunicipioId == id);
             if (municipio == null)
             {
@@ -173,15 +222,15 @@ namespace GuardaCapitaldaCultura2027.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var municipio = await _context.Municipios.FindAsync(id);
-            _context.Municipios.Remove(municipio);
+            var municipio = await _context.Municipio.FindAsync(id);
+            _context.Municipio.Remove(municipio);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool MunicipioExists(int id)
         {
-            return _context.Municipios.Any(e => e.MunicipioId == id);
+            return _context.Municipio.Any(e => e.MunicipioId == id);
         }
     }
 }

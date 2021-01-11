@@ -5,41 +5,43 @@
 }
 
 
+<h4 class="alert-light">Detalhes Municipio</h4>
+<hr />
 
-<div>
-    <h4 class="alert-light">Detalhes do Municipio</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-4">
-            Nome do Municipio
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class="col-sm-4">
-            Imagem
-        </dt>
-        <dd class="col-sm-12">
-            <img src="@("~/image/" + Model.ImagemNome)" asp-append-version="true" width="250" height="250" />
-        </dd>
-        <dt class="col-sm-4">
-            Descrição
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Descricao)
-        </dd>
-        <dt class="col-sm-4">
-            Desativar
-        </dt>
-        <dd class="col-sm-12">
-            @Html.DisplayFor(model => model.Desativar)
-        </dd>
 
-    </dl>
-</div>
+<div class="row text-justify justify-content-md-center">
+    <div class="card" style="width: 80%;">
+        @{
+            var base64 = Convert.ToBase64String(Model.Imagem);
+            var imgsrc = string.Format("data:image/gif; base64,{0}", base64);
+        }
+        <img src='@imgsrc' class="img-fluid" alt="Imagem responsiva">
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayFor(model => model.Nome)</h5>
+            <p class="card-text"> @Html.DisplayFor(model => model.Descricao)</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
 
-<div class="float-left">
-    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.MunicipioId">Editar</a>
-    <a class="btn btn-light" asp-action="Index">Retornar a Lista</a>
-    <a height="50" class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.MunicipioId">Delete</a>
+                <spam class="font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Desativar)
+                </spam>
+                <spam class="ml-3">
+                    @Html.DisplayFor(model => model.Desativar)
+                </spam>
+            </li>
+            <li class="list-group-item">
+                <span class="font-weight-bold">
+                    @Html.DisplayNameFor(model => model.Data_imagem)
+                </span>
+                <span class="ml-3">
+                    @Html.DisplayFor(model => model.Data_imagem)
+                </span>
+            </li>
+        </ul>
+        <div class="card-body">
+            <a class="btn btn-warning mr-4 float-right" asp-action="Edit" asp-route-id="@Model.MunicipioId">Editar</a>
+            <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
+        </div>
+    </div>
 </div>

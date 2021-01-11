@@ -12,9 +12,9 @@ Sendo a tema fornecido pela Professora de Engenharia de Software II, que é [A C
 Após algumas reuniões (Brainstorming) entre a equipa, ficou definido em criar um aplicação Web com o tema **"Guarda Eventos"**, que vai ser desenvolvida de maneira a fornecer uma boa experiência ao utilizador, facilitando a reserva, consulta, pesquisa de eventos de forma privada e anónima de cada município.
 
 ## Idiomas disponíveis
--Português
--Inglês
--Mandarim
+- Português
+- Inglês
+- Mandarim
 
 
 ### Logo
@@ -67,7 +67,7 @@ Após algumas reuniões (Brainstorming) entre a equipa, ficou definido em criar 
      
      
 ### Instalação no Package Manager Console:
-- `PM>` Add-Migration "Nome da Migração" -Context GuardaEventosBdContext
+- `PM>` Add-Migration -Context GuardaEventosBdContext
 - `PM>` Update-Database -Context GuardaEventosBdContext 
 - `PM>` Remove-Migration -Context GuardaEventosBdContext 
 - `PM>` Update-Database -Context ApplicationDbContext
