@@ -88,7 +88,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var evento = await _context.Eventos.FindAsync(id);
+            var evento = await _context.Eventos.Include(evt => evt.Municipio).Where(evt => evt.EventoId == id).FirstOrDefaultAsync();
             if (evento == null)
             {
                 return NotFound();
@@ -101,7 +101,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventoId,Name,Descricao,Data_realizacao,Imagem,Lotacao_max,Lotacao_Ocupada")] Evento evento)
+        public async Task<IActionResult> Edit(int id, [Bind("EventoId,MunicipioId,Name,Descricao,Data_realizacao,Imagem,Lotacao_max,Lotacao_Ocupada")] Evento evento)
         {
             if (id != evento.EventoId)
             {
