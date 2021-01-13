@@ -38,7 +38,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var evento = await _context.Eventos
+            var evento = await _context.Eventos.Include(evt => evt.Municipio)
                 .FirstOrDefaultAsync(m => m.EventoId == id);
             if (evento == null)
             {
