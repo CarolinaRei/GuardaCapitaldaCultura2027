@@ -38,7 +38,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var evento = await _context.Eventos
+            var evento = await _context.Eventos.Include(evt => evt.Municipio)
                 .FirstOrDefaultAsync(m => m.EventoId == id);
             if (evento == null)
             {
@@ -51,7 +51,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // GET: Eventos/Create
         public IActionResult Create()
         {
-            ViewData["municipios"] = new SelectList(_context.Municipio, "MunicipioId", "Nome");
+            ViewData["municipios"] = new SelectList(_context.Municipios, "MunicipioId", "Nome");
             return View();
         }
 
@@ -60,8 +60,17 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventoId,MunicipioId,Name,Descricao,Data_realizacao,Lotacao_max,Lotacao_Ocupada")] Evento evento)
+        public async Task<IActionResult> Create([Bind("EventoId,MunicipioId,Name,Descricao,Data_realizacao,Imagem,Lotacao_max,Lotacao_Ocupada")] Evento evento)
         {
+            if (!string.IsNullOrWhiteSpace(Request.Form.Files["Imagem"].FileName))
+            {
+                var stream = Request.Form.Files["Imagem"].OpenReadStream();
+                byte[] imagem = new byte[stream.Length];
+                stream.Read(imagem);
+                evento.Imagem = imagem;
+                ModelState.Remove("Imagem");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(evento);
@@ -79,7 +88,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 return NotFound();
             }
 
-            var evento = await _context.Eventos.FindAsync(id);
+            var evento = await _context.Eventos.Include(evt => evt.Municipio).Where(evt => evt.EventoId == id).FirstOrDefaultAsync();
             if (evento == null)
             {
                 return NotFound();
@@ -92,11 +101,20 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventoId,Name,Descricao,Data_realizacao,Lotacao_max,Lotacao_Ocupada")] Evento evento)
+        public async Task<IActionResult> Edit(int id, [Bind("EventoId,MunicipioId,Name,Descricao,Data_realizacao,Imagem,Lotacao_max,Lotacao_Ocupada")] Evento evento)
         {
             if (id != evento.EventoId)
             {
                 return NotFound();
+            }
+
+            if (!string.IsNullOrWhiteSpace(Request.Form.Files["Imagem"].FileName))
+            {
+                var stream = Request.Form.Files["Imagem"].OpenReadStream();
+                byte[] imagem = new byte[stream.Length];
+                stream.Read(imagem);
+                evento.Imagem = imagem;
+                ModelState.Remove("Imagem");
             }
 
             if (ModelState.IsValid)
