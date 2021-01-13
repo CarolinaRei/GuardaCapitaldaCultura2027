@@ -62,6 +62,15 @@ namespace GuardaCapitaldaCultura2027.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("EventoId,MunicipioId,Name,Descricao,Data_realizacao,Imagem,Lotacao_max,Lotacao_Ocupada")] Evento evento)
         {
+            if (!string.IsNullOrWhiteSpace(Request.Form.Files["Imagem"].FileName))
+            {
+                var stream = Request.Form.Files["Imagem"].OpenReadStream();
+                byte[] imagem = new byte[stream.Length];
+                stream.Read(imagem);
+                evento.Imagem = imagem;
+                ModelState.Remove("Imagem");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(evento);
