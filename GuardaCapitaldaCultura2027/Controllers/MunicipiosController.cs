@@ -18,10 +18,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         private readonly GuardaEventosBdContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        private static string auxordenar = "";
-        private static int auxdirecaoordena = 0;
-        private static int auxaprovacao = 0;
-        private static int auxpage = 0;
+      
 
         public MunicipiosController(GuardaEventosBdContext context, IWebHostEnvironment hostEnvironment)
         {
