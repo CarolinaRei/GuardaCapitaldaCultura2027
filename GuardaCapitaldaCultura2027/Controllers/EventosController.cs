@@ -26,7 +26,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         public async Task<IActionResult> Index(int pagina = 1)
         {
             Eventos.Paginacao.PaginaAtual = pagina;
-            Eventos.ListaEventos = await _context.Eventos.Skip((Eventos.Paginacao.PaginaAtual - 1) * Eventos.Paginacao.ElementosPorPagina).Take(5).ToListAsync();
+            Eventos.ListaEventos = await _context.Eventos.Include(evt => evt.Municipio).Skip((Eventos.Paginacao.PaginaAtual - 1) * Eventos.Paginacao.ElementosPorPagina).Take(5).ToListAsync();
             return View(Eventos);
         }
 
