@@ -24,5 +24,7 @@ namespace GuardaCapitaldaCultura2027.Models.Context
         public DbSet<GuardaCapitaldaCultura2027.Models.RestricaoCovid> RestricaoCovid { get; set; }
 
         public DbSet<GuardaCapitaldaCultura2027.Models.Turista> Turista { get; set; }
+
+        public DbSet<GuardaCapitaldaCultura2027.Models.GestorEventos> GestorEventos { get; set; }
     }
 }
