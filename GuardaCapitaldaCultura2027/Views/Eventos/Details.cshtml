@@ -7,7 +7,7 @@
         <legend class="w-auto text-left">Eventos - Details</legend>
         <div class="row" style="width:fit-content;">
             <table>
-                <tr class="col-sm-2">
+                <tr class="col-sm-2" style="max-width: 200px;">
                     <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.Name)
                     </dt>
@@ -39,7 +39,7 @@
                         @Html.DisplayFor(model => model.Lotacao_max)
                     </dd>
                     </dl>
-        </div>
+</div>
         <div>
             <a asp-action="Edit" asp-route-id="@Model.EventoId">Edit</a> |
             <a asp-action="Edit" asp-route-id="@Model.EventoId" class="btn btn-secondary" style="background-color:goldenrod;border-color:goldenrod;">Edit</a>

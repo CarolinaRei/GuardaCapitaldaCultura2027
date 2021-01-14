@@ -43,7 +43,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Municipio.Nome)
                             </td>
-                            <td>
+                            <td<td style="max-width:200px;">>
                                 @Html.DisplayFor(modelItem => item.Descricao)
                             </td>
                             <td>
@@ -53,7 +53,7 @@
                                 @Html.DisplayFor(modelItem => item.Lotacao_max)
                             </td>
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.EventoId">Edit</a> | <a asp-action="Details" asp-route-id="@item.EventoId">Details</a> | <a asp-action="Delete" asp-route-id="@item.EventoId">Delete</a>
+                                <a asp-action="Edit" asp-route-id="@item.EventoId" class="btn btn-secondary" style="background-color:goldenrod;border-color:goldenrod;">Edit</a> | <a asp-action="Details" asp-route-id="@item.EventoId" class="btn btn-info">Details</a> | <a asp-action="Delete" asp-route-id="@item.EventoId" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     }
