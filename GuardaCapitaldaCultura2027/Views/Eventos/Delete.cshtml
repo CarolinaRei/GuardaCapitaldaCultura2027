@@ -1,52 +1,74 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Evento
 
-@{
-    ViewData["Title"] = "Delete";
-}
+@{ ViewData["Title"] = "Delete";}
 
-<h1>Delete</h1>
+<center>
+    <fieldset class="border p-4" style="width:fit-content;">
+        <legend class="w-auto text-left">Eventos - Delete</legend>
+        <div class="row" style="width:fit-content;">
+            <table>
+                <tr class="col-sm-2">
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </td>
+                    <td class="col-sm-10">
+                        @Html.DisplayFor(model => model.Name)
+                    </td>
+                </tr>
+                <tr class="col-sm-2">
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Municipio.Nome)
+                    </td>
+                    <td class="col-sm-10">
+                        @Html.DisplayFor(model => model.Municipio.Nome)
+                    </td>
+                </tr>
+                <tr class="col-sm-2" style="max-width: 200px;">
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Descricao)
+                    </td>
+                    <td class="col-sm-10">
+                        @Html.DisplayFor(model => model.Descricao)
+                    </td>
+                </tr>
+                <tr class="col-sm-2">
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Data_realizacao)
+                    </td>
+                    <td class="col-sm-10">
+                        @Html.DisplayFor(model => model.Data_realizacao)
+                    </td>
+                </tr>
+                <tr class="col-sm-2">
+                    <td class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Lotacao_max)
+                    </td>
+                    <td class="col-sm-10">
+                        @Html.DisplayFor(model => model.Lotacao_max)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </fieldset>
+</center>
 
-<h3>Are you sure you want to delete this?</h3>
+
 <div>
-    <h4>Evento</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Municipio.Nome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Municipio.Nome)
-        </dd>
-        <dt class="col-sm-2">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Descricao)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Descricao)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Data_realizacao)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Data_realizacao)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Lotacao_max)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Lotacao_max)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="EventoId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a> |
+    <a class="btn btn-danger" data-toggle="modal" data-target="#confirmacaoApagar">Delete</a>
 </div>
+<div id="confirmacaoApagar" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header"><span>Eventos - Delete</span></div>
+            <div class="modal-body"><h6>Tem <b>mesmo</b> certeza que quer apagar?</h6></div>
+            <div class="modal-footer">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="@Model.EventoId" />
+                    <input asp-action="Delete" value="Delete" type="submit" asp-route-id="@Model.EventoId" class="btn btn-danger" />
+                    <a class="btn btn-info" data-dismiss="modal" aria-label="Close">Close</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
