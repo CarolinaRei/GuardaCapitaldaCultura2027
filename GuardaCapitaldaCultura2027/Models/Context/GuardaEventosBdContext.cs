@@ -19,12 +19,10 @@ namespace GuardaCapitaldaCultura2027.Models.Context
         
         public DbSet<LugarEvento> LugarEventos { get; set; }
 
-        //public DbSet<Turista> Turistas { get; set; }
-
         public DbSet<Reserva> Reservas { get; set; }
 
-        //public DbSet<Turista> Turistas { get; set; }
-
         public DbSet<GuardaCapitaldaCultura2027.Models.RestricaoCovid> RestricaoCovid { get; set; }
+
+        public DbSet<GuardaCapitaldaCultura2027.Models.Turista> Turista { get; set; }
     }
 }
