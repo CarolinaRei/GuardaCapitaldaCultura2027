@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GuardaCapitaldaCultura2027.Migrations
 {
-    public partial class GuardaEventos : Migration
+    public partial class Secundario : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,19 +39,20 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Municipios",
+                name: "Municipio",
                 columns: table => new
                 {
                     MunicipioId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(nullable: false),
+                    Data_imagem = table.Column<DateTime>(nullable: false),
                     Desativar = table.Column<bool>(nullable: false),
                     Descricao = table.Column<string>(maxLength: 1000, nullable: false),
-                    ImagemNome = table.Column<string>(type: "nvarchar(100)", nullable: true)
+                    Imagem = table.Column<byte[]>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Municipios", x => x.MunicipioId);
+                    table.PrimaryKey("PK_Municipio", x => x.MunicipioId);
                 });
 
             migrationBuilder.CreateTable(
@@ -61,7 +62,6 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     ReservaId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EventoId = table.Column<int>(nullable: false),
-                    TuristaId = table.Column<int>(nullable: false),
                     Nome = table.Column<string>(maxLength: 20, nullable: true),
                     Descricao = table.Column<string>(maxLength: 500, nullable: false),
                     Numero_Reserva = table.Column<int>(nullable: false)
@@ -69,24 +69,6 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reservas", x => x.ReservaId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Turistas",
-                columns: table => new
-                {
-                    TuristaId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(maxLength: 20, nullable: false),
-                    Sobrenome = table.Column<string>(maxLength: 20, nullable: false),
-                    Contacto = table.Column<string>(maxLength: 20, nullable: true),
-                    NIF = table.Column<string>(maxLength: 10, nullable: true),
-                    Email = table.Column<string>(maxLength: 50, nullable: false),
-                    Password = table.Column<string>(maxLength: 20, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Turistas", x => x.TuristaId);
                 });
 
             migrationBuilder.CreateTable(
@@ -107,9 +89,9 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 {
                     table.PrimaryKey("PK_Eventos", x => x.EventoId);
                     table.ForeignKey(
-                        name: "FK_Eventos_Municipios_MunicipioId",
+                        name: "FK_Eventos_Municipio_MunicipioId",
                         column: x => x.MunicipioId,
-                        principalTable: "Municipios",
+                        principalTable: "Municipio",
                         principalColumn: "MunicipioId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -135,10 +117,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 name: "Reservas");
 
             migrationBuilder.DropTable(
-                name: "Turistas");
-
-            migrationBuilder.DropTable(
-                name: "Municipios");
+                name: "Municipio");
         }
     }
 }
