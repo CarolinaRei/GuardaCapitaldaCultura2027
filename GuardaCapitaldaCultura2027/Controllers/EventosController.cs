@@ -51,7 +51,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // GET: Eventos/Create
         public IActionResult Create()
         {
-            ViewData["municipios"] = new SelectList(_context.Municipios, "MunicipioId", "Nome");
+            ViewData["municipios"] = new SelectList(_context.Municipio, "MunicipioId", "Nome");
             return View();
         }
 
