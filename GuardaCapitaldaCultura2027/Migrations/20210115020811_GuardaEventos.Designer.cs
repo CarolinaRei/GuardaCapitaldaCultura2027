@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuardaCapitaldaCultura2027.Migrations
 {
     [DbContext(typeof(GuardaEventosBdContext))]
-    [Migration("20210114224142_GuardaEventos")]
+    [Migration("20210115020811_GuardaEventos")]
     partial class GuardaEventos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -168,6 +168,9 @@ namespace GuardaCapitaldaCultura2027.Migrations
 
                     b.Property<int>("Numero_Reserva")
                         .HasColumnType("int");
+
+                    b.Property<string>("PessoaId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ReservaId");
 

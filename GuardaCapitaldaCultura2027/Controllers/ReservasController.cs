@@ -5,27 +5,34 @@ using System.Threading.Tasks;
 using GuardaCapitaldaCultura2027.Models;
 using GuardaCapitaldaCultura2027.Models.Context;
 using GuardaCapitaldaCultura2027.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
+    [Authorize]
     public class ReservasController : Controller
     {
         private readonly Reservas Reservas;
+        private readonly UserManager<IdentityUser> UserManager;
         private readonly GuardaEventosBdContext _context;
+        private readonly IdentityUser SignedInUser;
 
-        public ReservasController(GuardaEventosBdContext context)
+        public ReservasController(GuardaEventosBdContext context, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _context = context;
             Reservas = new Reservas(context);
+            UserManager = userManager;            
+            SignedInUser = userManager.FindByNameAsync(signInManager.Context.User.Identity.Name).GetAwaiter().GetResult();
         }
 
         // GET: Reserva
         public ActionResult Index()
         {
-            Reservas.ListaReservas = _context.Reservas.ToList();
+            Reservas.ListaReservas = _context.Reservas.Where(rsv=>rsv.PessoaId.Equals(SignedInUser.Id)).ToList();
             return View(Reservas);
         }
 
@@ -38,13 +45,13 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // GET: Reserva/Create
         public ActionResult Create(int EventoId)
         {
-            return View(new Reserva() { EventoId = EventoId});
+            return View(new Reserva() { EventoId = EventoId, PessoaId = SignedInUser.Id});
         }
 
         // POST: Reserva/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateAsync([Bind("ReservaId, EventoId, TuristaId, Nome, Descricao, Numero_Reserva")] Reserva reserva)
+        public async Task<ActionResult> CreateAsync([Bind("ReservaId, EventoId, PessoaId, Nome, Descricao, Numero_Reserva")] Reserva reserva)
         {
             if (ModelState.IsValid)
             {

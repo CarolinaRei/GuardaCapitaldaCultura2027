@@ -62,6 +62,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     ReservaId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EventoId = table.Column<int>(nullable: false),
+                    PessoaId = table.Column<string>(nullable: true),
                     Nome = table.Column<string>(maxLength: 20, nullable: true),
                     Descricao = table.Column<string>(maxLength: 500, nullable: false),
                     Numero_Reserva = table.Column<int>(nullable: false)

@@ -167,6 +167,9 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     b.Property<int>("Numero_Reserva")
                         .HasColumnType("int");
 
+                    b.Property<string>("PessoaId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ReservaId");
 
                     b.ToTable("Reservas");
