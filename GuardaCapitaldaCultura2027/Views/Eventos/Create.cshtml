@@ -1,8 +1,7 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Evento
 
-@{ViewData["Title"] = "Create";}
+@{ ViewData["Title"] = "Create"; }
 
-<center>
     <fieldset class="border p-4" style="width:fit-content;">
         <legend class="w-auto text-left">Eventos - Create</legend>
         <div class="row">
@@ -39,16 +38,17 @@
                         <label asp-for="Imagem" class="control-label"></label>
                         <input type="file" name="Imagem" asp-for="Imagem" style="min-width:fit-content;height:fit-content;" class="form-control" />
                         <span asp-validation-for="Imagem" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-                        <input type="submit" value="Create" class="btn btn-success" />
-                    </div>
+                    </div> 
                 </form>
             </div>
         </div>
     </fieldset>
-</center>
+
+<div class="form-group">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    <input type="submit" value="Create" class="btn btn-success" />
+</div>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

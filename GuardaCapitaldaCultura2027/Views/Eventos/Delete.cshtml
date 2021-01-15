@@ -1,49 +1,49 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Evento
 
-@{ ViewData["Title"] = "Delete";}
+@{ ViewData["Title"] = "Delete"; }
 
 <center>
     <fieldset class="border p-4" style="width:fit-content;">
         <legend class="w-auto text-left">Eventos - Delete</legend>
-        <div class="row" style="width:fit-content;">
+        <div class="row" style="width:fit-content;padding-left: 20px;padding-right:20px;">
             <table>
-                <tr class="col-sm-2">
-                    <td class="col-sm-2">
+                <tr>
+                    <td>
                         @Html.DisplayNameFor(model => model.Name)
                     </td>
-                    <td class="col-sm-10">
+                    <td>
                         @Html.DisplayFor(model => model.Name)
                     </td>
                 </tr>
-                <tr class="col-sm-2">
-                    <td class="col-sm-2">
+                <tr>
+                    <td>
                         @Html.DisplayNameFor(model => model.Municipio.Nome)
                     </td>
-                    <td class="col-sm-10">
+                    <td>
                         @Html.DisplayFor(model => model.Municipio.Nome)
                     </td>
                 </tr>
-                <tr class="col-sm-2" style="max-width: 200px;">
-                    <td class="col-sm-2">
+                <tr>
+                    <td>
                         @Html.DisplayNameFor(model => model.Descricao)
                     </td>
-                    <td class="col-sm-10">
+                    <td>
                         @Html.DisplayFor(model => model.Descricao)
                     </td>
                 </tr>
-                <tr class="col-sm-2">
-                    <td class="col-sm-2">
+                <tr>
+                    <td>
                         @Html.DisplayNameFor(model => model.Data_realizacao)
                     </td>
-                    <td class="col-sm-10">
+                    <td>
                         @Html.DisplayFor(model => model.Data_realizacao)
                     </td>
                 </tr>
-                <tr class="col-sm-2">
-                    <td class="col-sm-2">
+                <tr>
+                    <td>
                         @Html.DisplayNameFor(model => model.Lotacao_max)
                     </td>
-                    <td class="col-sm-10">
+                    <td>
                         @Html.DisplayFor(model => model.Lotacao_max)
                     </td>
                 </tr>
@@ -51,12 +51,12 @@
         </div>
     </fieldset>
 </center>
-
-
+<br />
 <div>
     <a asp-action="Index" class="btn btn-secondary">Back to List</a> |
     <a class="btn btn-danger" data-toggle="modal" data-target="#confirmacaoApagar">Delete</a>
 </div>
+
 <div id="confirmacaoApagar" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -71,4 +71,4 @@
             </div>
         </div>
     </div>
-
+</div>
