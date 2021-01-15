@@ -22,7 +22,6 @@ namespace GuardaCapitaldaCultura2027.Models
         [DisplayFormat(DataFormatString = "{0:dddd, dd / MM / yyyy}", ApplyFormatInEditMode = true)]  
         public DateTime Data_imagem { get; set; }
 
-
         
         [Required(ErrorMessage = "Por favor, insira o estado do Municipio")]
         [Display(Name = "Estado do Municipio ", Prompt = "Estado do Municipio")]
