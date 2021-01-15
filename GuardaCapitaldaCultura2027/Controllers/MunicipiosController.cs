@@ -27,7 +27,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Municipios
-        public async Task<IActionResult> Index(string nome = null, int page = 1)
+        public IActionResult Index(string nome = null, int page = 1)
         {
             var pagination = new PagingInfoMunicipio
             {
@@ -37,7 +37,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
             };
 
             return View(
-                //await _context.Municipios.ToListAsync()
+                    //await _context.Municipios.ToListAsync()
                     new ListaMunicipio
                     {
                         Municipios = _context.Municipio.Where(p => nome == null || p.Nome.Contains(nome))
@@ -178,7 +178,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                     ViewBag.type = "alert-success";
                     ViewBag.message = "Municipio Atualizado!";
                     ViewBag.redirect = "/Municipios/Index"; // Request.Path
-                    return View("Mensagem");
+                   
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -191,7 +191,8 @@ namespace GuardaCapitaldaCultura2027.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return View("Mensagem");
+                //return RedirectToAction(nameof(Index));
             }
             return View(municipio);
         }
