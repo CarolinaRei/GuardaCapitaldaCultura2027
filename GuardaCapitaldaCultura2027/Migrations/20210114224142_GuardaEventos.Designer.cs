@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuardaCapitaldaCultura2027.Migrations
 {
     [DbContext(typeof(GuardaEventosBdContext))]
-    [Migration("20210109224700_Municipio2")]
-    partial class Municipio2
+    [Migration("20210114224142_GuardaEventos")]
+    partial class GuardaEventos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -72,6 +72,10 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("nvarchar(500)")
                         .HasMaxLength(500);
 
+                    b.Property<byte[]>("Imagem")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<int>("Lotacao_Ocupada")
                         .HasColumnType("int");
 
@@ -126,12 +130,16 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Descricao")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1000)")
+                        .HasMaxLength(1000);
 
                     b.Property<byte[]>("Imagem")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MunicipioId");
@@ -161,52 +169,9 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     b.Property<int>("Numero_Reserva")
                         .HasColumnType("int");
 
-                    b.Property<int>("TuristaId")
-                        .HasColumnType("int");
-
                     b.HasKey("ReservaId");
 
                     b.ToTable("Reservas");
-                });
-
-            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Turista", b =>
-                {
-                    b.Property<int>("TuristaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Contacto")
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("NIF")
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.Property<string>("Sobrenome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
-
-                    b.HasKey("TuristaId");
-
-                    b.ToTable("Turistas");
                 });
 
             modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Evento", b =>

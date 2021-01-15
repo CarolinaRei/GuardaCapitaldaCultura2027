@@ -1,6 +1,6 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Evento
 
-@{ ViewData["Title"] = "Delete";}
+@{ ViewData["Title"] = "Delete"; }
 
 <center>
     <fieldset class="border p-4" style="width:fit-content;">
@@ -52,11 +52,11 @@
     </fieldset>
 </center>
 
-
 <div>
     <a asp-action="Index" class="btn btn-secondary">Back to List</a> |
     <a class="btn btn-danger" data-toggle="modal" data-target="#confirmacaoApagar">Delete</a>
 </div>
+
 <div id="confirmacaoApagar" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -71,4 +71,4 @@
             </div>
         </div>
     </div>
-
+</div>

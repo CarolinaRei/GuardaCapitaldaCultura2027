@@ -1,6 +1,6 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Evento
 
-@{ViewData["Title"] = "Edit";}
+@{ ViewData["Title"] = "Edit"; }
 
 <center>
     <fieldset class="border p-4" style="width:fit-content;">
@@ -45,5 +45,7 @@
         </div>
     </fieldset>
 </center>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
