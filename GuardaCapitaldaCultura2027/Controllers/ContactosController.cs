@@ -20,7 +20,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Contactos
-        public async Task<IActionResult> Index(string nome = null, int page = 1)
+        public IActionResult Index(string nome = null, int page = 1)
         {
             var pagination = new PagingInfoMunicipio
             {
@@ -30,17 +30,17 @@ namespace GuardaCapitaldaCultura2027.Controllers
             };
 
             return View(
-               new ListaContacto 
-               
-               { 
+               new ListaContacto
+
+               {
                    //await _context.Contactos.ToListAsync()
                    Contactos = _context.Contactos.Where(p => nome == null || p.Assunto.Contains(nome))
                                 .OrderBy(p => p.Assunto)
                                 .Skip((page - 1) * pagination.PageSize)
                                 .Take(pagination.PageSize),
-                            pagination = pagination,
-                            SearchNome = nome
-                   }
+                   pagination = pagination,
+                   SearchNome = nome
+               }
                 );
         }
 

@@ -72,6 +72,17 @@ namespace GuardaCapitaldaCultura2027
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+
+            if (env.IsDevelopment())
+            {
+                using (var serviceScope = app.ApplicationServices.CreateScope())
+                {
+                    var dbContext = serviceScope.ServiceProvider.GetService<GuardaEventosBdContext>();
+                    SeedDataMunicipio.Populate(dbContext);
+                }
+            }
+
         }
     }
 }
