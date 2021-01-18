@@ -32,7 +32,7 @@ namespace GuardaCapitaldaCultura2027.Models
         public string Descricao { get; set; }
 
 
-        [Required(ErrorMessage = "Por favor, insira Imagem do Municipio")]
+        //[Required(ErrorMessage = "Por favor, insira Imagem do Municipio")]
         [Display(Name = "Imagem do Municipio ", Prompt = "Imagem do Municipio")]
         public byte[] Imagem { get; set; }
 
