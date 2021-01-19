@@ -7,7 +7,7 @@
     <meta name="author" content="" />
     <title>@ViewData["Title"] - Guarda Eventos </title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="~/img/logo.png" />
+    <link rel="icon" type="image/x-icon" href="~/img/logo.JPG" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -99,7 +99,82 @@
     </style>
 </head>
 <body id="page-top">
-    <!-- Navigation-->
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="#">GuardaEventos</a>
+
+
+
+            <!-- Toggle button -->
+            <button class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <!-- Navbar dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"
+                           href="#"
+                           id="navbarDropdown"
+                           role="button"
+                           data-mdb-toggle="dropdown"
+                           aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <!-- Dropdown menu -->
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+                <!-- Search form -->
+                <form class="d-flex input-group w-auto">
+                    <input type="search"
+                           class="form-control"
+                           placeholder="Type query"
+                           aria-label="Search" />
+                    <button class="btn btn-outline-primary"
+                            type="button"
+                            data-mdb-ripple-color="dark">
+                        Search
+                    </button>
+                </form>
+            </div>
+            <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+    <!-- Navigation
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" asp-controller="Home" asp-action="Index">Guarda Eventos</a>
@@ -112,7 +187,7 @@
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Home" asp-action="Sobre">Sobre Nós</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Contactos" asp-action="Create">Contactos</a></li>
                 </ul>
-                <partial name="_LoginPartial.cshtml"/>
+                <partial name="_LoginPartial.cshtml" />
                 <div class="mynav_dropdown">
                     <button class="mynav_dropbtn">
                         <a>PT</a>
@@ -128,15 +203,38 @@
         </div>
     </nav>
 
-    <!---<div style="padding:5px">
-         /*@{
-            //foreach (var i in MultiLanMVC.LanguageMang.AvailableLanguages)
-            //{
-              //  @Html.ActionLink(i.LanguageFullName, "ChangeLanguage", "Home", new { lang = i.LanguageCultureName }, null) <text> </text>
-            //}
-        }*/
-    </div>-->
-    <!-- Masthead-->
+       -->
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="~/img/guarda folia.jpg" alt="Primeiro Slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/img/CAPITAL-EUROPA.jpg" alt="Segundo Slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>...</h5>
+                        <p>...</p>
+                    </div>
+                </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/img/cap" alt="Terceiro Slide">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Próximo</span>
+        </a>
+    </div>
     <header class="page-section text-center">
         <div class="m-5"></div>
         <div class="container ">
@@ -147,40 +245,76 @@
     </header>
 
     <!-- Footer-->
-    <footer class="footer text-center">
-        <div class="container">
+    <!-- Footer -->
+    <footer class="bg-light text-center text-lg-start">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!--Grid row-->
             <div class="row">
-                <!-- Footer Location-->
-                <div class="col-lg-4 mb-5 mb-lg-0">
+                <!--Grid column-->
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Descrição</h5>
+                      <p>  A nossa proposta para o trabalho consiste em criar um aplicação Web com o respetivo tema “Guarda – Candidata a Capital Europeia da Cultura 2027”, cujo nome do WebSite irá ser “Guarda Eventos”.</div>
+              
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-0">Links</h5>
 
-                    <h4 class="text-uppercase mb-4">Guarda Eventos</h4>
-                    <img src="~/img/logo.png" class="mb-2" />
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!" class="text-dark">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-dark">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-dark">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-dark">Link 4</a>
+                        </li>
+                    </ul>
                 </div>
-                <!-- Footer Social Icons-->
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h4 class="text-uppercase mb-4">Redes Sociais</h4>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-                </div>
-                <!-- Footer About Text-->
-                <div class="col-lg-4">
-                    <h4 class="text-uppercase mb-4">Descrição</h4>
-                    <p class="lead mb-0">
-                        A nossa proposta para o trabalho consiste em criar um aplicação Web com o respetivo tema “Guarda – Candidata a Capital Europeia da Cultura 2027”, cujo nome do WebSite irá ser “Guarda Eventos”.
-                        <!--<a href="http://startbootstrap.com">Start Bootstrap</a>-->
-                    </p>
-                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            © 2020 Copyright:Guarda Eventos
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    <!-- Footer Social Icons
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4">Redes Sociais</h4>
+                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+            </div>
+            <!-- Footer About Text-
+            <div class="col-lg-4">
+                <h4 class="text-uppercase mb-4">Descrição</h4>
+                <p class="lead mb-0">
+                    A nossa proposta para o trabalho consiste em criar um aplicação Web com o respetivo tema “Guarda – Candidata a Capital Europeia da Cultura 2027”, cujo nome do WebSite irá ser “Guarda Eventos”.
+                </p>
+            </div>
+        </diZ>
+    </div>
+        </footer>
+        <!-- Copyright Section
+        <div class="copyright py-4 text-center text-white">
+            <div class="container">
+                2020 &copy; Guarda Eventos
             </div>
         </div>
+
+
+            -->
     </footer>
-    <!-- Copyright Section-->
-    <div class="copyright py-4 text-center text-white">
-        <div class="container">
-            2020 &copy; Guarda Eventos <!--- <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>-->
-        </div>
-    </div>
 
     <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
