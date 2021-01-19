@@ -23,7 +23,7 @@
 
         .mynav_navbar {
             overflow: hidden;
-            background-color: #333;
+            background-color: gray;
             font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -32,7 +32,7 @@
             .mynav_navbar a {
                 float: left;
                 font-size: 16px;
-                color: white;
+                color:gray;
                 text-align: center;
                 padding: 14px 16px;
                 text-decoration: none;
@@ -60,7 +60,7 @@
 
 
             .mynav_navbar a:hover, .mynav_dropdown:hover .mynav_dropbtn {
-                background-color: red;
+                background-color: grey;
             }
 
 
@@ -102,76 +102,52 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
         <!-- Container wrapper -->
         <div class="container-fluid">
             <!-- Navbar brand -->
             <a class="navbar-brand" href="#">GuardaEventos</a>
+            <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 
 
+                <!-- Toggle button -->
+                <button class="navbar-toggler"
+                        type="button"
+                        data-mdb-toggle="collapse"
+                        data-mdb-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
 
-            <!-- Toggle button -->
-            <button class="navbar-toggler"
-                    type="button"
-                    data-mdb-toggle="collapse"
-                    data-mdb-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <!-- Collapsible wrapper -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left links -->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <!-- Navbar dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"
-                           href="#"
-                           id="navbarDropdown"
-                           role="button"
-                           data-mdb-toggle="dropdown"
-                           aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <!-- Dropdown menu -->
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider" /></li>
-                            <li>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-                <!-- Left links -->
-                <!-- Search form -->
-                <form class="d-flex input-group w-auto">
-                    <input type="search"
-                           class="form-control"
-                           placeholder="Type query"
-                           aria-label="Search" />
-                    <button class="btn btn-outline-primary"
-                            type="button"
-                            data-mdb-ripple-color="dark">
-                        Search
-                    </button>
-                </form>
-            </div>
-            <!-- Collapsible wrapper -->
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        </li>
+                        <li class="nav-item">
+                            <div class="collapse navbar-collapse" id="navbarResponsive">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Home" asp-action="Sobre">Sobre Nós</a></li>
+                                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Contactos" asp-action="Create">Contactos</a></li>
+                                </ul>
+                                <partial name="_LoginPartial.cshtml" />
+                                <div class="mynav_dropdown">
+                                    <button class="mynav_dropbtn">
+                                        <a>PT</a>
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <div class="mynav_dropdown-content">
+                                        <a asp-area="">EN</a>
+                                        <a asp-area="">汉语</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
         </div>
-        <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
     <!-- Navigation
@@ -203,7 +179,7 @@
         </div>
     </nav>
 
-       -->
+      -->
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -213,7 +189,11 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="~/img/guarda folia.jpg" alt="Primeiro Slide">
+                <img class="d-block w-100" src="~/img/CAPITAL-EUROPA.jpg" alt="Primeiro Slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>...</h5>
+                    <p>...</p>
+                </div>
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100" src="~/img/CAPITAL-EUROPA.jpg" alt="Segundo Slide">
@@ -223,7 +203,11 @@
                     </div>
                 </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="~/img/cap" alt="Terceiro Slide">
+                <img class="d-block w-100" src="~/img/CAPITAL-EUROPA.jpg" alt="Terceiro Slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>...</h5>
+                    <p>...</p>
+                </div>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
