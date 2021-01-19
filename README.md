@@ -19,7 +19,7 @@ Após algumas reuniões (Brainstorming) entre a equipa, ficou definido em criar 
 
 ### Logo
 
-![Logo](https://user-images.githubusercontent.com/48354097/99158054-8dd72780-26c6-11eb-8f59-cb9565f7210f.png)
+![logo](https://user-images.githubusercontent.com/61904160/105025533-59c10f80-5a45-11eb-96d8-c9f65937cdfc.JPG)
 
 ### Autores
 
