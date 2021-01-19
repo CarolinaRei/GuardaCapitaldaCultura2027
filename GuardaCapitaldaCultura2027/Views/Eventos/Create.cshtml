@@ -2,47 +2,47 @@
 
 @{ ViewData["Title"] = "Create"; }
 
-    <fieldset class="border p-4" style="width:fit-content;">
-        <legend class="w-auto text-left">Eventos - Create</legend>
-        <div class="row">
-            <div class="col-md-6" style="max-width:100% !important; flex:auto;">
-                <form enctype="multipart/form-data" asp-action="Create">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Municipio" class="control-label"></label>
-                        <br />
-                        @(Html.DropDownList("MunicipioId",new List<SelectListItem>(ViewBag.municipios),htmlAttributes:new { style= "width:100%;width:-webkit-fill-available;" }))
-                        <span asp-validation-for="MunicipioId" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Descricao" class="control-label"></label>
-                        <input asp-for="Descricao" class="form-control" />
-                        <span asp-validation-for="Descricao" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Data_realizacao" class="control-label"></label>
-                        <input asp-for="Data_realizacao" class="form-control" />
-                        <span asp-validation-for="Data_realizacao" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Lotacao_max" class="control-label"></label>
-                        <input asp-for="Lotacao_max" class="form-control" />
-                        <span asp-validation-for="Lotacao_max" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Imagem" class="control-label"></label>
-                        <input type="file" name="Imagem" asp-for="Imagem" style="min-width:fit-content;height:fit-content;" class="form-control" />
-                        <span asp-validation-for="Imagem" class="text-danger"></span>
-                    </div> 
-                </form>
+<h4 class="alert-light">Inserir Eventos</h4>
+<hr />
+<div class="col-md-6 text-left">
+    <fieldset class="border p-4 list-inline-item">
+        <legend class="w-auto text-center font-weight-bold">Formulário de Eventos</legend>
+        <form enctype="multipart/form-data" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label font-weight-bold"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-        </div>
+            <div class="form-group">
+                <label asp-for="Municipio" class="control-label font-weight-bold"></label>
+                <br />
+                @(Html.DropDownList("MunicipioId",new List<SelectListItem>(ViewBag.municipios),htmlAttributes:new { @class="form-control", style= "width:100%;width:-webkit-fill-available;" }))
+                <span asp-validation-for="MunicipioId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label font-weight-bold"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Data_realizacao" class="control-label font-weight-bold"></label>
+                <input type="date" asp-for="Data_realizacao" class="form-control" />
+                <span asp-validation-for="Data_realizacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lotacao_max" class="control-label font-weight-bold"></label>
+                <input asp-for="Lotacao_max" class="form-control" />
+                <span asp-validation-for="Lotacao_max" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Imagem" class="control-label custom-file-label">Escolher Imagem</label>
+                <input asp-for="Imagem" type="file" accept="image/*" class="form-control custom-file-input" />
+                <span asp-validation-for="Imagem" class="text-danger"></span>
+            </div>
+        </form>
     </fieldset>
+</div>
 
 <div class="form-group">
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>
