@@ -69,11 +69,11 @@ namespace GuardaCapitaldaCultura2027.Areas.Identity.Pages.Account
             [Required]
             [StringLength(20, ErrorMessage = "A sua Password deve ter entre 8 e 20 caracteres", MinimumLength = 8)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Password *")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
+            [Display(Name = "Confirmar password *")]
             [Compare("Password", ErrorMessage = "A password e a password de confirmação não correspondem.")]
             public string ConfirmPassword { get; set; }
         }

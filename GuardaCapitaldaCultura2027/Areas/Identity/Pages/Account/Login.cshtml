@@ -2,14 +2,14 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Login";
 }
 
 <h1>@ViewData["Title"]</h1>
 <center>
     <section style="width:fit-content;">
         <form id="account" method="post">
-            <h4>Use a local account to log in.</h4>
+            <h4> Por favor, utilize a sua conta Turista para fazer Login. </h4>
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
@@ -31,14 +31,14 @@
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Log in</button>
+                <button type="submit" class="btn btn-primary"> Login </button>
             </div>
             <div class="form-group">
                 <p>
-                    <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    <a id="forgot-password" asp-page="./ForgotPassword"> Esqueci-me da Password </a>
                 </p>
                 <p>
-                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                    <a asp-area="Identity" asp-page="/Account/Registar"> Registar como Turista </a>
                 </p>
             </div>
         </form>
