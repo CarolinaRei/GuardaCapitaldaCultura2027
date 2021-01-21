@@ -101,52 +101,54 @@
 <body id="page-top">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-0">
 
         <!-- Container wrapper -->
         <div class="container-fluid">
             <!-- Navbar brand -->
             <a class="navbar-brand" href="#">GuardaEventos</a>
-            <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <!--<button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
+            <!-- Toggle button -->
+            <!--<button class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>-->
+           <!-- <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>-->
 
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left links -->
+                <ul class="navbar-nav ml-auto">
 
-                <!-- Toggle button -->
-                <button class="navbar-toggler"
-                        type="button"
-                        data-mdb-toggle="collapse"
-                        data-mdb-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-
-                <!-- Collapsible wrapper -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left links -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        </li>
-                        <li class="nav-item">
-                            <div class="collapse navbar-collapse" id="navbarResponsive">
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Home" asp-action="Sobre">Sobre Nós</a></li>
-                                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Contactos" asp-action="Create">Contactos</a></li>
-                                </ul>
-                                <partial name="_LoginPartial.cshtml" />
-                                <div class="mynav_dropdown">
-                                    <button class="mynav_dropbtn">
-                                        <a>PT</a>
-                                        <i class="fa fa-caret-down"></i>
-                                    </button>
-                                    <div class="mynav_dropdown-content">
-                                        <a asp-area="">EN</a>
-                                        <a asp-area="">汉语</a>
-                                    </div>
+                    <li class="navbar-nav ml-auto">
+                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Home" asp-action="Sobre">Sobre Nós</a></li>
+                                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Contactos" asp-action="Create">Contactos</a></li>
+                            </ul>
+                            <partial name="_LoginPartial.cshtml" />
+                            <div class="mynav_dropdown">
+                                <button class="mynav_dropbtn">
+                                    <a>PT</a>
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="mynav_dropdown-content">
+                                    <a asp-area="">EN</a>
+                                    <a asp-area="">汉语</a>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
-                </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
     <!-- Navbar -->
@@ -177,14 +179,13 @@
 
             </div>
         </div>
-    </nav>
+    </nav> -->
 
-      -->
 
-   
-   
-    <header class="page-section text-center">
-        <div class="m-1"></div>
+
+
+    <header class="mt-3 text-center">
+        <div class="m-0"></div>
         <div class="container ">
             <main role="main" class="pb-3">
                 @RenderBody()
