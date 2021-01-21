@@ -2,7 +2,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<div class="mynav_dropdown">
+@*@*@*@*<div class="mynav_dropdown text-black-50">
     <button class="mynav_dropbtn">
         @if (!SignInManager.IsSignedIn(User))
         {
@@ -17,4 +17,4 @@
     <div class="mynav_dropdown-content">
         <a asp-area="Identity" asp-page="/Account/Registar">Registar</a>
     </div>
-</div>
+</div>*@*@*@*@
