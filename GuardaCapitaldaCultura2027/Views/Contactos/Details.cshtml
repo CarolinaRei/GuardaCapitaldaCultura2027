@@ -11,16 +11,6 @@
 
     <tbody>
         <tr>
-            <th scope="row"><h6>Nome</h6></th>
-            <td>@Html.DisplayFor(model => model.Name)</td>
-        </tr>
-        <tr>
-            <th scope="row"><h6>Sobrenome</h6></th>
-            <td> @Html.DisplayFor(model => model.Sobrenome)</td>
-        </tr>
-
-
-        <tr>
             <th scope="row"><h6>E-mail</h6></th>
             <td> @Html.DisplayFor(model => model.Email)</td>
         </tr>
@@ -35,8 +25,8 @@
         </tr>
     </tbody>
 </table>
-    <div class="card-body">
-        <a class="btn btn-secondary mr-4 float-right" >Responder</a>
-        <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
-    </div>
+<div class="card-body">
+    <a class="btn btn-secondary mr-4 float-right" asp-action="Responder" asp-route-id="@Model.ContactoId">Responder</a>
+    <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
+</div>
 
