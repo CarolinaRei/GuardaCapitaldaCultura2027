@@ -6,11 +6,14 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-<center>
-    <section style="width:fit-content;">
+<div class="alert alert-light text-lg-center" role="alert">
+    <h4>Por favor, utilize a sua conta Turista para fazer Login.</h4>
+</div>
+<hr />
+
+<div class="col-md-6 text-left">
+    <fieldset class="border p-4" list-inline-item">
         <form id="account" method="post">
-            <h4> Por favor, utilize a sua conta Turista para fazer Login. </h4>
-            <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Input.Email"></label>
@@ -42,9 +45,9 @@
                 </p>
             </div>
         </form>
-    </section>
-</center>
+    </fieldset>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }

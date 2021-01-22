@@ -11,8 +11,8 @@
 </div>
 <hr />
 
-<center>
-    <fieldset class="border p-4" style="width:fit-content;">
+<div class="col-md-9 text-left">
+    <fieldset class="border p-4" list-inline-item">
         <legend class="w-auto">Formulário de Turista</legend>
         <form id="account" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -60,9 +60,8 @@
             </div>
         </form>
     </fieldset>
-</center>
+</div>
 
     @section Scripts {
         <partial name="_ValidationScriptsPartial" />
     }
-

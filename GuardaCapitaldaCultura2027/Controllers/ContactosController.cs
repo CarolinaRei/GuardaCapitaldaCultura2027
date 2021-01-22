@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GuardaCapitaldaCultura2027.Models;
 using GuardaCapitaldaCultura2027.Models.Context;
+using System.Net.Mail;
+
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
@@ -174,5 +176,14 @@ namespace GuardaCapitaldaCultura2027.Controllers
         {
             return _context.Contactos.Any(e => e.ContactoId == id);
         }
+
+
+        //  Contactos/Responder
+        
+        public IActionResult Responder()
+        {
+            return View();
+        }
+        
     }
 }
