@@ -13,7 +13,7 @@ namespace GuardaCapitaldaCultura2027.Models
         public int MunicipioId { get; set; }
 
         [Required(ErrorMessage = "Por favor, insira seu Nome")]
-        [Display(Name = "Nome do Municipio ", Prompt = "Nome Municipio ")]
+        [Display(Name = "Municipio ", Prompt = "Nome Municipio ")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Por favor, insira Data")]
