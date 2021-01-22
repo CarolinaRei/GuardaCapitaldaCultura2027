@@ -11,7 +11,7 @@ namespace GuardaCapitaldaCultura2027.Models
         public int EventoId { get; set; }
 
 
-        [Display(Name = "Nome")]
+        [Display(Name = "Evento")]
         [Required(ErrorMessage = "Por favor, insira o seu Nome")]
         [StringLength(20, MinimumLength = 3, ErrorMessage = "O nome deve ter entre 3 e 20 caracteres")]
         public string Name { get; set; }
@@ -21,7 +21,7 @@ namespace GuardaCapitaldaCultura2027.Models
 
         public string Descricao { get; set; }
 
-        [Display(Name = "Data de Realização")]
+        [Display(Name = "Data")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         //[DataType(DataType.Date)]
         public DateTime Data_realizacao { get; set; }

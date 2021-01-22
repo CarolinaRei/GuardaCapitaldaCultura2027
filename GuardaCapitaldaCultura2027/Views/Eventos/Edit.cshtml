@@ -3,8 +3,8 @@
 @{ ViewData["Title"] = "Edit"; }
 
 <form enctype="multipart/form-data" asp-action="Edit">
-    <center>
-        <fieldset "border p-4" style="width:fit-content;">
+    <div class="col-md-6 text-left">
+        <fieldset class="border p-4 list-inline-item">
             <legend class="w-auto text-left">Eventos - Edit</legend>
             <div class="row">
                 <div class="col-md-6" style="max-width:100% !important; flex:auto;">
@@ -38,12 +38,14 @@
                     </div>
                 </div>
             </div>
+            <br />
+            <center>
+                <div class="form-group">
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a> |
+                    <input type="submit" value="Save" class="btn btn-success" />
+                </div>
+            </center>
         </fieldset>
-    </center>
-    <br />
-    <div class="form-group">
-        <a asp-action="Index" class="btn btn-secondary">Back to List</a> |
-        <input type="submit" value="Save" class="btn btn-success" />
     </div>
 </form>
 

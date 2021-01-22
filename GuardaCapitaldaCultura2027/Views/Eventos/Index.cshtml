@@ -13,9 +13,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.ListaEventos.FirstOrDefault().Municipio.Nome)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.ListaEventos.FirstOrDefault().Descricao)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.ListaEventos.FirstOrDefault().Data_realizacao)
                 </th>
@@ -35,9 +35,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Municipio.Nome)
                     </td>
-                    <td style="max-width:200px;">
+                    @*<td style="max-width:200px;">
                         @Html.DisplayFor(modelItem => item.Descricao)
-                    </td>
+                    </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.Data_realizacao)
                     </td>
