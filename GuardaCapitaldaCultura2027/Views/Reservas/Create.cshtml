@@ -3,13 +3,12 @@
 @{ViewData["Title"] = "Create";}
 
 <form asp-action="Create">
-    <fieldset class="border p-4" style="width:fit-content;">
-        <legend class="w-auto text-left">Reservas - Create</legend>
-
-        <hr />
-        <div class="row">
-            <div class="col-md-4">
-                <form asp-action="Create">
+    <div class="col-md-6 text-left">
+        <fieldset class="border p-4 list-inline-item">
+            <legend class="w-auto text-left">Reservas - Create</legend>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="Nome" class="control-label"></label>
@@ -21,24 +20,25 @@
                         <input asp-for="Numero_Reserva" class="form-control" />
                         <span asp-validation-for="Numero_Reserva" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <label asp-for="Descricao" class="control-label"></label>
                         <input asp-for="Descricao" class="form-control" />
                         <span asp-validation-for="Descricao" class="text-danger"></span>
-                    </div>
+                    </div>*@
                     <div class="form-group">
                         <input hidden asp-for="@Model.EventoId" />
                         <input hidden asp-for="@Model.PessoaId" />
                         <input type="submit" value="Create" class="btn btn-primary" />
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <input hidden asp-for="@Model.EventoId" />
-            <a asp-action="Index" class="btn btn-secondary">Back to List</a> |
-            <input type="submit" value="Create" class="btn btn-success" />
-        </div>
+            <div class="form-group">
+                <input hidden asp-for="@Model.EventoId" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a> |
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </fieldset>
+    </div>
 </form>
 
 @section Scripts {
