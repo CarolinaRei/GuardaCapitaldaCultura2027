@@ -31,8 +31,8 @@ namespace GuardaCapitaldaCultura2027.Models
         [Display(Name = "Numero de pessoas para a Reserva")]
         public int Numero_Reserva { get; set; }
 
-        public Evento Evento;
+        public Evento Evento { get; set; }
 
-        // public Turista Turista;
+        // public Turista Turista { get; set; }
     }
 }

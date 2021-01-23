@@ -16,33 +16,69 @@
                 @Html.DisplayNameFor(model => model.ListaReservas.FirstOrDefault().Nome)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.ListaReservas.FirstOrDefault().Descricao)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.ListaReservas.FirstOrDefault().Descricao)
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.ListaReservas.FirstOrDefault().Numero_Reserva)
             </th>
-            <th></th>
+            <th>
+                <form id="pesquisaform" asp-action="Index">
+                    <div>
+                        @{
+                            string pesquisa = "";
+                            try
+                            {
+                                pesquisa = string.IsNullOrEmpty(Context.Request.Form["pesquisa"]) ? string.Empty : Context.Request.Form["pesquisa"].ToString();
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                            }
+                            finally
+                            {
+                                if (string.IsNullOrEmpty(pesquisa))
+                                {
+                                    pesquisa = ViewData["pesquisa"] as string;
+                                }
+                            }
+                            <input type="search" id="pesquisabox" autofocus oninput="this.form.submit();" onfocus="this.value = '@(pesquisa)'" onchange="this.form.submit()" name="pesquisa" style="margin-right:10px; border: 2px solid #167ce9;font-size: 1.2em;text-align: center;outline:none !important;border-radius: 20px;background-color:transparent;" />
+                            <div style="display:none">
+                                @(ViewData["pesquisa"] = pesquisa)
+                            </div>
+                        }
+                        <input type="submit" class="icon-pesquisa fa-7x" value="&#xf002;" style="font-family: FontAwesome;height:35px;width:35px;background-color:transparent;margin-top:1px; border: 2px solid #167ce9;font-size: 1.2em;text-align: center;border-radius: 20px;outline:none !important" />
+                    </div>
+                </form>
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ListaReservas) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            @*<td>
+        @foreach (var item in Model.ListaReservas.Where(rsv =>
+        {
+            return (!string.IsNullOrWhiteSpace(ViewData["pesquisa"]?.ToString())) ?
+            (rsv.ReservaId.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+            rsv.Nome.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+            rsv.Evento.Name.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+            rsv.Numero_Reserva.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower())) : true;
+        }).ToList()) { 
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        @*<td>
                 @Html.DisplayFor(modelItem => item.Descricao)
             </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Numero_Reserva)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ReservaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ReservaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ReservaId">Delete</a>
-            </td>
-        </tr>
-}
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero_Reserva)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.ReservaId">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.ReservaId">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.ReservaId">Delete</a>
+        </td>
+    </tr>
+        }
     </tbody>
 </table>
 <div>
