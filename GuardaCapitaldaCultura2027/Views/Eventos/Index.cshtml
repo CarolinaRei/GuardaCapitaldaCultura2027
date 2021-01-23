@@ -4,36 +4,6 @@
 
 <fieldset class="border p-4">
     <legend class="w-auto text-left">Eventos - Index</legend>
-    <form id="pesquisaform" asp-action="Index">
-        <div style="min-width:100%">
-            <a asp-action="Index" asp-controller="Eventos" class="btn btn-primary" style="margin-left:15px">Lista de Eventos</a>
-
-            @{
-                string pesquisa = "";
-                try
-                {
-                    pesquisa = string.IsNullOrEmpty(Context.Request.Form["pesquisa"]) ? string.Empty : Context.Request.Form["pesquisa"].ToString();
-
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    if (string.IsNullOrEmpty(pesquisa))
-                    {
-                        pesquisa = ViewData["Pesquisa"] as string;
-                    }
-                }
-                <input type="pesquisa" id="pesquisabox" autofocus oninput="this.form.submit();" onfocus="this.value = '@(pesquisa)'" onchange="this.form.submit()" name="pesquisa" style="position:absolute;right:0; margin-right:50px; border: 2px solid #167ce9;font-size: 1.2em;text-align: center;outline:none !important;border-radius: 20px;background-color:transparent;" />
-                <div style="display:none">
-                    @ViewData["Pesquisa"] = pesquisa;
-                </div>
-            }
-            <input type="submit" class="icon-pesquisa fa-7x" value="&#xf002;" style="font-family: FontAwesome;height:35px;width:35px; position:absolute;right:0;background-color:transparent;margin-right:5px;margin-top:1px; border: 2px solid #167ce9;font-size: 1.2em;text-align: center;border-radius: 20px;outline:none !important" />
-        </div>
-    </form>
     <table class="table">
         <thead>
             <tr>
@@ -52,16 +22,49 @@
                 <th>
                     @Html.DisplayNameFor(model => model.ListaEventos.FirstOrDefault().Lotacao_max)
                 </th>
-                <th></th>
+                <th>
+                    <form id="pesquisaform" asp-action="Index">
+                        <div>
+                            @{
+                                string pesquisa = "";
+                                try
+                                {
+                                    pesquisa = string.IsNullOrEmpty(Context.Request.Form["pesquisa"]) ? string.Empty : Context.Request.Form["pesquisa"].ToString();
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                }
+                                finally
+                                {
+                                    if (string.IsNullOrEmpty(pesquisa))
+                                    {
+                                        pesquisa = ViewData["pesquisa"] as string;
+                                    }
+                                }
+                                <input type="search" id="pesquisabox" autofocus oninput="this.form.submit();" onfocus="this.value = '@(pesquisa)'" onchange="this.form.submit()" name="pesquisa" style="margin-right:10px; border: 2px solid #167ce9;font-size: 1.2em;text-align: center;outline:none !important;border-radius: 20px;background-color:transparent;" />
+                                <div style="display:none">
+                                    @(ViewData["pesquisa"] = pesquisa)
+                                </div>
+                            }
+                            <input type="submit" class="icon-pesquisa fa-7x" value="&#xf002;" style="font-family: FontAwesome;height:35px;width:35px;background-color:transparent;margin-top:1px; border: 2px solid #167ce9;font-size: 1.2em;text-align: center;border-radius: 20px;outline:none !important" />
+                        </div>
+                    </form>
+                </th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.ListaEventos.Where(evt=>evt.EventoId.ToString().ToLower().Equals(ViewData["Pesquisa"].ToString().ToLower()) ||
-             evt.Name.ToLower().Equals(ViewData["Pesquisa"].ToString().ToLower()) ||
-             evt.Municipio.Nome.ToLower().Equals(ViewData["Pesquisa"].ToString().ToLower()) ||
-             evt.Lotacao_max.ToString().ToLower().Equals(ViewData["Pesquisa"].ToString().ToLower()) ||
-             evt.Descricao.ToLower().Equals(ViewData["Pesquisa"].ToString().ToLower()) ||
-             evt.Data_realizacao.ToString().ToLower().Equals(ViewData["Pesquisa"].ToString().ToLower())).ToList())
+            @foreach (var item in Model.ListaEventos.Where(evt=>
+            {
+                return (!string.IsNullOrWhiteSpace(ViewData["pesquisa"]?.ToString())) ?
+                (evt.EventoId.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+                evt.Name.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+                evt.Municipio.Nome.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+                evt.Lotacao_max.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+                evt.Descricao.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+                evt.Data_realizacao.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower())) : true;
+            }).ToList())
             {
                 <tr>
                     <td>
