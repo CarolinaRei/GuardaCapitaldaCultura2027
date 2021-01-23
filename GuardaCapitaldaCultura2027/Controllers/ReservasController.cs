@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
@@ -32,7 +33,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // GET: Reserva
         public ActionResult Index()
         {
-            Reservas.ListaReservas = _context.Reservas.Where(rsv=>rsv.PessoaId.Equals(SignedInUser.Id)).ToList();
+            Reservas.ListaReservas = _context.Reservas.Include(rsv => rsv.Evento).Where(rsv=>rsv.PessoaId.Equals(SignedInUser.Id)).ToList();
             return View(Reservas);
         }
 

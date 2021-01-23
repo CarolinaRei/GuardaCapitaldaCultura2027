@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GuardaCapitaldaCultura2027.Models;
 using GuardaCapitaldaCultura2027.Models.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace GuardaCapitaldaCultura2027.Models.ViewModels
 {
