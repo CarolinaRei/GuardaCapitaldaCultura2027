@@ -8,14 +8,18 @@
     <h4 class="alert-light">Lista dos Municipios</h4>
     <hr />
 </div>
-<div class="row">
-    <p>
-        <a class="btn btn-primary left" asp-action="Create">Criar Municipio</a>
-    </p>
 
-</div>
+@if (User.IsInRole("GestorEventos") || User.IsInRole("Admin"))
+{
+    <div class="row">
+        <p>
+            <a class="btn btn-primary left" asp-action="Create">Criar Municipio</a>
+        </p>
+    </div>
+}
+
 <!--<div class="card mt-3 bg-info">
-    <div class="card-header">
+    <div class="card-header"> || User.IsInRole("Admin")
         <div class="card-title font-weight-bold">Search</div>
     </div>
     <div class="card-body">
@@ -79,9 +83,12 @@
                             @Html.DisplayFor(modelItem => item.Desativar)
                         </td>
                         <td class="m-5">
-                            <a class="btn btn-warning mr-4" asp-action="Edit" asp-route-id="@item.MunicipioId">Editar</a>
-                            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.MunicipioId">Detales</a>
-                        </td>
+                            @if (User.IsInRole("GestorEventos") || User.IsInRole("Admin"))
+                            {
+                                <a class="btn btn-warning mr-4" asp-action="Edit" asp-route-id="@item.MunicipioId">Editar</a>
+                            }
+                                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.MunicipioId">Detales</a>
+                            </td>
                     </tr>
                 }
             </tbody>
