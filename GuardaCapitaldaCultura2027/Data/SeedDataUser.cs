@@ -16,16 +16,21 @@ namespace GuardaCapitaldaCultura2027.Data
 
         internal static async Task SeedDefaultAdminAsync(UserManager<IdentityUser> userManager)
         {
-            IdentityUser user = await userManager.FindByNameAsync(DEFAULT_ADMIN_USER);
+            await EnsureUserIsCreated(userManager, DEFAULT_ADMIN_USER, DEFAULT_ADMIN_PASSWORD, ROLE_ADMINISTRADOR);
+        }
 
-            if(user == null)
+        private static async Task EnsureUserIsCreated(UserManager<IdentityUser> userManager, string username, string password, string role)
+        {
+            IdentityUser user = await userManager.FindByNameAsync(username);
+
+            if (user == null)
             {
-                user = new IdentityUser(DEFAULT_ADMIN_USER);
-                await userManager.CreateAsync(user, DEFAULT_ADMIN_PASSWORD);
+                user = new IdentityUser(username);
+                await userManager.CreateAsync(user, password);
             }
-            if (!await userManager.IsInRoleAsync(user, ROLE_ADMINISTRADOR))
+            if (!await userManager.IsInRoleAsync(user, role))
             {
-               await userManager.AddToRoleAsync(user, ROLE_ADMINISTRADOR);
+                await userManager.AddToRoleAsync(user, role);
             }
         }
 
@@ -45,6 +50,13 @@ namespace GuardaCapitaldaCultura2027.Data
             {
                 await roleManager.CreateAsync(new IdentityRole(role));
             }
+        }
+
+        internal static async Task SeedDevUsersAsync(UserManager<IdentityUser> userManager)
+        {
+           await EnsureUserIsCreated(userManager, "vagner@ipg.pt", "Vagner123@", ROLE_GESTOREVENTO);
+
+           await EnsureUserIsCreated(userManager, "mary@ipg.pt", "Mary123@", ROLE_TURISTA);
         }
     }
 }

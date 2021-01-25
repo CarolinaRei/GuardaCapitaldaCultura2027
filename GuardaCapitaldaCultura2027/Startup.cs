@@ -111,6 +111,8 @@ namespace GuardaCapitaldaCultura2027
             {
                 // SeedDataGestorEventos.SeedDevData(db);
                 // SeedDataGestorEventos.SeedDevUsersAsync(userManager).Wait();
+                SeedDataUser.SeedDevUsersAsync(userManager).Wait();
+
                 using (var serviceScope = app.ApplicationServices.CreateScope())
                 {
                     var dbContext = serviceScope.ServiceProvider.GetService<GuardaEventosBdContext>();

@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {   
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, GestorEventos")]
     public class MunicipiosController : Controller
     {
         private readonly GuardaEventosBdContext _context;
