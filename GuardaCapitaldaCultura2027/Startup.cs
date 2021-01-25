@@ -31,9 +31,17 @@ namespace GuardaCapitaldaCultura2027
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                    Configuration.GetConnectionString("GuardaUsersConnection")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>(
+                options => {
+                    options.SignIn.RequireConfirmedAccount = false;
+                    
+
+               }).AddEntityFrameworkStores<ApplicationDbContext>()
+               .AddDefaultUI();
+
+
             services.AddControllersWithViews();
             services.AddRazorPages();
 
