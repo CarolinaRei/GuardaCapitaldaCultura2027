@@ -52,8 +52,7 @@ namespace GuardaCapitaldaCultura2027
                     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(40);
                     options.Lockout.MaxFailedAccessAttempts = 6;
                     
-               }).AddEntityFrameworkStores<ApplicationDbContext>()
-               .AddDefaultUI();
+               }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI();
 
 
             services.AddControllersWithViews();
@@ -66,7 +65,11 @@ namespace GuardaCapitaldaCultura2027
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
+
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager
+
             // GuardaEventosBdContext bd,
             // UserManager<IdentityUser> userManager,
             // RoleManager<IdentityRole> roleManager
@@ -101,7 +104,9 @@ namespace GuardaCapitaldaCultura2027
 
             // SeedDataGestorEventos.SeedRolesAsync(roleManager).Wait();
             // SeedDataGestorEventos.SeedDefaultAdminAsync(userManager).Wait();
-
+            SeedDataUser.SeedRolesAsync(roleManager).Wait();
+            SeedDataUser.SeedDefaultAdminAsync(userManager).Wait();
+           
             if (env.IsDevelopment())
             {
                 // SeedDataGestorEventos.SeedDevData(db);

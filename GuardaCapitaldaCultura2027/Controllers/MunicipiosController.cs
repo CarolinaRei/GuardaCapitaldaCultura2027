@@ -10,9 +10,11 @@ using GuardaCapitaldaCultura2027.Models.Context;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GuardaCapitaldaCultura2027.Controllers
-{
+{   
+    [Authorize(Roles = "Admin")]
     public class MunicipiosController : Controller
     {
         private readonly GuardaEventosBdContext _context;
