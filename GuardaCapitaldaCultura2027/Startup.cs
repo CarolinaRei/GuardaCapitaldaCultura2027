@@ -31,9 +31,30 @@ namespace GuardaCapitaldaCultura2027
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                    Configuration.GetConnectionString("GuardaUsersConnection")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>(
+                options => {
+                    //Sign in 
+                    options.SignIn.RequireConfirmedAccount = false;
+
+                    //Password
+                    options.Password.RequireDigit = true;
+                    options.Password.RequireLowercase = true;
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequiredUniqueChars = 6;
+                    options.Password.RequireNonAlphanumeric = true;
+                    options.Password.RequireUppercase = true;
+
+
+                    //Lockout
+                    options.Lockout.AllowedForNewUsers = true;
+                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(40);
+                    options.Lockout.MaxFailedAccessAttempts = 6;
+                    
+               }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI();
+
+
             services.AddControllersWithViews();
             services.AddRazorPages();
 
@@ -44,7 +65,11 @@ namespace GuardaCapitaldaCultura2027
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
+
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager
+
             // GuardaEventosBdContext bd,
             // UserManager<IdentityUser> userManager,
             // RoleManager<IdentityRole> roleManager
@@ -79,11 +104,15 @@ namespace GuardaCapitaldaCultura2027
 
             // SeedDataGestorEventos.SeedRolesAsync(roleManager).Wait();
             // SeedDataGestorEventos.SeedDefaultAdminAsync(userManager).Wait();
-
+            SeedDataUser.SeedRolesAsync(roleManager).Wait();
+            SeedDataUser.SeedDefaultAdminAsync(userManager).Wait();
+           
             if (env.IsDevelopment())
             {
                 // SeedDataGestorEventos.SeedDevData(db);
                 // SeedDataGestorEventos.SeedDevUsersAsync(userManager).Wait();
+                SeedDataUser.SeedDevUsersAsync(userManager).Wait();
+
                 using (var serviceScope = app.ApplicationServices.CreateScope())
                 {
                     var dbContext = serviceScope.ServiceProvider.GetService<GuardaEventosBdContext>();
