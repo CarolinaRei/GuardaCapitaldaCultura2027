@@ -79,6 +79,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Municipios/Create
+        [Authorize(Roles = "Admin, GestorEventos")]
         public IActionResult Create()
         {
             return View();
@@ -89,6 +90,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, GestorEventos")]
         public async Task<IActionResult> Create([Bind("MuicipioId,Nome,Data_imagem,Descricao,Desativar")] Municipio municipio, List<IFormFile> Imagem)
         {
             if (ModelState.IsValid)
@@ -122,6 +124,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
             return View(municipio);
         }
 
+        [Authorize(Roles = "Admin, GestorEventos")]
         // GET: Municipios/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -141,8 +144,10 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // POST: Municipios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, GestorEventos")]
         public async Task<IActionResult> Edit(int id, [Bind("MunicipioId,Nome,Data_imagem,Desativar,Descricao")] Municipio municipio, List<IFormFile> Imagem)
         {
             if (id != municipio.MunicipioId)
@@ -200,6 +205,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Municipios/Delete/5
+        [Authorize(Roles = "Admin, GestorEventos")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -220,6 +226,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // POST: Municipios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, GestorEventos")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var municipio = await _context.Municipio.FindAsync(id);
