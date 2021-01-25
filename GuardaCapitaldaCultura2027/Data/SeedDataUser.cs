@@ -54,9 +54,13 @@ namespace GuardaCapitaldaCultura2027.Data
 
         internal static async Task SeedDevUsersAsync(UserManager<IdentityUser> userManager)
         {
-           await EnsureUserIsCreated(userManager, "vagner@ipg.pt", "Vagner123@", ROLE_GESTOREVENTO);
+            //Gestores Teste/Vip
+            await EnsureUserIsCreated(userManager, "afonso@ipg.pt", "Afonso123@", ROLE_GESTOREVENTO);
+            await EnsureUserIsCreated(userManager, "carolina@ipg.pt", "Carolina123@", ROLE_GESTOREVENTO);
+            await EnsureUserIsCreated(userManager, "vagner@ipg.pt", "Vagner123@", ROLE_GESTOREVENTO);
 
-           await EnsureUserIsCreated(userManager, "mary@ipg.pt", "Mary123@", ROLE_TURISTA);
+            //Turista Teste
+            await EnsureUserIsCreated(userManager, "mary@ipg.pt", "Mary123@", ROLE_TURISTA);
         }
     }
 }
