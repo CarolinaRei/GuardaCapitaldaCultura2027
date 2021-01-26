@@ -41,7 +41,7 @@ namespace GuardaCapitaldaCultura2027
                     //Password
                     options.Password.RequireDigit = true;
                     options.Password.RequireLowercase = true;
-                    options.Password.RequiredLength = 6;
+                    options.Password.RequiredLength = 8;
                     options.Password.RequiredUniqueChars = 6;
                     options.Password.RequireNonAlphanumeric = true;
                     options.Password.RequireUppercase = true;
@@ -49,8 +49,8 @@ namespace GuardaCapitaldaCultura2027
 
                     //Lockout
                     options.Lockout.AllowedForNewUsers = true;
-                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(40);
-                    options.Lockout.MaxFailedAccessAttempts = 6;
+                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                    options.Lockout.MaxFailedAccessAttempts = 7;
                     
                }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI();
 
