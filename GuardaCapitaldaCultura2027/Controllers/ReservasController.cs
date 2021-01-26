@@ -52,7 +52,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // POST: Reserva/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateAsync([Bind("ReservaId, EventoId, PessoaId, Nome, Numero_Reserva")] Reserva reserva)
+        public async Task<ActionResult> CreateAsync([Bind("ReservaId, EventoId, PessoaId, Observacao, Nome, Numero_Reserva")] Reserva reserva)
         {
             if (ModelState.IsValid)
             {

@@ -27,6 +27,7 @@ namespace GuardaCapitaldaCultura2027.Models
         public string Observacao { get; set; }
 
         [Display(Name = "Numero de pessoas para a Reserva")]
+        [Range(1,Int32.MaxValue)]
         public int Numero_Reserva { get; set; }
 
         public Evento Evento { get; set; }
