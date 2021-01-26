@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GuardaCapitaldaCultura2027.Models;
 using GuardaCapitaldaCultura2027.Models.Context;
+using Microsoft.AspNetCore.Authorization;
+using System.Net;
 using System.Net.Mail;
-
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
@@ -47,6 +48,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Contactos/Details/5
+        [Authorize(Roles = "Admin, GestorEventos")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -93,6 +95,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Contactos/Edit/5
+        [Authorize(Roles = "Admin, GestorEventos")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -113,6 +116,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //[Authorize(Roles = "Admin, GestorEventos")]
         public async Task<IActionResult> Edit(int id, [Bind("ContactoId,Name,Sobrenome,Email,Assunto,Mensagem")] Contacto contacto)
         {
             if (id != contacto.ContactoId)
@@ -124,7 +128,27 @@ namespace GuardaCapitaldaCultura2027.Controllers
             {
                 try
                 {
-                    _context.Update(contacto);
+                    /*using (MailMessage message = new MailMessage("guardaeventtos@gmail.com", contacto.Email))
+                    {
+                        message.Subject = contacto.Assunto;
+                        message.Body = contacto.Mensagem;
+                        message.IsBodyHtml = false;
+
+                        using (SmtpClient smtp = new SmtpClient())
+                        {
+                            smtp.Host = "smtp.gmail.com";
+                            smtp.EnableSsl = true;
+                            //NetworkCredential credencial =
+                            smtp.UseDefaultCredentials = true;
+                            smtp.Credentials = new NetworkCredential("guardaeventtos@gmail.com", "Guarda@@1");
+                            smtp.Port = 587;
+                            smtp.Send(message);
+                            //smtp.S(message);
+                            //Permitir aplicações menos seguras: ATIVADO
+                            ViewBag.Message = "Email Sent Successfully";
+                        }
+                    }*/
+                   _context.Update(contacto);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -144,6 +168,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Contactos/Delete/5
+        [Authorize(Roles = "Admin, GestorEventos")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -164,6 +189,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // POST: Contactos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, GestorEventos")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var contacto = await _context.Contactos.FindAsync(id);
@@ -182,8 +208,45 @@ namespace GuardaCapitaldaCultura2027.Controllers
         
         public IActionResult Responder()
         {
+
             return View();
         }
-        
+        [HttpPost]
+        public IActionResult Responder(Contacto model)
+        {
+            /*using (MailAddress message = new MailAddress("guardaeventtos@gmail.com", model.Email))
+            {
+                message.Subject = model.Assunto;
+            }*/
+            using (MailMessage message = new MailMessage("guardaeventtos@gmail.com", model.Email))
+            {
+                message.Subject = model.Assunto;
+                message.Body = model.Mensagem;
+                message.IsBodyHtml = false;
+
+                using (SmtpClient smtp = new SmtpClient())
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.EnableSsl = true;
+                    //NetworkCredential credencial =
+                    smtp.UseDefaultCredentials = true;
+                    smtp.Credentials = new NetworkCredential("guardaeventtos@gmail.com", "Guarda@@1");
+                    smtp.Port = 587;
+                    smtp.Send(message);
+                    //smtp.S(message);
+                    //Permitir aplicações menos seguras: ATIVADO
+                    ViewBag.title = "Contacto Respondido Com Sucesso!";
+                    ViewBag.type = "alert-success";
+                    ViewBag.message = "Em breve entraremos em Contacto!";
+                    ViewBag.redirect = "/Contactos/Index"; // Request.Path
+                    return View("Mensagem");
+                }
+                
+            }
+            
+            //return View(Contacto);
+        }
+
+
     }
 }
