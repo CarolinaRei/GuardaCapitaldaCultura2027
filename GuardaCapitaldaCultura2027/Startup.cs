@@ -66,14 +66,8 @@ namespace GuardaCapitaldaCultura2027
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
-
             UserManager<IdentityUser> userManager,
-            RoleManager<IdentityRole> roleManager
-
-            // GuardaEventosBdContext bd,
-            // UserManager<IdentityUser> userManager,
-            // RoleManager<IdentityRole> roleManager
-            )
+            RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -101,16 +95,11 @@ namespace GuardaCapitaldaCultura2027
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-
-            // SeedDataGestorEventos.SeedRolesAsync(roleManager).Wait();
-            // SeedDataGestorEventos.SeedDefaultAdminAsync(userManager).Wait();
             SeedDataUser.SeedRolesAsync(roleManager).Wait();
             SeedDataUser.SeedDefaultAdminAsync(userManager).Wait();
            
             if (env.IsDevelopment())
             {
-                // SeedDataGestorEventos.SeedDevData(db);
-                // SeedDataGestorEventos.SeedDevUsersAsync(userManager).Wait();
                 SeedDataUser.SeedDevUsersAsync(userManager).Wait();
 
                 using (var serviceScope = app.ApplicationServices.CreateScope())
