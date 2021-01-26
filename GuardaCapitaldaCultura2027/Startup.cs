@@ -14,6 +14,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using GuardaCapitaldaCultura2027.Models.Context;
 using GuardaCapitaldaCultura2027.Models;
+using Microsoft.AspNetCore.Mvc.Razor;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Options;
 
 namespace GuardaCapitaldaCultura2027
 {
@@ -29,11 +33,32 @@ namespace GuardaCapitaldaCultura2027
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+           
+            services.AddMvcCore()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var cultures = new[]
+                {
+                    new CultureInfo("cn"),
+                    new CultureInfo("en"),
+                    new CultureInfo("pt")
+                };
+                options.DefaultRequestCulture = new RequestCulture("pt");
+                options.SupportedCultures = cultures;
+                options.SupportedUICultures = cultures;
+            });
+
             services.AddControllersWithViews();
             services.AddRazorPages();
 
@@ -68,6 +93,8 @@ namespace GuardaCapitaldaCultura2027
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 
             app.UseEndpoints(endpoints =>
             {
