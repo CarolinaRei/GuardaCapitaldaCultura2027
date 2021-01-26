@@ -23,6 +23,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Contactos
+        [Authorize(Roles = "Admin, GestorEventos")]
         public IActionResult Index(string nome = null, int page = 1)
         {
             var pagination = new PagingInfoMunicipio
