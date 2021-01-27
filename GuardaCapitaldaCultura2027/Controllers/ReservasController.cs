@@ -64,30 +64,72 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Reserva/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> EditAsync(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var reserva = await _context.Reservas.Include(rsv => rsv.Evento).Where(rsv => rsv.ReservaId==id).FirstOrDefaultAsync();
+            
+            if (reserva == null)
+            {
+                return NotFound();
+            }
+
+            return View(reserva);
         }
 
         // POST: Reserva/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> EditAsync(int id, [Bind("ReservaId, EventoId, PessoaId, Nome, Observacao, Numero_Reserva")] Reserva reserva)
         {
-            try
+            if (id != reserva.ReservaId)
             {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(reserva);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ReservaExists(reserva.ReservaId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(reserva);
         }
 
         // GET: Reserva/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> DeleteAsync(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var reserva = await _context.Reservas
+                .FirstOrDefaultAsync(m => m.ReservaId == id);
+            if (reserva == null)
+            {
+                return NotFound();
+            }
+
+            return View(reserva);
         }
 
         // POST: Reserva/Delete/5
@@ -99,6 +141,10 @@ namespace GuardaCapitaldaCultura2027.Controllers
             _context.Reservas.Remove(reserva);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+        private bool ReservaExists(int id)
+        {
+            return _context.Reservas.Any(r => r.ReservaId == id);
         }
     }
 }
