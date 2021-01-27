@@ -52,7 +52,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // POST: Reserva/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateAsync([Bind("ReservaId, EventoId, PessoaId, Observacao, Nome, Numero_Reserva")] Reserva reserva)
+        public async Task<ActionResult> CreateAsync([Bind("ReservaId, EventoId, PessoaId, Nome, Observacao, Numero_Reserva")] Reserva reserva)
         {
             if (ModelState.IsValid)
             {
@@ -93,16 +93,12 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // POST: Reserva/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> DeleteAsync(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var reserva = await _context.Reservas.FindAsync(id);
+            _context.Reservas.Remove(reserva);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
