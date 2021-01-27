@@ -40,7 +40,7 @@
                        aria-hidden="true"></i>
                 </span>
             </div>
-            <input type="search" placeholder="Pesquise" id="pesquisabox" autofocus oninput="this.form.submit();" onfocus="this.value = '@(pesquisa)'" onchange="this.form.submit()" name="pesquisa" class="form-control" />
+            <input type="search" placeholder="Pesquisar" id="pesquisabox" autofocus oninput="this.form.submit();" onfocus="this.value = '@(pesquisa)'" onchange="this.form.submit()" name="pesquisa" class="form-control" />
             <div class="ml-3">
                 <input type="submit" value="Pesquisar" class="btn btn-primary mr-4" />
                 <a asp-action="Index" class="btn btn-secondary ml-1">Limpar Pesquisa</a>
@@ -69,15 +69,15 @@
         </thead>
         <tbody>
             @foreach (var item in Model.ListaEventos.Where(evt =>
-         {
-             return (!string.IsNullOrWhiteSpace(ViewData["pesquisa"]?.ToString())) ?
-             (evt.EventoId.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
-             evt.Name.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
-             evt.Municipio.Nome.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
-             evt.Lotacao_max.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
-             evt.Descricao.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
-             evt.Data_realizacao.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower())) : true;
-         }).ToList())
+             {
+                 return (!string.IsNullOrWhiteSpace(ViewData["pesquisa"]?.ToString())) ?
+                 (evt.EventoId.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+                 evt.Name.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+                 evt.Municipio.Nome.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+                 evt.Lotacao_max.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+                 evt.Descricao.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+                 evt.Data_realizacao.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower())) : true;
+             }).ToList())
             {
                 <tr>
                     <td>
