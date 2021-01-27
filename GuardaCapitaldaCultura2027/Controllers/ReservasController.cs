@@ -38,9 +38,21 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Reserva/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var reserva = await _context.Reservas.Include(rsv => rsv.Evento)
+                .FirstOrDefaultAsync(m => m.ReservaId == id);
+            if (reserva == null)
+            {
+                return NotFound();
+            }
+
+            return View(reserva);
         }
 
         // GET: Reserva/Create
