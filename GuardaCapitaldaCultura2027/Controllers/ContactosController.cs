@@ -118,7 +118,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //[Authorize(Roles = "Admin, GestorEventos")]
-        public async Task<IActionResult> Edit(int id, [Bind("ContactoId,Name,Sobrenome,Email,Assunto,Mensagem")] Contacto contacto)
+        public async Task<IActionResult> Edit(int id, [Bind("ContactoId,Name,Sobrenome,Email,Assunto,Mensagem,Verificado,Resposta")] Contacto contacto)
         {
             if (id != contacto.ContactoId)
             {
@@ -129,10 +129,14 @@ namespace GuardaCapitaldaCultura2027.Controllers
             {
                 try
                 {
-                    /*using (MailMessage message = new MailMessage("guardaeventtos@gmail.com", contacto.Email))
+                    Contacto VerificarDados = await _context.Contactos.FindAsync(id);
+                    VerificarDados.Verificado = true;
+                    contacto = VerificarDados;
+
+                    using (MailMessage message = new MailMessage("guardaeventtos@gmail.com", contacto.Email))
                     {
                         message.Subject = contacto.Assunto;
-                        message.Body = contacto.Mensagem;
+                        message.Body = contacto.Resposta;
                         message.IsBodyHtml = false;
 
                         using (SmtpClient smtp = new SmtpClient())
@@ -144,13 +148,17 @@ namespace GuardaCapitaldaCultura2027.Controllers
                             smtp.Credentials = new NetworkCredential("guardaeventtos@gmail.com", "Guarda@@1");
                             smtp.Port = 587;
                             smtp.Send(message);
-                            //smtp.S(message);
                             //Permitir aplicações menos seguras: ATIVADO
-                            ViewBag.Message = "Email Sent Successfully";
                         }
-                    }*/
-                   _context.Update(contacto);
+                    }
+                    contacto = VerificarDados;
+                    _context.Update(contacto);
                     await _context.SaveChangesAsync();
+                    ViewBag.title = "Contacto Respondido Com Sucesso!";
+                    ViewBag.type = "alert-success";
+                    ViewBag.message = "Em breve entraremos em Contacto!";
+                    ViewBag.redirect = "/Contactos/Index"; // Request.Path
+                    return View("Mensagem");
                 }
                 catch (DbUpdateConcurrencyException)
                 {
