@@ -31,9 +31,10 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Reserva
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            Reservas.ListaReservas = _context.Reservas.Include(rsv => rsv.Evento).Where(rsv=>rsv.PessoaId.Equals(SignedInUser.Id)).ToList();
+            Reservas.Paginacao.PaginaAtual = page;
+            Reservas.ListaReservas = _context.Reservas.Include(rsv => rsv.Evento).Where(rsv => rsv.PessoaId.Equals(SignedInUser.Id)).Skip((Reservas.Paginacao.PaginaAtual - 1) * Reservas.Paginacao.ElementosPorPagina).Take(Reservas.Paginacao.ElementosPorPagina).ToList();
             return View(Reservas);
         }
 
