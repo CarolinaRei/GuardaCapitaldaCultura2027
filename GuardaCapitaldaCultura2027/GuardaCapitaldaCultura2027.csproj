@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Resources\Views\Eventos\NovaPasta\**" />
+    <Content Remove="Resources\Views\Eventos\NovaPasta\**" />
+    <EmbeddedResource Remove="Resources\Views\Eventos\NovaPasta\**" />
+    <None Remove="Resources\Views\Eventos\NovaPasta\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Image\1.jpg" />
     <None Remove="Image\10.jpg" />
     <None Remove="Image\11.jpg" />
