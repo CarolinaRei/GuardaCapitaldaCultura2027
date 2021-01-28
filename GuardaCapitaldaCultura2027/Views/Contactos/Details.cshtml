@@ -11,6 +11,18 @@
 
     <tbody>
         <tr>
+            <th scope="row"><h6>Nome</h6></th>
+            <td> @Html.DisplayFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <th scope="row"><h6>Sobrenome</h6></th>
+            <td> @Html.DisplayFor(model => model.Sobrenome)</td>
+        </tr>
+        <tr>
+            <th scope="row"><h6>Verificado</h6></th>
+            <td> @Html.DisplayFor(model => model.Verificado)</td>
+        </tr>
+        <tr>
             <th scope="row"><h6>E-mail</h6></th>
             <td> @Html.DisplayFor(model => model.Email)</td>
         </tr>
@@ -23,10 +35,14 @@
             <th scope="row"><h6>Mensagem</h6></th>
             <td> @Html.DisplayFor(model => model.Mensagem)</td>
         </tr>
+        <tr>
+            <th scope="row"><h6>Resposta</h6></th>
+            <td> @Html.DisplayFor(model => model.Resposta)</td>
+        </tr>
     </tbody>
 </table>
 <div class="card-body mb-5">
-    <a class="btn btn-secondary mr-4 float-right" asp-action="Responder" asp-route-id="@Model.ContactoId">Responder</a>
+    <a class="btn btn-secondary mr-4 float-right" asp-action="Edit" asp-route-id="@Model.ContactoId">Responder</a>
     <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
 </div>
 

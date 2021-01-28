@@ -1,53 +1,59 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Contacto
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Responder";
 }
 
-<h1>Edit</h1>
-
-<h4>Contacto</h4>
+<h4 class="alert-light">Responder Contacto</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ContactoId" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sobrenome" class="control-label"></label>
-                <input asp-for="Sobrenome" class="form-control" />
-                <span asp-validation-for="Sobrenome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Assunto" class="control-label"></label>
-                <input asp-for="Assunto" class="form-control" />
-                <span asp-validation-for="Assunto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Mensagem" class="control-label"></label>
-                <input asp-for="Mensagem" class="form-control" />
-                <span asp-validation-for="Mensagem" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="col-md-6 text-left">
+        <fieldset class="border p-4 list-inline-item">
+            <legend class="w-auto text-center font-weight-bold">Formulário de Responder Contacto</legend>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ContactoId" />
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Sobrenome" class="control-label"></label>
+                    <input asp-for="Sobrenome" class="form-control" />
+                    <span asp-validation-for="Sobrenome" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Assunto" class="control-label"></label>
+                    <input asp-for="Assunto" class="form-control" />
+                    <span asp-validation-for="Assunto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Mensagem" class="control-label"></label>
+                    <textarea asp-for="Mensagem" class="form-control" rows="4" cols="50"></textarea>
+                    <span asp-validation-for="Mensagem" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Resposta" class="control-label"></label>
+                    <textarea asp-for="Resposta" class="form-control" rows="6" cols="50"></textarea>
+                    <span asp-validation-for="Resposta" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Responder" class="btn btn-primary float-right" />
+
+                    <a class="btn btn-light float-left" asp-action="Index">Ver a Lista</a>
+                </div>
+            </form>
+        </fieldset>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
