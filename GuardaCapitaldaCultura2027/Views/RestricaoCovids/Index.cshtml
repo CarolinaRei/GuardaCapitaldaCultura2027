@@ -3,7 +3,7 @@
 @{ ViewData["Title"] = "Index"; }
 
 <fieldset class="border p-4">
-    <legend class="w-auto text-left"> Lista de Restrções COVID </legend>
+    <legend class="w-auto text-left"> Lista de Restrições COVID </legend>
     <table class="table">
         <thead>
             <tr>
@@ -42,7 +42,7 @@
                                     @(ViewData["pesquisa"] = pesquisa)
                                 </div>
                             }
-                            <input type="submit" class="icon-pesquisa fa-7x" value="&#xf002;" style="font-family: FontAwesome;height:35px;width:35px;background-color:transparent;margin-top:1px; border: 2px solid #167ce9;font-size: 1.2em;text-align: center;border-radius: 20px;outline:none !important" />
+                            <!--<input type="submit" class="icon-pesquisa fa-7x" value="&#xf002;" style="font-family: FontAwesome;height:35px;width:35px;background-color:transparent;margin-top:1px; border: 2px solid #167ce9;font-size: 1.2em;text-align: center;border-radius: 20px;outline:none !important" />-->
                         </div>
                     </form>
                 </th>
@@ -69,7 +69,8 @@
                         @Html.DisplayFor(modelItem => item.DataFim)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.RestricaoCovidId" class="btn btn-secondary" style="background-color:goldenrod;border-color:goldenrod;">Edit</a> | <a asp-action="Details" asp-route-id="@item.RestricaoCovidId" class="btn btn-info">Details</a> | <a asp-action="Delete" asp-route-id="@item.RestricaoCovidId" class="btn btn-danger">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.RestricaoCovidId" class="btn btn-secondary" style="background-color:goldenrod;border-color:goldenrod;"> Editar </a> |
+                        <a asp-action="Delete" asp-route-id="@item.RestricaoCovidId" class="btn btn-danger"> Apagar </a>
                     </td>
                 </tr>
              }
@@ -78,7 +79,7 @@
 </fieldset>
 <br />
 <p>
-    <a asp-action="Create" class="btn btn-primary">Create New</a>
+    <a asp-action="Create" class="btn btn-primary"> Criar nova Restrição </a>
 </p>
 
 <div>
