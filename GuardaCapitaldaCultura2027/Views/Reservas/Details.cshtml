@@ -1,8 +1,8 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Reserva
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
 
-@{
-    ViewData["Title"] = "Details";
-}
+@{ ViewData["Title"] = "Details";}
 
 <h1>Details</h1>
 
@@ -10,22 +10,22 @@
     <h4>Reserva</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Nome)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Observacao)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Observacao)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Numero_Reserva)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Numero_Reserva)
         </dd>
     </dl>
