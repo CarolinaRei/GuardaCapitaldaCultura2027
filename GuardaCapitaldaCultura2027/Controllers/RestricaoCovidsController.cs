@@ -7,22 +7,27 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GuardaCapitaldaCultura2027.Models;
 using GuardaCapitaldaCultura2027.Models.Context;
+using GuardaCapitaldaCultura2027.Models.ViewModels;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
     public class RestricaoCovidsController : Controller
     {
         private readonly GuardaEventosBdContext _context;
+        private readonly RestricoesCovid restricoesCovid;
 
         public RestricaoCovidsController(GuardaEventosBdContext context)
         {
             _context = context;
+            restricoesCovid = new RestricoesCovid(context);
         }
 
         // GET: RestricaoCovids
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pagina = 1)
         {
-            return View(await _context.RestricaoCovid.ToListAsync());
+            restricoesCovid.Paginacao.PaginaAtual = pagina;
+            restricoesCovid.ListaRestricoes = await _context.RestricaoCovid.Skip((restricoesCovid.Paginacao.PaginaAtual - 1) * restricoesCovid.Paginacao.ElementosPorPagina).Take(7).ToListAsync();
+            return View(restricoesCovid);
         }
 
         // GET: RestricaoCovids/Details/5
