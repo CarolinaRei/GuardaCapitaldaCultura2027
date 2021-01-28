@@ -157,7 +157,10 @@ namespace GuardaCapitaldaCultura2027.Models
                    Sobrenome = "Monroe",
                    Email = "david.bernstein@bdpint.com",
                    Assunto = "ATUALIDADE",
-                   Mensagem = " Candidatura da Guarda a Capital Europeia da Cultura em 2027 está a promover um ciclo de “Conversas: Guarda2027” com quatro debates organizados e a acontecer no Fundão, Gouveia, Figueira de Castelo Rodrigo e na Guarda. Nestas sessões de debate vão ser discutidas temáticas como a atividade cultural e artística; mobilidade e coesão social; empreendedorismo e tecnologias da cultura; património natural e histórico da região."
+                   Mensagem = " Candidatura da Guarda a Capital Europeia da Cultura em 2027 está a promover um ciclo de “Conversas: Guarda2027” com quatro debates organizados e a acontecer no Fundão, Gouveia, Figueira de Castelo Rodrigo e na Guarda. Nestas sessões de debate vão ser discutidas temáticas como a atividade cultural e artística; mobilidade e coesão social; empreendedorismo e tecnologias da cultura; património natural e histórico da região.",
+                   Resposta = "Candidatura da Guarda a Capital Europeia da Cultura em 2027 ",
+                   Verificado = true
+
                },
                new Contacto()
                {
@@ -165,7 +168,9 @@ namespace GuardaCapitaldaCultura2027.Models
                    Sobrenome = "Monroe",
                    Email = "david.bernstein@bdpint.com",
                    Assunto = "Concelho",
-                   Mensagem = " O Concelho da Guarda está situado no centro da região beirã, entre o Planalto Guarda-Sabugal e a Serra da Estrela. Esta localização privilegiada permite-lhe que os seus cerca de 712,11 km2 de área sejam partilhados pelas bacias hidrográficas de cursos de águas tão importantes como são os Rios Mondego, Zêzere e Côa. O Concelho da Guarda confina a nascente com os Concelhos de Pinhel, Almeida e Sabugal, a sul com os de Belmonte e Covilhã, e a poente com Manteigas, Gouveia e Celorico da Beira."
+                   Mensagem = " O Concelho da Guarda está situado no centro da região beirã, entre o Planalto Guarda-Sabugal e a Serra da Estrela. Esta localização privilegiada permite-lhe que os seus cerca de 712,11 km2 de área sejam partilhados pelas bacias hidrográficas de cursos de águas tão importantes como são os Rios Mondego, Zêzere e Côa. O Concelho da Guarda confina a nascente com os Concelhos de Pinhel, Almeida e Sabugal, a sul com os de Belmonte e Covilhã, e a poente com Manteigas, Gouveia e Celorico da Beira.",
+                   Resposta = " Candidatura da Guarda a Capital Europeia da Cultura em 2027",
+                   Verificado = true
                },
                new Contacto
                {
@@ -173,7 +178,9 @@ namespace GuardaCapitaldaCultura2027.Models
                    Sobrenome = "Everton",
                    Email = "vagneripg@gmail.com",
                    Assunto = "Cultura",
-                   Mensagem = "A Cultura é a raiz de um povo e, ciente disso, a autarquia tomou para si o papel de mobilizador cultural, quer colaborando com as coletividades e associações locais, quer no trabalho desenvolvido através de equipamentos de referência na região e no país como o Teatro Municipal da Guarda e a Biblioteca Municipal Eduardo Lourenço. Numa perspetiva de cultura para todos, a autarquia quer chegar a todos os munícipes, disponibilizando iniciativas de qualidade, valorizando a cultura local mas também trazendo propostas de outros pontos de Portugal e do mundo."
+                   Mensagem = "A Cultura é a raiz de um povo e, ciente disso, a autarquia tomou para si o papel de mobilizador cultural, quer colaborando com as coletividades e associações locais, quer no trabalho desenvolvido através de equipamentos de referência na região e no país como o Teatro Municipal da Guarda e a Biblioteca Municipal Eduardo Lourenço. Numa perspetiva de cultura para todos, a autarquia quer chegar a todos os munícipes, disponibilizando iniciativas de qualidade, valorizando a cultura local mas também trazendo propostas de outros pontos de Portugal e do mundo.",
+                   Resposta = " ",
+                   Verificado = false
                },
                 new Contacto
                 {
@@ -181,7 +188,9 @@ namespace GuardaCapitaldaCultura2027.Models
                     Sobrenome = "Monroe",
                     Email = "david.bernstein@bdpint.com",
                     Assunto = "ATUALIDADE",
-                    Mensagem = " Candidatura da Guarda a Capital Europeia da Cultura em 2027 está a promover um ciclo de “Conversas: Guarda2027” com quatro debates organizados e a acontecer no Fundão, Gouveia, Figueira de Castelo Rodrigo e na Guarda. Nestas sessões de debate vão ser discutidas temáticas como a atividade cultural e artística; mobilidade e coesão social; empreendedorismo e tecnologias da cultura; património natural e histórico da região."
+                    Mensagem = " Candidatura da Guarda a Capital Europeia da Cultura em 2027 está a promover um ciclo de “Conversas: Guarda2027” com quatro debates organizados e a acontecer no Fundão, Gouveia, Figueira de Castelo Rodrigo e na Guarda. Nestas sessões de debate vão ser discutidas temáticas como a atividade cultural e artística; mobilidade e coesão social; empreendedorismo e tecnologias da cultura; património natural e histórico da região.",
+                    Resposta = " ",
+                    Verificado = false
                 },
                new Contacto()
                {
@@ -189,7 +198,9 @@ namespace GuardaCapitaldaCultura2027.Models
                    Sobrenome = "Monroe",
                    Email = "david.bernstein@bdpint.com",
                    Assunto = "Concelho",
-                   Mensagem = " O Concelho da Guarda está situado no centro da região beirã, entre o Planalto Guarda-Sabugal e a Serra da Estrela. Esta localização privilegiada permite-lhe que os seus cerca de 712,11 km2 de área sejam partilhados pelas bacias hidrográficas de cursos de águas tão importantes como são os Rios Mondego, Zêzere e Côa. O Concelho da Guarda confina a nascente com os Concelhos de Pinhel, Almeida e Sabugal, a sul com os de Belmonte e Covilhã, e a poente com Manteigas, Gouveia e Celorico da Beira."
+                   Mensagem = " O Concelho da Guarda está situado no centro da região beirã, entre o Planalto Guarda-Sabugal e a Serra da Estrela. Esta localização privilegiada permite-lhe que os seus cerca de 712,11 km2 de área sejam partilhados pelas bacias hidrográficas de cursos de águas tão importantes como são os Rios Mondego, Zêzere e Côa. O Concelho da Guarda confina a nascente com os Concelhos de Pinhel, Almeida e Sabugal, a sul com os de Belmonte e Covilhã, e a poente com Manteigas, Gouveia e Celorico da Beira.",
+                   Resposta = " ",
+                   Verificado = false
                },
                 new Contacto
                 {
@@ -197,7 +208,9 @@ namespace GuardaCapitaldaCultura2027.Models
                     Sobrenome = "Monroe",
                     Email = "david.bernstein@bdpint.com",
                     Assunto = "ATUALIDADE",
-                    Mensagem = " Candidatura da Guarda a Capital Europeia da Cultura em 2027 está a promover um ciclo de “Conversas: Guarda2027” com quatro debates organizados e a acontecer no Fundão, Gouveia, Figueira de Castelo Rodrigo e na Guarda. Nestas sessões de debate vão ser discutidas temáticas como a atividade cultural e artística; mobilidade e coesão social; empreendedorismo e tecnologias da cultura; património natural e histórico da região."
+                    Mensagem = " Candidatura da Guarda a Capital Europeia da Cultura em 2027 está a promover um ciclo de “Conversas: Guarda2027” com quatro debates organizados e a acontecer no Fundão, Gouveia, Figueira de Castelo Rodrigo e na Guarda. Nestas sessões de debate vão ser discutidas temáticas como a atividade cultural e artística; mobilidade e coesão social; empreendedorismo e tecnologias da cultura; património natural e histórico da região.",
+                    Resposta = " ",
+                    Verificado = false
                 },
                new Contacto()
                {
@@ -205,7 +218,9 @@ namespace GuardaCapitaldaCultura2027.Models
                    Sobrenome = "Monroe",
                    Email = "david.bernstein@bdpint.com",
                    Assunto = "Concelho",
-                   Mensagem = " O Concelho da Guarda está situado no centro da região beirã, entre o Planalto Guarda-Sabugal e a Serra da Estrela. Esta localização privilegiada permite-lhe que os seus cerca de 712,11 km2 de área sejam partilhados pelas bacias hidrográficas de cursos de águas tão importantes como são os Rios Mondego, Zêzere e Côa. O Concelho da Guarda confina a nascente com os Concelhos de Pinhel, Almeida e Sabugal, a sul com os de Belmonte e Covilhã, e a poente com Manteigas, Gouveia e Celorico da Beira."
+                   Mensagem = " O Concelho da Guarda está situado no centro da região beirã, entre o Planalto Guarda-Sabugal e a Serra da Estrela. Esta localização privilegiada permite-lhe que os seus cerca de 712,11 km2 de área sejam partilhados pelas bacias hidrográficas de cursos de águas tão importantes como são os Rios Mondego, Zêzere e Côa. O Concelho da Guarda confina a nascente com os Concelhos de Pinhel, Almeida e Sabugal, a sul com os de Belmonte e Covilhã, e a poente com Manteigas, Gouveia e Celorico da Beira.",
+                   Resposta = " ",
+                   Verificado = false
                },
                 new Contacto
                 {
@@ -213,7 +228,9 @@ namespace GuardaCapitaldaCultura2027.Models
                     Sobrenome = "Monroe",
                     Email = "david.bernstein@bdpint.com",
                     Assunto = "ATUALIDADE",
-                    Mensagem = " Candidatura da Guarda a Capital Europeia da Cultura em 2027 está a promover um ciclo de “Conversas: Guarda2027” com quatro debates organizados e a acontecer no Fundão, Gouveia, Figueira de Castelo Rodrigo e na Guarda. Nestas sessões de debate vão ser discutidas temáticas como a atividade cultural e artística; mobilidade e coesão social; empreendedorismo e tecnologias da cultura; património natural e histórico da região."
+                    Mensagem = " Candidatura da Guarda a Capital Europeia da Cultura em 2027 está a promover um ciclo de “Conversas: Guarda2027” com quatro debates organizados e a acontecer no Fundão, Gouveia, Figueira de Castelo Rodrigo e na Guarda. Nestas sessões de debate vão ser discutidas temáticas como a atividade cultural e artística; mobilidade e coesão social; empreendedorismo e tecnologias da cultura; património natural e histórico da região.",
+                    Resposta = "Candidatura da Guarda a Capital Europeia da Cultura em 2027  ",
+                    Verificado = true
                 },
                new Contacto()
                {
@@ -221,7 +238,9 @@ namespace GuardaCapitaldaCultura2027.Models
                    Sobrenome = "Monroe",
                    Email = "david.bernstein@bdpint.com",
                    Assunto = "Concelho",
-                   Mensagem = " O Concelho da Guarda está situado no centro da região beirã, entre o Planalto Guarda-Sabugal e a Serra da Estrela. Esta localização privilegiada permite-lhe que os seus cerca de 712,11 km2 de área sejam partilhados pelas bacias hidrográficas de cursos de águas tão importantes como são os Rios Mondego, Zêzere e Côa. O Concelho da Guarda confina a nascente com os Concelhos de Pinhel, Almeida e Sabugal, a sul com os de Belmonte e Covilhã, e a poente com Manteigas, Gouveia e Celorico da Beira."
+                   Mensagem = " O Concelho da Guarda está situado no centro da região beirã, entre o Planalto Guarda-Sabugal e a Serra da Estrela. Esta localização privilegiada permite-lhe que os seus cerca de 712,11 km2 de área sejam partilhados pelas bacias hidrográficas de cursos de águas tão importantes como são os Rios Mondego, Zêzere e Côa. O Concelho da Guarda confina a nascente com os Concelhos de Pinhel, Almeida e Sabugal, a sul com os de Belmonte e Covilhã, e a poente com Manteigas, Gouveia e Celorico da Beira.",
+                   Resposta = "Candidatura da Guarda a Capital Europeia da Cultura em 2027  ",
+                   Verificado = true
                }
 
             );
