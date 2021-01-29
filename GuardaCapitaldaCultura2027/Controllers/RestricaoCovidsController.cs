@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using GuardaCapitaldaCultura2027.Models;
 using GuardaCapitaldaCultura2027.Models.Context;
 using GuardaCapitaldaCultura2027.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
@@ -49,6 +50,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: RestricaoCovids/Create
+        [Authorize(Roles = "Admin, GestorEventos")]
         public IActionResult Create()
         {
             return View();
@@ -59,6 +61,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, GestorEventos")]
         public async Task<IActionResult> Create([Bind("RestricaoCovidId,Descricao,DataInicio,DataFim")] RestricaoCovid restricaoCovid)
         {
             if (ModelState.IsValid)
@@ -71,6 +74,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: RestricaoCovids/Edit/5
+        [Authorize(Roles = "Admin, GestorEventos")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -91,6 +95,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, GestorEventos")]
         public async Task<IActionResult> Edit(int id, [Bind("RestricaoCovidId,Descricao,DataInicio,DataFim")] RestricaoCovid restricaoCovid)
         {
             if (id != restricaoCovid.RestricaoCovidId)
@@ -122,6 +127,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: RestricaoCovids/Delete/5
+        [Authorize(Roles = "Admin, GestorEventos")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -142,6 +148,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // POST: RestricaoCovids/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, GestorEventos")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var restricaoCovid = await _context.RestricaoCovid.FindAsync(id);
