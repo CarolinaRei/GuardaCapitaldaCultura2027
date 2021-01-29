@@ -14,6 +14,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using GuardaCapitaldaCultura2027.Models.Context;
 using GuardaCapitaldaCultura2027.Models;
+using Microsoft.AspNetCore.Mvc.Razor;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Options;
 
 namespace GuardaCapitaldaCultura2027
 {
@@ -29,31 +33,31 @@ namespace GuardaCapitaldaCultura2027
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("GuardaUsersConnection")));
+                    Configuration.GetConnectionString("DefaultConnection")));
+            
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+           
+            services.AddMvcCore()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
 
-            services.AddIdentity<IdentityUser, IdentityRole>(
-                options => {
-                    //Sign in 
-                    options.SignIn.RequireConfirmedAccount = false;
-
-                    //Password
-                    options.Password.RequireDigit = true;
-                    options.Password.RequireLowercase = true;
-                    options.Password.RequiredLength = 8;
-                    options.Password.RequiredUniqueChars = 6;
-                    options.Password.RequireNonAlphanumeric = true;
-                    options.Password.RequireUppercase = true;
-
-
-                    //Lockout
-                    options.Lockout.AllowedForNewUsers = true;
-                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
-                    options.Lockout.MaxFailedAccessAttempts = 7;
-                    
-               }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI();
-
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var cultures = new[]
+                {
+                    new CultureInfo("cn"),
+                    new CultureInfo("en"),
+                    new CultureInfo("pt")
+                };
+                options.DefaultRequestCulture = new RequestCulture("pt");
+                options.SupportedCultures = cultures;
+                options.SupportedUICultures = cultures;
+            });
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -65,9 +69,11 @@ namespace GuardaCapitaldaCultura2027
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
-            UserManager<IdentityUser> userManager,
-            RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env
+            // GuardaEventosBdContext bd,
+            // UserManager<IdentityUser> userManager,
+            // RoleManager<IdentityRole> roleManager
+            )
         {
             if (env.IsDevelopment())
             {
@@ -88,6 +94,8 @@ namespace GuardaCapitaldaCultura2027
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -95,13 +103,14 @@ namespace GuardaCapitaldaCultura2027
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-            SeedDataUser.SeedRolesAsync(roleManager).Wait();
-            SeedDataUser.SeedDefaultAdminAsync(userManager).Wait();
-           
+
+            // SeedDataGestorEventos.SeedRolesAsync(roleManager).Wait();
+            // SeedDataGestorEventos.SeedDefaultAdminAsync(userManager).Wait();
+
             if (env.IsDevelopment())
             {
-                SeedDataUser.SeedDevUsersAsync(userManager).Wait();
-
+                // SeedDataGestorEventos.SeedDevData(db);
+                // SeedDataGestorEventos.SeedDevUsersAsync(userManager).Wait();
                 using (var serviceScope = app.ApplicationServices.CreateScope())
                 {
                     var dbContext = serviceScope.ServiceProvider.GetService<GuardaEventosBdContext>();

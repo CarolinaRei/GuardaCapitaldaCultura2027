@@ -1,8 +1,8 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Reserva
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
 
-@{
-    ViewData["Title"] = "Edit";
-}
+@{ ViewData["Title"] = "Edit";}
 
 <h1>Edit</h1>
 
@@ -13,6 +13,8 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ReservaId" />
+            <input type="hidden" asp-for="EventoId" />
+            <input type="hidden" asp-for="PessoaId" />
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />

@@ -1,5 +1,18 @@
 ﻿@model Evento
 
+<script type="text/javascript">
+    function EsconderTexto(id) {
+        if ($('#desc' + id).hasClass('hidden')) {
+            $('#desc' + id).attr('style', 'white-space:unset;overflow:unset;text-overflow:unset;');
+            $('#desc' + id).removeClass('hidden');
+        }
+        else {
+            $('#desc' + id).attr('style', 'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;');
+            $('#desc' + id).addClass('hidden');
+        }
+    }
+</script>
+
 <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
         <div class="mainflip">
@@ -10,7 +23,8 @@
                         <img style="width: 100%; height: 128px; margin-bottom:10px;"
                              src="data:image/*;base64, @(Convert.ToBase64String(Model.Imagem))" />
                         <h4 class="card-title">@Model.Name</h4>
-                        <p class="card-text">@Model.Descricao</p>
+                        <p id=@("desc" + Model.EventoId) class="card-text hidden" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">@Model.Descricao</p>
+                        <a id=@("verMais" + Model.EventoId) href="#" style="border:none;" onclick="EsconderTexto(@Model.EventoId)">Ver Mais</a>
                         <p class="card-text">@Model.Data_realizacao</p>
                         @Html.ActionLink("Reservar", "Create", "Reservas", new { @EventoId = Model.EventoId })
                     </div>

@@ -1,129 +1,126 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.ViewModels.Reservas
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{   ViewData["Title"] = "Index";}
 
-<h1>Index</h1>
+<div class="row">
+    <h4 class="alert-light">Lista das Reservas</h4>
+    <hr />
+</div>
+<div class="row">
+    <p>
+        <a class="btn btn-primary left" asp-action="Index" asp-controller="Home">Criar Reserva</a>
+    </p>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ListaReservas.FirstOrDefault().Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ListaReservas.FirstOrDefault().Observacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ListaReservas.FirstOrDefault().Numero_Reserva)
-            </th>
-            <th>
-                <form id="pesquisaform" asp-action="Index">
-                    <div>
-                        @{
-                            string pesquisa = "";
-                            try
-                            {
-                                pesquisa = string.IsNullOrEmpty(Context.Request.Form["pesquisa"]) ? string.Empty : Context.Request.Form["pesquisa"].ToString();
+<fieldset class="border p-4">
+    <legend class="w-auto text-center"></legend>
+    <form id="pesquisaform" class="input-group md-form form-sm form-1 pl-0 mb-4" asp-action="Index">
+        @{
+            string pesquisa = "";
+            try
+            {
+                pesquisa = string.IsNullOrEmpty(Context.Request.Form["pesquisa"]) ? string.Empty : Context.Request.Form["pesquisa"].ToString();
 
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.Message);
-                            }
-                            finally
-                            {
-                                if (string.IsNullOrEmpty(pesquisa))
-                                {
-                                    pesquisa = ViewData["pesquisa"] as string;
-                                }
-                            }
-                            <input type="search" id="pesquisabox" autofocus oninput="this.form.submit();" onfocus="this.value = '@(pesquisa)'" onchange="this.form.submit()" name="pesquisa" style="margin-right:10px; border: 2px solid #167ce9;font-size: 1.2em;text-align: center;outline:none !important;border-radius: 20px;background-color:transparent;" />
-                            <div style="display:none">
-                                @(ViewData["pesquisa"] = pesquisa)
-                            </div>
-                        }
-                        <input type="submit" class="icon-pesquisa fa-7x" value="&#xf002;" style="font-family: FontAwesome;height:35px;width:35px;background-color:transparent;margin-top:1px; border: 2px solid #167ce9;font-size: 1.2em;text-align: center;border-radius: 20px;outline:none !important" />
-                    </div>
-                </form>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.ListaReservas.Where(rsv =>
-      {
-          return (!string.IsNullOrWhiteSpace(ViewData["pesquisa"]?.ToString())) ?
-          (rsv.ReservaId.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
-          rsv.Nome.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
-          rsv.Evento.Name.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
-          rsv.Numero_Reserva.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower())) : true;
-      }).ToList())
-        {
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (string.IsNullOrEmpty(pesquisa))
+                {
+                    pesquisa = ViewData["pesquisa"] as string;
+                }
+            }
+            <div class="input-group-prepend">
+                <span class="input-group-text purple lighten-3" id="basic-text1">
+                    <i class="fas fa-search text-white"
+                       aria-hidden="true"></i>
+                </span>
+            </div>
+            <input type="search" placeholder="Pesquisar" id="pesquisabox" autofocus oninput="this.form.submit();" onfocus="this.value = '@(pesquisa)'" onchange="this.form.submit()" name="pesquisa" class="form-control" />
+            <div class="ml-3">
+                <input type="submit" value="Pesquisar" class="btn btn-primary mr-4" />
+                <a asp-action="Index" class="btn btn-secondary ml-1">Limpar Pesquisa</a>
+            </div>
+            ViewData["pesquisa"] = pesquisa;
+        }
+    </form>
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Observacao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Numero_Reserva)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ReservaId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ReservaId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ReservaId">Delete</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListaReservas.FirstOrDefault().Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListaReservas.FirstOrDefault().Observacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListaReservas.FirstOrDefault().Numero_Reserva)
+                </th>
+                <th>
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
-<div>
-    @{
-        if (Model.Paginacao.PaginaAtual > 1 && Model.Paginacao.PaginaAtual != 2)
-        {
-            <a title="First Page" href="@Url.Action("Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual > 1) ? 1 : Model.Paginacao.PaginaAtual})"><span class="icon-prev"><i style="color:black" class="fas fa-angle-double-left"></i></span></a>
-            <span>&nbsp;</span>
-            <a title="Previous Page" href="@Url.Action("Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual > 1) ? Model.Paginacao.PaginaAtual-1 : Model.Paginacao.PaginaAtual })"><span class="icon-prev"><i style="color:black" class="fas fa-angle-left"></i></span></a>
-            <span>&nbsp;</span>
-        }
-        else if (Model.Paginacao.PaginaAtual > 1 && Model.Paginacao.PaginaAtual == 2)
-        {
-            <a title="Previous Page" href="@Url.Action("Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual > 1) ? Model.Paginacao.PaginaAtual-1 : Model.Paginacao.PaginaAtual })"><span class="icon-prev"><i style="color:black" class="fas fa-angle-left"></i></span></a>
-            <span>&nbsp;</span>
-        }
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ListaReservas.Where(rsv =>
+           {
+               return (!string.IsNullOrWhiteSpace(ViewData["pesquisa"]?.ToString())) ?
+               (rsv.ReservaId.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+               rsv.Nome.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+               rsv.Evento.Name.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+               rsv.Numero_Reserva.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower())) : true;
+           }).ToList())
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Observacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Numero_Reserva)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ReservaId" class="btn btn-warning mr-4">Edit</a><a asp-action="Details" asp-route-id="@item.ReservaId" class="btn btn-info mr-4">Details</a><a asp-action="Delete" asp-route-id="@item.ReservaId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</fieldset>
+<br />
 
-        if (Model.Paginacao.PaginaAtual > 2)
-        {
-            @Html.ActionLink((Model.Paginacao.PaginaAtual - 1).ToString(), "Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual - 1) }, new { @style = "font-family: 'Varela Round';color:black;font-weight:bolder;" })
-            <span>&nbsp;</span>
-        }
+<div class="row">
+    <nav class="mt-3">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1">First</a></li>
 
-        <span style="font-family: 'Varela Round';color:#167ce9;font-weight:bolder;">@Model.Paginacao.PaginaAtual.ToString()</span>
-        <span>&nbsp;</span>
+            @{
+                int initalPage = Model.Paginacao.PaginaAtual - PagingInfoMunicipio.NUMERO_ANTES_DEPOIS;
+                if (initalPage < 1) initalPage = 1;
 
+                int finalPage = Model.Paginacao.PaginaAtual + PagingInfoMunicipio.NUMERO_ANTES_DEPOIS;
+                if (finalPage > Model.Paginacao.TotalPaginas) finalPage = Model.Paginacao.TotalPaginas;
+            }
 
-        if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas - 1)
-        {
-            @Html.ActionLink((Model.Paginacao.PaginaAtual + 1).ToString(), "Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual + 1) }, new { @style = "font-family: 'Varela Round';color:black;font-weight:bolder;" })
-            <span>&nbsp;</span>
-        }
+            @for (int p = initalPage; p <= finalPage; p++)
+            {
+                if (p == Model.Paginacao.PaginaAtual)
+                {
+                    <li class="page-item active"><a class="page-link" href="#">@p</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@p">@p</a></li>
+                }
+            }
 
-        if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas && Model.Paginacao.PaginaAtual + 1 < Model.Paginacao.TotalPaginas)
-        {
-            <a title="Next Page" href="@Url.Action("Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) ? Model.Paginacao.PaginaAtual + 1 : Model.Paginacao.PaginaAtual })"><span class="icon-next"><i style="color:black" class="fas fa-angle-right"></i></span></a>
-            <span>&nbsp;&nbsp;</span>
-            <a title="Last Page" href="@Url.Action("Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) ? Model.Paginacao.TotalPaginas : Model.Paginacao.PaginaAtual })"><span class="icon-next"><i style="color:black" class="fas fa-angle-double-right"></i></span></a>
-            <span>&nbsp;&nbsp;</span>
-        }
-        else if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas && Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas)
-        {
-            <a title="Next Page" href="@Url.Action("Index", "Reservas", new { @pagina = (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) ? Model.Paginacao.PaginaAtual + 1 : Model.Paginacao.PaginaAtual })"><span class="icon-next"><i style="color:black" class="fas fa-angle-right"></i></span></a>
-            <span>&nbsp;&nbsp;</span>
-        }
-    }
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.Paginacao.TotalPaginas">Last</a></li>
+        </ul>
+    </nav>
 </div>
