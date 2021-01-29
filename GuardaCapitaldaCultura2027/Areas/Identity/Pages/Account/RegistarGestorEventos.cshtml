@@ -6,59 +6,60 @@
 }
 
 <h1>@ViewData["Title"]</h1>
+<div class="alert alert-light text-lg-center" role="alert">
+    <h5>Se quer fazer desta equipa, por favor, crie a sua conta Gestor de Eventos.</h5>
+</div>
 <hr />
 
-<div class="row">
-    <div class="col-md-12">
-        <fieldset class="border p-4">
-            <legend class="w-auto">Formulário de Gestor de Eventos</legend>
-            <form id="account" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-row">
-                    <div class="col">
-                        <label asp-for="Input.Nome" class="control-label"></label>
-                        <input asp-for="Input.Nome" class="form-control" />
-                        <span asp-validation-for="Input.Nome" class="text-danger"></span>
-                    </div>
-                    <div class="col">
-                        <label asp-for="Input.Sobrenome" class="control-label"></label>
-                        <input asp-for="Input.Sobrenome" class="form-control" />
-                        <span asp-validation-for="Input.Sobrenome" class="text-danger"></span>
-                    </div>
+<div class="col-md-9 text-left">
+    <fieldset class="border p-4" list-inline-item">
+        <legend class="w-auto">Formulário de Gestor de Eventos</legend>
+        <form id="account" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-row">
+                <div class="col">
+                    <label asp-for="Input.Nome" class="control-label"></label>
+                    <input asp-for="Input.Nome" class="form-control" />
+                    <span asp-validation-for="Input.Nome" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Input.Contacto" class="control-label"></label>
-                    <input asp-for="Input.Contacto" class="form-control" />
-                    <span asp-validation-for="Input.Contacto" class="text-danger"></span>
+                <div class="col">
+                    <label asp-for="Input.Sobrenome" class="control-label"></label>
+                    <input asp-for="Input.Sobrenome" class="form-control" />
+                    <span asp-validation-for="Input.Sobrenome" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Input.NIF" class="control-label"></label>
-                    <input asp-for="Input.NIF" class="form-control" />
-                    <span asp-validation-for="Input.NIF" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Input.Email"></label>
-                    <input asp-for="Input.Email" class="form-control" />
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Input.Password"></label>
-                    <input asp-for="Input.Password" class="form-control" />
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Input.ConfirmPassword"></label>
-                    <input asp-for="Input.ConfirmPassword" class="form-control" />
-                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Registar</button>
-                    <hr />
-                    <p> Os campos assinalados a * são de carácter obrigatório. </p>
-                </div>
-            </form>
-        </fieldset>
-    </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Contacto" class="control-label"></label>
+                <input asp-for="Input.Contacto" class="form-control" />
+                <span asp-validation-for="Input.Contacto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.NIF" class="control-label"></label>
+                <input asp-for="Input.NIF" class="form-control" />
+                <span asp-validation-for="Input.NIF" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Registar</button>
+                <hr />
+                <p> Os campos assinalados a * são de carácter obrigatório. </p>
+            </div>
+        </form>
+    </fieldset>
 </div>
 
 @section Scripts {

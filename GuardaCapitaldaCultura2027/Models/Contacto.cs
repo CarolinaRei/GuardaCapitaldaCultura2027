@@ -11,7 +11,7 @@ namespace GuardaCapitaldaCultura2027.Models
     {
         private const string sms = "Por favor digite um email válido";
 
-        public static string Nome { get; internal set; }
+        //public static string Nome { get; internal set; }
         public int ContactoId { get; set; }
 
         [Required(ErrorMessage = "Por favor, insira seu Nome")]
@@ -42,5 +42,12 @@ namespace GuardaCapitaldaCultura2027.Models
         [StringLength(1000, MinimumLength = 2, ErrorMessage = "Mensagem deve ter pelo menos 2 caracteres e um máximo de 1000")]
         [Display(Name = "Mensagem *", Prompt = "Inserir um Mensagem")]
         public string Mensagem { get; set; }
+
+
+        public bool Verificado { get; set; }
+
+        [Display(Name = "Resposta *", Prompt = "Inserir um Resposta")]
+        public string Resposta { get; set; }
+
     }
 }

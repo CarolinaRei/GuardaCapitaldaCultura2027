@@ -40,8 +40,11 @@
             </li>
         </ul>
         <div class="card-body">
-            <a class="btn btn-warning mr-4 float-right" asp-action="Edit" asp-route-id="@Model.MunicipioId">Editar</a>
-            <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
-        </div>
+            @if (User.IsInRole("GestorEventos") || User.IsInRole("Admin"))
+            {
+                <a class="btn btn-warning mr-4 float-right" asp-action="Edit" asp-route-id="@Model.MunicipioId">Editar</a>
+            }
+                <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
+            </div>
     </div>
 </div>

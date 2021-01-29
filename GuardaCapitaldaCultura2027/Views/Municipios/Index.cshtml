@@ -8,29 +8,15 @@
     <h4 class="alert-light">Lista dos Municipios</h4>
     <hr />
 </div>
-<div class="row">
-    <p>
-        <a class="btn btn-primary left" asp-action="Create">Criar Municipio</a>
-    </p>
 
-</div>
-<!--<div class="card mt-3 bg-info">
-    <div class="card-header">
-        <div class="card-title font-weight-bold">Search</div>
+@if (User.IsInRole("GestorEventos") || User.IsInRole("Admin"))
+{
+    <div class="row">
+        <p>
+            <a class="btn btn-primary left" asp-action="Create">Criar Municipio</a>
+        </p>
     </div>
-    <div class="card-body">
-        <form asp-action="Index" method="get">
-            <label for="name">Name</label>
-            <input name="name" type="search" class="form-control" value="@Model.SearchNome" />
-            <input name="page" type="hidden" value="1" />
-            <div class="mt-3">
-                <input type="submit" value="Search" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-secondary">Clear</a>
-            </div>
-        </form>
-    </div>
-</div>-->
-<!-- Barra de Búsqueda -->
+}
 
 
 <div class="row mt-2">
@@ -51,42 +37,44 @@
                 <a asp-action="Index" class="btn btn-secondary ml-1">Limpar Pesquisa</a>
             </div>
         </form>
-
-        <table class="table text-lg-center">
-            <thead>
-                <tr>
-                    <th>
-                        Nome
-                    </th>
-
-                    <th>
-                        Desativar
-                    </th>
-                    <th>
-                        Opções
-                    </th>
-                </tr>
-            </thead>
-            <tbody class="text-justify">
-                @foreach (var item in Model.Municipios)
-                {
+            <table class="table text-lg-center">
+                <thead>
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nome)
-                        </td>
+                        <th>
+                            Nome
+                        </th>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Desativar)
-                        </td>
-                        <td class="m-5">
-                            <a class="btn btn-warning mr-4" asp-action="Edit" asp-route-id="@item.MunicipioId">Editar</a>
-                            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.MunicipioId">Detales</a>
-                        </td>
+                        <th>
+                            Desativar
+                        </th>
+                        <th>
+                            Opções
+                        </th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="text-justify">
+                    @foreach (var item in Model.Municipios)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
 
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Desativar)
+                            </td>
+                            <td class="m-5">
+                                @if (User.IsInRole("GestorEventos") || User.IsInRole("Admin"))
+                                {
+                                     <a class="btn btn-warning mr-4" asp-action="Edit" asp-route-id="@item.MunicipioId">Editar</a>
+                                }
+
+                                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.MunicipioId">Detales</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
     </fieldset>
 </div>
 <div class="row">
