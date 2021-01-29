@@ -4,9 +4,9 @@
 
 @{ ViewData["Title"] = "Delete";}
 
-<h1>Delete</h1>
+<h1>ELiminar</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Quer mesmo eliminar?</h3>
 <div>
     <h4>LugarEvento</h4>
     <hr />
@@ -25,9 +25,9 @@
         </dd>
     </dl>
 
-    <form asp-action="Delete">
+    <form asp-action="Eliminar">
         <input type="hidden" asp-for="LugarEventoId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Voltar à Lista</a>
     </form>
 </div>
