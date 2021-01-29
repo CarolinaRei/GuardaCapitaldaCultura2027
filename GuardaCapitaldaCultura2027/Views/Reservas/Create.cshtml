@@ -2,12 +2,12 @@
 @using Microsoft.AspNetCore.Mvc.Localization;
 @inject IViewLocalizer Localizer;
 
-@{ViewData["Title"] = "Create";}
+@{ViewData["Title"] = "Criar";}
 
-<form asp-action="Create">
+<form asp-action="Criar">
     <div class="col-md-6 text-left">
         <fieldset class="border p-4 list-inline-item">
-            <legend class="w-auto text-left">Reservas - Create</legend>
+            <legend class="w-auto text-left">Criar Reservas</legend>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -28,7 +28,7 @@
             <div class="form-group">
                 <input hidden asp-for="@Model.EventoId" />
                 <input hidden asp-for="@Model.PessoaId" />
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Criar" class="btn btn-primary" />
             </div>
         </fieldset>
     </div>
