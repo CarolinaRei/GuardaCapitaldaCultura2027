@@ -1,11 +1,11 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Evento
 
-@{ ViewData["Title"] = "Edit"; }
+@{ ViewData["Title"] = "Editar"; }
 
 <form enctype="multipart/form-data" asp-action="Edit">
     <div class="col-md-6 text-left">
         <fieldset class="border p-4 list-inline-item">
-            <legend class="w-auto text-left">Eventos - Edit</legend>
+            <legend class="w-auto text-left">Editar Eventos</legend>
             <div class="row">
                 <div class="col-md-6" style="max-width:100% !important; flex:auto;">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -41,8 +41,8 @@
             <br />
             <center>
                 <div class="form-group">
-                    <a asp-action="Index" class="btn btn-secondary">Back to List</a> |
-                    <input type="submit" value="Save" class="btn btn-success" />
+                    <a asp-action="Index" class="btn btn-secondary">Voltar à lista</a> |
+                    <input type="submit" value="Guardar" class="btn btn-success" />
                 </div>
             </center>
         </fieldset>
