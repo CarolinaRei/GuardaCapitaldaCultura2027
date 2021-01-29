@@ -37,7 +37,7 @@ namespace GuardaCapitaldaCultura2027
             
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("GuardaEventosUserConnection")));
+                    Configuration.GetConnectionString("GuardaEventosUsersConnection")));
 
             services.AddIdentity<IdentityUser, IdentityRole>(
                 options => {
@@ -83,7 +83,7 @@ namespace GuardaCapitaldaCultura2027
             //DB Contacto
             services.AddDbContext<GuardaEventosBdContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("GuardaEventosUserConnection")));
+                    Configuration.GetConnectionString("GuardaEventosConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
