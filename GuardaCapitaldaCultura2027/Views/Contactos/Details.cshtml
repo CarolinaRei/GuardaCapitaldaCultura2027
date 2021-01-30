@@ -4,12 +4,25 @@
     ViewData["Title"] = "Details";
 }
 
+
 <h1>Detales do Contacto</h1>
 <br />
 <br />
 <table class="table table-bordered text-left">
 
     <tbody>
+        <tr>
+            <th scope="row"><h6>Nome</h6></th>
+            <td> @Html.DisplayFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <th scope="row"><h6>Sobrenome</h6></th>
+            <td> @Html.DisplayFor(model => model.Sobrenome)</td>
+        </tr>
+        <tr>
+            <th scope="row"><h6>Verificado</h6></th>
+            <td> @Html.DisplayFor(model => model.Verificado)</td>
+        </tr>
         <tr>
             <th scope="row"><h6>E-mail</h6></th>
             <td> @Html.DisplayFor(model => model.Email)</td>
@@ -23,10 +36,66 @@
             <th scope="row"><h6>Mensagem</h6></th>
             <td> @Html.DisplayFor(model => model.Mensagem)</td>
         </tr>
+        <tr>
+            <th scope="row"><h6>Resposta</h6></th>
+            <td> @Html.DisplayFor(model => model.Resposta)</td>
+        </tr>
     </tbody>
 </table>
-<div class="card-body">
-    <a class="btn btn-secondary mr-4 float-right" asp-action="Responder" asp-route-id="@Model.ContactoId">Responder</a>
+<div class="card-body mb-5">
+    @if (!Model.Verificado == false)
+    {
+        <a class="btn btn-secondary mr-4 float-right" href="#" onclick="Modal.open()">Responder</a>
+        <div class="modal-overlay ">
+            <div class="modal">
+
+                <div id="form">
+                    <h2>Nova Transação</h2>
+                    <form action="">
+                        <div class="input-group">
+                            <label class="sr-only" for="description">Descrição</label>
+                            <input type="text" id="description" name="description" placeholder="Descrição" />
+                        </div>
+
+                        <div class="input-group">
+                            <label class="sr-only" for="amount">Valor</label>
+                            <input type="number" id="amount" name="amount" step="0.01" placeholder="0,00" />
+                            <small class="help">
+                                Use o sinal de - (negativo) para despesas e , (virgula) para casas
+                                decimais
+                            </small>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="sr-only" for="date">Data</label>
+                            <input type="date" id="date" name="date" />
+                        </div>
+                        <div class="input-group actions">
+                            <a href="#" onclick="Modal.close()" class="button cancel">Cancelar</a>
+                            <button>Salvar</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <a class="btn btn-secondary mr-4 float-right" asp-action="Edit" asp-route-id="@Model.ContactoId">Responder</a>
+    }
+
     <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
 </div>
 
+<script>
+    const Modal = {
+        open() {
+            alert("Este contacto ja foi respondido!");
+        },
+        close() {
+            
+        }
+    }
+</script>

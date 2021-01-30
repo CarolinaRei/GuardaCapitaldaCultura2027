@@ -32,7 +32,9 @@
                     <th>
                         Nome
                     </th>
-
+                    <th>
+                        Verificado
+                    </th>
                     <th>
                         Assunto
                     </th>
@@ -44,18 +46,20 @@
             <tbody class="text-justify">
                 @foreach (var item in Model.Contactos)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Assunto)
-                        </td>
-                        <td class="m-5">
-                            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ContactoId">Detalhes</a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Verificado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Assunto)
+                    </td>
+                    <td class="m-5">
+                        <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ContactoId">Detalhes</a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
