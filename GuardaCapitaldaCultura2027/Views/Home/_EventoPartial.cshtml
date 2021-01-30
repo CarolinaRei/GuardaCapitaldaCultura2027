@@ -5,10 +5,12 @@
         if ($('#desc' + id).hasClass('hidden')) {
             $('#desc' + id).attr('style', 'white-space:unset;overflow:unset;text-overflow:unset;');
             $('#desc' + id).removeClass('hidden');
+            $('#verMais' + id).text('Ver Menos');
         }
         else {
             $('#desc' + id).attr('style', 'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;');
             $('#desc' + id).addClass('hidden');
+            $('#verMais' + id).text('Ver Mais');
         }
     }
 </script>

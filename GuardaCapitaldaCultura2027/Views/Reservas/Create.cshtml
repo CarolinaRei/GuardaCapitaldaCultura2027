@@ -2,9 +2,9 @@
 @using Microsoft.AspNetCore.Mvc.Localization;
 @inject IViewLocalizer Localizer;
 
-@{ViewData["Title"] = "Criar";}
+@{ViewData["Title"] = "Create";}
 
-<form asp-action="Criar">
+<form asp-action="Create">
     <div class="col-md-6 text-left">
         <fieldset class="border p-4 list-inline-item">
             <legend class="w-auto text-left">Criar Reservas</legend>
@@ -28,7 +28,7 @@
             <div class="form-group">
                 <input hidden asp-for="@Model.EventoId" />
                 <input hidden asp-for="@Model.PessoaId" />
-                <input type="submit" value="Criar" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </fieldset>
     </div>

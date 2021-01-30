@@ -86,9 +86,6 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Municipio.Nome)
                     </td>
-                    @*<td style="max-width:200px;">
-                            @Html.DisplayFor(modelItem => item.Descricao)
-                        </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.Data_realizacao)
                     </td>
@@ -96,7 +93,7 @@
                         @Html.DisplayFor(modelItem => item.Lotacao_max)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.EventoId" class="btn btn-warning mr-4">Editar</a><a asp-action="Detalhes" asp-route-id="@item.EventoId" class="btn btn-info mr-4">Detalhes</a><a asp-action="Eliminar" asp-route-id="@item.EventoId" class="btn btn-danger">Eliminar</a>
+                        <a asp-action="Edit" asp-route-id="@item.EventoId" class="btn btn-warning mr-4">Editar</a><a asp-action="Details" asp-route-id="@item.EventoId" class="btn btn-info mr-4">Detalhes</a><a asp-action="Delete" asp-route-id="@item.EventoId" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>
             }
