@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\img\perfil\ca.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Image\1.jpg" />
     <None Remove="Image\10.jpg" />
     <None Remove="Image\11.jpg" />

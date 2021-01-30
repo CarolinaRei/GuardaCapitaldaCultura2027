@@ -2,11 +2,11 @@
 @using Microsoft.AspNetCore.Mvc.Localization;
 @inject IViewLocalizer Localizer;
 
-@{ ViewData["Title"] = "Eliminar";}
+@{ ViewData["Title"] = "Delete";}
 
 <h1>Eliminar</h1>
 
-<h3>Quer mesmo eliminar?</h3>
+<h3>Tem mesmo certeza que quer apagar?</h3>
 <div>
     <h4>Reserva</h4>
     <hr />
@@ -31,9 +31,9 @@
         </dd>
     </dl>
 
-    <form asp-action="Eliminar">
+    <form asp-action="Delete">
         <input type="hidden" asp-for="ReservaId" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Voltar à Lista</a>
     </form>
 </div>

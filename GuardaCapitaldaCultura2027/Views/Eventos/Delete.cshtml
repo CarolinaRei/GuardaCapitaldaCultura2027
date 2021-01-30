@@ -63,9 +63,9 @@
             <div class="modal-header"><span>Eliminar Eventos</span></div>
             <div class="modal-body"><h6>Tem <b>mesmo</b> certeza que quer apagar?</h6></div>
             <div class="modal-footer">
-                <form asp-action="Eliminar">
+                <form asp-action="Delete">
                     <input type="hidden" asp-for="@Model.EventoId" />
-                    <input asp-action="Eliminar" value="Eliminar" type="submit" asp-route-id="@Model.EventoId" class="btn btn-danger" />
+                    <input asp-action="Delete" value="Delete" type="submit" asp-route-id="@Model.EventoId" class="btn btn-danger" />
                     <a class="btn btn-info" data-dismiss="modal" aria-label="Close">Fechar</a>
                 </form>
             </div>
