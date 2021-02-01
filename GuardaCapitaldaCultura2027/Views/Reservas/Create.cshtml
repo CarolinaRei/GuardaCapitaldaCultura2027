@@ -2,12 +2,12 @@
 @using Microsoft.AspNetCore.Mvc.Localization;
 @inject IViewLocalizer Localizer;
 
-@{ViewData["Title"] = "Create";}
+@{ViewData["Title"] = Localizer["Create"];}
 
 <form asp-action="Create">
     <div class="col-md-6 text-left">
         <fieldset class="border p-4 list-inline-item">
-            <legend class="w-auto text-left">Criar Reserva</legend>
+            <legend class="w-auto text-left">@Localizer["CreateReservations"]</legend>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
