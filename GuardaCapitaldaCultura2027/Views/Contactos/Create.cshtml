@@ -15,8 +15,8 @@
     <div class="col-md-6 align-items-xl-end text-justify">
         <div class="m-5"></div>
         <p>Deixe os seus contactos se pretender ser contactado no âmbito de “Guarda Eventos”. Obrigado. </p>
-        <p>Email: guardaeventos@eventos.pt</p>
-        <p>Telefone:  +351271220100</p>
+        <p>Email: guardaeventtos@gmail.com</p>
+         <p>Telefone:  +351271220100</p>
         <p>Av. Dr. Francisco Sá Carneiro 50</p>
         <p> 6300-559 Guarda</p>
     </div>
@@ -51,12 +51,21 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Mensagem" class="control-label"></label>
-                    <textarea asp-for="Mensagem" class="form-control"></textarea>
+                    <textarea asp-for="Mensagem" class="form-control"  rows="5" cols="50"></textarea>
                     <span asp-validation-for="Mensagem" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Enviar" class="btn btn-primary" />
-                    <hr/>
+                <div class="form-group mb-5">
+                    <input type="submit" value="Enviar" class="btn btn-primary float-right" />
+                    @if (User.IsInRole("GestorEventos") || User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-light float-left" asp-action="Index">Ver a Lista</a>
+                    }
+
+                    
+                </div>
+                <br />
+                <div class="form-group mt-0">
+                    <hr />
                     <p>Todos os campos são obrigatórios</p>
                 </div>
             </form>
