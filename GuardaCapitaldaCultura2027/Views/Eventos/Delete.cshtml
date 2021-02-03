@@ -4,7 +4,7 @@
 
 <center>
     <fieldset class="border p-4" style="width:fit-content;">
-        <legend class="w-auto text-left">Eventos - Delete</legend>
+        <legend class="w-auto text-left">Eliminar Eventos</legend>
         <div class="row" style="width:fit-content;padding-left: 20px;padding-right:20px;">
             <table>
                 <tr>
@@ -53,20 +53,20 @@
 </center>
 <br />
 <div>
-    <a asp-action="Index" class="btn btn-secondary">Back to List</a> |
-    <a class="btn btn-danger" data-toggle="modal" data-target="#confirmacaoApagar">Delete</a>
+    <a asp-action="Index" class="btn btn-secondary">Voltar à Lista</a> |
+    <a class="btn btn-danger" data-toggle="modal" data-target="#confirmacaoApagar">Eliminar</a>
 </div>
 
 <div id="confirmacaoApagar" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header"><span>Eventos - Delete</span></div>
+            <div class="modal-header"><span>Eliminar Eventos</span></div>
             <div class="modal-body"><h6>Tem <b>mesmo</b> certeza que quer apagar?</h6></div>
             <div class="modal-footer">
                 <form asp-action="Delete">
                     <input type="hidden" asp-for="@Model.EventoId" />
                     <input asp-action="Delete" value="Delete" type="submit" asp-route-id="@Model.EventoId" class="btn btn-danger" />
-                    <a class="btn btn-info" data-dismiss="modal" aria-label="Close">Close</a>
+                    <a class="btn btn-info" data-dismiss="modal" aria-label="Close">Fechar</a>
                 </form>
             </div>
         </div>

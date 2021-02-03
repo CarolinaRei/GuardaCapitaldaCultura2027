@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using GuardaCapitaldaCultura2027.Models;
 using GuardaCapitaldaCultura2027.Models.Context;
+using GuardaCapitaldaCultura2027.Models.ViewModels;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
@@ -22,11 +23,14 @@ namespace GuardaCapitaldaCultura2027.Controllers
             _context = context;
         }
 
-        [HttpGet("{controller=Home}/{Municipio:alpha}")]
-        public IActionResult Municipios(string Municipio)
+        [HttpGet("{controller=Home}/{Municipio:alpha}/{page:int?}")]
+        public IActionResult Municipios(string Municipio, int? page = 1)
         {
-            ViewData["NomeMunicipio"]=Municipio;
-            return View(((List<Evento>)_context.Eventos.Include(e=>e.Municipio).ToList().Where(e=> e.Municipio.Nome.ToLower().Trim().Equals(Municipio.ToLower().Trim())).ToList()));
+            ViewData["NomeMunicipio"] = Municipio;
+            EventosMunicipio eventosDoMunicipio = new EventosMunicipio(_context, Municipio);
+            eventosDoMunicipio.Paginacao.PaginaAtual = (int)page;
+            eventosDoMunicipio.ListaEventos = eventosDoMunicipio.ListaEventos.Skip(((int)page - 1) * 3).Take(3).ToList();
+            return View(eventosDoMunicipio);
         }
 
         public IActionResult Index()

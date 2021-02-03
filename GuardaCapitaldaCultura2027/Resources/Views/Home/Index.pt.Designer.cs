@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GuardaCapitaldaCultura2027 {
+namespace GuardaCapitaldaCultura2027.Resources.Views.Home {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace GuardaCapitaldaCultura2027 {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GuardaCapitaldaCultura2027.Resource", typeof(Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GuardaCapitaldaCultura2027.Resources.Views.Home.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

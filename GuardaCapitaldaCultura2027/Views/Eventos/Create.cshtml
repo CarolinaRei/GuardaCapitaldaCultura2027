@@ -4,10 +4,11 @@
 
 <h4 class="alert-light">Inserir Eventos</h4>
 <hr />
-<div class="col-md-6 text-left">
-    <fieldset class="border p-4 list-inline-item">
-        <legend class="w-auto text-center font-weight-bold">Formulário de Eventos</legend>
-        <form enctype="multipart/form-data" asp-action="Create">
+
+<form enctype="multipart/form-data" asp-action="Create">
+    <div class="col-md-6 text-left">
+        <fieldset class="border p-4 list-inline-item">
+            <legend class="w-auto text-center font-weight-bold">Formulário de Eventos</legend>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label font-weight-bold"></label>
@@ -27,27 +28,30 @@
             </div>
             <div class="form-group">
                 <label asp-for="Data_realizacao" class="control-label font-weight-bold"></label>
-                <input type="date" asp-for="Data_realizacao" class="form-control" />
+                <input type="date" asp-for="Data_realizacao" min="@($"{DateTime.Now.Year}-{DateTime.Now.Month.ToString("00")}-{DateTime.Now.Day}")" class="form-control" />
                 <span asp-validation-for="Data_realizacao" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Lotacao_max" class="control-label font-weight-bold"></label>
-                <input asp-for="Lotacao_max" class="form-control" />
+                <input asp-for="Lotacao_max" min="1" class="form-control" />
                 <span asp-validation-for="Lotacao_max" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Imagem" class="control-label custom-file-label">Escolher Imagem</label>
-                <input asp-for="Imagem" type="file" accept="image/*" class="form-control custom-file-input" />
+                <label asp-for="Imagem" class="control-label font-weight-bold"></label>
+                <div class="custom-file">
+                    <label class="custom-file-label">Escolher Imagem</label>
+                    <input asp-for="Imagem" type="file" accept="image/*" class="form-control custom-file-input" />
+                </div>
                 <span asp-validation-for="Imagem" class="text-danger"></span>
             </div>
-        </form>
-    </fieldset>
-</div>
+        </fieldset>
+    </div>
 
-<div class="form-group">
-    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-    <input type="submit" value="Create" class="btn btn-success" />
-</div>
+    <div class="form-group">
+        <a asp-action="Index" class="btn btn-secondary">Voltar à Lista</a>
+        <input type="submit" value="Criar" class="btn btn-success" />
+    </div>
+</form>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

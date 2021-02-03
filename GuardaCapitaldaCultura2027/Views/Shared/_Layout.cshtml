@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+
+@inject IViewLocalizer Localizer;
+
+<!DOCTYPE html>
 <html lang="pt-pt">
 <head>
     <meta charset="utf-8" />
@@ -11,7 +15,7 @@
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
-   
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
@@ -97,7 +101,6 @@
         .mynav_dropdown:hover .mynav_dropdown-content {
             display: block;
         }
-        
     </style>
 </head>
 <body id="page-top">
@@ -134,7 +137,7 @@
                     <li class="navbar-nav ml-auto">
                         <div class="collapse navbar-collapse" id="navbarResponsive">
                             <ul class="navbar-nav ml-auto">
-                                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Home" asp-action="Sobre">Sobre Nós</a></li>
+                                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Home" asp-action="Sobre">@Localizer["SobreNos"]</a></li>
                                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Contactos" asp-action="Create">Contactos</a></li>
                             </ul>
                             <partial name="_LoginPartial.cshtml" />
@@ -144,8 +147,7 @@
                                     <i class="fa fa-caret-down"></i>
                                 </button>
                                 <div class="mynav_dropdown-content">
-                                    <a asp-area="">EN</a>
-                                    <a asp-area="">汉语</a>
+                                    @await Html.PartialAsync("_SelecionarLinguagemPartial")
                                 </div>
                             </div>
                         </div>
@@ -206,38 +208,41 @@
                 <!--Grid column-->
                 <div class="col-lg-6 col-md-12 mb-4 mb-md-0 col-1-3 left">
                     <h5 class="text-left">Descrição</h5>
-                    <p class="text-justify">A nossa proposta para o trabalho consiste em criar um aplicação Web com o respetivo tema “Guarda – Candidata a Capital Europeia da Cultura 2027”, cujo nome do WebSite irá ser “Guarda Eventos”.
+                    <p class="text-justify">A nossa proposta para o trabalho consiste em criar um aplicação Web com o respetivo tema “Guarda – Candidata a Capital Europeia da Cultura 2027”, cujo nome do WebSite vai ser “Guarda Eventos”.<br/>
+                        <a asp-controller="Municipios" asp-action="Index">Ver Municipios</a>
+                    </p>
+                    
                 </div>
 
                 <!--Grid column--
-    <div class="col-lg-3 col-md-6 mb-4 mb-md-0 float-right">
-        <h5 class="text-uppercase mb-0">Mídias sociais</h5>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0 float-right">
+                    <h5 class="text-uppercase mb-0">Mídias sociais</h5>
 
-        <ul class="nav">
-            <li>
-                <a href="#" class="fa fa-facebook"></a>
-            </li>
-            <li>
+                    <ul class="nav">
+                        <li>
+                            <a href="#" class="fa fa-facebook"></a>
+                        </li>
+                        <li>
 
-                <a href="#" class="fa fa-twitter"></a>
-            </li>
-            <li>
-                <a href="#" class="fa fa-linkedin"></a>
-            </li>
-            <li>
-                <a href="#" class="fa fa-instagram"></a>
-            </li>
-        </ul>
-    </div>
-    <!--Grid column-->
+                            <a href="#" class="fa fa-twitter"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="fa fa-linkedin"></a>
+                        </li>
+                        <li>
+                            <a href="#" class="fa fa-instagram"></a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
                 <div class="bg-image hover-overlay hover-zoom hover-shadow ripple" style="margin-left: 200px;">
                     <h5 class="text-center">
                         Redes Sociais
                     </h5>
                     <a class="btn btn-outline-light btn-social mx-1 mt-3 btn-foursquare" href="https://www.facebook.com/"><i class="fab fa-fw fa-facebook-f fa-lg" style="color: #3B5998 !important;"></i></a>
-                    <a class="btn btn-outline-light btn-social mx-1 mt-3" href="https://twitter.com/"><i class="btn-foursquare fab fa-fw fa-twitter fa-lg" style="color: #55ACEE !important;"></i></a>
-                    <!--<a class="btn btn-outline-light btn-social mx-1 mt-3" href="https://www.linkedin.com/"><i class="fab fa-fw fa-linkedin-in fa-lg" style="color: #007BB6 !important;"></i></a>-->
                     <a class="btn btn-outline-light btn-social mx-1 mt-3" href="https://www.instagram.com/"><i class="fab fa-fw fa-instagram fa-lg" style="color: #3F729B !important;"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1 mt-3" href="https://twitter.com/"><i class="btn-foursquare fab fa-fw fa-twitter fa-lg" style="color: #55ACEE !important;"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1 mt-3" href="https://www.linkedin.com/"><i class="fab fa-fw fa-linkedin-in fa-lg" style="color: #007BB6 !important;"></i></a>
                 </div>
             </div>
             <!--Grid row-->
@@ -245,10 +250,11 @@
         <!-- Grid container -->
         <!-- Copyright -->
         <div class="text-left p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+
             
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                © 2020 Copyright: Guarda Eventos
-           
+                © 2021 Copyright: Guarda Eventos
+
         </div>
         <!-- Copyright -->
     </footer>
@@ -279,9 +285,8 @@
         </div>
 
 
-           
-    </footer> -->
 
+    </footer> -->
     <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -25,6 +25,24 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "GestorEventos",
+                columns: table => new
+                {
+                    GestorEventosId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(maxLength: 20, nullable: false),
+                    Apelido = table.Column<string>(maxLength: 20, nullable: false),
+                    Contacto = table.Column<string>(maxLength: 20, nullable: true),
+                    NIF = table.Column<string>(maxLength: 10, nullable: true),
+                    Email = table.Column<string>(maxLength: 50, nullable: false),
+                    Password = table.Column<string>(maxLength: 20, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GestorEventos", x => x.GestorEventosId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "LugarEventos",
                 columns: table => new
                 {
@@ -48,7 +66,7 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     Data_imagem = table.Column<DateTime>(nullable: false),
                     Desativar = table.Column<bool>(nullable: false),
                     Descricao = table.Column<string>(maxLength: 1000, nullable: false),
-                    Imagem = table.Column<byte[]>(nullable: false)
+                    Imagem = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -64,12 +82,44 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     EventoId = table.Column<int>(nullable: false),
                     PessoaId = table.Column<string>(nullable: true),
                     Nome = table.Column<string>(maxLength: 20, nullable: true),
-                    Descricao = table.Column<string>(maxLength: 500, nullable: false),
                     Numero_Reserva = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reservas", x => x.ReservaId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RestricaoCovid",
+                columns: table => new
+                {
+                    RestricaoCovidId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Descricao = table.Column<string>(maxLength: 500, nullable: false),
+                    DataInicio = table.Column<DateTime>(nullable: false),
+                    DataFim = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RestricaoCovid", x => x.RestricaoCovidId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Turista",
+                columns: table => new
+                {
+                    TuristaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(maxLength: 20, nullable: false),
+                    Apelido = table.Column<string>(maxLength: 20, nullable: false),
+                    Contacto = table.Column<string>(maxLength: 20, nullable: true),
+                    NIF = table.Column<string>(maxLength: 10, nullable: true),
+                    Email = table.Column<string>(maxLength: 50, nullable: false),
+                    Password = table.Column<string>(maxLength: 20, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Turista", x => x.TuristaId);
                 });
 
             migrationBuilder.CreateTable(
@@ -112,10 +162,19 @@ namespace GuardaCapitaldaCultura2027.Migrations
                 name: "Eventos");
 
             migrationBuilder.DropTable(
+                name: "GestorEventos");
+
+            migrationBuilder.DropTable(
                 name: "LugarEventos");
 
             migrationBuilder.DropTable(
                 name: "Reservas");
+
+            migrationBuilder.DropTable(
+                name: "RestricaoCovid");
+
+            migrationBuilder.DropTable(
+                name: "Turista");
 
             migrationBuilder.DropTable(
                 name: "Municipio");

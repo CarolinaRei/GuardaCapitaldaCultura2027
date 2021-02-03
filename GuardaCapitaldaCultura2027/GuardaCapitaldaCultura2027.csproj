@@ -6,6 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Resources\Views\Eventos\NovaPasta\**" />
+    <Content Remove="Resources\Views\Eventos\NovaPasta\**" />
+    <EmbeddedResource Remove="Resources\Views\Eventos\NovaPasta\**" />
+    <None Remove="Resources\Views\Eventos\NovaPasta\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\img\perfil\ca.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Image\1.jpg" />
     <None Remove="Image\10.jpg" />
     <None Remove="Image\11.jpg" />
@@ -101,17 +112,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Resource.Designer.cs">
+    <Compile Update="Resources\Views\Home\Index.pt.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Resource.resx</DependentUpon>
+      <DependentUpon>Index.pt.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resource.resx">
+    <EmbeddedResource Update="Resources\Views\Shared\_Layout.pt.resx">
+      <LastGenOutput>_Layout.pt.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Index.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.pt.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

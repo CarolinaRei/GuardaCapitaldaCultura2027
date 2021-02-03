@@ -3,9 +3,9 @@
 @{ ViewData["Title"] = "Edit"; }
 
 <form enctype="multipart/form-data" asp-action="Edit">
-    <center>
-        <fieldset "border p-4" style="width:fit-content;">
-            <legend class="w-auto text-left">Eventos - Edit</legend>
+    <div class="col-md-6 text-left">
+        <fieldset class="border p-4 list-inline-item">
+            <legend class="w-auto text-left">Editar Eventos</legend>
             <div class="row">
                 <div class="col-md-6" style="max-width:100% !important; flex:auto;">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Data_realizacao" class="control-label"></label>
-                        <input asp-for="Data_realizacao" class="form-control" />
+                        <input asp-for="Data_realizacao" min="@(DateTime.Now)" class="form-control" />
                         <span asp-validation-for="Data_realizacao" class="text-danger"></span>
                     </div>
                     <div class="form-group">
@@ -33,17 +33,19 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Lotacao_max" class="control-label"></label>
-                        <input asp-for="Lotacao_max" class="form-control" />
+                        <input asp-for="Lotacao_max" min="1" class="form-control" />
                         <span asp-validation-for="Lotacao_max" class="text-danger"></span>
                     </div>
                 </div>
             </div>
+            <br />
+            <center>
+                <div class="form-group">
+                    <a asp-action="Index" class="btn btn-secondary">Voltar à lista</a> |
+                    <input type="submit" value="save" class="btn btn-success" />
+                </div>
+            </center>
         </fieldset>
-    </center>
-    <br />
-    <div class="form-group">
-        <a asp-action="Index" class="btn btn-secondary">Back to List</a> |
-        <input type="submit" value="Save" class="btn btn-success" />
     </div>
 </form>
 

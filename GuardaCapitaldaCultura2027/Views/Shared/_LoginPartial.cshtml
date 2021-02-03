@@ -1,16 +1,18 @@
-﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<div class="mynav_dropdown bg-light text-black-50">
-    <button class="mynav_dropbtn bg-light">
+
+<div class="mynav_dropdown text-black-50">
+    <button class="mynav_dropbtn">
+
         @if (!SignInManager.IsSignedIn(User))
         {
             <a asp-area="Identity" asp-page="/Account/Login">Login</a> 
         }
         else
         {
-            <a asp-area="Identity" asp-page="/Account/Logout">Logout</a>
+            <a asp-area="Identity" asp-page="/Account/Logout">Sair</a>
         }
         <i class="fa fa-caret-down"></i>
     </button>

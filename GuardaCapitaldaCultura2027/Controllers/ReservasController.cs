@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace GuardaCapitaldaCultura2027.Controllers
 {
@@ -30,16 +31,29 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Reserva
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            Reservas.ListaReservas = _context.Reservas.Where(rsv=>rsv.PessoaId.Equals(SignedInUser.Id)).ToList();
+            Reservas.Paginacao.PaginaAtual = page;
+            Reservas.ListaReservas = _context.Reservas.Include(rsv => rsv.Evento).Where(rsv => rsv.PessoaId.Equals(SignedInUser.Id)).Skip((Reservas.Paginacao.PaginaAtual - 1) * Reservas.Paginacao.ElementosPorPagina).Take(Reservas.Paginacao.ElementosPorPagina).ToList();
             return View(Reservas);
         }
 
         // GET: Reserva/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var reserva = await _context.Reservas.Include(rsv => rsv.Evento)
+                .FirstOrDefaultAsync(m => m.ReservaId == id);
+            if (reserva == null)
+            {
+                return NotFound();
+            }
+
+            return View(reserva);
         }
 
         // GET: Reserva/Create
@@ -51,7 +65,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
         // POST: Reserva/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateAsync([Bind("ReservaId, EventoId, PessoaId, Nome, Descricao, Numero_Reserva")] Reserva reserva)
+        public async Task<ActionResult> CreateAsync([Bind("ReservaId, EventoId, PessoaId, Nome, Observacao, Numero_Reserva")] Reserva reserva)
         {
             if (ModelState.IsValid)
             {
@@ -63,45 +77,87 @@ namespace GuardaCapitaldaCultura2027.Controllers
         }
 
         // GET: Reserva/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> EditAsync(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var reserva = await _context.Reservas.Include(rsv => rsv.Evento).Where(rsv => rsv.ReservaId==id).FirstOrDefaultAsync();
+            
+            if (reserva == null)
+            {
+                return NotFound();
+            }
+
+            return View(reserva);
         }
 
         // POST: Reserva/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> EditAsync(int id, [Bind("ReservaId, EventoId, PessoaId, Nome, Observacao, Numero_Reserva")] Reserva reserva)
         {
-            try
+            if (id != reserva.ReservaId)
             {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(reserva);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ReservaExists(reserva.ReservaId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(reserva);
         }
 
         // GET: Reserva/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> DeleteAsync(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var reserva = await _context.Reservas
+                .FirstOrDefaultAsync(m => m.ReservaId == id);
+            if (reserva == null)
+            {
+                return NotFound();
+            }
+
+            return View(reserva);
         }
 
         // POST: Reserva/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> DeleteAsync(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var reserva = await _context.Reservas.FindAsync(id);
+            _context.Reservas.Remove(reserva);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        private bool ReservaExists(int id)
+        {
+            return _context.Reservas.Any(r => r.ReservaId == id);
         }
     }
 }

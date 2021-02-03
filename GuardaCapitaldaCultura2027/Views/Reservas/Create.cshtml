@@ -1,44 +1,37 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Reserva
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
 
-@{ViewData["Title"] = "Create";}
+@{ViewData["Title"] = Localizer["Create"];}
 
 <form asp-action="Create">
-    <fieldset class="border p-4" style="width:fit-content;">
-        <legend class="w-auto text-left">Reservas - Create</legend>
-
-        <hr />
-        <div class="row">
-            <div class="col-md-4">
-                <form asp-action="Create">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="Nome" class="control-label"></label>
-                        <input asp-for="Nome" class="form-control" />
-                        <span asp-validation-for="Nome" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Numero_Reserva" class="control-label"></label>
-                        <input asp-for="Numero_Reserva" class="form-control" />
-                        <span asp-validation-for="Numero_Reserva" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Descricao" class="control-label"></label>
-                        <input asp-for="Descricao" class="form-control" />
-                        <span asp-validation-for="Descricao" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input hidden asp-for="@Model.EventoId" />
-                        <input hidden asp-for="@Model.PessoaId" />
-                        <input type="submit" value="Create" class="btn btn-primary" />
-                    </div>
-                </form>
+    <div class="col-md-6 text-left">
+        <fieldset class="border p-4 list-inline-item">
+            <legend class="w-auto text-left">@Localizer["CreateReservations"]</legend>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label" style="width:100%;width:-webkit-fill-available;"></label>
+                <input asp-for="Nome" class="form-control" style="width:100%;width:-webkit-fill-available;" />
+                <span asp-validation-for="Nome" class="text-danger" style="width:100%;width:-webkit-fill-available;"></span>
             </div>
-        </div>
-        <div class="form-group">
-            <input hidden asp-for="@Model.EventoId" />
-            <a asp-action="Index" class="btn btn-secondary">Back to List</a> |
-            <input type="submit" value="Create" class="btn btn-success" />
-        </div>
+            <div class="form-group">
+                <label asp-for="Numero_Reserva" class="control-label" style="width:100%;width:-webkit-fill-available;"></label>
+                <input asp-for="Numero_Reserva" min="1" value="1" class="form-control" style="width:100%;width:-webkit-fill-available;" />
+                <span asp-validation-for="Numero_Reserva" class="text-danger" style="width:100%;width:-webkit-fill-available;"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observacao" class="control-label"></label>
+                <input asp-for="Observacao" class="form-control" />
+                <span asp-validation-for="Observacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input hidden asp-for="@Model.EventoId" />
+                <input hidden asp-for="@Model.PessoaId" />
+                <input type="submit" value="Criar" class="btn btn-primary"/>
+            </div>
+        </fieldset>
+    </div>
 </form>
 
 @section Scripts {
