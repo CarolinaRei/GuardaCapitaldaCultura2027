@@ -1,6 +1,8 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+@inject IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Mvc.Localization;
 
 
 <div class="mynav_dropdown text-black-50">
@@ -8,15 +10,15 @@
 
         @if (!SignInManager.IsSignedIn(User))
         {
-            <a asp-area="Identity" asp-page="/Account/Login">Login</a> 
+            <a asp-area="Identity" asp-page="/Account/Login">Login</a>
         }
         else
         {
-            <a asp-area="Identity" asp-page="/Account/Logout">Sair</a>
+            <a asp-area="Identity" asp-page="/Account/Logout">@Localizer["Sair"]</a>
         }
         <i class="fa fa-caret-down"></i>
     </button>
     <div class="mynav_dropdown-content bg-light">
-        <a asp-area="Identity" asp-page="/Account/Registar">Registar</a>
+        <a asp-area="Identity" asp-page="/Account/Registar">@Localizer["Registar"]</a>
     </div>
 </div>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Registar" xml:space="preserve">
-    <value>Register</value>
+    <value>Registar</value>
   </data>
   <data name="Sair" xml:space="preserve">
     <value>Sair</value>
