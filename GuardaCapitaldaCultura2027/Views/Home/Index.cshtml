@@ -1,15 +1,17 @@
-﻿@{
+﻿@inject IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Mvc.Localization;
+
+@{
     ViewData["Title"] = "Home Page";
 }
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <a asp-controller="Home" asp-action="Covid" class="text-black-50">
-            <strong>COVID-19!</strong> O QUE PRECISA SABER
-            CONTEM CONNOSCO. NÓS, CONTAMOS COM TODOS!
-        </a>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+    <a asp-controller="Home" asp-action="Covid" class="text-black-50">
+        <strong>COVID-19!</strong>@Localizer["AleteCovid"]
+    </a>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -34,7 +36,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="~/img/sustentabilidade1.png" alt="Terceiro Slide" width="1097" height="427"/>
+            <img class="d-block w-100" src="~/img/sustentabilidade1.png" alt="Terceiro Slide" width="1097" height="427" />
             <div class="carousel-caption d-none d-md-block">
             </div>
         </div>
