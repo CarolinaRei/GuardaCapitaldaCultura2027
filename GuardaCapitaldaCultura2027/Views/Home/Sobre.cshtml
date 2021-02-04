@@ -1,13 +1,16 @@
+@inject IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Mvc.Localization;
+
 @{
     ViewData["Title"] = "Sobre Nós";
 }
-<h1>@ViewData["Title"]</h1>
+<h1>@Localizer["Sobre"]</h1>
 
 <div class="text-justify">
-    <p> A Guarda Eventos é a nossa proposta para o projeto de Programação para a Internet em conjunto com Engenharia de Software II. </p>
-    <p> Este projeto consiste em um WebSite com o respetivo tema “Guarda – Candidata a Capital Europeia da Cultura 2027”. </p>
-    <p> Nós escolhemos a cidade da Guarda porque é uma oportunidade única de demonstrar à Europa que a zona da Beira Interior do nosso país é uma zona muito recheada na área da Cultura. </p>
-    <p> Com a "GuardaEventos" vamos facilitar, e muito, a vida dos turistas em que podem aceder ao WebSite para saber todo acerca dos concelhos envolventes nesta candidatura. </p>
+    <p>@Localizer["Sobre1"]</p>
+    <p>@Localizer["Sobre2"] </p>
+    <p>@Localizer["Sobre3"] </p>
+    <p>@Localizer["Sobre4"]  </p>
 </div>
 
 
@@ -16,7 +19,7 @@
 <section id="team" class="pb-5">
     <div class="container">
 
-        <h3 class="section-title mb-5">Equipa de Desenvolvimento</h3>
+        <h3 class="section-title mb-5">@Localizer["ED"]</h3>
         <div class="row">
             <!-- Team member -->
             <div class="col-xs-12 col-sm-6 col-md-4">
@@ -25,9 +28,9 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="~/img/perfil/af.jpg" alt="card image" style="width:500px;height:300px"></p>
+                                    <p><img class=" img-fluid" src="~/img/perfil/FOTO.PNG" alt="card image" style="width:500px;height:300px"></p>
                                     <h4 class="card-title">Afonso Antunes</h4>
-                                    <p class="card-text">3ºano da Licenciatura em Engenharia Informática</p>
+                                    <p class="card-text">@Localizer["3"]</p>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +60,7 @@
                                 <div class="card-body text-center">
                                     <p><img class=" img-fluid" src="~/img/perfil/CV FOTO.png" alt="Carolina" style="width:500px;height:300px"></p>
                                     <h4 class="card-title">Carolina Rei</h4>
-                                    <p class="card-text">3ºano da Licenciatura em Engenharia Informática</p>
+                                    <p class="card-text">@Localizer["3"]</p>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +90,7 @@
                                 <div class="card-body text-center">
                                     <p><img class=" img-fluid" src="~/img/perfil/va.jpg" alt="card image" style="width:500px;height:300px"></p>
                                     <h4 class="card-title">Vagner Bom Jesus</h4>
-                                    <p class="card-text">3ºano da Licenciatura em Engenharia Informática</p>
+                                    <p class="card-text">@Localizer["3"]</p>
                                 </div>
                             </div>
                         </div>

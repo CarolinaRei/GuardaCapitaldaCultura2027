@@ -1,22 +1,38 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Contacto
+@inject IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Mvc.Localization;
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Contactos</h1>
+<h1> @Localizer["Contact"]</h1>
 <div class="alert alert-light text-lg-center" role="alert">
-    <p>Para questões relacionadas com “Guarda Eventos” contacte-nos pelo telefone e e-mail abaixo indicados. </p>
-    <p>Pode também deixar o seu contacto no formulário. Obrigado e até breve.</p>
+    <p>
+    @Localizer["Contacto"]
+    </p>
+    <p>
+        @Localizer["Contacto1"]
+        
+    </p>
 </div>
 
 <div class="m-5"></div>
 <div class="row">
     <div class="col-md-6 align-items-xl-end text-justify">
         <div class="m-5"></div>
-        <p>Deixe os seus contactos se pretender ser contactado no âmbito de “Guarda Eventos”. Obrigado. </p>
-        <p>Email: guardaeventtos@gmail.com</p>
-         <p>Telefone:  +351271220100</p>
+        <p>
+            @Localizer["Contacto2"]
+            
+        </p>
+        <p>
+            
+            Email: guardaeventtos@gmail.com
+        </p>
+        <p>
+            @Localizer["Contacto3"]
+           
+        </p>
         <p>Av. Dr. Francisco Sá Carneiro 50</p>
         <p> 6300-559 Guarda</p>
     </div>
@@ -24,17 +40,20 @@
     <hr />
     <div class="col-md-6 text-left">
         <fieldset class="border p-4">
-            <legend class="w-auto">Formulário de contacto</legend>
+            <legend class="w-auto">
+                @Localizer["Contacto4"]
+               
+            </legend>
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-row">
                     <div class="col">
-                        <label asp-for="Name" class="control-label"></label>
+                        <label class="control-label">@Localizer["Nome"]</label>
                         <input asp-for="Name" class="form-control" />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                     <div class="col">
-                        <label asp-for="Sobrenome" class="control-label"></label>
+                        <label class="control-label">@Localizer["Sobrenome"]</label>
                         <input asp-for="Sobrenome" class="form-control" />
                         <span asp-validation-for="Sobrenome" class="text-danger"></span>
                     </div>
@@ -45,28 +64,30 @@
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Assunto" class="control-label"></label>
+                    <label class="control-label">@Localizer["Assunto"]</label>
                     <input asp-for="Assunto" class="form-control" />
                     <span asp-validation-for="Assunto" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Mensagem" class="control-label"></label>
-                    <textarea asp-for="Mensagem" class="form-control"  rows="5" cols="50"></textarea>
+                    <label class="control-label">@Localizer["Mensagem"]</label>
+                    <textarea asp-for="Mensagem" class="form-control" rows="5" cols="50"></textarea>
                     <span asp-validation-for="Mensagem" class="text-danger"></span>
                 </div>
                 <div class="form-group mb-5">
-                    <input type="submit" value="Enviar" class="btn btn-primary float-right" />
+                    <input type="submit" value=@Localizer["Enviar"] class="btn btn-primary float-right" />
                     @if (User.IsInRole("GestorEventos") || User.IsInRole("Admin"))
                     {
-                        <a class="btn btn-light float-left" asp-action="Index">Ver a Lista</a>
+                        <a class="btn btn-light float-left" asp-action="Index">@Localizer["VerLista"]</a>
                     }
 
-                    
+
                 </div>
                 <br />
                 <div class="form-group mt-0">
                     <hr />
-                    <p>Todos os campos são obrigatórios</p>
+                    <p>
+                    @Localizer["TCO"]
+                    </p>
                 </div>
             </form>
         </fieldset>

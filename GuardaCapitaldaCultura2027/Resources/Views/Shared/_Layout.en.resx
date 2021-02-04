@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Contactos" xml:space="preserve">
+    <value>Contacts</value>
+  </data>
+  <data name="DescriText" xml:space="preserve">
+    <value>Our proposal for the work consists of creating a web application with the respective theme “Guarda - Candidate for European Capital of Culture 2027”, whose name of the WebSite will be “Guarda Eventos”.</value>
+  </data>
+  <data name="Descrição" xml:space="preserve">
+    <value>Description</value>
+  </data>
   <data name="Eventos" xml:space="preserve">
     <value>Events</value>
   </data>
@@ -131,5 +140,11 @@
   </data>
   <data name="SobreNos" xml:space="preserve">
     <value>About Us</value>
+  </data>
+  <data name="SocialRedes" xml:space="preserve">
+    <value>Social networks</value>
+  </data>
+  <data name="VerM" xml:space="preserve">
+    <value>See Municipalities</value>
   </data>
 </root>

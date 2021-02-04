@@ -1,28 +1,59 @@
-﻿@model IEnumerable<GuardaCapitaldaCultura2027.Models.LugarEvento>
-@using Microsoft.AspNetCore.Mvc.Localization;
-@inject IViewLocalizer Localizer;
+﻿@model GuardaCapitaldaCultura2027.Models.ViewModels.LugaresEvento
 
-@{ViewData["Title"] = "Index";}
+@{ ViewData["Title"] = "Index"; }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Criar Novo</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Ocupado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumeroCadeira)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
+<fieldset class="border p-4">
+    <legend class="w-auto text-left"> Lista dos Lugares Evento</legend>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListaLugares.FirstOrDefault().Ocupado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListaLugares.FirstOrDefault().NumeroCadeira)
+                </th>
+                <th>
+                    <form id="pesquisaform" asp-action="Index">
+                        <div>
+                            @{
+                                string pesquisa = "";
+                                try
+                                {
+                                    pesquisa = string.IsNullOrEmpty(Context.Request.Form["pesquisa"]) ? string.Empty : Context.Request.Form["pesquisa"].ToString();
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                }
+                                finally
+                                {
+                                    if (string.IsNullOrEmpty(pesquisa))
+                                    {
+                                        pesquisa = ViewData["pesquisa"] as string;
+                                    }
+                                }
+                                <input type="search" id="pesquisabox" autofocus oninput="this.form.submit();" onfocus="this.value = '@(pesquisa)'" onchange="this.form.submit()" name="pesquisa" style="margin-right:10px; border: 2px solid #167ce9;font-size: 1.2em;text-align: center;outline:none !important;border-radius: 20px;background-color:transparent;" />
+                                <div style="display:none">
+                                    @(ViewData["pesquisa"] = pesquisa)
+                                </div>
+                            }
+                            <!--<input type="submit" class="icon-pesquisa fa-7x" value="&#xf002;" style="font-family: FontAwesome;height:35px;width:35px;background-color:transparent;margin-top:1px; border: 2px solid #167ce9;font-size: 1.2em;text-align: center;border-radius: 20px;outline:none !important" />-->
+                        </div>
+                    </form>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.ListaLugares.Where(evt =>
+        {
+            return (!string.IsNullOrWhiteSpace(ViewData["pesquisa"]?.ToString())) ?
+              (evt.LugarEventoId.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+              evt.Ocupado.ToString().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+              evt.NumeroCadeira.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower())) : true;
+        }).ToList())
         {
             <tr>
                 <td>
@@ -32,11 +63,50 @@
                     @Html.DisplayFor(modelItem => item.NumeroCadeira)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.LugarEventoId">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.LugarEventoId">Detalhes</a> |
-                    <a asp-action="Delete" asp-route-id="@item.LugarEventoId">Eliminar</a>
+                    <a asp-action="Edit" asp-route-id="@item.LugarEventoId" class="btn btn-secondary mr-4" style="background-color:goldenrod;border-color:goldenrod;"> Editar </a>
+                    <a asp-action="Details" asp-route-id="@item.LugarEventoId" class="btn btn-info mr-4"> Detalhes </a>
+                    <!-- <a asp-action="Delete" asp-route-id="@item.LugarEventoId" class="btn btn-danger"> Eliminar </a> -->
                 </td>
             </tr>
         }
-    </tbody>
-</table>
+        </tbody>
+        </table>
+        </fieldset>
+        <br />
+        <p>
+            <a asp-action="Create" class="btn btn-primary"> Criar novo Lugar </a>
+        </p>
+        <div>
+            @{ if (Model.Paginacao.PaginaAtual > 1 && Model.Paginacao.PaginaAtual != 2)
+                {
+                    <a title="Início" href="@Url.Action("Index", "LugarEventos", new { @pagina = (Model.Paginacao.PaginaAtual > 1) ? 1 : Model.Paginacao.PaginaAtual})"><span class="icon-prev"><i style="color:black" class="fas fa-angle-double-left"></i></span></a>
+                    <span>&nbsp;</span>
+                    <a title="Página Anterior" href="@Url.Action("Index", "LugarEventos", new { @pagina = (Model.Paginacao.PaginaAtual > 1) ? Model.Paginacao.PaginaAtual-1 : Model.Paginacao.PaginaAtual })"><span class="icon-prev"><i style="color:black" class="fas fa-angle-left"></i></span></a>
+                    <span>&nbsp;</span> }
+                else if (Model.Paginacao.PaginaAtual > 1 && Model.Paginacao.PaginaAtual == 2)
+                {
+                    <a title="Página Anterior" href="@Url.Action("Index", "LugarEventos", new { @pagina = (Model.Paginacao.PaginaAtual > 1) ? Model.Paginacao.PaginaAtual-1 : Model.Paginacao.PaginaAtual })"><span class="icon-prev"><i style="color:black" class="fas fa-angle-left"></i></span></a>
+                    <span>&nbsp;</span> }
+
+                if (Model.Paginacao.PaginaAtual > 2)
+                {
+                    @Html.ActionLink((Model.Paginacao.PaginaAtual - 1).ToString(), "Index", "LugarEventos", new { @pagina = (Model.Paginacao.PaginaAtual - 1) }, new { @style = "font-family: 'Varela Round';color:black;font-weight:bolder;" })
+                    <span>&nbsp;</span> }
+
+                <span style="font-family: 'Varela Round';color:#167ce9;font-weight:bolder;">@Model.Paginacao.PaginaAtual.ToString()</span>
+                <span>&nbsp;</span> if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas - 1)
+                {
+                    @Html.ActionLink((Model.Paginacao.PaginaAtual + 1).ToString(), "Index", "LugarEventos", new { @pagina = (Model.Paginacao.PaginaAtual + 1) }, new { @style = "font-family: 'Varela Round';color:black;font-weight:bolder;" })
+                    <span>&nbsp;</span> }
+
+                if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas && Model.Paginacao.PaginaAtual + 1 < Model.Paginacao.TotalPaginas)
+                {
+                    <a title="Página Seguinte" href="@Url.Action("Index", "LugarEventos", new { @pagina = (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) ? Model.Paginacao.PaginaAtual + 1 : Model.Paginacao.PaginaAtual })"><span class="icon-next"><i style="color:black" class="fas fa-angle-right"></i></span></a>
+                    <span>&nbsp;&nbsp;</span>
+                    <a title="Última Página" href="@Url.Action("Index", "LugarEventos", new { @pagina = (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) ? Model.Paginacao.TotalPaginas : Model.Paginacao.PaginaAtual })"><span class="icon-next"><i style="color:black" class="fas fa-angle-double-right"></i></span></a>
+                    <span>&nbsp;&nbsp;</span> }
+                else if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas && Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas)
+                {
+                    <a title="Página Seguinte" href="@Url.Action("Index", "LugarEventos", new { @pagina = (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) ? Model.Paginacao.PaginaAtual + 1 : Model.Paginacao.PaginaAtual })"><span class="icon-next"><i style="color:black" class="fas fa-angle-right"></i></span></a>
+                    <span>&nbsp;&nbsp;</span> } }
+        </div>

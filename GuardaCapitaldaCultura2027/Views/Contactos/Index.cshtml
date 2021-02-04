@@ -1,13 +1,15 @@
 ﻿@model ListaContacto
+@inject IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Mvc.Localization;
 
 @{
     ViewData["Title"] = "Contactos";
 }
 
 <div class="row">
-    <h4 class="alert-light">Lista dos Contactos</h4>
+    <h4 class="alert-light">@Localizer["LC"]</h4>
     <hr />
-    </div>
+</div>
 <div class="row">
     <fieldset class="border p-4 ">
         <legend class="w-auto text-center"></legend>
@@ -18,11 +20,11 @@
                        aria-hidden="true"></i>
                 </span>
             </div>
-            <input name="nome" type="search" placeholder="Pesquise" class="form-control" value="@Model.SearchNome" />
+            <input name="nome" type="search" placeholder=@Localizer["Pesquise"] class="form-control" value="@Model.SearchNome" />
             <input name="page" type="hidden" value="1" />
             <div class="ml-3">
-                <input type="submit" value="Pesquisar" class="btn btn-primary mr-4" />
-                <a asp-action="Index" class="btn btn-secondary ml-1">Limpar Pesquisa</a>
+                <input type="submit" value=@Localizer["Pesquise"] class="btn btn-primary mr-4" />
+                <a asp-action="Index" class="btn btn-secondary ml-1">@Localizer["LP"]</a>
             </div>
         </form>
 
@@ -30,69 +32,72 @@
             <thead>
                 <tr>
                     <th>
-                        Nome
+                        @Localizer["Nome"] 
                     </th>
                     <th>
-                        Verificado
+                        @Localizer["Verificado"]
+                        
                     </th>
                     <th>
-                        Assunto
+                        @Localizer["Assunto"]
+                        
                     </th>
                     <th>
-                        Opções
+                        @Localizer["Opções"]
+                        
                     </th>
                 </tr>
             </thead>
             <tbody class="text-justify">
                 @foreach (var item in Model.Contactos)
                 {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Verificado)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Assunto)
-                    </td>
-                    <td class="m-5">
-                        <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ContactoId">Detalhes</a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Verificado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Assunto)
+                        </td>
+                        <td class="m-5">
+                            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ContactoId">Detalhes</a>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
 
     </fieldset>
-    </div>
-    <div class="row">
+</div>
+<div class="row">
 
-        <nav class="mt-3">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1" asp-route-name="@Model.SearchNome">First</a></li>
+    <nav class="mt-3">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1" asp-route-name="@Model.SearchNome">@Localizer["First"]</a></li>
 
-                @{
-                    int initalPage = Model.pagination.CurrentPage - PagingInfoMunicipio.NUMERO_ANTES_DEPOIS;
-                    if (initalPage < 1) initalPage = 1;
+            @{
+                int initalPage = Model.pagination.CurrentPage - PagingInfoMunicipio.NUMERO_ANTES_DEPOIS;
+                if (initalPage < 1) initalPage = 1;
 
-                    int finalPage = Model.pagination.CurrentPage + PagingInfoMunicipio.NUMERO_ANTES_DEPOIS;
-                    if (finalPage > Model.pagination.TotalPages) finalPage = Model.pagination.TotalPages;
-                }
+                int finalPage = Model.pagination.CurrentPage + PagingInfoMunicipio.NUMERO_ANTES_DEPOIS;
+                if (finalPage > Model.pagination.TotalPages) finalPage = Model.pagination.TotalPages;
+            }
 
-                @for (int p = initalPage; p <= finalPage; p++)
+            @for (int p = initalPage; p <= finalPage; p++)
+            {
+                if (p == Model.pagination.CurrentPage)
                 {
-                    if (p == Model.pagination.CurrentPage)
-                    {
-                        <li class="page-item active"><a class="page-link" href="#">@p</a></li>
-                    }
-                    else
-                    {
-                        <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@p" asp-route-name="@Model.SearchNome">@p</a></li>
-                    }
+                    <li class="page-item active"><a class="page-link" href="#">@p</a></li>
                 }
+                else
+                {
+                    <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@p" asp-route-name="@Model.SearchNome">@p</a></li>
+                }
+            }
 
-                <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.pagination.TotalPages" asp-route-name="@Model.SearchNome">Last</a></li>
-            </ul>
-        </nav>
-    </div>
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.pagination.TotalPages" asp-route-name="@Model.SearchNome">@Localizer["Last"]</a></li>
+        </ul>
+    </nav>
+</div>
