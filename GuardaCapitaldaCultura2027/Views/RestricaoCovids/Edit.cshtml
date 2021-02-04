@@ -1,28 +1,29 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.RestricaoCovid
-
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
 @{
     ViewData["Title"] = "Editar";
 }
 <form enctype="multipart/form-data" asp-action="Edit">
     <div class="col-md-6 text-left">
         <fieldset class="border p-4 list-inline-item">
-            <legend class="w-auto text-left">Editar Eventos</legend>
+            <legend class="w-auto text-left">@Localizer["EV"]</legend>
             <div class="row">
                 <div class="col-md-6" style="max-width:100% !important; flex:auto;">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="RestricaoCovidId" />
                     <div class="form-group">
-                        <label asp-for="Descricao" class="control-label"></label>
+                        <label  class="control-label"> @Localizer["Descricao"]</label>
                         <input asp-for="Descricao" class="form-control" />
                         <span asp-validation-for="Descricao" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="DataInicio" class="control-label"></label>
+                        <label class="control-label"> @Localizer["DataInicio"]</label>
                         <input asp-for="DataInicio" class="form-control" />
                         <span asp-validation-for="DataInicio" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="DataFim" class="control-label"></label>
+                        <label  class="control-label"> @Localizer["DataFim"]</label>
                         <input asp-for="DataFim" class="form-control" />
                         <span asp-validation-for="DataFim" class="text-danger"></span>
                     </div>
@@ -31,8 +32,8 @@
             <br />
             <center>
                 <div class="form-group">
-                    <a asp-action="Index" class="btn btn-secondary">Voltar à lista</a> |
-                    <input type="submit" value="Guardar" class="btn btn-success" />
+                    <a asp-action="Index" class="btn btn-secondary">@Localizer["Voltar"]</a> |
+                    <input type="submit" value=@Localizer["Guardar"] class="btn btn-success" />
                 </div>
             </center>
         </fieldset>

@@ -1,17 +1,18 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.RestricaoCovid
-
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
 @{
     ViewData["Title"] = "Delete";
 }
 
 <center>
     <fieldset class="border p-4" style="width:fit-content;">
-        <legend class="w-auto text-left">Eliminar Restrição COVID</legend>
+        <legend class="w-auto text-left">@Localizer["ffff"]</legend>
         <div class="row" style="width:fit-content; padding-left: 20px; padding-right:20px;">
             <table>
                 <tr>
                     <td>
-                        @Html.DisplayNameFor(model => model.Descricao)
+                        @Localizer["Descricao"]
                     </td>
                     <td>
                         @Html.DisplayFor(model => model.Descricao)
@@ -19,7 +20,7 @@
                 </tr>
                 <tr>
                     <td>
-                        @Html.DisplayNameFor(model => model.DataInicio)
+                        @Localizer["DataInicio"]
                     </td>
                     <td>
                         @Html.DisplayFor(model => model.DataInicio)
@@ -27,7 +28,7 @@
                 </tr>
                 <tr>
                     <td>
-                        @Html.DisplayNameFor(model => model.DataFim)
+                        @Localizer["DataFim"]
                     </td>
                     <td>
                         @Html.DisplayFor(model => model.DataFim)
@@ -39,20 +40,20 @@
 </center>
 <br />
 <div>
-    <a asp-action="Index" class="btn btn-secondary">Voltar à Lista</a> |
-    <a class="btn btn-danger" data-toggle="modal" data-target="#confirmacaoApagar">Eliminar</a>
+    <a asp-action="Index" class="btn btn-secondary">@Localizer["Voltar"]</a> |
+    <a class="btn btn-danger" data-toggle="modal" data-target="#confirmacaoApagar">@Localizer["Eliminar"]</a>
 </div>
 
 <div id="confirmacaoApagar" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header"><span> Eliminar Restrição COVID </span></div>
-            <div class="modal-body"><h6>Tem <b>mesmo</b> certeza que quer apagar?</h6></div>
+            <div class="modal-header"><span> @Localizer["ffff"] </span></div>
+            <div class="modal-body"><h6> @Localizer["Tem"]  <b> @Localizer["mesmo"] </b>  @Localizer["ads"] </h6></div>
             <div class="modal-footer">
                 <form asp-action="Eliminar">
                     <input type="hidden" asp-for="@Model.RestricaoCovidId" />
-                    <input asp-action="Eliminar" value="Eliminar" type="submit" asp-route-id="@Model.RestricaoCovidId" class="btn btn-danger" />
-                    <a class="btn btn-info" data-dismiss="modal" aria-label="Close"> Fechar </a>
+                    <input asp-action="Eliminar" value=@Localizer["Eliminar"] type="submit" asp-route-id="@Model.RestricaoCovidId" class="btn btn-danger" />
+                    <a class="btn btn-info" data-dismiss="modal" aria-label="Close">@Localizer["Fechar"] </a>
                 </form>
             </div>
         </div>
