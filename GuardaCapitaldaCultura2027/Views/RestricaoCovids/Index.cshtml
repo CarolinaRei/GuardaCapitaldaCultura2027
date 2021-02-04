@@ -1,20 +1,22 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.ViewModels.RestricoesCovid
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
 
 @{ ViewData["Title"] = "Index"; }
 
 <fieldset class="border p-4">
-    <legend class="w-auto text-left"> Lista de Restrições COVID </legend>
+    <legend class="w-auto text-left">@Localizer["LA"]</legend>
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.ListaRestricoes.FirstOrDefault().Descricao)
+                    @Localizer["Descricao"]
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ListaRestricoes.FirstOrDefault().DataInicio)
+                    @Localizer["DataInicio"]
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ListaRestricoes.FirstOrDefault().DataFim)
+                    @Localizer["DataFim"]
                 </th>
                 <th>
                     <form id="pesquisaform" asp-action="Index">
@@ -50,14 +52,14 @@
         </thead>
         <tbody>
             @foreach (var item in Model.ListaRestricoes.Where(evt =>
-             {
+            {
                 return (!string.IsNullOrWhiteSpace(ViewData["pesquisa"]?.ToString())) ?
-                 (evt.RestricaoCovidId.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
-                 evt.Descricao.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
-                 evt.DataInicio.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
-                 evt.DataFim.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower())) : true;
-             }).ToList())
-             {
+                  (evt.RestricaoCovidId.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+                  evt.Descricao.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+                  evt.DataInicio.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
+                  evt.DataFim.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower())) : true;
+            }).ToList())
+            {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Descricao)
@@ -69,17 +71,17 @@
                         @Html.DisplayFor(modelItem => item.DataFim)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.RestricaoCovidId" class="btn btn-secondary" style="background-color:goldenrod;border-color:goldenrod;"> Editar </a> |
-                        <a asp-action="Delete" asp-route-id="@item.RestricaoCovidId" class="btn btn-danger"> Eliminar </a>
+                        <a asp-action="Edit" asp-route-id="@item.RestricaoCovidId" class="btn btn-secondary" style="background-color:goldenrod;border-color:goldenrod;">  @Localizer["Edit"] </a> |
+                        <a asp-action="Delete" asp-route-id="@item.RestricaoCovidId" class="btn btn-danger"> @Localizer["Eliminar"]  </a>
                     </td>
                 </tr>
-             }
+            }
         </tbody>
     </table>
 </fieldset>
 <br />
 <p>
-    <a asp-action="Create" class="btn btn-primary"> Criar nova Restrição </a>
+    <a asp-action="Create" class="btn btn-primary"> @Localizer["covid"] </a>
 </p>
 
 <div>
