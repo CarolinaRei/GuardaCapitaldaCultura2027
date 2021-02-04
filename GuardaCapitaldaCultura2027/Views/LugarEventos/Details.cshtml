@@ -4,7 +4,37 @@
 
 @{ViewData["Title"] = "Details";}
 
-<h1>Detalhes</h1>
+<center>
+    <fieldset class="border p-4" style="width:fit-content;">
+        <legend class="w-auto text-left">Detalhes Eventos</legend>
+        <div class="row" style="width:fit-content;padding-left: 20px;padding-right:20px;">
+            <table>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Ocupado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Ocupado)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.NumeroCadeira)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.NumeroCadeira)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </fieldset>
+    <br />
+    <div>
+        <a asp-action="Index" class="btn btn-secondary"> Voltar à Lista </a> |
+        <a asp-action="Edit" asp-route-id="@Model.LugarEventoId" class="btn btn-secondary" style="background-color:goldenrod;border-color:goldenrod;"> Editar </a>
+    </div>
+</center>
+<!--<h1>Detalhes</h1>
 
 <div>
     <h4>Lugar Evento</h4>
