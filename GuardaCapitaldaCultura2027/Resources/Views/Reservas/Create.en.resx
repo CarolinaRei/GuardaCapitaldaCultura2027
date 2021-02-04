@@ -123,4 +123,22 @@
   <data name="CreateReservations" xml:space="preserve">
     <value>Create Reservations</value>
   </data>
+  <data name="Criar" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Evento" xml:space="preserve">
+    <value>Event</value>
+  </data>
+  <data name="Formulario" xml:space="preserve">
+    <value>Reservation Form</value>
+  </data>
+  <data name="Numero de pessoas para a Reserva" xml:space="preserve">
+    <value>Number of people for a reservation</value>
+  </data>
+  <data name="Observacao" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="Voltar" xml:space="preserve">
+    <value>Return to List</value>
+  </data>
 </root>
