@@ -79,7 +79,7 @@
                  evt.Descricao.ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower()) ||
                  evt.Data_realizacao.ToString().ToLower().Contains(ViewData["pesquisa"]?.ToString().ToLower())) : true;
              }).ToList())
-            {
+             {
 
                 <tr>
                     <td>
@@ -101,26 +101,7 @@
                         <a asp-action="Edit" asp-route-id="@item.EventoId" class="btn btn-warning mr-4">Editar</a><a asp-action="Details" asp-route-id="@item.EventoId" class="btn btn-info mr-4">Detalhes</a><a asp-action="Delete" asp-route-id="@item.EventoId" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>
-
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Municipio.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data_realizacao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Lotacao_max)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.EventoId" class="btn btn-warning mr-4">@Localizer["Editar"]</a><a asp-action="Details" asp-route-id="@item.EventoId" class="btn btn-info mr-4">@Localizer["Detalhes"]</a><a asp-action="Delete" asp-route-id="@item.EventoId" class="btn btn-danger">@Localizer["Eliminar"]</a>
-                </td>
-            </tr>
-
-            }
+             }
         </tbody>
     </table>
 </fieldset>
