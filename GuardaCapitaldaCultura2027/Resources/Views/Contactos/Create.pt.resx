@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Assunto" xml:space="preserve">
-    <value>Assunto</value>
+    <value>Assunto*</value>
   </data>
   <data name="Contact" xml:space="preserve">
     <value>Contacto</value>
@@ -142,16 +142,16 @@
     <value>Enviar</value>
   </data>
   <data name="Mensagem" xml:space="preserve">
-    <value>Mensagem</value>
+    <value>Mensagem*</value>
   </data>
   <data name="Nome" xml:space="preserve">
-    <value>Nome</value>
+    <value>Nome*</value>
   </data>
   <data name="Sobrenome" xml:space="preserve">
-    <value>Sobrenome</value>
+    <value>Sobrenome*</value>
   </data>
   <data name="TCO" xml:space="preserve">
-    <value>Todos os campos são obrigatórios</value>
+    <value>Todos os campos são obrigatórios*</value>
   </data>
   <data name="VerLista" xml:space="preserve">
     <value>Ver a Lista</value>

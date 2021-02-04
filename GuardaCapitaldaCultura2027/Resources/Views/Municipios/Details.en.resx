@@ -117,43 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Assunto" xml:space="preserve">
-    <value>Subject matter*</value>
+  <data name="Criar" xml:space="preserve">
+    <value>Create</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Contact</value>
+  <data name="Desativar" xml:space="preserve">
+    <value>Disable</value>
   </data>
-  <data name="Contacto" xml:space="preserve">
-    <value>For questions related to “Guarda Eventos” contact us by phone and email below.</value>
+  <data name="Descricao" xml:space="preserve">
+    <value>Description</value>
   </data>
-  <data name="Contacto1" xml:space="preserve">
-    <value>You can also leave your contact on the form. Thanks see you soon.</value>
+  <data name="Detalhes" xml:space="preserve">
+    <value>Details Municipality</value>
   </data>
-  <data name="Contacto2" xml:space="preserve">
-    <value>Leave your contacts if you want to be contacted within the scope of “Guarda Eventos”. Thank you.</value>
+  <data name="DI" xml:space="preserve">
+    <value>Image Date</value>
   </data>
-  <data name="Contacto3" xml:space="preserve">
-    <value>Phone: +351271220100</value>
+  <data name="Editar" xml:space="preserve">
+    <value>Editar</value>
   </data>
-  <data name="Contacto4" xml:space="preserve">
-    <value>Contact form</value>
+  <data name="EI" xml:space="preserve">
+    <value>Choose Image</value>
   </data>
-  <data name="Enviar" xml:space="preserve">
-    <value>Submit</value>
+  <data name="EM" xml:space="preserve">
+    <value>State of the Municipality</value>
   </data>
-  <data name="Mensagem" xml:space="preserve">
-    <value>Message*</value>
+  <data name="FM" xml:space="preserve">
+    <value>Municipality Form</value>
+  </data>
+  <data name="IM" xml:space="preserve">
+    <value>Edit Municipalities</value>
+  </data>
+  <data name="Imagem" xml:space="preserve">
+    <value>Image</value>
   </data>
   <data name="Nome" xml:space="preserve">
-    <value>Name*</value>
+    <value>Name</value>
   </data>
-  <data name="Sobrenome" xml:space="preserve">
-    <value>Surname*</value>
+  <data name="RL" xml:space="preserve">
+    <value>Return to List</value>
   </data>
-  <data name="TCO" xml:space="preserve">
-    <value>All fields are mandatory*</value>
-  </data>
-  <data name="VerLista" xml:space="preserve">
-    <value>View List</value>
+  <data name="TO" xml:space="preserve">
+    <value>All fields are mandatory</value>
   </data>
 </root>

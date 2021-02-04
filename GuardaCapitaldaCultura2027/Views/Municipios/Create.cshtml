@@ -1,38 +1,45 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Municipio
+@inject IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Mvc.Localization;
 
 @{
     ViewData["Title"] = "Create";
 }
 
 
-<h4 class="alert-light">Inserir Municipio</h4>
+<h4 class="alert-light">
+    @Localizer["IM"]
+</h4>
 <hr />
 <div class="row">
-   <!-- <div class="col-md-6 align-items-xl-end text-justify">
-        <div class="m-5"></div>
-        <p><span class="font-weight-bold">Nota: </span>Os dados dos Municipios devem ser coerentes claros e verídicos, de modo que não haja inconsistência. </p>
-        <p>Obrigado.</p>
+    <!-- <div class="col-md-6 align-items-xl-end text-justify">
+         <div class="m-5"></div>
+         <p><span class="font-weight-bold">Nota: </span>Os dados dos Municipios devem ser coerentes claros e verídicos, de modo que não haja inconsistência. </p>
+         <p>Obrigado.</p>
 
-    </div>-->
+     </div>-->
 
 
     <div class="col-md-6 text-left">
         <fieldset class="border p-4 list-inline-item">
-            <legend class="w-auto text-center font-weight-bold">Formulário de Municipio</legend>
+            <legend class="w-auto text-center font-weight-bold">
+                @Localizer["FM"]
+               
+            </legend>
             <form asp-action="Create" enctype="multipart/form-data" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Nome" class="control-label font-weight-bold"></label>
+                    <label class="control-label font-weight-bold"> @Localizer["Nome"]</label>
                     <input asp-for="Nome" class="form-control" />
                     <span asp-validation-for="Nome" class="text-danger"></span>
                 </div>
                 <div class="form-group field half">
-                    <label asp-for="Data_imagem" class="control-label font-weight-bold"></label>
+                    <label class="control-label font-weight-bold">@Localizer["DI"]</label>
                     <input type="date" asp-for="Data_imagem" class="form-control" />
                     <span asp-validation-for="Data_imagem" class="textoErro"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Descricao" class="control-label font-weight-bold"></label>
+                    <label  class="control-label font-weight-bold">@Localizer["Descricao"]</label>
                     <textarea asp-for="Descricao" class="form-control" rows="5" cols="50"></textarea>
                     <span asp-validation-for="Descricao" class="text-danger"></span>
                 </div>
@@ -45,16 +52,16 @@
                         </div>
                     </div>*@
                 <div class="form-group">
-                    <label asp-for="Imagem" class="control-label font-weight-bold"></label>
+                    <label class="control-label font-weight-bold">@Localizer["Imagem"]</label>
                     <div class="custom-file">
-                        <label class="custom-file-label">Escolher Imagem</label>
+                        <label class="custom-file-label">@Localizer["EI"]</label>
                         <input asp-for="Imagem" type="file" accept="image/*" class="form-control custom-file-input" />
                     </div>
                     <span asp-validation-for="Imagem" class="text-danger"></span>
                 </div>
                 <div class="form-group m-3">
-                    <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
-                    <input type="submit" value="Criar" class="btn btn-primary float-right">
+                    <a class="btn btn-light float-left" asp-action="Index">@Localizer["RL"]</a>
+                    <input type="submit" value=@Localizer["RL"] class="btn btn-primary float-right">
 
                 </div>
 
@@ -62,7 +69,7 @@
             <br />
             <br />
             <hr />
-            <p>Todos os campos são obrigatórios</p>
+            <p>@Localizer["TO"]</p>
         </fieldset>
     </div>
 </div>

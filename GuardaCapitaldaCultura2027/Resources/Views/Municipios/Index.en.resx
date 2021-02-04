@@ -117,43 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Assunto" xml:space="preserve">
-    <value>Subject matter*</value>
+  <data name="CM" xml:space="preserve">
+    <value>Create Municipalities</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Contact</value>
+  <data name="Desativar" xml:space="preserve">
+    <value>Disable</value>
   </data>
-  <data name="Contacto" xml:space="preserve">
-    <value>For questions related to “Guarda Eventos” contact us by phone and email below.</value>
+  <data name="Detalhes" xml:space="preserve">
+    <value>Details</value>
   </data>
-  <data name="Contacto1" xml:space="preserve">
-    <value>You can also leave your contact on the form. Thanks see you soon.</value>
+  <data name="Editar" xml:space="preserve">
+    <value>Edit</value>
   </data>
-  <data name="Contacto2" xml:space="preserve">
-    <value>Leave your contacts if you want to be contacted within the scope of “Guarda Eventos”. Thank you.</value>
+  <data name="First" xml:space="preserve">
+    <value>First</value>
   </data>
-  <data name="Contacto3" xml:space="preserve">
-    <value>Phone: +351271220100</value>
+  <data name="Last" xml:space="preserve">
+    <value>Last</value>
   </data>
-  <data name="Contacto4" xml:space="preserve">
-    <value>Contact form</value>
+  <data name="LM" xml:space="preserve">
+    <value>List of Municipalities</value>
   </data>
-  <data name="Enviar" xml:space="preserve">
-    <value>Submit</value>
-  </data>
-  <data name="Mensagem" xml:space="preserve">
-    <value>Message*</value>
+  <data name="LP" xml:space="preserve">
+    <value>Clear Search</value>
   </data>
   <data name="Nome" xml:space="preserve">
-    <value>Name*</value>
+    <value>Name</value>
   </data>
-  <data name="Sobrenome" xml:space="preserve">
-    <value>Surname*</value>
+  <data name="Opções" xml:space="preserve">
+    <value>Options</value>
   </data>
-  <data name="TCO" xml:space="preserve">
-    <value>All fields are mandatory*</value>
-  </data>
-  <data name="VerLista" xml:space="preserve">
-    <value>View List</value>
+  <data name="Pesquise" xml:space="preserve">
+    <value>Search</value>
   </data>
 </root>

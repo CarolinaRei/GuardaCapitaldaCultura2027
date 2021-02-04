@@ -1,11 +1,13 @@
 ﻿@model ListaMunicipio
+@inject IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Mvc.Localization;
 
 @{
     ViewData["Title"] = "Index";
 }
 
 <div class="row">
-    <h4 class="alert-light">Lista dos Municipios</h4>
+    <h4 class="alert-light">@Localizer["LM"]</h4>
     <hr />
 </div>
 
@@ -13,7 +15,7 @@
 {
     <div class="row">
         <p>
-            <a class="btn btn-primary left" asp-action="Create">Criar Municipio</a>
+            <a class="btn btn-primary left" asp-action="Create">@Localizer["CM"]</a>
         </p>
     </div>
 }
@@ -30,57 +32,60 @@
                        aria-hidden="true"></i>
                 </span>
             </div>
-            <input name="nome" type="search" placeholder="Pesquise" class="form-control" value="@Model.SearchNome" />
+            <input name="nome" type="search" placeholder=@Localizer["Pesquise"] class="form-control" value="@Model.SearchNome" />
             <input name="page" type="hidden" value="1" />
             <div class="ml-3">
-                <input type="submit" value="Pesquisar" class="btn btn-primary mr-4" />
-                <a asp-action="Index" class="btn btn-secondary ml-1">Limpar Pesquisa</a>
+                <input type="submit" value=@Localizer["Pesquise"] class="btn btn-primary mr-4" />
+                <a asp-action="Index" class="btn btn-secondary ml-1">@Localizer["LP"]</a>
             </div>
         </form>
-            <table class="table text-lg-center">
-                <thead>
+        <table class="table text-lg-center">
+            <thead>
+                <tr>
+                    <th>
+                        @Localizer["Nome"]
+                        
+                    </th>
+
+                    <th>
+                        @Localizer["Desativar"]
+                        
+                    </th>
+                    <th>
+                        @Localizer["Opções"]
+                        
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="text-justify">
+                @foreach (var item in Model.Municipios)
+                {
                     <tr>
-                        <th>
-                            Nome
-                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
 
-                        <th>
-                            Desativar
-                        </th>
-                        <th>
-                            Opções
-                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Desativar)
+                        </td>
+                        <td class="m-5">
+                            @if (User.IsInRole("GestorEventos") || User.IsInRole("Admin"))
+                            {
+                                <a class="btn btn-warning mr-4" asp-action="Edit" asp-route-id="@item.MunicipioId">@Localizer["Editar"]</a>
+                            }
+
+                            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.MunicipioId">@Localizer["Detalhes"]</a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody class="text-justify">
-                    @foreach (var item in Model.Municipios)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nome)
-                            </td>
-
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Desativar)
-                            </td>
-                            <td class="m-5">
-                                @if (User.IsInRole("GestorEventos") || User.IsInRole("Admin"))
-                                {
-                                     <a class="btn btn-warning mr-4" asp-action="Edit" asp-route-id="@item.MunicipioId">Editar</a>
-                                }
-
-                                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.MunicipioId">Detalhes</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+                }
+            </tbody>
+        </table>
     </fieldset>
 </div>
 <div class="row">
     <nav class="mt-3">
         <ul class="pagination">
-            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1" asp-route-name="@Model.SearchNome">First</a></li>
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="1" asp-route-name="@Model.SearchNome">@Localizer["First"]</a></li>
 
             @{
                 int initalPage = Model.pagination.CurrentPage - PagingInfoMunicipio.NUMERO_ANTES_DEPOIS;
@@ -102,7 +107,7 @@
                 }
             }
 
-            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.pagination.TotalPages" asp-route-name="@Model.SearchNome">Last</a></li>
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-page="@Model.pagination.TotalPages" asp-route-name="@Model.SearchNome">@Localizer["Last"]</a></li>
         </ul>
     </nav>
 </div>
