@@ -1,26 +1,30 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Contacto
+@inject IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Mvc.Localization;
 
 @{
     ViewData["Title"] = "Details";
 }
 
 
-<h1>Detales do Contacto</h1>
+<h1>   
+    @Localizer["Detalhes"]
+</h1>
 <br />
 <br />
 <table class="table table-bordered text-left">
 
     <tbody>
         <tr>
-            <th scope="row"><h6>Nome</h6></th>
+            <th scope="row"><h6>@Localizer["Nome"]</h6></th>
             <td> @Html.DisplayFor(model => model.Name)</td>
         </tr>
         <tr>
-            <th scope="row"><h6>Sobrenome</h6></th>
+            <th scope="row"><h6>@Localizer["Sobrenome"]</h6></th>
             <td> @Html.DisplayFor(model => model.Sobrenome)</td>
         </tr>
         <tr>
-            <th scope="row"><h6>Verificado</h6></th>
+            <th scope="row"><h6>@Localizer["Verificado"]</h6></th>
             <td> @Html.DisplayFor(model => model.Verificado)</td>
         </tr>
         <tr>
@@ -28,16 +32,16 @@
             <td> @Html.DisplayFor(model => model.Email)</td>
         </tr>
         <tr>
-            <th scope="row"><h6>Assunto</h6></th>
+            <th scope="row"><h6>@Localizer["Assunto"]</h6></th>
             <td>@Html.DisplayFor(model => model.Assunto)</td>
         </tr>
 
         <tr>
-            <th scope="row"><h6>Mensagem</h6></th>
+            <th scope="row"><h6></h6></th>
             <td> @Html.DisplayFor(model => model.Mensagem)</td>
         </tr>
         <tr>
-            <th scope="row"><h6>Resposta</h6></th>
+            <th scope="row"><h6>@Localizer["Resposta"] </h6></th>
             <td> @Html.DisplayFor(model => model.Resposta)</td>
         </tr>
     </tbody>
@@ -45,7 +49,7 @@
 <div class="card-body mb-5">
     @if (!Model.Verificado == false)
     {
-        <a class="btn btn-secondary mr-4 float-right" href="#" onclick="Modal.open()">Responder</a>
+    <a class="btn btn-secondary mr-4 float-right" href="#" onclick="Modal.open()">@Localizer["Responder"]</a>
         <div class="modal-overlay ">
             <div class="modal">
 
@@ -53,8 +57,8 @@
                     <h2>Nova Transação</h2>
                     <form action="">
                         <div class="input-group">
-                            <label class="sr-only" for="description">Descrição</label>
-                            <input type="text" id="description" name="description" placeholder="Descrição" />
+                            <label class="sr-only" for="description">>@Localizer["Descrição"]</label>
+                            <input type="text" id="description" name="description" placeholder=@Localizer["Descrição"] />
                         </div>
 
                         <div class="input-group">
@@ -71,8 +75,8 @@
                             <input type="date" id="date" name="date" />
                         </div>
                         <div class="input-group actions">
-                            <a href="#" onclick="Modal.close()" class="button cancel">Cancelar</a>
-                            <button>Salvar</button>
+                            <a href="#" onclick="Modal.close()" class="button cancel">@Localizer["Cancelar"]</a>
+                            <button>@Localizer["Salvar"]</button>
                         </div>
                     </form>
                 </div>
@@ -83,10 +87,10 @@
     }
     else
     {
-        <a class="btn btn-secondary mr-4 float-right" asp-action="Edit" asp-route-id="@Model.ContactoId">Responder</a>
+<a class="btn btn-secondary mr-4 float-right" asp-action="Edit" asp-route-id="@Model.ContactoId">@Localizer["Responder"]</a>
     }
 
-    <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
+<a class="btn btn-light float-left" asp-action="Index">@Localizer["RL"]</a>
 </div>
 
 <script>
@@ -95,7 +99,7 @@
             alert("Este contacto ja foi respondido!");
         },
         close() {
-            
+
         }
     }
 </script>
