@@ -2,10 +2,10 @@
 @using Microsoft.AspNetCore.Mvc.Localization;
 @inject IViewLocalizer Localizer;
 
-@{   ViewData["Title"] = "Index";}
+@{   ViewData["Title"] = Localizer["Index"];}
 
 <div class="row">
-    <h4 class="alert-light">Lista das Reservas</h4>
+    <h4 class="alert-light">@Localizer["Lista dos Reservas"]</h4>
     <hr />
 </div>
 <div class="row">

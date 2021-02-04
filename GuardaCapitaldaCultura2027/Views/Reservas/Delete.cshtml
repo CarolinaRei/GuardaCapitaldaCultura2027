@@ -2,38 +2,56 @@
 @using Microsoft.AspNetCore.Mvc.Localization;
 @inject IViewLocalizer Localizer;
 
-@{ ViewData["Title"] = "Delete";}
+@{ ViewData["Title"] = Localizer["Delete"];}
 
-<h1>Eliminar</h1>
+<h4 class="alert-light">@Localizer["Apagar Reservas"]</h4>
+<hr />
+<center>
+    <div class="row text-justify justify-content-md-center">
+        <div class="card" style="width: 80%;">
+            <div class="card-body">
+                <h5 class="card-title">@Localizer[Html.DisplayNameFor(model => model.Nome)]</h5>
+                <p class="card-text"> @Html.DisplayFor(model => model.Nome)</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <span class="font-weight-bold">
+                        @Localizer[Html.DisplayNameFor(m => m.Observacao)]
+                    </span>
+                    <span class="ml-3">
+                        @Html.DisplayFor(model => model.Observacao)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="font-weight-bold">
+                        @Localizer[Html.DisplayNameFor(m => m.Numero_Reserva)]
+                    </span>
+                    <span class="ml-3">
+                        @Html.DisplayFor(model => model.Numero_Reserva)
+                    </span>
+                </li>
+            </ul>
+            <div class="card-body">
+                <a class="btn btn-danger" data-toggle="modal" data-target="#confirmacaoApagar">@Localizer["Delete"]</a>
+                <a asp-action="Index" class="btn btn-light float-left">@Localizer["Voltar"]</a>
+            </div>
+        </div>
+        <br />
+    </div>
+</center>
 
-<h3>Tem mesmo certeza que quer apagar?</h3>
-<div>
-    <h4>Reserva</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Observacao)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Observacao)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Numero_Reserva)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Numero_Reserva)
-        </dd>
-    </dl>
-
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="ReservaId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Voltar à Lista</a>
-    </form>
+<div id="confirmacaoApagar" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header"><span>Eliminar Eventos</span></div>
+            <div class="modal-body"><h6>Tem <b>mesmo</b> certeza que quer apagar?</h6></div>
+            <div class="modal-footer">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="ReservaId" />
+                    <input asp-action="Delete" value="Delete" type="submit" asp-route-id="@Model.ReservaId" class="btn btn-danger" />
+                    <a class="btn btn-info" data-dismiss="modal" aria-label="Close">Fechar</a>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
