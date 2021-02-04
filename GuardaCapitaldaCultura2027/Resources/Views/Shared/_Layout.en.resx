@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Eventos" xml:space="preserve">
+    <value>Events</value>
+  </data>
   <data name="Home_Menu" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="Reservas" xml:space="preserve">
+    <value>Reservations</value>
+  </data>
+  <data name="SlctLinguagem" xml:space="preserve">
+    <value>Language</value>
   </data>
   <data name="SobreNos" xml:space="preserve">
     <value>About Us</value>

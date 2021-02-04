@@ -2,34 +2,37 @@
 @using Microsoft.AspNetCore.Mvc.Localization;
 @inject IViewLocalizer Localizer;
 
-@{ViewData["Title"] = "Criar";}
+@{ViewData["Title"] =Localizer["Create"];}
 
-<form asp-action="Criar">
+<h4 class="alert-light">@Localizer["CreateReservations"]</h4>
+<hr />
+
+<form asp-action="Create">
     <div class="col-md-6 text-left">
         <fieldset class="border p-4 list-inline-item">
-            <legend class="w-auto text-left">Criar Reservas</legend>
-            <hr />
+            <legend class="w-auto text-left">@Localizer["Formulario"]</legend>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Nome" class="control-label" style="width:100%;width:-webkit-fill-available;"></label>
+                <label class="control-label" style="width:100%;width:-webkit-fill-available;">@Localizer[Html.DisplayNameFor(m => m.Nome)]</label>
                 <input asp-for="Nome" class="form-control" style="width:100%;width:-webkit-fill-available;" />
                 <span asp-validation-for="Nome" class="text-danger" style="width:100%;width:-webkit-fill-available;"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Numero_Reserva" class="control-label" style="width:100%;width:-webkit-fill-available;"></label>
+                <label asp-for="Numero_Reserva" class="control-label" style="width:100%;width:-webkit-fill-available;">@Localizer[Html.DisplayNameFor(m => m.Numero_Reserva)]</label>
                 <input asp-for="Numero_Reserva" min="1" value="1" class="form-control" style="width:100%;width:-webkit-fill-available;" />
                 <span asp-validation-for="Numero_Reserva" class="text-danger" style="width:100%;width:-webkit-fill-available;"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Observacao" class="control-label"></label>
+                <label asp-for="Observacao" class="control-label">@Localizer[Html.DisplayNameFor(m => m.Observacao)]</label>
                 <input asp-for="Observacao" class="form-control" />
                 <span asp-validation-for="Observacao" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input hidden asp-for="@Model.EventoId" />
                 <input hidden asp-for="@Model.PessoaId" />
-                <input type="submit" value="Criar" class="btn btn-primary" />
             </div>
+            <a asp-action="Index" class="btn btn-light float-left">@Localizer["Voltar"]</a>
+            <input type="submit" value="@Localizer["Criar"]" class="btn btn-primary float-right" />
         </fieldset>
     </div>
 </form>

@@ -2,10 +2,10 @@
 @using Microsoft.AspNetCore.Mvc.Localization;
 @inject IViewLocalizer Localizer;
 
-@{   ViewData["Title"] = "Index";}
+@{   ViewData["Title"] = Localizer["Index"];}
 
 <div class="row">
-    <h4 class="alert-light">Lista das Reservas</h4>
+    <h4 class="alert-light">@Localizer["Lista dos Reservas"]</h4>
     <hr />
 </div>
 <div class="row">
@@ -86,7 +86,7 @@
                         @Html.DisplayFor(modelItem => item.Numero_Reserva)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.ReservaId" class="btn btn-warning mr-4">Editar</a><a asp-action="Detalhes" asp-route-id="@item.ReservaId" class="btn btn-info mr-4">Detalhes</a><a asp-action="Eliminar" asp-route-id="@item.ReservaId" class="btn btn-danger">Eliminar</a>
+                        <a asp-action="Edit" asp-route-id="@item.ReservaId" class="btn btn-warning mr-4">Editar</a><a asp-action="Details" asp-route-id="@item.ReservaId" class="btn btn-info mr-4">Detalhes</a><a asp-action="Delete" asp-route-id="@item.ReservaId" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>
             }

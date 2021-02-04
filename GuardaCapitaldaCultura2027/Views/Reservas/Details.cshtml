@@ -2,34 +2,43 @@
 @using Microsoft.AspNetCore.Mvc.Localization;
 @inject IViewLocalizer Localizer;
 
-@{ ViewData["Title"] = "Detalhes";}
+@{ ViewData["Title"] = "Details";}
 
-<h1>Detalhes</h1>
-
-<div>
-    <h4>Reserva</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Observacao)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Observacao)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Numero_Reserva)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Numero_Reserva)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Index">Voltar à Lista</a>
-</div>
+<h4 class="alert-light">Detalhes Reservas</h4>
+<hr />
+<center>
+    <div class="row text-justify justify-content-md-center">
+        <div class="card" style="width: 80%;">
+            <div class="card-body">
+                <h5 class="card-title">@Localizer[Html.DisplayNameFor(model => model.Nome)]</h5>
+                <p class="card-text"> @Html.DisplayFor(model => model.Nome)</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <span class="font-weight-bold">
+                        @Html.DisplayNameFor(model => model.Observacao)
+                    </span>
+                    <span class="ml-3">
+                        @Html.DisplayFor(model => model.Observacao)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="font-weight-bold">
+                        @Html.DisplayNameFor(model => model.Numero_Reserva)
+                    </span>
+                    <span class="ml-3">
+                        @Html.DisplayFor(model => model.Numero_Reserva)
+                    </span>
+                </li>
+            </ul>
+            <div class="card-body">
+                @if (User.IsInRole("GestorEventos") || User.IsInRole("Admin"))
+                {
+                <a class="btn btn-warning mr-4 float-right" asp-action="Edit" asp-route-id="@Model.ReservaId">Editar</a>
+                }
+                <a asp-action="Index" class="btn btn-light float-left">Voltar à Lista</a>
+            </div>
+        </div>
+        <br />
+    </div>
+</center>

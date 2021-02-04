@@ -68,11 +68,12 @@ namespace GuardaCapitaldaCultura2027
             {
                 var cultures = new[]
                 {
-                    new CultureInfo("cn"),
                     new CultureInfo("en"),
                     new CultureInfo("pt")
                 };
                 options.DefaultRequestCulture = new RequestCulture("pt");
+                options.FallBackToParentCultures = true;
+                options.FallBackToParentUICultures = true;
                 options.SupportedCultures = cultures;
                 options.SupportedUICultures = cultures;
             });

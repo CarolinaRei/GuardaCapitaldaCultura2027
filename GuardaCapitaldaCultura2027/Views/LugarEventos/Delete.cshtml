@@ -1,8 +1,9 @@
-﻿@model GuardaCapitaldaCultura2027.Models.LugarEvento
+@model GuardaCapitaldaCultura2027.Models.LugarEvento
 @using Microsoft.AspNetCore.Mvc.Localization;
 @inject IViewLocalizer Localizer;
 
 @{ ViewData["Title"] = "Delete";}
+
 
 <!--<center>
     <fieldset class="border p-4" style="width:fit-content;">
@@ -33,6 +34,33 @@
 <div>
     <a asp-action="Index" class="btn btn-secondary"> Voltar à Lista </a> |
     <a class="btn btn-danger" data-toggle="modal" data-target="#confirmacaoApagar"> Eliminar </a>
+
+<h1>ELiminar</h1>
+
+<h3>Tem mesmo certeza que quer apagar?</h3>
+<div>
+    <h4>LugarEvento</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ocupado)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ocupado)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NumeroCadeira)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumeroCadeira)
+        </dd>
+    </dl>
+
+    <form asp-action="E">
+        <input type="hidden" asp-for="LugarEventoId" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Voltar à Lista</a>
+    </form>
 </div>
 
 <div id="confirmacaoApagar" class="modal" tabindex="-1" role="dialog">

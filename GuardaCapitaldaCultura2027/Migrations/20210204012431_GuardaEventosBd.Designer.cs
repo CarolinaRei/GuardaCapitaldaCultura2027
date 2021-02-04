@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuardaCapitaldaCultura2027.Migrations
 {
     [DbContext(typeof(GuardaEventosBdContext))]
-    [Migration("20210122100408_GuardaEventos")]
-    partial class GuardaEventos
+    [Migration("20210204012431_GuardaEventosBd")]
+    partial class GuardaEventosBd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,10 +47,16 @@ namespace GuardaCapitaldaCultura2027.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
+                    b.Property<string>("Resposta")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Sobrenome")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
+
+                    b.Property<bool>("Verificado")
+                        .HasColumnType("bit");
 
                     b.HasKey("ContactoId");
 
@@ -203,10 +209,15 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     b.Property<int>("Numero_Reserva")
                         .HasColumnType("int");
 
+                    b.Property<string>("Observacao")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PessoaId")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ReservaId");
+
+                    b.HasIndex("EventoId");
 
                     b.ToTable("Reservas");
                 });
@@ -279,6 +290,15 @@ namespace GuardaCapitaldaCultura2027.Migrations
                     b.HasOne("GuardaCapitaldaCultura2027.Models.Municipio", "Municipio")
                         .WithMany()
                         .HasForeignKey("MunicipioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("GuardaCapitaldaCultura2027.Models.Reserva", b =>
+                {
+                    b.HasOne("GuardaCapitaldaCultura2027.Models.Evento", "Evento")
+                        .WithMany()
+                        .HasForeignKey("EventoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

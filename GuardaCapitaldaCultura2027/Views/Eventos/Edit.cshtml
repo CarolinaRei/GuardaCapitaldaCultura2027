@@ -1,50 +1,52 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Evento
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
-@{ ViewData["Title"] = "Editar"; }
+
+@{ ViewData["Title"] = "Edit"; }
+
+<h4 class="alert-light">@Localizer["Editar Eventos"]</h4>
+<hr />
 
 <form enctype="multipart/form-data" asp-action="Edit">
     <div class="col-md-6 text-left">
         <fieldset class="border p-4 list-inline-item">
-            <legend class="w-auto text-left">Editar Eventos</legend>
+            <legend class="w-auto text-left">@Localizer["Formulario"]</legend>
             <div class="row">
                 <div class="col-md-6" style="max-width:100% !important; flex:auto;">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" asp-for="EventoId" />
+                    <input type="hidden" asp-for="EventoId"/>
                     <input type="hidden" asp-for="MunicipioId" />
                     <div class="form-group">
-                        <label asp-for="Name" class="control-label"></label>
+                        <label class="control-label">@Localizer[Html.DisplayNameFor(m => m.Name)]</label>
                         <input asp-for="Name" class="form-control" />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Descricao" class="control-label"></label>
+                        <label class="control-label">@Localizer[Html.DisplayNameFor(m => m.Descricao)]</label>
                         <input asp-for="Descricao" class="form-control" />
                         <span asp-validation-for="Descricao" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Data_realizacao" class="control-label"></label>
+                        <label class="control-label">@Localizer[Html.DisplayNameFor(m => m.Data_realizacao)]</label>
                         <input asp-for="Data_realizacao" min="@(DateTime.Now)" class="form-control" />
                         <span asp-validation-for="Data_realizacao" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Imagem" class="control-label"></label>
+                        <label class="control-label">@Localizer[Html.DisplayNameFor(m => m.Imagem)]</label>
                         <input type="file" name="Imagem" asp-for="Imagem" style="min-width:fit-content;height:fit-content;" class="form-control" />
                         <span asp-validation-for="Imagem" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Lotacao_max" class="control-label"></label>
+                        <label class="control-label">@Localizer[Html.DisplayNameFor(m => m.Lotacao_max)]</label>
                         <input asp-for="Lotacao_max" min="1" class="form-control" />
                         <span asp-validation-for="Lotacao_max" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <br />
-            <center>
-                <div class="form-group">
-                    <a asp-action="Index" class="btn btn-secondary">Voltar à lista</a> |
-                    <input type="submit" value="Guardar" class="btn btn-success" />
-                </div>
-            </center>
+            <a asp-action="Index" class="btn btn-light float-left">@Localizer["Voltar"]</a>
+            <input type="submit" value="@Localizer["Save"]" class="btn btn-primary float-right" />
         </fieldset>
     </div>
 </form>

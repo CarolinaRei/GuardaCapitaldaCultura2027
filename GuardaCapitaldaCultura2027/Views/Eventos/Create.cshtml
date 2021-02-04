@@ -1,55 +1,54 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Evento
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
-@{ ViewData["Title"] = "Create"; }
+@{ ViewData["Title"] =Localizer["Create"]; }
 
-<h4 class="alert-light">Inserir Eventos</h4>
+<h4 class="alert-light">@Localizer["InserirEventos"]</h4>
 <hr />
 
 <form enctype="multipart/form-data" asp-action="Create">
     <div class="col-md-6 text-left">
         <fieldset class="border p-4 list-inline-item">
-            <legend class="w-auto text-center font-weight-bold">Formulário de Eventos</legend>
+            <legend class="w-auto text-center font-weight-bold">@Localizer["Formulario"]</legend>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label font-weight-bold"></label>
+                <label class="control-label font-weight-bold">@Localizer[Html.DisplayNameFor(m => m.Name)]</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Municipio" class="control-label font-weight-bold"></label>
+                <label class="control-label font-weight-bold">@Localizer[Html.DisplayNameFor(m => m.Municipio)]</label>
                 <br />
                 @(Html.DropDownList("MunicipioId",new List<SelectListItem>(ViewBag.municipios),htmlAttributes:new { @class="form-control", style= "width:100%;width:-webkit-fill-available;" }))
                 <span asp-validation-for="MunicipioId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Descricao" class="control-label font-weight-bold"></label>
+                <label class="control-label font-weight-bold">@Localizer[Html.DisplayNameFor(m => m.Descricao)]</label>
                 <input asp-for="Descricao" class="form-control" />
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Data_realizacao" class="control-label font-weight-bold"></label>
-                <input type="date" asp-for="Data_realizacao" min="@(DateTime.Now)" class="form-control" />
+                <label class="control-label font-weight-bold">@Localizer[Html.DisplayNameFor(m=>m.Data_realizacao)]</label>
+                <input type="date" asp-for="Data_realizacao" min="@($"{DateTime.Now.Year}-{DateTime.Now.Month.ToString("00")}-{DateTime.Now.Day.ToString("00")}")" class="form-control" />
                 <span asp-validation-for="Data_realizacao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Lotacao_max" class="control-label font-weight-bold"></label>
+                <label class="control-label font-weight-bold">@Localizer[Html.DisplayNameFor(m => m.Lotacao_max)]</label>
                 <input asp-for="Lotacao_max" min="1" class="form-control" />
                 <span asp-validation-for="Lotacao_max" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Imagem" class="control-label font-weight-bold"></label>
+                <label class="control-label font-weight-bold">@Localizer[Html.DisplayNameFor(m => m.Imagem)]</label>
                 <div class="custom-file">
-                    <label class="custom-file-label">Escolher Imagem</label>
+                    <label class="custom-file-label">@Localizer["EscolherImagem"]</label>
                     <input asp-for="Imagem" type="file" accept="image/*" class="form-control custom-file-input" />
                 </div>
                 <span asp-validation-for="Imagem" class="text-danger"></span>
             </div>
+            <a asp-action="Index" class="btn btn-light float-left">@Localizer["Voltar"]</a>
+            <input type="submit" value="@Localizer["Criar"]" class="btn btn-primary float-right"/>
         </fieldset>
-    </div>
-
-    <div class="form-group">
-        <a asp-action="Index" class="btn btn-secondary">Voltar à Lista</a>
-        <input type="submit" value="Criar" class="btn btn-success" />
     </div>
 </form>
 

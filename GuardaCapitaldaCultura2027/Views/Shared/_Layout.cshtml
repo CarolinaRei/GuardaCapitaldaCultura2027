@@ -1,5 +1,7 @@
-@using Microsoft.AspNetCore.Mvc.Localization;
-
+﻿@using Microsoft.AspNetCore.Mvc.Localization;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @inject IViewLocalizer Localizer;
 
 <!DOCTYPE html>
@@ -138,12 +140,19 @@
                         <div class="collapse navbar-collapse" id="navbarResponsive">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Home" asp-action="Sobre">@Localizer["SobreNos"]</a></li>
+                                @{
+                                    if (SignInManager.IsSignedIn(User))
+                                    {
+                                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Reservas" asp-action="Index">@Localizer["Reservas"]</a></li>
+                                    }
+                                }
+                                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Eventos" asp-action="Index">@Localizer["Eventos"]</a></li>
                                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Contactos" asp-action="Create">Contactos</a></li>
                             </ul>
                             <partial name="_LoginPartial.cshtml" />
                             <div class="mynav_dropdown text-black-50">
                                 <button class="mynav_dropbtn">
-                                    <a class="text-black-50">PT</a>
+                                    <a class="text-black-50">@Localizer["SlctLinguagem"]</a>
                                     <i class="fa fa-caret-down"></i>
                                 </button>
                                 <div class="mynav_dropdown-content">
@@ -156,37 +165,6 @@
             </div>
         </div>
     </nav>
-    <!-- Navbar -->
-    <!-- Navigation
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" asp-controller="Home" asp-action="Index">Guarda Eventos</a>
-            <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Home" asp-action="Sobre">Sobre Nós</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" asp-controller="Contactos" asp-action="Create">Contactos</a></li>
-                </ul>
-                <partial name="_LoginPartial.cshtml" />
-                <div class="mynav_dropdown">
-                    <button class="mynav_dropbtn">
-                        <a>PT</a>
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="mynav_dropdown-content">
-                        <a asp-area="">EN</a>
-                        <a asp-area="">汉语</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </nav> -->
-
-
 
 
     <header class="mt-3 text-center">
@@ -208,7 +186,11 @@
                 <!--Grid column-->
                 <div class="col-lg-6 col-md-12 mb-4 mb-md-0 col-1-3 left">
                     <h5 class="text-left">Descrição</h5>
-                    <p class="text-justify">A nossa proposta para o trabalho consiste em criar um aplicação Web com o respetivo tema “Guarda – Candidata a Capital Europeia da Cultura 2027”, cujo nome do WebSite vai ser “Guarda Eventos”.
+                    <p class="text-justify">
+                        A nossa proposta para o trabalho consiste em criar um aplicação Web com o respetivo tema “Guarda – Candidata a Capital Europeia da Cultura 2027”, cujo nome do WebSite vai ser “Guarda Eventos”.<br />
+                        <a asp-controller="Municipios" asp-action="Index">Ver Municipios</a>
+                    </p>
+
                 </div>
 
                 <!--Grid column--
@@ -248,9 +230,9 @@
         <!-- Copyright -->
         <div class="text-left p-3" style="background-color: rgba(0, 0, 0, 0.2)">
 
-            
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                © 2021 Copyright: Guarda Eventos
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            © 2021 Copyright: Guarda Eventos
 
         </div>
         <!-- Copyright -->
