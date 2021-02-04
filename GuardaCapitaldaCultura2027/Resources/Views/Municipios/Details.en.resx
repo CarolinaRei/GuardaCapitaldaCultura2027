@@ -117,10 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Registar" xml:space="preserve">
-    <value>Registar</value>
+  <data name="Criar" xml:space="preserve">
+    <value>Create</value>
   </data>
-  <data name="Sair" xml:space="preserve">
-    <value>Sair</value>
+  <data name="Desativar" xml:space="preserve">
+    <value>Disable</value>
+  </data>
+  <data name="Descricao" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Detalhes" xml:space="preserve">
+    <value>Details Municipality</value>
+  </data>
+  <data name="DI" xml:space="preserve">
+    <value>Image Date</value>
+  </data>
+  <data name="Editar" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="EI" xml:space="preserve">
+    <value>Choose Image</value>
+  </data>
+  <data name="EM" xml:space="preserve">
+    <value>State of the Municipality</value>
+  </data>
+  <data name="FM" xml:space="preserve">
+    <value>Municipality Form</value>
+  </data>
+  <data name="IM" xml:space="preserve">
+    <value>Edit Municipalities</value>
+  </data>
+  <data name="Imagem" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="Nome" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="RL" xml:space="preserve">
+    <value>Return to List</value>
+  </data>
+  <data name="TO" xml:space="preserve">
+    <value>All fields are mandatory</value>
   </data>
 </root>

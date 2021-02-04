@@ -117,10 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Registar" xml:space="preserve">
-    <value>Registar</value>
+  <data name="TituloCovid" xml:space="preserve">
+    <value>New Coronavirus COVID-19, what is it?</value>
   </data>
-  <data name="Sair" xml:space="preserve">
-    <value>Sair</value>
+  <data name="TituloCovid1" xml:space="preserve">
+    <value>Know the characteristics of the virus that causes the disease by the new Coronavirus
+         (COVID-19).</value>
+  </data>
+  <data name="TituloCovid2" xml:space="preserve">
+    <value>The new coronavirus, entitled COVID-19, was first identified in
+         December 2019, in China, in Wuhan City. This new agent had never
+         previously identified in humans, having caused an outbreak in the city
+         from Wuhan. The source of the infection is still unknown.</value>
+  </data>
+  <data name="TituloCovid3" xml:space="preserve">
+    <value>Coronaviruses are a family of viruses known to cause disease in humans
+         human. The infection can be similar to the common flu or present as
+         more serious illness, such as pneumonia.</value>
+  </data>
+  <data name="TituloCovid4" xml:space="preserve">
+    <value>The route of transmission is still under investigation. Person-to-person transmission
+         has been confirmed, although no further details are known.</value>
+  </data>
+  <data name="TituloCovid5" xml:space="preserve">
+    <value>DGS - Data being updated</value>
+  </data>
+  <data name="TituloCovid6" xml:space="preserve">
+    <value>Note: the DGS newsletter is updated every morning and only once a day.</value>
   </data>
 </root>

@@ -1,11 +1,12 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Municipio
-
+@inject IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Mvc.Localization;
 @{
     ViewData["Title"] = "Detalhes";
 }
 
 
-<h4 class="alert-light">Detalhes Municipio</h4>
+<h4 class="alert-light">@Localizer["Detalhes"]</h4>
 <hr />
 
 
@@ -24,7 +25,7 @@
             <li class="list-group-item">
 
                 <spam class="font-weight-bold">
-                    @Html.DisplayNameFor(model => model.Desativar)
+                    @Localizer["EM"]
                 </spam>
                 <spam class="ml-3">
                     @Html.DisplayFor(model => model.Desativar)
@@ -32,7 +33,7 @@
             </li>
             <li class="list-group-item">
                 <span class="font-weight-bold">
-                    @Html.DisplayNameFor(model => model.Data_imagem)
+                    @Localizer["DI"]
                 </span>
                 <span class="ml-3">
                     @Html.DisplayFor(model => model.Data_imagem)
@@ -42,9 +43,9 @@
         <div class="card-body">
             @if (User.IsInRole("GestorEventos") || User.IsInRole("Admin"))
             {
-                <a class="btn btn-warning mr-4 float-right" asp-action="Edit" asp-route-id="@Model.MunicipioId">Editar</a>
+                <a class="btn btn-warning mr-4 float-right" asp-action="Edit" asp-route-id="@Model.MunicipioId">@Localizer["Edit"]</a>
             }
-                <a class="btn btn-light float-left" asp-action="Index">Retornar a Lista</a>
-            </div>
+            <a class="btn btn-light float-left" asp-action="Index">@Localizer["RL"]</a>
+        </div>
     </div>
 </div>

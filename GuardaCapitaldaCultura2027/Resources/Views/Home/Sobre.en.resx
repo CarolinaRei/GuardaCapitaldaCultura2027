@@ -117,10 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Registar" xml:space="preserve">
-    <value>Registar</value>
+  <data name="3" xml:space="preserve">
+    <value>3º year of the Computer Engineering Degree</value>
   </data>
-  <data name="Sair" xml:space="preserve">
-    <value>Sair</value>
+  <data name="ED" xml:space="preserve">
+    <value>Development Team</value>
+  </data>
+  <data name="Sobre" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="Sobre1" xml:space="preserve">
+    <value>Guarda Eventos is our proposal for the Internet Programming project in conjunction with Software Engineering II.</value>
+  </data>
+  <data name="Sobre2" xml:space="preserve">
+    <value>This project consists of a WebSite with the respective theme “Guard - Candidate for European Capital of Culture 2027”.</value>
+  </data>
+  <data name="Sobre3" xml:space="preserve">
+    <value>We chose the city of Guarda because it is a unique opportunity to demonstrate to Europe that the Beira Interior area of our country is a very crowded area in the area of Culture.</value>
+  </data>
+  <data name="Sobre4" xml:space="preserve">
+    <value>With "Guarda Eventos" we will make life easier for tourists, who can access the WebSite to know all about the municipalities involved in this application.</value>
   </data>
 </root>

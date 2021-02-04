@@ -117,10 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Registar" xml:space="preserve">
-    <value>Registar</value>
+  <data name="Assunto" xml:space="preserve">
+    <value>Assunto</value>
   </data>
-  <data name="Sair" xml:space="preserve">
-    <value>Sair</value>
+  <data name="Detalhes" xml:space="preserve">
+    <value>Detalhes</value>
+  </data>
+  <data name="First" xml:space="preserve">
+    <value>Primeira</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Última</value>
+  </data>
+  <data name="LC" xml:space="preserve">
+    <value>Lista dos Contactos</value>
+  </data>
+  <data name="LP" xml:space="preserve">
+    <value>Limpar Pesquisa</value>
+  </data>
+  <data name="Nome" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Opções" xml:space="preserve">
+    <value>Opções</value>
+  </data>
+  <data name="Pesquise" xml:space="preserve">
+    <value>Pesquisar</value>
+  </data>
+  <data name="Verificado" xml:space="preserve">
+    <value>Verificado</value>
   </data>
 </root>

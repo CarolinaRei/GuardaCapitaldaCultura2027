@@ -117,10 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Registar" xml:space="preserve">
-    <value>Registar</value>
+  <data name="Assunto" xml:space="preserve">
+    <value>Subject matter</value>
   </data>
-  <data name="Sair" xml:space="preserve">
-    <value>Sair</value>
+  <data name="Cancelar" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Detalhes" xml:space="preserve">
+    <value>Contact Details</value>
+  </data>
+  <data name="FRC" xml:space="preserve">
+    <value>Reply Form Contact</value>
+  </data>
+  <data name="Mensagem" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Nome" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="RC" xml:space="preserve">
+    <value>Reply Contact</value>
+  </data>
+  <data name="Responder" xml:space="preserve">
+    <value>Reply</value>
+  </data>
+  <data name="Resposta" xml:space="preserve">
+    <value>Answer</value>
+  </data>
+  <data name="RIL" xml:space="preserve">
+    <value>This contact has already been answered!</value>
+  </data>
+  <data name="RL" xml:space="preserve">
+    <value>Return to List</value>
+  </data>
+  <data name="Salvar" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Sobrenome" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+  <data name="Verificado" xml:space="preserve">
+    <value>Verified</value>
+  </data>
+  <data name="VL" xml:space="preserve">
+    <value>View List</value>
   </data>
 </root>

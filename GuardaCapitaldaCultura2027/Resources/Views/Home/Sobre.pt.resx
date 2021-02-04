@@ -117,10 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Registar" xml:space="preserve">
-    <value>Registar</value>
+  <data name="3" xml:space="preserve">
+    <value>3ºano da Licenciatura em Engenharia Informática</value>
   </data>
-  <data name="Sair" xml:space="preserve">
-    <value>Sair</value>
+  <data name="ED" xml:space="preserve">
+    <value>Equipa de Desenvolvimento</value>
+  </data>
+  <data name="Sobre" xml:space="preserve">
+    <value>Sobre Nós</value>
+  </data>
+  <data name="Sobre1" xml:space="preserve">
+    <value>A Guarda Eventos é a nossa proposta para o projeto de Programação para a Internet em conjunto com Engenharia de Software II.</value>
+  </data>
+  <data name="Sobre2" xml:space="preserve">
+    <value>Este projeto consiste em um WebSite com o respetivo tema “Guarda – Candidata a Capital Europeia da Cultura 2027”.</value>
+  </data>
+  <data name="Sobre3" xml:space="preserve">
+    <value>Nós escolhemos a cidade da Guarda porque é uma oportunidade única de demonstrar à Europa que a zona da Beira Interior do nosso país é uma zona muito recheada na área da Cultura.</value>
+  </data>
+  <data name="Sobre4" xml:space="preserve">
+    <value>Com a "GuardaEventos" vamos facilitar, e muito, a vida dos turistas em que podem aceder ao WebSite para saber todo acerca dos concelhos envolventes nesta candidatura.</value>
   </data>
 </root>
