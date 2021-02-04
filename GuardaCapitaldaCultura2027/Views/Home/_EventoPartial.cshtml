@@ -27,7 +27,8 @@
                         <h4 class="card-title">@Model.Name</h4>
                         <p id=@("desc" + Model.EventoId) class="card-text hidden" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">@Model.Descricao</p>
                         <a id=@("verMais" + Model.EventoId) href="#" style="border:none;" onclick="EsconderTexto(@Model.EventoId)">Ver Mais</a>
-                        <p class="card-text">@Model.Data_realizacao</p>
+                        <br/>
+                        <p class="card-text">@(Model.Data_realizacao.ToShortDateString())</p>
                         @Html.ActionLink("Reservar", "Create", "Reservas", new { @EventoId = Model.EventoId })
                     </div>
                 </div>

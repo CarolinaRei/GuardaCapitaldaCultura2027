@@ -1,72 +1,65 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.Evento
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
-@{ ViewData["Title"] = "Delete"; }
 
+@{ ViewData["Title"] = Localizer["Delete"]; }
+
+<h4 class="alert-light">@Localizer["Apagar Eventos"]</h4>
+<hr />
 <center>
-    <fieldset class="border p-4" style="width:fit-content;">
-        <legend class="w-auto text-left">Eliminar Eventos</legend>
-        <div class="row" style="width:fit-content;padding-left: 20px;padding-right:20px;">
-            <table>
-                <tr>
-                    <td>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Name)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.DisplayNameFor(model => model.Municipio.Nome)
-                    </td>
-                    <td>
+    <div class="row text-justify justify-content-md-center">
+        <div class="card" style="width: 80%;">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(model => model.Name)</h5>
+                <p class="card-text"> @Html.DisplayFor(model => model.Descricao)</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <spam class="font-weight-bold">
+                        @Localizer[Html.DisplayNameFor(m => m.Municipio)]
+                    </spam>
+                    <spam class="ml-3">
                         @Html.DisplayFor(model => model.Municipio.Nome)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.DisplayNameFor(model => model.Descricao)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(model => model.Descricao)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.DisplayNameFor(model => model.Data_realizacao)
-                    </td>
-                    <td>
+                    </spam>
+                </li>
+                <li class="list-group-item">
+                    <span class="font-weight-bold">
+                        @Localizer[Html.DisplayNameFor(m => m.Data_realizacao)]
+                    </span>
+                    <span class="ml-3">
                         @Html.DisplayFor(model => model.Data_realizacao)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="font-weight-bold">
                         @Html.DisplayNameFor(model => model.Lotacao_max)
-                    </td>
-                    <td>
+                    </span>
+                    <span class="ml-3">
                         @Html.DisplayFor(model => model.Lotacao_max)
-                    </td>
-                </tr>
-            </table>
+                    </span>
+                </li>
+            </ul>
+            <div class="card-body">
+                <a class="btn btn-danger" data-toggle="modal" data-target="#confirmacaoApagar">@Localizer["Delete"]</a>
+                <a asp-action="Index" class="btn btn-light float-left">@Localizer["Voltar"]</a>
+            </div>
         </div>
-    </fieldset>
+        <br />
+    </div>
 </center>
 <br />
-<div>
-    <a asp-action="Index" class="btn btn-secondary">Voltar à Lista</a> |
-    <a class="btn btn-danger" data-toggle="modal" data-target="#confirmacaoApagar">Eliminar</a>
-</div>
 
 <div id="confirmacaoApagar" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header"><span>Eliminar Eventos</span></div>
-            <div class="modal-body"><h6>Tem <b>mesmo</b> certeza que quer apagar?</h6></div>
+            <div class="modal-header"><span>@Localizer["Eliminar Eventos"]</span></div>
+            <div class="modal-body"><h6>@Localizer["CertezaApagar"]</h6></div>
             <div class="modal-footer">
                 <form asp-action="Delete">
                     <input type="hidden" asp-for="@Model.EventoId" />
-                    <input asp-action="Delete" value="Delete" type="submit" asp-route-id="@Model.EventoId" class="btn btn-danger" />
-                    <a class="btn btn-info" data-dismiss="modal" aria-label="Close">Fechar</a>
+                    <input asp-action="Delete" value="@Localizer["Delete"]" type="submit" asp-route-id="@Model.EventoId" class="btn btn-danger" />
+                    <a class="btn btn-info" data-dismiss="modal" aria-label="Close">@Localizer["Fechar"]</a>
                 </form>
             </div>
         </div>

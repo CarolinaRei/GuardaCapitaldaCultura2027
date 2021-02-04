@@ -117,10 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Home_Menu" xml:space="preserve">
-    <value>家</value>
+  <data name="Data" xml:space="preserve">
+    <value>Data</value>
   </data>
-  <data name="SobreNós" xml:space="preserve">
-    <value>关于我们</value>
+  <data name="Descricao" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  <data name="EscolherImagem" xml:space="preserve">
+    <value>Escolher Imagem</value>
+  </data>
+  <data name="Evento" xml:space="preserve">
+    <value>Evento</value>
+  </data>
+  <data name="Formulario" xml:space="preserve">
+    <value>Formulário de Eventos</value>
+  </data>
+  <data name="Imagem" xml:space="preserve">
+    <value>Imagem</value>
+  </data>
+  <data name="Imagem do Evento" xml:space="preserve">
+    <value>Imagem do Evento</value>
+  </data>
+  <data name="InserirEventos" xml:space="preserve">
+    <value>Inserir Eventos</value>
+  </data>
+  <data name="Lotação Maxima" xml:space="preserve">
+    <value>Lotação Maxima</value>
+  </data>
+  <data name="Municipio" xml:space="preserve">
+    <value>Municipio</value>
+  </data>
+  <data name="Voltar" xml:space="preserve">
+    <value>Voltar</value>
   </data>
 </root>

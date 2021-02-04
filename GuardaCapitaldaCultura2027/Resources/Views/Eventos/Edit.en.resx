@@ -117,7 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="String1" xml:space="preserve">
-    <value />
+  <data name="Data" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Descricao" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="EscolherImagem" xml:space="preserve">
+    <value>Choose Image</value>
+  </data>
+  <data name="Evento" xml:space="preserve">
+    <value>Event</value>
+  </data>
+  <data name="Formulario" xml:space="preserve">
+    <value>Event Form</value>
+  </data>
+  <data name="Imagem" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="Imagem do Evento" xml:space="preserve">
+    <value>Event Image</value>
+  </data>
+  <data name="InserirEventos" xml:space="preserve">
+    <value>Insert Events</value>
+  </data>
+  <data name="Lotação Maxima" xml:space="preserve">
+    <value>Max Occupancy</value>
+  </data>
+  <data name="Municipio" xml:space="preserve">
+    <value>County</value>
+  </data>
+  <data name="Voltar" xml:space="preserve">
+    <value>Return to List</value>
   </data>
 </root>

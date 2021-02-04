@@ -68,7 +68,6 @@ namespace GuardaCapitaldaCultura2027
             {
                 var cultures = new[]
                 {
-                    new CultureInfo("cn"),
                     new CultureInfo("en"),
                     new CultureInfo("pt")
                 };

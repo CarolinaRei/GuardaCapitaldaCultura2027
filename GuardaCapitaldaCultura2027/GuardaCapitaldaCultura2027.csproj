@@ -7,12 +7,17 @@
 
   <ItemGroup>
     <Compile Remove="Resources\Views\Eventos\NovaPasta\**" />
+    <Compile Remove="Resources\Views\LugarEvento\**" />
     <Content Remove="Resources\Views\Eventos\NovaPasta\**" />
+    <Content Remove="Resources\Views\LugarEvento\**" />
     <EmbeddedResource Remove="Resources\Views\Eventos\NovaPasta\**" />
+    <EmbeddedResource Remove="Resources\Views\LugarEvento\**" />
     <None Remove="Resources\Views\Eventos\NovaPasta\**" />
+    <None Remove="Resources\Views\LugarEvento\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Resources\Views\Eventos\Edit.en.cshtml" />
     <Content Remove="wwwroot\img\perfil\ca.png" />
   </ItemGroup>
 
