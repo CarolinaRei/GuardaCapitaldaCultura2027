@@ -15,18 +15,15 @@ namespace GuardaCapitaldaCultura2027.Areas.Identity.Pages.Account
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegistarModel> _logger;
-        private readonly IEmailSender _emailSender;
 
         public RegistarModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
-            ILogger<RegistarModel> logger,
-            IEmailSender emailSender)
+            ILogger<RegistarModel> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
-            _emailSender = emailSender;
         }
 
         [BindProperty]

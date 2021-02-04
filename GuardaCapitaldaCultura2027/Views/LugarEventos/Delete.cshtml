@@ -4,30 +4,49 @@
 
 @{ ViewData["Title"] = "Delete";}
 
-<h1>ELiminar</h1>
-
-<h3>Quer mesmo eliminar?</h3>
+<!--<center>
+    <fieldset class="border p-4" style="width:fit-content;">
+        <legend class="w-auto text-left"> Eliminar Lugar </legend>
+        <div class="row" style="width:fit-content; padding-left: 20px; padding-right:20px;">
+            <table>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Ocupado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Ocupado)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.NumeroCadeira)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.NumeroCadeira)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </fieldset>
+</center>
+<br />
 <div>
-    <h4>LugarEvento</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Ocupado)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Ocupado)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NumeroCadeira)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.NumeroCadeira)
-        </dd>
-    </dl>
+    <a asp-action="Index" class="btn btn-secondary"> Voltar à Lista </a> |
+    <a class="btn btn-danger" data-toggle="modal" data-target="#confirmacaoApagar"> Eliminar </a>
+</div>
 
-    <form asp-action="Eliminar">
-        <input type="hidden" asp-for="LugarEventoId" />
-        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-        <a asp-action="Index">Voltar à Lista</a>
-    </form>
+<div id="confirmacaoApagar" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header"><span> Eliminar Lugar </span></div>
+            <div class="modal-body"><h6>Tem <b>mesmo</b> certeza que quer apagar?</h6></div>
+            <div class="modal-footer">
+                <form asp-action="Eliminar">
+                    <input type="hidden" asp-for="@Model.LugarEventoId" />
+                    <input asp-action="Eliminar" value="Eliminar" type="submit" asp-route-id="@Model.LugarEventoId" class="btn btn-danger" />
+                    <a class="btn btn-info" data-dismiss="modal" aria-label="Close"> Fechar </a>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

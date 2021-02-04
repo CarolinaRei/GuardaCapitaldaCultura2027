@@ -17,8 +17,5 @@ namespace GuardaCapitaldaCultura2027.Models
         [RegularExpression("[1-9][0-9]{0,2}", ErrorMessage = "Por favor Insira o número de Cadeira valido")]
 
         public string NumeroCadeira { get; set; }
-
-
-
     }
 }
