@@ -1,36 +1,38 @@
 ﻿@model GuardaCapitaldaCultura2027.Models.RestricaoCovid
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
+<h4 class="alert-light">@Localizer["Details"] </h4>
 <div>
-    <h4>RestricaoCovid</h4>
+    <h4>@Localizer["RestricaoCovid"]</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descricao)
+        <dt class="col-sm-2">
+            @Localizer["Descricao"]
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Descricao)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataInicio)
+        <dt class="col-sm-2">
+            @Localizer["DataInicio"]
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DataInicio)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataFim)
+        <dt class="col-sm-2">
+            @Localizer["DataFim"]
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DataFim)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.RestricaoCovidId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.RestricaoCovidId">@Localizer["Edit"]</a> |
+    <a asp-action="Index">@Localizer["Voltar"]</a>
 </div>

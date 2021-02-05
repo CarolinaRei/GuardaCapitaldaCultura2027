@@ -1,25 +1,29 @@
 ﻿@model IEnumerable<GuardaCapitaldaCultura2027.Models.Turista>
+@using Microsoft.AspNetCore.Mvc.Localization;
+@inject IViewLocalizer Localizer;
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h4 class="alert-light">
+    @Localizer["Titulo"]
+</h4>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">@Localizer["CNT"]</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Localizer["Nome"]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Apelido)
+                @Localizer["Apelido"]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Contacto)
+                @Localizer["Conatco"]
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NIF)
@@ -34,32 +38,33 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apelido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Contacto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NIF)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TuristaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TuristaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TuristaId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apelido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contacto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NIF)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TuristaId">@Localizer["Edit"]</a> |
+                    <a asp-action="Details" asp-route-id="@item.TuristaId">@Localizer["Details"]</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TuristaId">@Localizer["Delete"]</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
