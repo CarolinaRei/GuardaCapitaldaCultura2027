@@ -131,6 +131,7 @@ namespace GuardaCapitaldaCultura2027.Controllers
                 {
                     Contacto VerificarDados = await _context.Contactos.FindAsync(id);
                     VerificarDados.Verificado = true;
+                    VerificarDados.Resposta = contacto.Resposta;
                     contacto = VerificarDados;
 
                     using (MailMessage message = new MailMessage("guardaeventtos@gmail.com", contacto.Email))
