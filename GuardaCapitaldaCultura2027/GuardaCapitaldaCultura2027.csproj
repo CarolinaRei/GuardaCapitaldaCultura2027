@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -34,7 +34,7 @@
     <None Remove="Image\4.jpg" />
     <None Remove="Image\5.jpg" />
     <None Remove="Image\6.jpg" />
-    <None Remove="Image\7.jpeg" />
+    <None Remove="Image\7.jpg" />
     <None Remove="Image\8.jpg" />
     <None Remove="Image\9.jpg" />
   </ItemGroup>
@@ -64,7 +64,7 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Image\7.jpeg">
+    <Content Include="Image\7.jpg">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

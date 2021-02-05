@@ -131,6 +131,8 @@ namespace GuardaCapitaldaCultura2027
                 {
                     var dbContext = serviceScope.ServiceProvider.GetService<GuardaEventosBdContext>();
                     SeedDataMunicipio.Populate(dbContext);
+                    SeedDataEvento.Populate(dbContext);
+                    SeedDataReserva.Populate(dbContext, userManager);
                 }
             }
         }
